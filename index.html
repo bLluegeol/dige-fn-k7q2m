@@ -1244,7 +1244,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><span>Study</span><button type="button" data-open="s:host">Rock ID<i>→</i></button><button type="button" data-open="s:min">Mineral ID<i>→</i></button><button type="button" data-open="s:alt">Alteration Guide<i>→</i></button><button type="button" data-open="s:geo">About Siana<i>→</i></button></div>
-  <span class="hm-dver">v3.35.0</span>
+  <span class="hm-dver">v3.35.1</span>
  </div>
 </section>
 
@@ -1272,7 +1272,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><span class="dot">·</span><span>Under development by the Exploration Department</span></footer>
-<div class="hm-ver" id="hm-ver">v3.35.0</div>
+<div class="hm-ver" id="hm-ver">v3.35.1</div>
 
 <dialog id="hm-s-tools" class="hm-sheet" aria-labelledby="hm-st-t">
  <div class="hm-sh"><h2 id="hm-st-t">Learning tools</h2><button type="button" class="hm-icbtn" data-close aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
@@ -1309,9 +1309,9 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
   <p>DiGe-FN also works as a training tool. Rock, mineral and alteration references sit beside the log, so a new geologist can check an observation and learn the reasoning behind it, not just the answer.</p>
   <p class="hm-big">The ultimate goal is for every geologist to log consistently, and to become a better geologist even without the tool.</p>
   <h3>Works today</h3>
-  <ul class="hm-list"><li><i class="st ok">Available</i>Field mode on a mobile device and Study mode on a desktop, from one single offline file</li><li><i class="st ok">Available</i>Geological log: hole details, runs, geologist and shift, saved per hole on the device, with backup and restore</li><li><i class="st ok">Available</i>Several holes at once, with a hole picker in Geological, Geotechnical and Survey that stays in sync</li><li><i class="st ok">Available</i>Downhole survey: setup, log with three tries per depth, closest-shot highlight, survey-due warning, tolerance check and a card or table visual</li><li><i class="st ok">Available</i>Geotechnical log: RQD, fractures, weathering, alteration, strength, defects and testing, with RMR and a summary</li><li><i class="st ok">Available</i>Core photos per run, named by hole, meterage, date and logger, shared to Viber or saved to the phone</li><li><i class="st ok">Available</i>Daily Viber update, shift packets and Explore charts, maps and tables</li></ul>
+  <ul class="hm-list"><li><i class="st ok">Available</i>Installable offline PWA on Android and PC &mdash; add to home screen, opens without internet</li><li><i class="st ok">Available</i>Field mode on a mobile device and Study mode on a desktop, from one single offline file</li><li><i class="st ok">Available</i>Geological log: hole details, runs, geologist and shift, saved per hole on the device, with backup and restore</li><li><i class="st ok">Available</i>Several holes at once, with a hole picker in Geological, Geotechnical and Survey that stays in sync</li><li><i class="st ok">Available</i>Downhole survey: setup, log with three tries per depth, closest-shot highlight, survey-due warning, tolerance check and a card or table visual</li><li><i class="st ok">Available</i>Geotechnical log: RQD, fractures, weathering, alteration, strength, defects and testing, with RMR and a summary</li><li><i class="st ok">Available</i>Core photos per run, named by hole, meterage, date and logger, shared to Viber or saved to the phone</li><li><i class="st ok">Available</i>Daily Viber update, shift packets and Explore charts, maps and tables</li><li><i class="st ok">Available</i>Landscape mobile layout: navigation rail on the left side in all three modes (Geological, Survey and Geotechnical)</li><li><i class="st ok">Available</i>Swipe left or right to change tabs in all three modes; photo viewer and dialogs block the swipe</li></ul>
   <h3>Coming Next</h3>
-  <ul class="hm-list"><li><i class="st plan">Planned</i>Installable app (PWA) that works offline on Android and PC</li><li><i class="st plan">Planned</i>Core box photos: a Core Boxes section with box number, depth range and photo check</li><li><i class="st plan">Planned</i>Excel export: upload your company's Excel log template, DiGe-FN fills it with your logged runs, then download the finished file</li><li><i class="st plan">Planned</i>Standardized field data capture templates for every company</li><li><i class="st plan">Planned</i>Photo check against the logged numbers, as a prompt for the geologist to confirm</li><li><i class="st plan">Planned</i>Potential team workflows and a raster layer in Explore</li></ul>
+  <ul class="hm-list"><li><i class="st plan">Planned</i>Core box photos: a Core Boxes section with box number, depth range and photo check</li><li><i class="st plan">Planned</i>Excel export: upload your company's Excel log template, DiGe-FN fills it with your logged runs, then download the finished file</li><li><i class="st plan">Planned</i>Photo check against the logged numbers, as a prompt for the geologist to confirm before saving</li><li><i class="st plan">Planned</i>Standardized field data capture templates for every company</li><li><i class="st plan">Planned</i>Team workflows: import packets from multiple geologists and reconcile them in Explore</li><li><i class="st plan">Planned</i>Raster layer in the Explore plan map (custom georeferenced image)</li></ul>
   <p class="hm-credit">Drill core logging and data capture tool · Under development by the Exploration Department</p>
  </div>
 </dialog>
@@ -2597,7 +2597,7 @@ function pkCollect(){var hole=ST.IN.hole||(RUNS.length?RUNS[RUNS.length-1].IN.ho
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){msg("Nothing logged for this hole, date and shift",1);return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,ver:"3.35.0",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,ver:"3.35.1",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 function pkName(p){var f=function(v){return(Math.round(v*100)/100).toFixed(2)};return String(p.hole).trim().replace(/[^A-Za-z0-9_-]/g,"")+"_"+f(p.from)+"-"+f(p.to)+"m_"+p.date.slice(5,7)+p.date.slice(8,10)+p.date.slice(0,4)+"_"+pkOrdTxt(p.shift)+"_"+String(p.logger).replace(/[^A-Za-z0-9]/g,"")+".json"}
 function pkExport(dlOnly){var p=pkCollect();if(!p)return;var nm=pkName(p),blob=new Blob([JSON.stringify(p)],{type:"application/json"});
  var done=function(){msg("Packet ready: "+nm,0)},dl=function(){var u=URL.createObjectURL(blob),q=document.createElement("a");q.href=u;q.download=nm;document.body.appendChild(q);q.click();q.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);done()};
