@@ -1,0 +1,14 @@
+DiGe-FN / DiGe-DS — Digital Geology Field Notebook / Digital Geology Desktop Studio
+© 2026 Patrick Paul Odiamar Celso (PPC). All rights reserved.
+
+This software, including its source code, design, text and data structures, is proprietary
+and is the property of the author. No licence is granted except as stated here.
+
+1. You may use the software only with the author's permission.
+2. You may not copy, modify, decompile, redistribute, sublicense, sell or host the software
+   or any part of it without the author's prior written permission.
+3. Notices, credits and the build fingerprint in the software may not be removed or altered.
+4. The software is provided "as is", without warranty of any kind. The author is not liable
+   for any loss arising from its use. Logged data should be checked and backed up by the user.
+
+Build fingerprint: DGFN-PPC-15B25FC1-BDDD0E24
