@@ -1427,7 +1427,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.61.38</span>
+  <span class="hm-dver">v3.61.40</span>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
 </section>
@@ -1457,7 +1457,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.61.38</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.61.40</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -1547,7 +1547,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  <div class="ppc-r"><span>Built</span><p>DiGe-FN and DiGe-DS: core logging, mineral study cards and data correlation.</p></div>
  <div class="ppc-r"><span>Off duty</span><p>Loves fish, cats, dogs and every critter. Anime: Pok&eacute;mon, Naruto, Vinland Saga. Games: Euro Truck Simulator, NBA 2K, GTA, Mobile Legends.</p></div>
  <div class="ppc-r"><span>Motto</span><p>Too soon to reach the stars, too late to name the peaks, just in time to log the cores and learn what the rock speaks.</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.38</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.40</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div></div></dialog>
@@ -2193,7 +2193,13 @@ function mzW(list){
  if(!order.length)return"";
  var nm=function(c){return(MZW[c]||c).toLowerCase()};
  var sh=function(c){return c.charAt(0)+c.slice(1).toLowerCase()};
- var abs=order.map(function(c){var i=info[c];if(i.sum!=null)return sh(c)+" "+(+i.sum.toFixed(2))+"%";return i.ab?sh(c)+" "+i.ab:sh(c)}).join(", ");
+ var numA=[],wrd=[],wk={};
+ order.forEach(function(c){var i=info[c];
+  if(i.sum!=null){numA.push(sh(c)+" "+(+i.sum.toFixed(2))+"%");return}
+  if(!i.ab){numA.push(sh(c));return}
+  if(!wk[i.ab]){wk[i.ab]={ab:i.ab,m:[],rel:""};wrd.push(wk[i.ab])}
+  wk[i.ab].m.push(c);if(i.rel)wk[i.ab].rel=i.rel});
+ var abs=numA.concat(wrd.map(function(g){return g.m.length>1?g.ab+" mineralization of "+g.m.map(nm).join(relSep(g.rel||"+")):sh(g.m[0])+" "+g.ab})).join(", ");
  var rem={};order.forEach(function(c){rem[c]=info[c].occ.slice()});
  var occOrder=[];order.forEach(function(c){info[c].occ.forEach(function(o){if(occOrder.indexOf(o)<0)occOrder.push(o)})});
  var shared=[];
@@ -2201,8 +2207,9 @@ function mzW(list){
    shared.push(ms.map(nm).join(relSep(r))+" as "+OCW[o]);ms.forEach(function(c){rem[c]=rem[c].filter(function(x){return x!==o})})}});
  var own=[];order.forEach(function(c){if(rem[c].length)own.push(nm(c)+" as "+joinAnd(rem[c].map(function(o){return OCW[o]})))});
  var parts=own.concat(shared);
- if(RP.occ===false)return abs;
- return parts.length?abs+" (overall): "+parts.join(", "):abs+" (overall)"}
+ var ov=order.some(function(c){return info[c].sum!=null})?" (overall)":"";
+ if(RP.occ===false)return abs+ov;
+ return parts.length?abs+ov+": "+parts.join(", "):abs+ov}
 var ISM={QZ:"silicified",SIL:"silicified",CHL:"chloritized","ILT/SER":"sericitized",CLY:"argillized",EP:"epidotized",CB:"carbonatized",ADL:"adularized",SME:"smectitized",PY:"pyritized",MAG:"magnetized",BT:"biotitized"};
 function altW(W){var mn=(W.mn||[]).filter(function(x){return x.i>1}),al=W.al||[],out=[];
  var by={},ord=[];mn.forEach(function(x){if(!by[x.i]){by[x.i]=[];ord.push(x.i)}by[x.i].push(x)});
@@ -2757,7 +2764,7 @@ function vfDraw(){var c=$("vfc");if(!c)return;var u=function(f){var o={};RUNS.fo
  if($("vf_i")){$("vf_i").setAttribute("aria-pressed",String(HIDEIMP));$("vf_i").firstChild.textContent=HIDEIMP?"Imported: hidden":"Imported: shown"}
  var n=RUNS.filter(function(r){return !vfHide(r)}).length;$("vft").textContent=vfOn()?"Filter \u00b7 showing "+n+" of "+RUNS.length:"Filter runs";$("vfbox").classList.toggle("vfon",vfOn())}
 function runDay(r){return r.day||shiftDay(new Date(r.id))}
-function vbOn(r){if(r.vb===true)return true;if(r.vb===false)return false;if(RP.vbFrom&&+r.id<RP.vbFrom)return false;if(!r.imp&&!isOld(r))return true;return !RP.only||runDay(r)===RP.iso}
+function vbOn(r){if(RP.vbFrom&&+r.id<RP.vbFrom&&r.vb!==true)return false;if(r.vb===true)return true;if(r.vb===false)return false;if(!r.imp&&!isOld(r))return true;return !RP.only||runDay(r)===RP.iso}
 var HID=0,HIMP=0,HIDEIMP=false;try{HIDEIMP=localStorage.getItem("gl_himp")==="1"}catch(e){}
 var HIDEOLD=false;try{HIDEOLD=localStorage.getItem("gl_hold")==="1"}catch(e){}
 function curShift(){var h=new Date().getHours();return h>=7&&h<15?"Day shift (7am-3pm)":h>=15&&h<23?"Evening shift (3pm-11pm)":"Night shift (11pm-7am)"}
@@ -3098,7 +3105,7 @@ function startSh(name){if(!hk(name)){msg("Type the Hole ID first",1);return}
  if(ok){var dd=new Date(nw);if(p1>p2&&tn<p2)dd.setDate(dd.getDate()-1);a.iso=dd.getFullYear()+"-"+pad(dd.getMonth()+1)+"-"+pad(dd.getDate())}else{RP.s1=a.s1;RP.s2=a.s2;RP.shift=fmtT(a.s1)+" to "+fmtT(a.s2)+" Shift"}
  RP.iso=a.iso;
  var vf=NaN;try{var mm=/^(\d{1,2}):(\d{2})/.exec(RP.s1||"");if(mm){var sd=new Date(RP.iso+"T00:00:00");sd.setHours(+mm[1],+mm[2],0,0);vf=sd.getTime()}}catch(e){}if(isNaN(vf)){var xx=new Date(),hr=xx.getHours(),sh0=hr>=7&&hr<15?7:hr>=15&&hr<23?15:23;if(hr<7)xx.setDate(xx.getDate()-1);xx.setHours(sh0,0,0,0);vf=xx.getTime()}
- if(RP.vbFrom!==vf){RP.vbFrom=vf;VEDITED=false;VE2=false;VT="";VT2=""}
+ if(RP.vbFrom!==vf){RP.vbFrom=vf;var ch=0;RUNS.forEach(function(r){if(+r.id<vf&&r.vb!==undefined){delete r.vb;ch++}});if(ch)saveRuns();VEDITED=false;VE2=false;VT="";VT2="";try{drawTable()}catch(e){}}
  RP.ss={on:true,date:RP.iso,at:new Date().toISOString(),geo:d.geo,hole:String(name)};
  CUR="*";saveRP();CUR=null;geoUI();push("*");msg("Shift started: "+d.geo+", "+RP.shift,0)}
 function endSh(){var hh=String((RP.ss&&RP.ss.hole)||ST.IN.hole||"hole").replace(/[^\w.-]+/g,"_"),ds=String(RP.iso||curDay()).replace(/-/g,""),st=(typeof vbShTxt==="function"?vbShTxt():"shift").replace(/[^\w-]+/g,"");RP.ss=null;CUR="*";saveRP();CUR=null;push("*");try{backup(hh+"_"+ds+"_"+st+"_backup.json")}catch(e){}msg("Shift ended. Backup file saved. Viber keeps this shift until you start the next one",0)}
@@ -3179,7 +3186,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){msg(ALL?"Nothing logged for this hole yet":"Nothing logged for this hole, date and shift",1);return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.38",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.40",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 function pkName(p){var f=function(v){return(Math.round(v*100)/100).toFixed(2)};return String(p.hole).trim().replace(/[^A-Za-z0-9_-]/g,"")+"_"+f(p.from)+"-"+f(p.to)+"m_"+p.date.slice(5,7)+p.date.slice(8,10)+p.date.slice(0,4)+"_"+(p.scope==="allimp"?"ALLIMP":p.scope==="all"?"ALL":pkOrdTxt(p.shift))+"_"+String(p.logger).replace(/[^A-Za-z0-9]/g,"")+".json"}
 function pkExport(dlOnly){var p=pkCollect();if(!p)return;var nm=pkName(p),blob=new Blob([JSON.stringify(p)],{type:"application/json"});
  var done=function(){msg("Packet ready: "+nm,0)},dl=function(){var u=URL.createObjectURL(blob),q=document.createElement("a");q.href=u;q.download=nm;document.body.appendChild(q);q.click();q.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);done()};
