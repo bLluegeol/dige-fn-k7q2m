@@ -1130,6 +1130,76 @@ html[data-dev="desktop"] #nhome .hm-logo.ds{display:block}
 
 /*ASSAYCSS*/.dk-pre{margin:8px 0 0;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word}
 
+/*UNDO2*/#nsetp #nur{display:grid;grid-template-columns:1fr 1fr;gap:8px}#nsetp #nur button{height:40px;min-height:40px;border-radius:20px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:700 12px system-ui;display:flex;align-items:center;justify-content:center;gap:5px;padding:0}#nsetp #nur svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}#nsetp #nur button:disabled{opacity:.4}
+
+/*CARDSCSS*/
+#det.tcd{padding:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;max-height:none!important;overflow:visible!important;animation:fadeIn .16s ease both}
+#det .tc{--tcl:color-mix(in srgb,var(--tc) 45%,#fff);border-radius:18px;padding:5px;background:var(--tc);background:linear-gradient(150deg,var(--tc),var(--tcl) 55%,var(--tc));box-shadow:0 8px 22px var(--shadow,rgba(0,0,0,.3))}
+#det .tc-in{background:var(--card);border-radius:13px;padding:8px 10px 6px;color:var(--ink)}
+#det .tc-h{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-right:64px;min-height:30px}
+#det .tc-n{font:800 17px/1.15 system-ui;color:var(--ink)}
+#det .tc-cd{font:800 11px system-ui;background:var(--tc);color:#fff;border-radius:10px;padding:3px 8px;white-space:nowrap;text-shadow:0 1px 1px rgba(0,0,0,.35)}
+#det .tc-art{position:relative;height:98px;margin:6px 0;border-radius:9px;overflow:hidden;border:2px solid var(--tc);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+#det .tc-svg,#det .tc-art svg{display:block;width:100%;height:100%}
+#det .tc-sh{position:absolute;inset:0;background:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.38) 46%,transparent 62%);pointer-events:none}
+#det .tc-ty{display:flex;justify-content:space-between;align-items:center;font:700 10.5px system-ui;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);padding:3px 2px 5px}
+#det .tc-ty span{color:var(--tc);filter:brightness(.85)}#det .tc-ty em{font-style:normal;opacity:.8}
+#det .tc-bd{max-height:30vh;overflow:auto;padding-right:2px}
+#det .tc-tx{margin:2px 0 6px;font-size:13.5px;line-height:1.4}
+#det .tc-mv{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:6px 0;border-top:1px dotted var(--line)}
+#det .tc-mi{width:25px;height:25px;border-radius:50%;background:var(--tc);color:#fff;font:800 10px system-ui;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 1px rgba(0,0,0,.35)}
+#det .tc-mv b{display:block;font:800 12.5px system-ui;color:var(--ink)}#det .tc-mv p{margin:1px 0 0;font-size:13px;line-height:1.38}
+#det.tcd .x{top:9px;right:8px;z-index:2;color:var(--ink);background:var(--card);border-radius:50%;width:30px;height:30px;padding:0;font-size:22px;box-shadow:0 0 0 1px var(--line)}
+#det .tc-ex{position:absolute;top:9px;right:44px;z-index:2;width:30px;height:30px;border-radius:50%;border:0;background:var(--card);color:var(--ink);font-size:16px;box-shadow:0 0 0 1px var(--line);padding:0}
+#det.big{top:50%!important;left:50%!important;right:auto!important;transform:translate(-50%,-50%);width:min(94vw,460px);box-shadow:0 0 0 100vmax rgba(10,14,18,.55)!important}
+#det.big .tc-art{height:200px}#det.big .tc-bd{max-height:44vh}#det.big .tc-n{font-size:21px}#det.big .tc-in{padding:10px 12px 8px}
+#lp{position:fixed;inset:0;z-index:150;background:var(--bg);color:var(--ink);display:flex;flex-direction:column}#lp[hidden]{display:none}
+#lp-h{display:flex;align-items:center;gap:8px;padding:calc(env(safe-area-inset-top,0px) + 6px) 10px 6px;border-bottom:1px solid var(--line);background:var(--card);min-height:50px}
+#lp-b{border:0;background:none;color:var(--acc-ink);font:700 15px system-ui;padding:8px 6px}#lp-t{flex:1;text-align:center;font:800 15px system-ui;margin-right:50px}
+#lp-c{flex:1;overflow:auto;padding:12px 12px 80px;max-width:680px;width:100%;margin:0 auto;box-sizing:border-box;-webkit-overflow-scrolling:touch}
+#lp .lp-sm,#lp p.lp-sm{font-size:12.5px;color:var(--mut);margin:6px 0;line-height:1.4}
+#lp .lp-btn{display:block;width:100%;min-height:46px;margin:12px 0 0;border:0;border-radius:12px;background:var(--acc-fill);color:var(--card);font:800 14px system-ui}
+#lp .lp-btn.lp-ghost{background:none;border:1px solid var(--line);color:var(--ink)}
+#lp .lp-deck{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;margin:0 0 8px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:14px system-ui}
+#lp .lp-deck b{display:block;font-size:15px}#lp .lp-deck small{display:block;color:var(--mut);font-size:12px;margin-top:2px}#lp .lp-bst{color:var(--acc-ink)!important;font-weight:700}
+#lp .ch{color:var(--mut);font-size:20px}
+#lp em.due,#lp em.nw,#lp em.lr{font-style:normal;font:800 11px system-ui;border-radius:10px;padding:3px 8px;margin-left:4px;color:#fff}
+#lp em.due{background:#c0504d}#lp em.nw{background:var(--acc-fill)}#lp em.lr{background:#4d7060}
+#lp .lp-leg{font-size:12px;color:var(--mut);margin-top:10px}
+#lp .at-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin:0 -2px}
+#lp .at-tab{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:16px;padding:7px 12px;font:700 12px system-ui;white-space:nowrap}
+#lp .at-tab.on{background:var(--acc-fill);color:var(--card);border-color:var(--acc-fill)}
+#lp .at-h{margin:8px 0 6px;font:800 17px system-ui}#lp .at-h small{display:block;font:500 12.5px system-ui;color:var(--mut);margin-top:2px}
+#lp .at-box svg{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
+#lp .zn{cursor:pointer;transition:opacity .15s}#lp .zn.dim{opacity:.5}#lp .zn.hi{stroke:#fff!important;stroke-width:2.6!important;filter:drop-shadow(0 0 3px rgba(0,0,0,.55))}
+#lp .at-lb{font:700 8.5px system-ui;fill:#1d252c;paint-order:stroke;stroke:rgba(255,255,255,.8);stroke-width:2.6px;pointer-events:none}
+#lp .at-leg{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+#lp .at-lg{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:6px 10px;font:600 12px system-ui}
+#lp .at-lg i{width:12px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.3)}#lp .at-lg.on{border-color:var(--acc-fill);box-shadow:0 0 0 2px var(--acc-fill) inset}
+#lp .at-z{border:1px solid var(--line);border-left:6px solid var(--zc);border-radius:12px;background:var(--card);padding:10px 12px}
+#lp .at-z b{font:800 15px system-ui}#lp .at-z p{margin:6px 0 0;font-size:13.5px;line-height:1.4}#lp .at-z p span{display:block;font:800 10.5px system-ui;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+#lp .lp-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;min-height:230px;box-shadow:0 4px 14px var(--shadow-sm,rgba(0,0,0,.12));font-size:15px;line-height:1.45}
+#lp .lp-card p{margin:6px 0}#lp .lp-art svg,#lp .lp-dg svg{display:block;width:100%;height:auto;max-height:150px;border-radius:10px}#lp .lp-art svg{height:110px}#lp .lp-dg svg{max-height:none;border:1px solid var(--line)}
+#lp .lp-bk{border-top:2px dashed var(--line);margin-top:12px;padding-top:8px}
+#lp .lp-q{display:block;font:800 10.5px system-ui;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+#lp .lp-nm{font-size:18px}#lp .lp-cd{font:800 11px system-ui;background:var(--acc-fill);color:var(--card);border-radius:9px;padding:2px 7px;vertical-align:middle}
+#lp .lp-act{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}#lp .lp-act .lp-btn{grid-column:1/-1;margin:0}
+#lp .lp-g{border:0;border-radius:12px;padding:10px 4px;color:#fff;font:14px system-ui;display:flex;flex-direction:column;align-items:center;gap:2px}#lp .lp-g small{font-size:11px;opacity:.9}
+#lp .lp-g.g0{background:#c0504d}#lp .lp-g.g1{background:#c08a3a}#lp .lp-g.g2{background:#4d7060}#lp .lp-g.g3{background:#56707f}
+#lp .lp-prog{height:6px;border-radius:3px;background:var(--line);margin:0 0 12px;overflow:hidden}#lp .lp-prog i{display:block;height:100%;background:var(--acc-fill);transition:width .25s}
+#lp .lp-qb{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:15px;line-height:1.45}#lp .lp-qb p{margin:5px 0}
+#lp .lp-opts{display:grid;gap:8px}
+#lp .lp-op{text-align:left;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:14px/1.35 system-ui}
+#lp .lp-op.ok{border-color:#4d7060;background:var(--okbg,#e3ece7)}#lp .lp-op.no{border-color:var(--err,#a8392f);background:var(--errbg,#f5e4e1)}#lp .lp-op.fade{opacity:.5}
+#lp .lp-why{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);font-size:13.5px;line-height:1.4;background:var(--card)}#lp .lp-why.ok{border-color:#4d7060}#lp .lp-why.no{border-color:var(--err,#a8392f)}#lp .lp-why p{margin:4px 0 0}
+#lp .lp-end{text-align:center;padding:26px 8px 6px}#lp .lp-big{display:block;font:800 46px system-ui;color:var(--acc-ink)}
+#lp .lp-h3{font:800 14px system-ui;margin:18px 0 8px}
+#lp .lp-mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#lp .lp-mt{min-height:70px;padding:8px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:12px/1.3 system-ui}#lp .lp-mt.n{background:var(--hl)}
+#lp .lp-mt.sel{border-color:var(--acc-fill);box-shadow:0 0 0 2px var(--acc-fill) inset}#lp .lp-mt.ok{background:var(--okbg,#e3ece7);border-color:#4d7060;opacity:.6}#lp .lp-mt.bad{border-color:var(--err,#a8392f);background:var(--errbg,#f5e4e1)}
+#lp .lp-hud{display:flex;justify-content:space-between;align-items:center;font:800 20px system-ui;margin-bottom:12px;color:var(--acc-ink)}
+#lp .lp-clues{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 14px;margin:8px 0 10px;font-size:14px;line-height:1.4}#lp .lp-clues p{margin:6px 0}
+
 
 /* =====================================================================
    DiGe-FN home: one fixed screen; details open in sheets
@@ -1427,7 +1497,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.61.40</span>
+  <span class="hm-dver">v3.61.43</span>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
 </section>
@@ -1457,7 +1527,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.61.40</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.61.43</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -1547,7 +1617,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  <div class="ppc-r"><span>Built</span><p>DiGe-FN and DiGe-DS: core logging, mineral study cards and data correlation.</p></div>
  <div class="ppc-r"><span>Off duty</span><p>Loves fish, cats, dogs and every critter. Anime: Pok&eacute;mon, Naruto, Vinland Saga. Games: Euro Truck Simulator, NBA 2K, GTA, Mobile Legends.</p></div>
  <div class="ppc-r"><span>Motto</span><p>Too soon to reach the stars, too late to name the peaks, just in time to log the cores and learn what the rock speaks.</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.40</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.43</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div></div></dialog>
@@ -2034,15 +2104,7 @@ function pick(g,s,code){
   if(j<0&&g.k==="rt"&&RKX.indexOf(code)>=0&&rkq(cur)){msg("Locked. A breccia, stockwork or structure rock is already chosen",1);return}if(j<0&&((RKG[g.k]&&!rkok())||(g.k==="rt"&&cur.length>=1&&!rk1(cur)))){msg(g.k==="rt"?"Rock 2 is locked. Only for breccia, stockwork, vein, fault or shear rocks":"Locked. Only for breccia, stockwork, vein, fault or shear rocks",1);return}if(j>=0){cur.splice(j,1);if(g.k==="rt"&&!rk1(cur))cur.length=Math.min(cur.length,1)}else{if(g.max===1)cur.length=0;if(cur.length>=g.max){msg("Maximum "+g.max+" for this group. Tap one to remove it",1);return}cur.push(code)}
   st[g.k]=cur;fact(g.k+":"+code,j<0,g.k,code);}
  sync();touch()}
-function fact(key,on,k,c){var d=$("det");if(!on){d.style.display="none";return}
- var f=FACT[key],a=f?f.split("|"):[c+"",nm(k,c)];
- var h="<button class='x' aria-label='Close'>&times;</button><b>"+esc(a[0])+"</b>";
- if(k==="al"&&a.length>=4)h+="<p><span class='m'>How it forms:</span> "+esc(a[1])+"</p><p><span class='m'>What you see in the field:</span> "+esc(a[2])+"</p><p><span class='m'>Minerals:</span> "+esc(a[3])+"</p>";
- else h+=(a[1]?"<p>"+esc(a[1])+"</p>":"")+(a[2]?"<p><span class='m'>Context / assemblage:</span> "+esc(a[2])+"</p>":"");
- if(typeof FX!=="undefined"&&FX[k+":"+c]){FX[k+":"+c].forEach(function(r){h+="<p>"+(r[0]?"<span class='m'>"+esc(r[0])+"</span> ":"")+esc(r[1])+"</p>"})}
- if(k==="rt"&&typeof FID!=="undefined"&&FID[c]){var q=FID[c];if(!f&&q.w)h=h.replace(/<b>.*?<\/b>/,"<b>"+esc(nm(k,c))+" ("+esc(c)+")</b>")+"<p>"+esc(q.w)+"</p>";h+="<p><span class='m'>How it feels:</span> "+esc(q.f)+"</p><p><span class='m'>Scratch test:</span> "+esc(q.s)+"</p><p><span class='m'>Acid (cold dilute HCl):</span> "+esc(q.a)+"</p><p><span class='m'>10x lens:</span> "+esc(q.x)+"</p><p><span class='m'>20x lens:</span> "+esc(q.y)+"</p><p><span class='m'>Do not confuse with:</span> "+esc(q.c)+"</p>"}
- d.innerHTML=h;
- d.style.display="block";d.style.bottom="auto";d.style.top="calc(env(safe-area-inset-top, 0px) + 6px)";d.onclick=function(){d.style.display="none"};d.querySelector(".x").onclick=function(){d.style.display="none"}}
+
 var MN2AL={"CHL":[["PR","chlorite replaces mafic minerals and glass in the cooler outer halo, the classic propylitic mineral"],["CH","where chlorite dominates and the whole rock is green"]],
 "EP":[["PR","epidote with chlorite and calcite is the propylitic assemblage"],["SK","epidote also forms in skarn next to limestone"]],
 "CB":[["PR","calcite fills veinlets and amygdales and replaces feldspar in propylitic halos"],["SK","carbonate can persist in retrograde skarn"]],
@@ -3186,7 +3248,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){msg(ALL?"Nothing logged for this hole yet":"Nothing logged for this hole, date and shift",1);return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.40",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.43",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 function pkName(p){var f=function(v){return(Math.round(v*100)/100).toFixed(2)};return String(p.hole).trim().replace(/[^A-Za-z0-9_-]/g,"")+"_"+f(p.from)+"-"+f(p.to)+"m_"+p.date.slice(5,7)+p.date.slice(8,10)+p.date.slice(0,4)+"_"+(p.scope==="allimp"?"ALLIMP":p.scope==="all"?"ALL":pkOrdTxt(p.shift))+"_"+String(p.logger).replace(/[^A-Za-z0-9]/g,"")+".json"}
 function pkExport(dlOnly){var p=pkCollect();if(!p)return;var nm=pkName(p),blob=new Blob([JSON.stringify(p)],{type:"application/json"});
  var done=function(){msg("Packet ready: "+nm,0)},dl=function(){var u=URL.createObjectURL(blob),q=document.createElement("a");q.href=u;q.download=nm;document.body.appendChild(q);q.click();q.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);done()};
@@ -4234,7 +4296,7 @@ var TABS=[
  {id:"vb",name:"Viber update",viber:1},
  {id:"idg",name:"Look up",guide:1}
 ];
-var GUIDE="<div class='box'><h2>Quick rock ID</h2><small>Run tests in this order</small><div class='tw'><table>\n<tr><th>Rock</th><th>Key tells</th></tr>\n<tr><td><b>LST</b> Limestone</td><td>Fizzes in dilute HCl, scratches with a knife. Grey to black, brownish red if oxidized. R4, blocky and interlocked at the south wall.</td></tr>\n<tr><td><b>MST</b> Mudstone</td><td>No visible grains, soft (R1-R3), crumbles, slakes in water, no fizz. Black if carbonaceous, brown and soil-like in the SE wall.</td></tr>\n<tr><td><b>TUF</b> Tuff</td><td>Fine ash with crystal bits, glass shards or pumice. Drier and harder than mudstone, no fizz.</td></tr>\n<tr><td><b>VC</b> Volcaniclastics</td><td>Fine matrix with irregular basalt or andesite clasts, grey to greenish grey, usually chloritic. Competent, high strength.</td></tr>\n<tr><td><b>BX</b> Breccia</td><td>Angular clasts over 2 mm. Name the type: HBX, FBX, VBX, BXL. Record clast or matrix support.</td></tr>\n<tr><td><b>BLT1</b> Basalt</td><td>Aphanitic, greenish grey, chloritic, R4. Altered basalt in the SE wall is thin basalt in thick brown mudstone.</td></tr></table></div></div>\n<div class='box'><h2>Why mudstone matters (PSM site visit, March 2026)</h2>\n<p class='sm'>Mudstone drives slope instability on the west, northeast and southeast walls. Log it carefully:</p>\n<p class='sm'>- Log each mudstone bed on its own, thickness 0.1 m and up (west wall beds reach 10 m and are not yet modelled).</p>\n<p class='sm'>- Record R grade: R1-R2 NE wall, R2-R3 south wall. Brown mudstone in the SE wall is very stiff to hard and behaves as soil.</p>\n<p class='sm'>- Slake test in water, note if it frets and disaggregates.</p>\n<p class='sm'>- Log shears, sheared or lipping contacts, bedding dip (15-40 degrees west wall, 40-65 degrees NE wall) and clay infill.</p>\n<p class='sm'>- Note seepage, wet core and water at contacts: mudstone and faults perch water.</p></div><div class='box'><h2>COTAMS order</h2><div class='tw'><table>\n<tr><th>Letter</th><th>Section</th><th>Contains</th></tr>\n<tr><td><b>-</b></td><td>Rock</td><td>Rock name(s), dominant first. (?) beside it if unsure. Interbedded when two rocks alternate</td></tr>\n<tr><td><b>C</b></td><td>Color</td><td>Shade and color, dominant first. Green then blue = bluish green</td></tr>\n<tr><td><b>O</b></td><td>Oxidation</td><td>unoxidized to residual soil, then weathering in words (slightly, moderately, highly weathered)</td></tr>\n<tr><td><b>T</b></td><td>Texture</td><td>Grain size or texture, clast or matrix support, clast roundness, clasts of basalt, mudstone, chl-altered fragments</td></tr>\n<tr><td><b>A</b></td><td>Alteration</td><td>Intensity word + minerals: moderately altered to sil-ser-chl (propylitic)</td></tr>\n<tr><td><b>M</b></td><td>Mineralization</td><td>pyr as disseminations and stringers, 0.12% pyr, Qtz as hairlines</td></tr>\n<tr><td><b>S</b></td><td>Structure</td><td>Fracture sets, then defect type, shape, roughness, infill, persistence, alpha, beta, depth</td></tr>\n<tr><td><b>N</b></td><td>Notes</td><td>Magnetism, hardness, soil strength, condition, descriptors, recovery and RQD, then your typed note</td></tr></table></div></div>\n<div class='box'><h2>Abbreviations</h2><p class='sm'>The comment is written in words. Only minerals are abbreviated.</p><div class='tw'><table>\n<tr><td><b>Qtz</b></td><td>quartz</td><td><b>cal</b></td><td>calcite</td></tr>\n<tr><td><b>chl</b></td><td>chlorite</td><td><b>ser</b></td><td>sericite or illite</td></tr>\n<tr><td><b>pyr</b></td><td>pyrite</td><td><b>cpy</b></td><td>chalcopyrite</td></tr>\n<tr><td><b>sph</b></td><td>sphalerite</td><td><b>gal</b></td><td>galena</td></tr>\n<tr><td><b>asp, marc</b></td><td>arsenopyrite, marcasite</td><td><b>hem, lim</b></td><td>hematite, limonite</td></tr>\n<tr><td><b>mag</b></td><td>magnetite</td><td><b>bio</b></td><td>biotite</td></tr>\n<tr><td><b>epi</b></td><td>epidote</td><td><b>smec</b></td><td>smectite</td></tr>\n<tr><td><b>adul</b></td><td>adularia</td><td><b>sil</b></td><td>silica</td></tr>\n<tr><td><b>carb</b></td><td>carbonate</td><td><b>Mn-ox</b></td><td>manganese oxide</td></tr>\n<tr><td><b>-</b></td><td>minerals of one assemblage (sil-ser-chl)</td><td><b>+</b> and <b>+/-</b></td><td>also present, minor or variable</td></tr>\n<tr><td><b>(?)</b></td><td>not sure</td><td><b>BLT, VC, VBX, HBX</b></td><td>rock codes, used in the Show codes line</td></tr></table></div></div>\n<div class='box'><h2>Hints from your logs: how each rock is usually described</h2>\n<p class='sm'>Learned from the log text you shared. Use these as prompts, not rules.</p>\n<p class='sm'><b>VC (volcaniclastics):</b> grey to dk grey or greenish grey. Granule to pebble clasts of BLT (some hem), SR to R, matrix- or clast-supported. qz+/-cal veinlets, hairlines and stringers. Chlorite alteration often increases with depth. Weakly silicified. Sli to mod magnetic. Gouge and clay alteration along fractures.</p>\n<p class='sm'><b>VBX vs HBX:</b> VBX is polymictic, dk grey to black, A to R pebble and granule clasts with qz-cal streaks around clasts, sometimes overprinted by hydrothermal fluid (argillized, silicified). HBX is cemented with quartz, clast-supported, with qz+py+/-hem hairlines.</p>\n<p class='sm'><b>BLT flow:</b> interbedded fine and medium grained. Coarse grains show CHL, CALC, PLAG. Amygdaloidal in places, hem stains or patches, calcite veinlets, slickensides. Magnetic.</p>\n<p class='sm'><b>MST (mudstone):</b> dk grey to grey, calcite lenses and stringers, fissile, friable, slakes, sli to mod carbonaceous. Magnetism varies: basaltic mudstone is sli to mod magnetic, clay-rich black mudstone is often non-magnetic.</p>\n<p class='sm'><b>CMS (carbonaceous mudstone):</b> black, soft, friable, incompetent, carbon fragments, coal seamlets, often lost core. Note whether carbonization increases or decreases with depth.</p>\n<p class='sm'><b>Limestone and black limestone:</b> grey to light grey, lenticular, fine dark carbonaceous stringers, calcirudite with coarse calcite fragments, hem patches, clay alteration.</p>\n<p class='sm'><b>SST, SLT and interbeds:</b> cream to grey sandstone with coal seamlets is usually non-magnetic. Interbedded SST, SLT and MST carry calcite nodules, blebs and stringers, hem specks, qz-filled pores.</p>\n<p class='sm'><b>Conglomerate:</b> para-type = poorly sorted, matrix-supported, clasts of BLT, SLT, VC. Ortho-type = clast-supported with clay or calcite cement, BLT clasts altered to CHL.</p>\n<p class='sm'><b>Fault, shear and gouge:</b> state the interval, alpha, and the fill: clay-rich grey-black gouge, very soft. Elongated clasts parallel to the shear plane mean ductile shearing. Log lost core beside it.</p></div>\n<div class='box'><h2>Habits seen in your logs</h2>\n<p class='sm'>Write depths with @ (contact @37.05) and ranges as 74.30-74.90. Give angles as a=70 b=260. Estimate sulfides in % to two decimals when low (0.01%, 0.12%, 0.35% py). Write lost core intervals every time. Put (?) after anything you are not sure of. Say how a feature changes with depth (chloritization increases, carbonization decreases).</p></div>\n<div class='box'><h2>Examples in field-notes style</h2>\n<p class='sm'><b>Andesite, medium gray, fine-grained, moderately altered to sil-ser-chl, pyr as disseminations and stringers, Qtz-pyr hairlines and stringers as stockwork, moderately fractured.</b> (your format, with minerals abbreviated)</p>\n<p class='sm'><b>Sandstone (?), light gray, bleached, moderately altered to sil-clay-chl, pyr as disseminations, fracture-fills and stringers, moderately fractured.</b></p>\n<p class='sm'><b>From your logs:</b> Carbonaceous mudstone, dark gray to black, fine-grained, friable, carbon fragments along the core, carbonization decreasing with depth, highly fractured at 74.30-74.90 m, lost core at 75.60-75.80 m.</p>\n<p class='sm'><b>From your logs:</b> Volcaniclastics, gray to dark gray, weakly silicified, moderately magnetic, minor Qtz infills and localized Qtz-cemented clasts, Qtz+/-cal veinlets and stringers, transition zone at 71.60-71.80 m.</p>\n<p class='sm'><b>From your logs:</b> Hydrothermal breccia (?), gray to dark gray, clast-supported with Qtz matrix-cement, Qtz+pyr+/-hem hairlines, 0.15% pyr, minor chl, highly fractured at 45.95-46.55 m.</p></div>\n";
+var GUIDE="<div class='box'><h2>Quick rock ID</h2><small>Run tests in this order</small><div class='tw'><table>\n<tr><th>Rock</th><th>Key tells</th></tr>\n<tr><td><b>LST</b> Limestone</td><td>Fizzes in dilute HCl, scratches with a knife. Grey to black, brownish red if oxidized. R4, blocky and interlocked at the south wall.</td></tr>\n<tr><td><b>MST</b> Mudstone</td><td>No visible grains, soft (R1-R3), crumbles, slakes in water, no fizz. Black if carbonaceous, brown and soil-like in the SE wall.</td></tr>\n<tr><td><b>TUF</b> Tuff</td><td>Fine ash with crystal bits, glass shards or pumice. Drier and harder than mudstone, no fizz.</td></tr>\n<tr><td><b>VC</b> Volcaniclastics</td><td>Fine matrix with irregular basalt or andesite clasts, grey to greenish grey, usually chloritic. Competent, high strength.</td></tr>\n<tr><td><b>BX</b> Breccia</td><td>Angular clasts over 2 mm. Name the type: HBX, FBX, VBX, BXL. Record clast or matrix support.</td></tr>\n<tr><td><b>BLT1</b> Basalt</td><td>Aphanitic, greenish grey, chloritic, R4. Altered basalt in the SE wall is thin basalt in thick brown mudstone.</td></tr></table></div></div>\n<div class='box'><h2>COTAMS order</h2><div class='tw'><table>\n<tr><th>Letter</th><th>Section</th><th>Contains</th></tr>\n<tr><td><b>-</b></td><td>Rock</td><td>Rock name(s), dominant first. (?) beside it if unsure. Interbedded when two rocks alternate</td></tr>\n<tr><td><b>C</b></td><td>Color</td><td>Shade and color, dominant first. Green then blue = bluish green</td></tr>\n<tr><td><b>O</b></td><td>Oxidation</td><td>unoxidized to residual soil, then weathering in words (slightly, moderately, highly weathered)</td></tr>\n<tr><td><b>T</b></td><td>Texture</td><td>Grain size or texture, clast or matrix support, clast roundness, clasts of basalt, mudstone, chl-altered fragments</td></tr>\n<tr><td><b>A</b></td><td>Alteration</td><td>Intensity word + minerals: moderately altered to sil-ser-chl (propylitic)</td></tr>\n<tr><td><b>M</b></td><td>Mineralization</td><td>pyr as disseminations and stringers, 0.12% pyr, Qtz as hairlines</td></tr>\n<tr><td><b>S</b></td><td>Structure</td><td>Fracture sets, then defect type, shape, roughness, infill, persistence, alpha, beta, depth</td></tr>\n<tr><td><b>N</b></td><td>Notes</td><td>Magnetism, hardness, soil strength, condition, descriptors, recovery and RQD, then your typed note</td></tr></table></div></div>\n<div class='box'><h2>Abbreviations</h2><p class='sm'>The comment is written in words. Only minerals are abbreviated.</p><div class='tw'><table>\n<tr><td><b>Qtz</b></td><td>quartz</td><td><b>cal</b></td><td>calcite</td></tr>\n<tr><td><b>chl</b></td><td>chlorite</td><td><b>ser</b></td><td>sericite or illite</td></tr>\n<tr><td><b>pyr</b></td><td>pyrite</td><td><b>cpy</b></td><td>chalcopyrite</td></tr>\n<tr><td><b>sph</b></td><td>sphalerite</td><td><b>gal</b></td><td>galena</td></tr>\n<tr><td><b>asp, marc</b></td><td>arsenopyrite, marcasite</td><td><b>hem, lim</b></td><td>hematite, limonite</td></tr>\n<tr><td><b>mag</b></td><td>magnetite</td><td><b>bio</b></td><td>biotite</td></tr>\n<tr><td><b>epi</b></td><td>epidote</td><td><b>smec</b></td><td>smectite</td></tr>\n<tr><td><b>adul</b></td><td>adularia</td><td><b>sil</b></td><td>silica</td></tr>\n<tr><td><b>carb</b></td><td>carbonate</td><td><b>Mn-ox</b></td><td>manganese oxide</td></tr>\n<tr><td><b>-</b></td><td>minerals of one assemblage (sil-ser-chl)</td><td><b>+</b> and <b>+/-</b></td><td>also present, minor or variable</td></tr>\n<tr><td><b>(?)</b></td><td>not sure</td><td><b>BLT, VC, VBX, HBX</b></td><td>rock codes, used in the Show codes line</td></tr></table></div></div>\n<div class='box'><h2>Hints from your logs: how each rock is usually described</h2>\n<p class='sm'>Learned from the log text you shared. Use these as prompts, not rules.</p>\n<p class='sm'><b>VC (volcaniclastics):</b> grey to dk grey or greenish grey. Granule to pebble clasts of BLT (some hem), SR to R, matrix- or clast-supported. qz+/-cal veinlets, hairlines and stringers. Chlorite alteration often increases with depth. Weakly silicified. Sli to mod magnetic. Gouge and clay alteration along fractures.</p>\n<p class='sm'><b>VBX vs HBX:</b> VBX is polymictic, dk grey to black, A to R pebble and granule clasts with qz-cal streaks around clasts, sometimes overprinted by hydrothermal fluid (argillized, silicified). HBX is cemented with quartz, clast-supported, with qz+py+/-hem hairlines.</p>\n<p class='sm'><b>BLT flow:</b> interbedded fine and medium grained. Coarse grains show CHL, CALC, PLAG. Amygdaloidal in places, hem stains or patches, calcite veinlets, slickensides. Magnetic.</p>\n<p class='sm'><b>MST (mudstone):</b> dk grey to grey, calcite lenses and stringers, fissile, friable, slakes, sli to mod carbonaceous. Magnetism varies: basaltic mudstone is sli to mod magnetic, clay-rich black mudstone is often non-magnetic.</p>\n<p class='sm'><b>CMS (carbonaceous mudstone):</b> black, soft, friable, incompetent, carbon fragments, coal seamlets, often lost core. Note whether carbonization increases or decreases with depth.</p>\n<p class='sm'><b>Limestone and black limestone:</b> grey to light grey, lenticular, fine dark carbonaceous stringers, calcirudite with coarse calcite fragments, hem patches, clay alteration.</p>\n<p class='sm'><b>SST, SLT and interbeds:</b> cream to grey sandstone with coal seamlets is usually non-magnetic. Interbedded SST, SLT and MST carry calcite nodules, blebs and stringers, hem specks, qz-filled pores.</p>\n<p class='sm'><b>Conglomerate:</b> para-type = poorly sorted, matrix-supported, clasts of BLT, SLT, VC. Ortho-type = clast-supported with clay or calcite cement, BLT clasts altered to CHL.</p>\n<p class='sm'><b>Fault, shear and gouge:</b> state the interval, alpha, and the fill: clay-rich grey-black gouge, very soft. Elongated clasts parallel to the shear plane mean ductile shearing. Log lost core beside it.</p></div>\n<div class='box'><h2>Habits seen in your logs</h2>\n<p class='sm'>Write depths with @ (contact @37.05) and ranges as 74.30-74.90. Give angles as a=70 b=260. Estimate sulfides in % to two decimals when low (0.01%, 0.12%, 0.35% py). Write lost core intervals every time. Put (?) after anything you are not sure of. Say how a feature changes with depth (chloritization increases, carbonization decreases).</p></div>\n<div class='box'><h2>Examples in field-notes style</h2>\n<p class='sm'><b>Andesite, medium gray, fine-grained, moderately altered to sil-ser-chl, pyr as disseminations and stringers, Qtz-pyr hairlines and stringers as stockwork, moderately fractured.</b> (your format, with minerals abbreviated)</p>\n<p class='sm'><b>Sandstone (?), light gray, bleached, moderately altered to sil-clay-chl, pyr as disseminations, fracture-fills and stringers, moderately fractured.</b></p>\n<p class='sm'><b>From your logs:</b> Carbonaceous mudstone, dark gray to black, fine-grained, friable, carbon fragments along the core, carbonization decreasing with depth, highly fractured at 74.30-74.90 m, lost core at 75.60-75.80 m.</p>\n<p class='sm'><b>From your logs:</b> Volcaniclastics, gray to dark gray, weakly silicified, moderately magnetic, minor Qtz infills and localized Qtz-cemented clasts, Qtz+/-cal veinlets and stringers, transition zone at 71.60-71.80 m.</p>\n<p class='sm'><b>From your logs:</b> Hydrothermal breccia (?), gray to dark gray, clast-supported with Qtz matrix-cement, Qtz+pyr+/-hem hairlines, 0.15% pyr, minor chl, highly fractured at 45.95-46.55 m.</p></div>\n";
 
 /* ---------- Form mode: dropdown logging that writes the same record as Training mode ---------- */
 var FORMM=false,FB=false,FSEL=[],FSL={},FSW={},FM={occ:["",""],pc:{},on:["",""]},FX={t:"",a:"",b:""},FHIDE=["lith","col","ox","tx","alt","mz","str"],FMIN=["PY","SPH","GAL","CPY","HEM","LIM","MNO","QZ"],FIN=[["1","1 None"],["2","2 Weak"],["3","3 Moderate"],["4","4 Strong"],["5","5 Intense"]];
@@ -4316,7 +4378,7 @@ function setLM(f,go){FORMM=!!f;document.documentElement.classList.toggle("fm",FO
 (function(){var nb=$("navbar");if(!nb)return;var b=el("button","");b.id="lmode";b.type="button";b.setAttribute("aria-label","Logging mode: Training or Form");b.onclick=function(){setLM(!FORMM,true)};nb.append(b);
  var h=$("nhap"),k=$("nlock");if(h&&k){var s=el("button","");s.id="nset";s.type="button";s.setAttribute("aria-label","Buzz and screen lock");s.setAttribute("aria-expanded","false");
   s.innerHTML="<svg viewBox='0 0 24 24' width='20' height='20' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' aria-hidden='true'><path d='M4 7h10M18 7h2M4 17h2M10 17h10'/><circle cx='16' cy='7' r='2'/><circle cx='8' cy='17' r='2'/></svg>";
-  var p=el("div","");p.id="nsetp";p.hidden=true;p.append(h,k);nb.append(p);nb.insertBefore(s,$("nprev"));
+  var p=el("div","");p.id="nsetp";p.hidden=true;var ur=el("div","");ur.id="nur";var ub=el("button","");ub.id="nundo";ub.type="button";ub.disabled=true;ub.innerHTML="<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 14 4 9l5-5'/><path d='M4 9h10.5a5.5 5.5 0 0 1 0 11H11'/></svg><span>Undo</span>";var rb=el("button","");rb.id="nredo";rb.type="button";rb.disabled=true;rb.innerHTML="<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M15 14l5-5-5-5'/><path d='M20 9H9.5a5.5 5.5 0 0 0 0 11H13'/></svg><span>Redo</span>";ur.append(ub,rb);p.append(ur,h,k);nb.append(p);nb.insertBefore(s,$("nprev"));
   var paint=function(){s.classList.toggle("lk",k.getAttribute("aria-pressed")==="true");s.classList.toggle("hoff",h.classList.contains("off"))};
   s.onclick=function(e){e.stopPropagation();p.hidden=!p.hidden;s.setAttribute("aria-expanded",String(!p.hidden))};
   document.addEventListener("pointerdown",function(e){if(!p.hidden&&!p.contains(e.target)&&e.target!==s&&!s.contains(e.target)){p.hidden=true;s.setAttribute("aria-expanded","false")}});
@@ -4509,13 +4571,323 @@ window.glSecData=function(){var names={},structs=[];var runs=RUNS.map(function(r
  ((r.L&&r.L.df)||[]).forEach(function(e){var dp=parseFloat(e.dp);var f=parseFloat(r.IN.from),t=parseFloat(r.IN.to);if(isNaN(dp))dp=(f+t)/2;structs.push({hole:k,dp:dp,dt:((e.dt||[])[0])||"",alpha:parseFloat(e.alpha),beta:parseFloat(e.beta),wd:e.wd||""})});
  return{hole:k,from:parseFloat(r.IN.from),to:parseFloat(r.IN.to),rt:secRt(r),rtn:secRt(r).map(function(c){return nm("rt",c)}).join(" / "),al:((r.W&&r.W.al)||[]).map(function(x){return{c:x.c,i:x.i}}),mn:((r.W&&r.W.mn)||[]).map(function(x){return{c:x.c,i:x.i}}),swk:((r.L&&r.L.mz)||[]).some(function(e){return(Array.isArray(e.mzo)?e.mzo:[e.mzo]).indexOf("SWK")>=0}),imp:!!r.imp,mz:mz}}).filter(function(r){return r.hole&&!isNaN(r.from)&&!isNaN(r.to)});
  var holes=Object.keys(names).map(function(k){var i=HI[k]||{};return{name:k,ce:i.ce,cn:i.cn,crl:i.crl,az:i.az,inc:i.inc,tp:i.tp}});return{runs:runs,holes:holes,structs:structs}};
+/*CARDS*/
+var TCM={rt:["Rock","#8d7b68"],al:["Alteration","#c9788a"],mn:["Mineral","#b8962f"],mzm:["Ore mineral","#b9773b"],mzo:["Occurrence","#3f8f86"],mzs:["Surface","#6d86a5"],dt:["Defect","#7a6fa8"],sh:["Shape","#7a6fa8"],ro:["Roughness","#7a6fa8"],"if":["Infill","#4f9a64"],pe:["Persistence","#7a6fa8"],rel:["Relationship","#5f8aa8"],hcl:["Acid test","#cc6f4a"],lf:["Lithic fragment","#8b6aa0"],fs:["Fracture","#5c7e93"]};
+function tcm(k){return TCM[k]||[((G[k]&&G[k].label)||k).replace(/^\d\.\s*/,"").split(/[(,:.]/)[0].slice(0,22),"#718A9B"]}
+var ALC={PT:"#e08a8a",PH:"#e3c867",SE:"#e3c867",AR:"#e9e2c6",IA:"#d9d0a8",AA:"#c6aee0",PR:"#7fb27f",CH:"#6fae8a",SI:"#9fb4c7",SK:"#d4a373",UA:"#b9bec2",OX:"#c98a5a",CN:"#555",SP:"#c9b04a",MP:"#b8962f"};
+var AL2Z={PT:"pot",PH:"phy",SE:"phy",AR:"arg",IA:"arg",AA:"aa",SI:"sil",PR:"pro",CH:"pro",SK:"skn"};
+function hsh(s){var h=2166136261;s=String(s);for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function rngf(seed){var a=seed>>>0||1;return function(){a=Math.imul(a^a>>>15,a|1);a^=a+Math.imul(a^a>>>7,a|61);return((a^a>>>14)>>>0)/4294967296}}
+function shade(hex,p){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255,f=function(x){return Math.max(0,Math.min(255,Math.round(x+(p>0?(255-x)*p:x*p))))};return"#"+((1<<24)+(f(r)<<16)+(f(g)<<8)+f(b)).toString(16).slice(1)}
+var MNC={QZ:"#e6eef2",SIL:"#cfd9e0",CLY:"#d9ccb0",SME:"#cdbf9f","ILT/SER":"#ebe3a8",ADL:"#f0d7cf",CHL:"#5f8f5f",EP:"#9bb04a",CB:"#e6dcc8",PY:"#d8b84a",MAG:"#3a3a40",BT:"#5a4636",CPY:"#d9b23a",SPH:"#8a6a3a",GAL:"#8c949c",ASP:"#b9c0c6",MRC:"#cbb85a",HEM:"#a8412f",LIM:"#b9772f",NCU:"#c46a3a",SUL:"#bba24a"};
+function rockCol(c){c=String(c);if(/^(CMS|CSL|CSD|CBN)/.test(c))return"#4a4a50";if(/^(MST|CLT)/.test(c))return"#7b7b80";if(/^SLT/.test(c))return"#908a7e";if(/^(SST|WCK)/.test(c))return"#c4a97a";if(/^LST/.test(c))return"#aab3bd";if(/^(BLT|AND)/.test(c))return"#5d6b62";if(/^(DIO|FPY|PLI)/.test(c))return"#9a9a94";if(/^(VC|TF|TUF)/.test(c))return"#8a8f78";if(/^(QVN|VN|CVN)/.test(c))return"#d8dde0";if(/^(FLT|SHR|FBX)/.test(c))return"#7a6a58";if(/^(CGL|BX|HBX|SWX)/.test(c))return"#9a8a78";return"#8d8d88"}
+function artWrap(inner,bg,w,h){return"<svg class='tc-svg' viewBox='0 0 "+(w||300)+" "+(h||120)+"' preserveAspectRatio='xMidYMid slice' aria-hidden='true'><rect width='"+(w||300)+"' height='"+(h||120)+"' fill='"+bg+"'/>"+inner+"</svg>"}
+function rockArt(c){var R=rngf(hsh(c)),b=rockCol(c),s="",i,x,y,n;c=String(c);
+ if(/^(CGL)/.test(c)){s+="<rect width='300' height='120' fill='"+shade(b,-.25)+"'/>";for(i=0;i<26;i++){s+="<circle cx='"+(R()*300|0)+"' cy='"+(R()*120|0)+"' r='"+(6+R()*13|0)+"' fill='"+shade(b,R()*.5-.2)+"' stroke='"+shade(b,-.5)+"' stroke-width='1'/>"}}
+ else if(/^(BX|HBX|FBX|SWX|BXL)/.test(c)){s+="<rect width='300' height='120' fill='"+shade(b,-.35)+"'/>";for(i=0;i<22;i++){x=R()*290;y=R()*110;n=8+R()*16;var pts=[];for(var j=0;j<5;j++){var an=j*1.256+R()*.6;pts.push((x+Math.cos(an)*n*(.6+R()*.5)).toFixed(0)+","+(y+Math.sin(an)*n*(.6+R()*.5)).toFixed(0))}s+="<polygon points='"+pts.join(" ")+"' fill='"+shade(b,R()*.6-.2)+"' stroke='"+shade(b,-.55)+"'/>"}}
+ else if(/^(FLT|SHR)/.test(c)){for(i=0;i<14;i++){y=i*9;s+="<path d='M0 "+y+" Q75 "+(y+R()*16-8).toFixed(0)+" 150 "+y+" T300 "+(y+R()*10).toFixed(0)+"' stroke='"+shade(b,R()*.6-.3)+"' stroke-width='"+(2+R()*4).toFixed(1)+"' fill='none'/>"}for(i=0;i<5;i++){s+="<ellipse cx='"+(R()*300|0)+"' cy='"+(R()*120|0)+"' rx='"+(14+R()*14|0)+"' ry='4' fill='"+shade(b,.4)+"' opacity='.6'/>"}}
+ else if(/^(QVN|VN|CVN)/.test(c)){s+="<rect width='300' height='120' fill='#6e6a62'/><path d='M-10 90 L120 40 L310 70 L310 98 L120 66 L-10 116 Z' fill='#eef2f4' stroke='#fff'/>";for(i=0;i<20;i++)s+="<circle cx='"+(R()*300|0)+"' cy='"+(R()*120|0)+"' r='1.6' fill='"+shade(b,-.4)+"'/>"}
+ else if(/^(BLT|AND|DIO|FPY|PLI)/.test(c)){s+="<rect width='300' height='120' fill='"+shade(b,-.1)+"'/>";var big=/^(FPY|DIO|PLI)/.test(c);for(i=0;i<(big?60:90);i++){x=R()*300;y=R()*120;s+="<rect x='"+x.toFixed(0)+"' y='"+y.toFixed(0)+"' width='"+((big?10:5)+R()*(big?14:8)).toFixed(0)+"' height='"+(big?5:2.5)+"' fill='"+shade(b,R()*.8-.3)+"' transform='rotate("+(R()*180|0)+" "+x.toFixed(0)+" "+y.toFixed(0)+")'/>"}if(/^(FPY)/.test(c))for(i=0;i<9;i++)s+="<rect x='"+(R()*280|0)+"' y='"+(R()*100|0)+"' width='20' height='11' fill='#e9e4d8' stroke='#9a9488' transform='rotate("+(R()*60-30|0)+" 150 60)'/>"}
+ else if(/^(VC|TF|TUF)/.test(c)){s+="<rect width='300' height='120' fill='"+shade(b,-.15)+"'/>";for(i=0;i<50;i++){x=R()*300;y=R()*120;s+="<polygon points='"+x.toFixed(0)+","+y.toFixed(0)+" "+(x+6+R()*12).toFixed(0)+","+(y+R()*8).toFixed(0)+" "+(x+R()*8).toFixed(0)+","+(y+8+R()*8).toFixed(0)+"' fill='"+shade(b,R()*.7-.25)+"'/>"}}
+ else if(/^LST/.test(c)){s+="<rect width='300' height='120' fill='"+b+"'/>";for(i=0;i<9;i++)s+="<ellipse cx='"+(R()*300|0)+"' cy='"+(R()*120|0)+"' rx='"+(8+R()*10|0)+"' ry='4' fill='none' stroke='"+shade(b,.5)+"' stroke-width='2'/>";s+="<path d='M0 40 Q80 20 160 50 T300 30' stroke='#fff' stroke-width='2' fill='none'/>"}
+ else{var gr=/^(SST|WCK|CSD)/.test(c)?4.2:/^(SLT|CSL)/.test(c)?2.2:1.2;for(i=0;i<9;i++){y=i*14;s+="<rect y='"+y+"' width='300' height='"+(8+R()*7).toFixed(0)+"' fill='"+shade(b,R()*.35-.17)+"'/>"}for(i=0;i<(gr>3?140:gr>2?200:60);i++)s+="<circle cx='"+(R()*300|0)+"' cy='"+(R()*120|0)+"' r='"+(gr*(.5+R()*.6)).toFixed(1)+"' fill='"+shade(b,R()*.9-.4)+"'/>";if(/^(CMS|CSL|CSD)/.test(c))s+="<path d='M0 70 H300 M0 74 H300' stroke='#111' stroke-width='3' opacity='.5'/>"}
+ return artWrap(s,b)}
+function mineralArt(c){var R=rngf(hsh(c)),b=MNC[c]||shade("#"+(hsh(c)&0xffffff).toString(16).padStart(6,"0"),.1),s="",i,x,y,m;m=String(c);
+ var bg="#3a4048";
+ if(/^(PY|GAL|MAG|HEM)$/.test(m)){for(i=0;i<8;i++){x=20+R()*240;y=20+R()*70;var z=14+R()*16;s+="<g transform='rotate("+(R()*40-20|0)+" "+x.toFixed(0)+" "+y.toFixed(0)+")'><rect x='"+x.toFixed(0)+"' y='"+y.toFixed(0)+"' width='"+z.toFixed(0)+"' height='"+z.toFixed(0)+"' fill='"+b+"' stroke='"+shade(b,-.5)+"'/><rect x='"+(x+4).toFixed(0)+"' y='"+(y+4).toFixed(0)+"' width='"+(z/3).toFixed(0)+"' height='"+(z/3).toFixed(0)+"' fill='"+shade(b,.5)+"' opacity='.7'/></g>"}}
+ else if(/^(QZ|SIL)$/.test(m)){for(i=0;i<9;i++){x=15+i*32+R()*8;var h=40+R()*50;s+="<polygon points='"+x.toFixed(0)+",120 "+(x+9).toFixed(0)+","+(120-h).toFixed(0)+" "+(x+16).toFixed(0)+",120' fill='"+shade(b,R()*.15)+"' stroke='#9fb4c7'/><polygon points='"+(x+9).toFixed(0)+","+(120-h).toFixed(0)+" "+(x+6).toFixed(0)+","+(112-h).toFixed(0)+" "+(x+12).toFixed(0)+","+(112-h).toFixed(0)+"' fill='#fff'/>"}}
+ else if(/^(BT|CHL|ILT\/SER|CLY|SME)$/.test(m)){for(i=0;i<46;i++){x=R()*300;y=R()*120;s+="<ellipse cx='"+x.toFixed(0)+"' cy='"+y.toFixed(0)+"' rx='"+(7+R()*9).toFixed(0)+"' ry='2.5' fill='"+shade(b,R()*.5-.25)+"' transform='rotate("+(R()*180|0)+" "+x.toFixed(0)+" "+y.toFixed(0)+")'/>"}}
+ else{for(i=0;i<12;i++){x=R()*280+10;y=R()*100+10;var r=7+R()*13;s+="<polygon points='"+x.toFixed(0)+","+(y-r).toFixed(0)+" "+(x+r).toFixed(0)+","+y.toFixed(0)+" "+x.toFixed(0)+","+(y+r).toFixed(0)+" "+(x-r).toFixed(0)+","+y.toFixed(0)+"' fill='"+shade(b,R()*.5-.25)+"' stroke='"+shade(b,-.5)+"'/>"}}
+ return artWrap(s,bg)}
+function occArt(c){var R=rngf(hsh(c)),s="",i,x,y,col="#d8b84a",m=String(c);
+ if(/^(SPK|DIS)$/.test(m)){for(i=0;i<(m==="SPK"?18:70);i++)s+="<circle cx='"+(R()*300|0)+"' cy='"+(R()*120|0)+"' r='"+(m==="SPK"?1.4:2.3)+"' fill='"+col+"'/>"}
+ else if(/^(BLB|PAT|CLU)$/.test(m)){for(i=0;i<(m==="CLU"?5:9);i++){x=R()*260+20;y=R()*80+20;if(m==="CLU"){for(var j=0;j<9;j++)s+="<circle cx='"+(x+R()*26-13).toFixed(0)+"' cy='"+(y+R()*20-10).toFixed(0)+"' r='3' fill='"+col+"'/>"}else s+="<ellipse cx='"+x.toFixed(0)+"' cy='"+y.toFixed(0)+"' rx='"+(m==="PAT"?22:9)+"' ry='"+(m==="PAT"?12:7)+"' fill='"+col+"' opacity='.9'/>"}}
+ else if(/^(HLN|VNL|STR|VN|BND|CRU|COL)$/.test(m)){var w=m==="HLN"?.8:m==="VNL"?1.8:m==="STR"?3:m==="VN"?10:6;for(i=0;i<(m==="VN"?1:m==="BND"?1:5);i++){var yy=m==="VN"?60:20+i*22+R()*6;s+="<path d='M-5 "+yy.toFixed(0)+" Q80 "+(yy+R()*20-10).toFixed(0)+" 150 "+yy.toFixed(0)+" T305 "+(yy+R()*14-7).toFixed(0)+"' stroke='"+(m==="VN"?"#eef2f4":col)+"' stroke-width='"+w+"' fill='none'/>"+(m==="VN"||m==="BND"||m==="CRU"?"<path d='M-5 "+yy.toFixed(0)+" Q80 "+(yy+R()*20-10).toFixed(0)+" 150 "+yy.toFixed(0)+" T305 "+yy.toFixed(0)+"' stroke='"+col+"' stroke-width='2' fill='none'/>":"")}}
+ else if(m==="SWK"){for(i=0;i<22;i++){x=R()*300;y=R()*120;s+="<path d='M"+x.toFixed(0)+" "+y.toFixed(0)+" l"+(R()*60-30).toFixed(0)+" "+(R()*40-20).toFixed(0)+"' stroke='#eef2f4' stroke-width='2' fill='none'/>"}}
+ else{for(i=0;i<30;i++)s+="<circle cx='"+(R()*300|0)+"' cy='"+(R()*120|0)+"' r='"+(1+R()*3).toFixed(1)+"' fill='"+col+"'/>"}
+ return artWrap(s,"#5d5a56")}
+function dtArt(c){var R=rngf(hsh(c)),s="",m=String(c),i;
+ if(/^(BG|BSH|LM|TLM)$/.test(m)){for(i=0;i<8;i++)s+="<path d='M0 "+(10+i*14)+" H300' stroke='#cfd4d8' stroke-width='"+(1+R()*2).toFixed(1)+"'/>"}
+ else if(/^(FL|FG|FB|SH|SR|CZ)$/.test(m)){s+="<path d='M-10 120 L140 -10' stroke='#2b2b2f' stroke-width='9'/><path d='M120 120 L270 -10' stroke='#cfd4d8' stroke-width='2' stroke-dasharray='6 4'/>";for(i=0;i<8;i++)s+="<path d='M"+(R()*300|0)+" "+(R()*120|0)+" l22 -9' stroke='#aab' stroke-width='1.5'/>"}
+ else if(m==="VN"){s+="<path d='M-10 40 L310 80' stroke='#eef2f4' stroke-width='12'/>"}
+ else{s+="<path d='M20 -5 L110 125' stroke='#d8dde0' stroke-width='2.5'/><path d='M180 -5 L250 125' stroke='#d8dde0' stroke-width='2'/>"}
+ return artWrap(s,"#59616a")}
+function tcArt(k,c){
+ if(k==="al"){var z=AL2Z[c];return porphArt(z?[z]:[],c)}
+ if(k==="rt")return rockArt(c);
+ if(k==="mn"||k==="mzm"||k==="if")return mineralArt(c);
+ if(k==="mzo")return occArt(c);
+ if(k==="dt"||k==="sh"||k==="ro"||k==="pe")return dtArt(c);
+ var R=rngf(hsh(k+c)),col=tcm(k)[1],s="",i;for(i=0;i<7;i++)s+="<circle cx='"+(R()*300|0)+"' cy='"+(R()*120|0)+"' r='"+(12+R()*40|0)+"' fill='none' stroke='"+shade(col,.3)+"' stroke-width='3' opacity='.55'/>";return artWrap(s,shade(col,-.45))}
+function tcOpen(on){var d=$("det");d.classList.toggle("big",!!on);try{localStorage.setItem("gl_cardbig",on?"1":"0")}catch(e){}}
+function fact(key,on,k,c){var d=$("det");if(!on){d.style.display="none";d.classList.remove("tcd");return}
+ var f=FACT[key],a=f?f.split("|"):[c+"",nm(k,c)],T=tcm(k),col=(k==="al"&&ALC[c])?ALC[c]:T[1],nmx=a[0],intro="",rows=[];
+ if(k==="al"&&a.length>=4){rows.push(["How it forms",a[1]],["What you see in the field",a[2]],["Minerals",a[3]])}
+ else{intro=a[1]||"";if(a[2])rows.push(["Context / assemblage",a[2]])}
+ if(typeof FX!=="undefined"&&FX[k+":"+c])FX[k+":"+c].forEach(function(r){rows.push([r[0],r[1]])});
+ if(k==="rt"&&typeof FID!=="undefined"&&FID[c]){var q=FID[c];if(!f&&q.w){nmx=nm(k,c)+" ("+c+")";intro=q.w}rows.push(["How it feels",q.f],["Scratch test",q.s],["Acid (cold dilute HCl)",q.a],["10x lens",q.x],["20x lens",q.y],["Do not confuse with",q.c])}
+ var MV={"How it feels":"F","Scratch test":"S","Acid (cold dilute HCl)":"A","10x lens":"10x","20x lens":"20x","Do not confuse with":"!","How it forms":"H","What you see in the field":"E","Minerals":"M","Context / assemblage":"C"};
+ var h="<div class='tc' style='--tc:"+col+"'><div class='tc-in'><div class='tc-h'><b class='tc-n'>"+esc(nmx)+"</b><span class='tc-cd'>"+esc(c+"")+"</span></div>"
+  +"<div class='tc-art'>"+tcArt(k,c)+"<i class='tc-sh'></i></div>"
+  +"<div class='tc-ty'><span>"+esc(T[0])+"</span><em>DiGe-FN · Siana</em></div>"
+  +"<div class='tc-bd'>"+(intro?"<p class='tc-tx'>"+esc(intro)+"</p>":"");
+ rows.forEach(function(r){h+="<div class='tc-mv'><span class='tc-mi'>"+(MV[r[0]]||"•")+"</span><div>"+(r[0]?"<b>"+esc(r[0])+"</b>":"")+"<p>"+esc(r[1])+"</p></div></div>"});
+ h+="</div></div></div><button class='x' aria-label='Close'>&times;</button><button class='tc-ex' type='button' aria-label='Make the card bigger or smaller'>⤢</button>";
+ d.innerHTML=h;d.classList.add("tcd");var big=false;try{big=localStorage.getItem("gl_cardbig")==="1"}catch(e){}d.classList.toggle("big",big);
+ d.style.display="block";d.style.bottom="auto";d.style.top="";
+ d.onclick=function(e){if(d.classList.contains("big")&&!e.target.closest(".x"))return;d.style.display="none"};
+ d.querySelector(".x").onclick=function(e){e.stopPropagation();d.style.display="none"};
+ d.querySelector(".tc-ex").onclick=function(e){e.stopPropagation();tcOpen(!d.classList.contains("big"))}}
+
+/* ---- atlas: schematic cross-sections of alteration zoning and ore deposit types ---- */
+var HOSTC="#a9aeb2";
+var ATL=[
+{id:"por",t:"Porphyry Cu-Au",sub:"Alteration zoning around a porphyry intrusion",
+ z:[{id:"pro",n:"Propylitic halo",c:"#8fbf8f",p:"M20 30 C30 120 60 190 110 200 H210 C260 190 290 120 300 30 Z",t:["Chlorite, epidote, calcite, pyrite","Green rock. Original texture kept, mafic minerals turn to chlorite, thin epidote and calcite veinlets.","Marks the cool outer edge. Wide, so it tells you that you are near a system, not in the ore."]},
+  {id:"arg",n:"Intermediate argillic",c:"#e6dfc0",p:"M60 30 H260 L240 66 H80 Z",t:["Illite, smectite, kaolinite","Pale, soft, clay-rich. Feldspars turned to clay but texture still visible.","Sits on the flanks and below the lithocap. Clays soften the rock, so it matters for slope stability."]},
+  {id:"aa",n:"Advanced argillic (lithocap)",c:"#c6aee0",p:"M95 30 H225 L205 58 H115 Z",t:["Alunite, kaolinite, dickite, pyrophyllite","White to pale yellow, very acidic leach. Rock is bleached and soft or vuggy.","Top of the system. Can sit above or beside high-sulfidation gold and copper."]},
+  {id:"sil",n:"Silicic core (vuggy silica)",c:"#9fb4c7",p:"M140 30 H180 L172 52 H148 Z",t:["Quartz, residual silica","Hard, grey to white, full of vugs where minerals were dissolved away.","Acid fluids leached everything but silica. Often hosts high-sulfidation ore."]},
+  {id:"phy",n:"Phyllic shell",c:"#e6cc63",p:"M85 66 C90 120 105 170 130 200 H190 C215 170 230 120 235 66 Z",t:["Quartz, sericite, pyrite","Pale yellow to grey, silky sheen, hard. Quartz veins with pyrite halos (D veins).","Surrounds the potassic core. Pyrite-rich, can carry Cu and Mo, often marks the outer ore shell."]},
+  {id:"pot",n:"Potassic core",c:"#e08a8a",p:"M120 122 C122 152 130 180 140 200 H180 C190 180 198 152 200 122 C190 102 130 102 120 122 Z",t:["Secondary biotite, K-feldspar, magnetite, anhydrite","Pink to brown rock. Fine shreddy biotite, magnetite veinlets, quartz veins with chalcopyrite (A and B veins).","Hottest and deepest. Highest Cu-Au grade usually sits at the edge of this zone."]},
+  {id:"por",n:"Porphyry intrusion",c:"#b9bec2",p:"M141 112 H179 V200 H141 Z",t:["Plagioclase and hornblende phenocrysts in a fine groundmass","Porphyritic texture: large crystals floating in a fine matrix.","The heat and metal source. Early intrusions are often the best hosts."]},
+  {id:"ore",n:"Ore shell (Cu-Au)",c:"#c2793a",st:"d",p:"M110 130 C112 94 208 94 210 130 L196 130 C194 108 126 108 124 130 Z",t:["Chalcopyrite, bornite, pyrite, Au","Veinlets and disseminated sulfide at the boundary between potassic and phyllic.","The target. Grade rises where the zones overlap."]},
+  {id:"skn",n:"Skarn (carbonate contact)",c:"#d4a373",p:"M246 118 L262 112 V196 L240 188 Z",t:["Garnet, pyroxene, epidote, magnetite, chalcopyrite","Brown-green banded rock with garnet and epidote where intrusion meets limestone.","Only where carbonate is present. Can carry copper, gold or iron."]}],
+ lb:[[160,18,"Surface"],[160,46,"Lithocap",""],[285,150,"Limestone"]],
+ bg:"<path d='M262 112 H316 V196 H262 Z' fill='#cfd6dc'/>"},
+{id:"hs",t:"High-sulfidation epithermal",sub:"Acid fluids near a volcanic centre",
+ z:[{id:"pro",n:"Propylitic halo",c:"#8fbf8f",p:"M10 30 C20 100 60 170 110 200 H210 C260 170 300 100 310 30 Z",t:["Chlorite, epidote, calcite","Green, texture kept.","Outer edge. Shows you are inside the hydrothermal system."]},
+  {id:"arg",n:"Argillic zone",c:"#e6dfc0",p:"M50 42 C60 92 100 140 130 200 H190 C220 140 260 92 270 42 Z",t:["Kaolinite, illite, smectite","Pale, clay-rich, soft rock.","Clay envelope. Weak rock for geotechnical logging."]},
+  {id:"aa",n:"Advanced argillic",c:"#c6aee0",p:"M85 42 C95 82 125 130 145 190 H175 C195 130 225 82 235 42 Z",t:["Alunite, kaolinite, dickite, pyrophyllite","Bleached white, yellow or pink. Soft clay or vuggy.","Very acid fluid. Alunite is a key marker."]},
+  {id:"sil",n:"Vuggy silica",c:"#9fb4c7",p:"M130 30 C135 70 148 110 152 150 H168 C172 110 185 70 190 30 Z",t:["Quartz, residual silica","Hard grey rock with open vugs. Looks sponge-like.","Best host for the gold. The vugs are where minerals were leached out."]},
+  {id:"ore",n:"Ore: enargite, pyrite, Au",c:"#c2793a",st:"d",p:"M146 78 L174 78 L170 122 L150 122 Z",t:["Enargite, luzonite, covellite, pyrite, native gold","Dark metallic sulfides in the vugs and breccia.","The target. Arsenic and copper come with the gold."]},
+  {id:"steam",n:"Steam-heated blanket",c:"#efe2a0",p:"M20 30 H300 V42 H20 Z",t:["Opal, alunite, kaolinite, native sulfur","Pale, powdery, near surface.","Forms above the water table from steam. Do not mistake it for the main system."]},
+  {id:"intr",n:"Source intrusion",c:"#b9bec2",p:"M140 178 H180 V200 H140 Z",t:["Diorite or porphyry","Intrusive rock at depth.","Heat and gas source. Often a porphyry sits below."]}],
+ lb:[[160,18,"Surface"]]},
+{id:"ls",t:"Low-sulfidation epithermal",sub:"Near-neutral fluids and boiling in veins",
+ z:[{id:"pro",n:"Propylitic halo",c:"#8fbf8f",p:"M10 30 C20 100 60 170 110 200 H210 C260 170 300 100 310 30 Z",t:["Chlorite, epidote, calcite, pyrite","Green altered volcanic rock.","Wide outer halo."]},
+  {id:"arg",n:"Illite-smectite zone",c:"#e6dfc0",p:"M70 30 C80 90 110 140 135 200 H185 C210 140 240 90 250 30 Z",t:["Illite, smectite, interlayered clay","Pale green to buff, softer rock.","Marks cooler fluid around the vein."]},
+  {id:"ser",n:"Adularia-sericite zone",c:"#e6cc63",p:"M115 36 H205 L195 160 H125 Z",t:["Adularia, sericite, quartz, pyrite","Pale, silky, hard. Quartz and carbonate in veinlets.","Closer to the feeder vein. Adularia is a key marker."]},
+  {id:"vn",n:"Quartz-adularia vein",c:"#eef2f4",p:"M155 30 H165 L172 175 H162 Z",t:["Quartz, adularia, calcite, electrum, silver sulfides","Banded, crustiform, colloform quartz. Open-space textures.","The ore carrier. Steep and narrow, so spacing and drilling angle matter."]},
+  {id:"boil",n:"Boiling horizon (bonanza)",c:"#d9a73a",st:"d",p:"M148 85 H180 V118 H148 Z",t:["Bladed calcite, electrum, argentite","Platy or bladed quartz after calcite, breccia, very high grades.","Where boiling dropped metals out of fluid. Highest grade sits here."]},
+  {id:"sinter",n:"Sinter terrace",c:"#d8dfe4",p:"M118 24 H202 V30 H118 Z",t:["Opaline silica","Fine banded silica at a hot spring.","Surface sign of a system. The ore zone sits well below."]}],
+ lb:[[160,15,"Hot spring"]]},
+{id:"skn",t:"Skarn",sub:"Intrusion meets carbonate",
+ z:[{id:"intr",n:"Granodiorite intrusion",c:"#b9bec2",p:"M4 30 H128 L122 200 H4 Z",t:["Plagioclase, K-feldspar, quartz, hornblende","Coarse crystals, grey to pink.","The heat and fluid source."]},
+  {id:"endo",n:"Endoskarn",c:"#b9a56a",p:"M128 30 H158 L150 200 H122 Z",t:["Epidote, garnet, pyroxene replacing the intrusion","Greenish rim inside the intrusion.","Marks the intrusion edge."]},
+  {id:"gar",n:"Garnet zone (proximal)",c:"#c0704a",p:"M158 30 H190 L182 200 H150 Z",t:["Garnet (grossular-andradite), magnetite, chalcopyrite","Dark red-brown to green garnet, massive or banded.","Hottest skarn. Often richest in Cu, Au or Fe."]},
+  {id:"px",n:"Pyroxene zone (distal)",c:"#8fb08f",p:"M190 30 H222 L214 200 H182 Z",t:["Diopside-hedenbergite, some garnet","Green, fine to coarse crystals.","Cooler skarn. Weaker mineralization."]},
+  {id:"wol",n:"Wollastonite front",c:"#e8e2d4",p:"M222 30 H250 L242 200 H214 Z",t:["Wollastonite, calcite","White fibrous crystals.","The leading edge of the skarn."]},
+  {id:"mar",n:"Marble and hornfels",c:"#d8dde2",p:"M250 30 H316 V200 H242 Z",t:["Recrystallized calcite or dolomite","White to grey granular marble. Fizzes in acid.","Unaltered carbonate host that the fluids reacted with."]},
+  {id:"retro",n:"Retrograde overprint",c:"#6fae8a",st:"d",p:"M168 58 C178 46 198 52 204 70 C198 94 172 92 168 58 Z",t:["Epidote, chlorite, quartz, calcite, sulfides","Green overprint cutting the garnet and pyroxene.","Sulfides and gold often arrive in this later, cooler stage."]}],
+ lb:[[160,18,"Surface"]]},
+{id:"vms",t:"Volcanogenic massive sulfide (VMS)",sub:"Sulfide mound on the seafloor",
+ bg:"<rect width='320' height='70' fill='#bfd6e6'/>",
+ z:[{id:"hw",n:"Hanging-wall cover",c:"#7c8f99",p:"M0 64 H320 V72 H0 Z",t:["Mudstone, chert, tuff","Thin fine sediment above the ore horizon.","Seals the deposit. Sulfides stay under it."]},
+  {id:"ser",n:"Sericite-quartz halo",c:"#e6cc63",p:"M60 72 H260 L290 190 H30 Z",t:["Sericite, quartz, pyrite","Pale, silky, soft altered volcanic rock.","Wide footwall halo. Points toward the vent."]},
+  {id:"chl",n:"Chlorite-sericite pipe",c:"#6fae8a",p:"M115 72 H205 L228 170 H92 Z",t:["Chlorite, sericite, pyrite, chalcopyrite","Dark green core, strongly altered.","Hotter feeder alteration. Copper-bearing."]},
+  {id:"str",n:"Stringer (stockwork) zone",c:"#c2793a",p:"M150 72 H170 L180 160 H140 Z",t:["Chalcopyrite, pyrite, quartz veinlets","Dense sulfide veinlets in altered rock.","The feeder channel. Rich in copper."]},
+  {id:"mas",n:"Massive sulfide lens",c:"#8a6a3a",p:"M100 70 C125 42 195 42 220 70 Z",t:["Pyrite, sphalerite, chalcopyrite, galena","Heavy, banded or massive metallic sulfide over 60%.","The ore. Zinc and lead sit on top, copper at the base."]},
+  {id:"intr",n:"Subvolcanic intrusion (heat)",c:"#b9bec2",p:"M80 184 H240 V200 H80 Z",t:["Gabbro or granite sill","Intrusion drives the hydrothermal circulation.","Heat engine for the system."]}],
+ lb:[[160,12,"Seawater"],[160,100,"Footwall volcanics"]]},
+{id:"og",t:"Orogenic gold",sub:"Veins in shear zones",
+ z:[{id:"halo",n:"Carbonate-sericite halo",c:"#e6dfc0",p:"M110 10 L170 10 L250 200 L190 200 Z",t:["Ankerite, sericite, pyrite, arsenopyrite","Pale bleached rock with carbonate spots.","Wide alteration halo around the shear."]},
+  {id:"shear",n:"Shear zone",c:"#7a6a58",p:"M138 10 L152 10 L222 200 L208 200 Z",t:["Sericite, chlorite, graphite","Foliated, sheared, slickensides.","Controls where fluid flows. Log shears with care."]},
+  {id:"vein",n:"Quartz-carbonate veins",c:"#eef2f4",p:"M148 40 L156 40 L160 82 L152 82 Z M168 96 L176 96 L180 140 L172 140 Z M186 150 L194 150 L197 186 L190 186 Z",t:["Quartz, carbonate, native gold, pyrite, arsenopyrite","Laminated or boudinaged veins in the shear.","The ore carrier. Free gold is erratic, so grades are nuggety."]}],
+ bg:"<path d='M0 80 H320 M0 140 H320' stroke='#fff' stroke-dasharray='4 4' opacity='.7'/>",
+ lb:[[12,74,"Brittle (shallow)","start"],[12,134,"Brittle-ductile","start"],[12,194,"Ductile (deep)","start"]]},
+{id:"cl",t:"Carlin-type (sediment-hosted gold)",sub:"Invisible gold in carbonate rock",
+ z:[{id:"cap",n:"Low-permeability cap",c:"#8c8f94",p:"M0 30 H320 V62 H0 Z",t:["Mudstone, siltstone","Dark tight rock above the carbonate.","Traps fluid under it, so the ore sits below."]},
+  {id:"car",n:"Carbonate host",c:"#c9ced3",p:"M0 62 H320 V200 H0 Z",t:["Limestone, silty limestone","Grey carbonate that fizzes in acid.","Reactive host that fluids dissolve and replace."]},
+  {id:"dec",n:"Decalcification halo",c:"#e6dfc0",p:"M90 62 H230 L212 150 H108 Z",t:["Clay, quartz (carbonate removed)","Bleached, soft, porous rock without fizz.","Acid fluid dissolved carbonate. Weak and clay-rich."]},
+  {id:"jas",n:"Jasperoid (silicified ore)",c:"#c2793a",st:"d",p:"M125 92 H198 L190 130 H133 Z",t:["Fine quartz, arsenian pyrite, realgar, orpiment","Hard dark silica replacing carbonate.","Carries the gold as tiny grains in pyrite rims."]},
+  {id:"flt",n:"Feeder fault",c:"#2b2b2f",p:"M150 200 L158 30 L166 30 L164 200 Z",t:["Clay gouge, breccia, silica","Steep fault with breccia and gouge.","Plumbing that carried the gold fluid up."]}],
+ lb:[[160,18,"Surface"]]},
+{id:"io",t:"IOCG",sub:"Iron oxide copper-gold breccia systems",
+ z:[{id:"nacl",n:"Sodic-calcic zone (deep)",c:"#9fb4c7",p:"M10 130 H310 V200 H10 Z",t:["Albite, actinolite, magnetite","Grey-green rock with albite, veins of actinolite.","Deepest and widest alteration."]},
+  {id:"kf",n:"Potassic zone",c:"#e08a8a",p:"M50 84 H270 L292 130 H28 Z",t:["K-feldspar, biotite, magnetite","Pink to red-brown rock.","Mid-level. Magnetite increases toward ore."]},
+  {id:"ser",n:"Sericite-hematite zone (shallow)",c:"#d4a373",p:"M70 30 H250 L270 84 H50 Z",t:["Sericite, hematite, chlorite","Red from hematite. Pale sericite flecks.","Shallow zone. Hematite grows toward ore."]},
+  {id:"ore",n:"Iron-oxide breccia orebody",c:"#a8412f",p:"M140 54 H190 L204 140 H126 Z",t:["Hematite, magnetite, chalcopyrite, bornite, Au, U","Breccia with iron-oxide matrix.","The ore. Copper, gold and sometimes uranium."]}],
+ lb:[[160,20,"Surface"]]},
+{id:"ni",t:"Magmatic Ni-Cu-PGE",sub:"Sulfide settled in a mafic intrusion",
+ clip:"M60 90 C80 60 240 60 270 90 C280 130 250 152 200 152 H110 C70 152 55 130 60 90 Z",
+ z:[{id:"intr",n:"Mafic intrusion",c:"#7d8a78",p:"M60 90 C80 60 240 60 270 90 C280 130 250 152 200 152 H110 C70 152 55 130 60 90 Z",t:["Olivine, pyroxene, plagioclase","Dark, dense rock, coarse crystals.","Host for sulfide."]},
+  {id:"dis",n:"Disseminated sulfide",c:"#8a6a3a",cp:1,p:"M40 112 H300 V128 H40 Z",t:["Pyrrhotite, pentlandite, chalcopyrite in silicate","Sulfide specks between silicate crystals.","Lower grade, larger volume."]},
+  {id:"net",n:"Net-textured sulfide",c:"#6b4f2a",cp:1,p:"M40 128 H300 V140 H40 Z",t:["Sulfide filling gaps between olivine crystals","Net of dark sulfide around rounded silicate.","Medium grade."]},
+  {id:"mas",n:"Massive sulfide",c:"#3b2f22",cp:1,p:"M40 140 H300 V152 H40 Z",t:["Pyrrhotite, pentlandite, chalcopyrite","Dense heavy metallic sulfide at the base.","Highest grade, Ni, Cu, PGE."]},
+  {id:"cr",n:"Country rock",c:"#a9aeb2",p:"M0 152 H320 V200 H0 Z",t:["Older sediments or gneiss","Host rock under the intrusion.","Sulfur from here can trigger sulfide separation."]}],
+ lb:[[165,45,"Sulfide sinks and settles at the base"]]},
+{id:"sg",t:"Oxidation and supergene profile",sub:"Weathering of a sulfide deposit",
+ z:[{id:"soil",n:"Soil and residual cover",c:"#a08a6a",p:"M0 30 H320 V46 H0 Z",t:["Clay, iron oxide, organic matter","Brown soil and saprolite.","Hides the ore. Logged as oxidation 5."]},
+  {id:"gos",n:"Leached cap / gossan",c:"#b9772f",p:"M0 46 H320 V82 H0 Z",t:["Goethite, hematite, jarosite, limonite","Rusty, boxwork cavities, yellow jarosite.","Surface clue to sulfide below. Metals are leached out."]},
+  {id:"oxz",n:"Oxide zone",c:"#4f9a8a",p:"M0 82 H320 V108 H0 Z",t:["Malachite, azurite, cuprite, native copper","Green and blue copper stains.","Copper redeposited as oxide minerals."]},
+  {id:"enr",n:"Supergene enrichment blanket",c:"#4a5d70",p:"M0 108 H320 V136 H0 Z",t:["Chalcocite, covellite","Sooty dark blue-black copper sulfides on pyrite.","Highest copper grade of the profile."]},
+  {id:"hyp",n:"Hypogene (primary) sulfide",c:"#8a6a3a",p:"M0 136 H320 V200 H0 Z",t:["Pyrite, chalcopyrite","Fresh brassy sulfides, no staining.","The original unweathered ore."]}],
+ bg:"<path d='M0 108 H320' stroke='#4a90c0' stroke-width='2' stroke-dasharray='6 3'/>",
+ lb:[[312,105,"Water table","end"]]},
+{id:"map",t:"Where deposits form (arc map)",sub:"Tap a marker to see the deposit type",
+ bg:"<rect width='100' height='64' fill='#bfd6e6'/><path d='M0 64 L60 66 L316 192 V200 H0 Z' fill='#7a8590'/><path d='M60 66 L316 192 V200 H290 L52 74 Z' fill='#5c6670'/><path d='M180 36 L196 14 L212 36 Z' fill='#b9a58f'/>",
+ z:[{id:"wedge",n:"Accretionary wedge: orogenic gold",c:"#e3c867",pt:[88,78],t:["Orogenic gold in shear zones","Quartz veins in deformed sediments next to the trench.","See the Orogenic gold diagram."],go:"og"},
+  {id:"vol",n:"Volcanic centre: epithermal gold",c:"#c6aee0",pt:[196,36],t:["High- and low-sulfidation epithermal","Veins and breccias near surface, hot spring sinter.","See the epithermal diagrams."],go:"hs"},
+  {id:"arc",n:"Arc axis: porphyry Cu-Au",c:"#e08a8a",pt:[192,72],t:["Porphyry copper-gold","Intrusion stock below the volcano with zoned alteration.","See the Porphyry diagram."],go:"por"},
+  {id:"lime",n:"Carbonate contact: skarn",c:"#d4a373",pt:[222,66],t:["Skarn","Garnet and pyroxene where the intrusion meets limestone.","See the Skarn diagram."],go:"skn"},
+  {id:"back",n:"Back-arc rift: VMS",c:"#6fae8a",pt:[262,52],t:["Volcanogenic massive sulfide","Seafloor sulfide mounds in extensional basins.","See the VMS diagram."],go:"vms"},
+  {id:"ext",n:"Extension: Carlin-type",c:"#8c8f94",pt:[280,84],t:["Sediment-hosted gold","Gold in carbonate rock along extensional faults.","See the Carlin diagram."],go:"cl"},
+  {id:"rift",n:"Continental rift: IOCG and Ni-Cu",c:"#a8412f",pt:[292,118],t:["IOCG and magmatic Ni-Cu-PGE","Iron-oxide breccias and mafic intrusions in rifts.","See the IOCG and Ni-Cu diagrams."],go:"io"},
+  {id:"trop",n:"Tropical land surface: supergene",c:"#b9772f",pt:[236,32],t:["Oxidation and supergene enrichment","Weathering of sulfides under tropical conditions.","See the Oxidation profile diagram."],go:"sg"}],
+ lb:[[30,48,"Ocean"],[60,60,"Trench"],[150,150,"Subducting slab","start"]]}
+];
+function atZ(D,id){for(var i=0;i<D.z.length;i++)if(D.z[i].id===id)return D.z[i]}
+function atSvg(D,hi,o){o=o||{};var s="<svg viewBox='0 0 320 200' class='at-svg' role='img' aria-label='"+esc(D.t)+"'>";
+ if(D.clip)s+="<defs><clipPath id='cp_"+D.id+"'><path d='"+D.clip+"'/></clipPath></defs>";
+ s+="<rect width='320' height='200' fill='"+(D.host||HOSTC)+"'/><rect width='320' height='30' fill='#dce8f0'/>"+(D.bg||"");
+ D.z.forEach(function(z){if(z.pt)return;var on=hi&&hi.length&&hi.indexOf(z.id)>=0,dim=hi&&hi.length&&!on;
+  s+="<path d='"+z.p+"' fill-rule='evenodd' "+(z.st==="d"?"fill='"+z.c+"' fill-opacity='.25' stroke='"+z.c+"' stroke-width='2.2' stroke-dasharray='5 3'":"fill='"+z.c+"' stroke='rgba(0,0,0,.35)' stroke-width='.8'")+(z.cp?" clip-path='url(#cp_"+D.id+")'":"")+" class='zn"+(on?" hi":"")+(dim?" dim":"")+"' data-z='"+z.id+"'/>"});
+ D.z.forEach(function(z){if(!z.pt)return;var on=hi&&hi.length&&hi.indexOf(z.id)>=0,dim=hi&&hi.length&&!on;s+="<circle cx='"+z.pt[0]+"' cy='"+z.pt[1]+"' r='"+(on?9:7)+"' fill='"+z.c+"' stroke='#fff' stroke-width='2' class='zn"+(on?" hi":"")+(dim?" dim":"")+"' data-z='"+z.id+"'/>"});
+ if(!o.blank)(D.lb||[]).forEach(function(l){s+="<text x='"+l[0]+"' y='"+l[1]+"' text-anchor='"+(l[3]||"middle")+"' class='at-lb'>"+esc(l[2])+"</text>"});
+ if(!D.noground)s+="<path d='M0 30 H320' stroke='#4a4a4a' stroke-width='1.2' class='at-gl'"+(D.id==="vms"||D.id==="map"?" opacity='0'":"")+"/>";
+ return s+"</svg>"}
+function porphArt(hi,c){var D=ATL[0];return"<svg class='tc-svg' viewBox='0 0 320 200' preserveAspectRatio='xMidYMid slice' aria-hidden='true'>"+atSvg(D,hi,{blank:true}).replace(/^<svg[^>]*>/,"").replace(/<\/svg>$/,"")+"</svg>"}
+
+/* ---- Learn and play: atlas, flashcards (spaced repetition), quiz, games ---- */
+var LP=null,LPB=null;
+function dce(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.random()*(i+1)|0,t=a[i];a[i]=a[j];a[j]=t}return a}
+function shortT(t,n){t=String(t||"").replace(/\s+/g," ").trim();if(t.length<=n)return t;var c=t.slice(0,n),i=Math.max(c.lastIndexOf(". "),c.lastIndexOf(", "),c.lastIndexOf(" "));return(i>n*.5?c.slice(0,i):c).replace(/[.,;:]$/,"")+"…"}
+function lpEnsure(){if(LP)return;LP=dce("div","","<div id='lp-h'><button type='button' id='lp-b'>‹ Back</button><b id='lp-t'></b></div><div id='lp-c'></div>");LP.id="lp";LP.hidden=true;document.body.appendChild(LP);$("lp-b").onclick=function(){LPB?LPB():lpClose()}}
+function lpClose(){if(LP)LP.hidden=true;document.body.classList.remove("lpon");if(window._lpT){clearInterval(window._lpT);window._lpT=0}}
+function lpScr(title,back){$("lp-t").textContent=title;LPB=back||null;var c=$("lp-c");c.innerHTML="";c.scrollTop=0;return c}
+function lpBest(k,v,low){var o={};try{o=JSON.parse(localStorage.getItem("gl_lpbest")||"{}")}catch(e){}if(v===undefined)return o[k];if(o[k]===undefined||(low?v<o[k]:v>o[k])){o[k]=v;try{localStorage.setItem("gl_lpbest",JSON.stringify(o))}catch(e){}return true}return false}
+/* --- facts, decks, cards --- */
+var DECKN={rt:"Rocks",al:"Alteration",mn:"Alteration minerals",mz:"Mineralization",st:"Structures and defects",rk:"Rock ID clues",at:"Deposit atlas",ot:"Other"};
+function deckOf(p){return p==="rt"?"rt":p==="al"?"al":p==="mn"?"mn":/^mz/.test(p)?"mz":/^(dt|sh|ro|if|pe|rel|hcl|lf|fs|cnd|dsc)$/.test(p)?"st":"ot"}
+var FI_=null,CD_=null;
+function fis(){if(FI_)return FI_;FI_=[];Object.keys(FACT).forEach(function(key){var p=key.split(":")[0],c=key.slice(p.length+1),a=String(FACT[key]).split("|");if(!a[0]||!a[1])return;FI_.push({key:key,p:p,c:c,deck:deckOf(p),name:a[0],desc:a[1],ctx:a[2]||"",fld:a.length>=4?a[2]:"",min:a.length>=4?a[3]:"",forms:a.length>=4?a[1]:""})});return FI_}
+function lpArt(k,c){return"<div class='lp-art'>"+tcArt(k,c)+"</div>"}
+function atZones(){var o=[];ATL.forEach(function(D){D.z.forEach(function(z){o.push({D:D,z:z})})});return o}
+function cards(deck){if(!CD_){CD_=[];
+ fis().forEach(function(f){var nm0="<b class='lp-nm'>"+esc(f.name)+"</b> <span class='lp-cd'>"+esc(f.c)+"</span>";
+  if(f.desc.length>18)CD_.push({id:"f|"+f.key+"|d",deck:f.deck,f:"<small class='lp-q'>Which "+esc(tcm(f.p)[0].toLowerCase())+" is this?</small><p>"+esc(f.fld||f.desc)+"</p>",b:lpArt(f.p,f.c)+"<p>"+nm0+"</p>"});
+  CD_.push({id:"f|"+f.key+"|n",deck:f.deck,f:lpArt(f.p,f.c)+"<p>"+nm0+"</p><small class='lp-q'>What do you know about it?</small>",b:"<p>"+esc(f.desc)+"</p>"+(f.ctx?"<p class='lp-sm'>"+esc(f.ctx)+"</p>":"")+(f.min?"<p class='lp-sm'>Minerals: "+esc(f.min)+"</p>":"")})});
+ Object.keys(FID).forEach(function(c){var q=FID[c],n=nm("rt",c);CD_.push({id:"r|"+c,deck:"rk",f:"<small class='lp-q'>Which rock?</small><p><b>Feel:</b> "+esc(q.f)+"</p><p><b>Scratch:</b> "+esc(q.s)+"</p><p><b>Acid:</b> "+esc(q.a)+"</p><p><b>10x lens:</b> "+esc(q.x)+"</p>",b:lpArt("rt",c)+"<p><b class='lp-nm'>"+esc(n)+"</b> <span class='lp-cd'>"+esc(c)+"</span></p><p class='lp-sm'>Do not confuse with: "+esc(q.c)+"</p>"})});
+ Object.keys(MN2AL).forEach(function(c){var l=MN2AL[c].map(function(x){return"<p>"+esc(nm("al",x[0]))+": "+esc(x[1])+"</p>"}).join("");CD_.push({id:"m|"+c,deck:"mn",f:lpArt("mn",c)+"<p><b class='lp-nm'>"+esc(nm("mn",c))+"</b></p><small class='lp-q'>Which alteration types does it point to?</small>",b:l})});
+ ATL.forEach(function(D){D.z.forEach(function(z){CD_.push({id:"z|"+D.id+"|"+z.id,deck:"at",f:"<small class='lp-q'>"+esc(D.t)+": name the highlighted "+(z.pt?"marker":"zone")+"</small><div class='lp-dg'>"+atSvg(D,[z.id],{blank:true})+"</div>",b:"<p><b class='lp-nm'>"+esc(z.n)+"</b></p><p><b>Minerals:</b> "+esc(z.t[0])+"</p><p><b>In core:</b> "+esc(z.t[1])+"</p><p class='lp-sm'>"+esc(z.t[2])+"</p>"})});
+  if(D.id!=="map")CD_.push({id:"a|"+D.id,deck:"at",f:"<small class='lp-q'>Which deposit type is this?</small><div class='lp-dg'>"+atSvg(D,[],{blank:true})+"</div>",b:"<p><b class='lp-nm'>"+esc(D.t)+"</b></p><p>"+esc(D.sub)+"</p>"})})}
+ return deck&&deck!=="all"?CD_.filter(function(c){return c.deck===deck}):CD_}
+/* --- spaced repetition (SM-2 style) --- */
+function srsGet(){try{return JSON.parse(localStorage.getItem("gl_srs")||"{}")}catch(e){return{}}}
+function srsPut(o){try{localStorage.setItem("gl_srs",JSON.stringify(o))}catch(e){}}
+function dayKey(){return new Date().toISOString().slice(0,10)}
+function dayNew(add){var d={};try{d=JSON.parse(localStorage.getItem("gl_srsd")||"{}")}catch(e){}if(d.d!==dayKey())d={d:dayKey(),n:0};if(add){d.n++;try{localStorage.setItem("gl_srsd",JSON.stringify(d))}catch(e){}}return d.n}
+var NEWMAX=20;
+function nextIv(s,g){s=s||{n:0,ef:2.5,iv:0};if(g===0)return{iv:10/1440,n:0,ef:Math.max(1.3,(s.ef||2.5)-.2)};var ef=s.ef||2.5,iv;
+ if(!s.n)iv=[0,1,2,4][g];else if(s.n===1)iv=[0,3,6,10][g];else iv=g===1?Math.max(1,s.iv*1.2):g===2?s.iv*ef:s.iv*ef*1.4;
+ return{iv:iv,n:(s.n||0)+1,ef:Math.max(1.3,ef+(g===1?-.15:g===3?.15:0))}}
+function ivTxt(d){return d<1/24?Math.max(1,Math.round(d*1440))+"m":d<1?Math.round(d*24)+"h":d<30?Math.round(d)+"d":d<365?(d/30).toFixed(1).replace(".0","")+"mo":(d/365).toFixed(1)+"y"}
+function srsGrade(id,g){var o=srsGet(),r=nextIv(o[id],g);o[id]={n:r.n,ef:r.ef,iv:r.iv,due:Date.now()+r.iv*864e5,seen:1};srsPut(o)}
+function deckStat(deck){var o=srsGet(),now=Date.now(),due=0,nw=0,lr=0;cards(deck).forEach(function(c){var s=o[c.id];if(!s)nw++;else{if(s.n>=2)lr++;if(s.due<=now)due++}});return{due:due,nw:nw,lr:lr,all:cards(deck).length}}
+/* --- screens --- */
+function dgLP(kind){lpEnsure();LP.hidden=false;document.body.classList.add("lpon");if(kind==="atlas")scAtlas();else if(kind==="cards")scDecks("cards");else if(kind==="quiz")scDecks("quiz");else scGames()}
+window.dgLP=dgLP;
+function scAtlas(id,zid){var D=ATL.filter(function(x){return x.id===id})[0]||ATL[0],c=lpScr("Atlas",lpClose);
+ var tabs=dce("div","at-tabs");ATL.forEach(function(x){var b=dce("button","at-tab"+(x===D?" on":""),esc(x.t));b.type="button";b.onclick=function(){scAtlas(x.id)};tabs.appendChild(b)});c.appendChild(tabs);
+ c.appendChild(dce("h3","at-h",esc(D.t)+"<small>"+esc(D.sub)+"</small>"));
+ var box=dce("div","at-box",atSvg(D,zid?[zid]:[]));c.appendChild(box);
+ var info=dce("div","at-info");c.appendChild(info);
+ function show(z){var D2=D;box.innerHTML=atSvg(D2,[z.id]);bind();var g=z.go?"<button type='button' class='lp-btn at-go'>Open "+esc(atZ2(z.go).t)+" diagram ›</button>":"";info.innerHTML="<div class='at-z' style='--zc:"+z.c+"'><b>"+esc(z.n)+"</b><p><span>Minerals</span>"+esc(z.t[0])+"</p><p><span>In core</span>"+esc(z.t[1])+"</p><p><span>Why it matters</span>"+esc(z.t[2])+"</p>"+g+"</div>";var gb=info.querySelector(".at-go");if(gb)gb.onclick=function(){scAtlas(z.go)};
+  [].forEach.call(leg.children,function(b){b.classList.toggle("on",b.dataset.z===z.id)})}
+ function bind(){[].forEach.call(box.querySelectorAll("[data-z]"),function(p){p.onclick=function(){show(atZ(D,p.dataset.z))}})}
+ var leg=dce("div","at-leg");D.z.forEach(function(z){var b=dce("button","at-lg","<i style='background:"+z.c+"'></i>"+esc(z.n));b.type="button";b.dataset.z=z.id;b.onclick=function(){show(z)};leg.appendChild(b)});c.appendChild(leg);
+ bind();info.innerHTML="<p class='lp-sm'>Tap a zone on the diagram or in the list. Schematic only: real systems overlap and are rarely this tidy.</p>";
+ var q=dce("button","lp-btn","Quiz me on this diagram ›");q.type="button";q.onclick=function(){qzRun("at:"+D.id)};c.appendChild(q);
+ if(zid){var z0=atZ(D,zid);if(z0)show(z0)}}
+function atZ2(id){return ATL.filter(function(x){return x.id===id})[0]}
+function scDecks(mode){var c=lpScr(mode==="cards"?"Flashcards":"Quiz",lpClose),ds=["all","rt","al","mn","mz","st","rk","at"];
+ c.appendChild(dce("p","lp-sm",mode==="cards"?"Anki-style: see the front, think, reveal, then tell it how well you knew it. Cards you miss come back sooner. Cards you know come back later (up to months).":"Multiple choice, 10 questions. Questions you miss go back into your flashcards as due."));
+ ds.forEach(function(d){var st=deckStat(d),b=dce("button","lp-deck","<span><b>"+(d==="all"?"All decks":DECKN[d])+"</b><small>"+st.all+" cards</small></span>"+(mode==="cards"?"<span class='lp-ct'><em class='due'>"+st.due+"</em><em class='nw'>"+st.nw+"</em><em class='lr'>"+st.lr+"</em></span>":"<span class='ch'>›</span>"));b.type="button";b.onclick=function(){mode==="cards"?fcRun(d):qzRun(d)};c.appendChild(b)});
+ if(mode==="cards")c.appendChild(dce("p","lp-leg","<em class='due'>due</em> <em class='nw'>new</em> <em class='lr'>learned</em> &nbsp; New cards are limited to "+NEWMAX+" a day so you are not flooded."))}
+function fcRun(deck){var o=srsGet(),now=Date.now(),cs=cards(deck),due=[],nw=[];cs.forEach(function(c){var s=o[c.id];if(!s)nw.push(c);else if(s.due<=now)due.push(c)});
+ nw=shuf(nw).slice(0,Math.max(0,NEWMAX-dayNew()));var Q=shuf(due).concat(nw),total=Q.length,done=0,again=0;
+ function back(){scDecks("cards")}
+ function fin(){var c=lpScr("Done",back);c.appendChild(dce("div","lp-end","<b>"+(total?"Session complete":"Nothing due right now")+"</b><p>"+(total?total+" cards reviewed, "+again+" marked Again.":"Come back later, or try another deck.")+"</p>"));var b=dce("button","lp-btn","Back to decks");b.type="button";b.onclick=back;c.appendChild(b)}
+ function next(){if(!Q.length){fin();return}var cd=Q[0],c=lpScr("Flashcards · "+(deck==="all"?"All":DECKN[deck]),back);
+  c.appendChild(dce("div","lp-prog","<i style='width:"+(total?Math.round(done/total*100):0)+"%'></i>"));
+  var card=dce("div","lp-card","<div class='lp-fr'>"+cd.f+"</div><div class='lp-bk' hidden>"+cd.b+"</div>");c.appendChild(card);
+  var act=dce("div","lp-act");c.appendChild(act);var sh=dce("button","lp-btn","Show answer");sh.type="button";act.appendChild(sh);
+  function reveal(){card.querySelector(".lp-bk").hidden=false;card.classList.add("rv");act.innerHTML="";var s=srsGet()[cd.id];[["Again",0],["Hard",1],["Good",2],["Easy",3]].forEach(function(g){var b=dce("button","lp-g g"+g[1],"<b>"+g[0]+"</b><small>"+ivTxt(nextIv(s,g[1]).iv)+"</small>");b.type="button";b.onclick=function(){var isNew=!srsGet()[cd.id];srsGrade(cd.id,g[1]);if(isNew)dayNew(true);Q.shift();if(g[1]===0){again++;Q.push(cd)}else done++;next()};act.appendChild(b)})}
+  sh.onclick=reveal;card.onclick=function(){if(!card.classList.contains("rv"))reveal()}}
+ next()}
+/* --- quiz questions --- */
+function nmOpts(list,right,n){var seen={},o=[right];seen[right]=1;shuf(list).forEach(function(x){if(o.length<n&&!seen[x]){seen[x]=1;o.push(x)}});return shuf(o)}
+function genQ(deck){var kinds=[];
+ if(deck==="at"||deck==="all")kinds.push("zone","zone","dep");
+ if(deck==="rk"||deck==="rt"||deck==="all")kinds.push("clue");
+ if(deck==="mn"||deck==="all")kinds.push("m2a");
+ if(deck.indexOf("at:")===0)kinds=["zone","zone","dep"];
+ if(!/^(rk|at)/.test(deck))kinds.push("desc","desc","back","name");
+ var k=kinds[Math.random()*kinds.length|0],pool,f,opts,i;
+ if(k==="desc"||k==="back"||k==="name"){pool=fis().filter(function(x){return deck==="all"||x.deck===deck});if(pool.length<4)pool=fis();f=pool[Math.random()*pool.length|0];var others=pool.filter(function(x){return x.p===f.p&&x.name!==f.name});if(others.length<3)others=fis().filter(function(x){return x.name!==f.name});
+  if(k==="desc"){opts=nmOpts(others.map(function(x){return x.name}),f.name,4);return{id:"d"+f.key,p:"<small class='lp-q'>Which "+esc(tcm(f.p)[0].toLowerCase())+" is this?</small><p>"+esc(f.fld||f.desc)+"</p>",o:opts,a:opts.indexOf(f.name),w:"<b>"+esc(f.name)+"</b>. "+esc(f.desc),cid:"f|"+f.key+"|d"}}
+  if(k==="back"){var sd=shortT(f.desc,90);opts=nmOpts(others.map(function(x){return shortT(x.desc,90)}),sd,4);return{id:"b"+f.key,p:lpArt(f.p,f.c)+"<p><b>"+esc(f.name)+"</b></p><small class='lp-q'>Which description fits?</small>",o:opts,a:opts.indexOf(sd),w:esc(f.desc),cid:"f|"+f.key+"|n"}}
+  var codeLbl=f.c;opts=nmOpts(others.map(function(x){return x.c}),codeLbl,4);return{id:"n"+f.key,p:"<small class='lp-q'>What is the log code?</small><p><b>"+esc(f.name)+"</b></p>",o:opts,a:opts.indexOf(codeLbl),w:"<b>"+esc(f.name)+"</b> is logged as <b>"+esc(f.c)+"</b>.",cid:"f|"+f.key+"|n"}}
+ if(k==="clue"){var codes=Object.keys(FID),c=codes[Math.random()*codes.length|0],q=FID[c],cl=[["Feel",q.f],["Scratch",q.s],["Acid",q.a],["10x lens",q.x],["20x lens",q.y]],pick=shuf(cl).slice(0,3);opts=nmOpts(codes.filter(function(x){return x!==c}).map(function(x){return nm("rt",x)}),nm("rt",c),4);
+  return{id:"c"+c,p:"<small class='lp-q'>Which rock?</small>"+pick.map(function(x){return"<p><b>"+x[0]+":</b> "+esc(x[1])+"</p>"}).join(""),o:opts,a:opts.indexOf(nm("rt",c)),w:"<b>"+esc(nm("rt",c))+"</b>. Do not confuse with: "+esc(q.c),cid:"r|"+c}}
+ if(k==="m2a"){var mc=Object.keys(MN2AL),m=mc[Math.random()*mc.length|0],right=nm("al",MN2AL[m][0][0]),bad=Object.keys(AL2Z).concat(["UA"]).map(function(x){return nm("al",x)}).filter(function(x){return MN2AL[m].every(function(p){return nm("al",p[0])!==x})});opts=nmOpts(bad,right,4);
+  return{id:"m"+m,p:lpArt("mn",m)+"<p><b>"+esc(nm("mn",m))+"</b></p><small class='lp-q'>Which alteration type does it most point to?</small>",o:opts,a:opts.indexOf(right),w:MN2AL[m].map(function(p){return esc(nm("al",p[0]))+": "+esc(p[1])}).join("<br>"),cid:"m|"+m}}
+ var Ds=deck.indexOf("at:")===0?[atZ2(deck.slice(3))]:ATL;
+ if(k==="dep"){var Dp=Ds.filter(function(x){return x.id!=="map"});Dp=Dp.length?Dp:ATL.filter(function(x){return x.id!=="map"});var D=Dp[Math.random()*Dp.length|0];opts=nmOpts(ATL.filter(function(x){return x.id!==D.id&&x.id!=="map"}).map(function(x){return x.t}),D.t,4);return{id:"a"+D.id,p:"<small class='lp-q'>Which deposit type is this cross-section?</small><div class='lp-dg'>"+atSvg(D,[],{blank:true})+"</div>",o:opts,a:opts.indexOf(D.t),w:"<b>"+esc(D.t)+"</b>. "+esc(D.sub),cid:"a|"+D.id}}
+ var D2=Ds[Math.random()*Ds.length|0],z=D2.z[Math.random()*D2.z.length|0],allz=ATL.reduce(function(a,x){return a.concat(x.z.map(function(y){return y.n}))},[]);var same=D2.z.filter(function(y){return y.id!==z.id}).map(function(y){return y.n});opts=nmOpts(same.concat(shuf(allz).filter(function(n){return n!==z.n})),z.n,4);
+ return{id:"z"+D2.id+z.id,p:"<small class='lp-q'>"+esc(D2.t)+": what is the highlighted "+(z.pt?"marker":"zone")+"?</small><div class='lp-dg'>"+atSvg(D2,[z.id],{blank:true})+"</div>",o:opts,a:opts.indexOf(z.n),w:"<b>"+esc(z.n)+"</b>. "+esc(z.t[1]),cid:"z|"+D2.id+"|"+z.id}}
+function qOne(q,onAns,head){var c=$("lp-c"),box=dce("div","lp-qb",q.p);c.appendChild(box);var ol=dce("div","lp-opts");q.o.forEach(function(t,i){var b=dce("button","lp-op",esc(t));b.type="button";b.onclick=function(){if(ol.dataset.d)return;ol.dataset.d="1";[].forEach.call(ol.children,function(x,j){x.classList.add(j===q.a?"ok":j===i?"no":"fade");x.disabled=true});onAns(i===q.a,q)};ol.appendChild(b)});c.appendChild(ol);return ol}
+function qzRun(deck){var N=10,Qs=[],seen={},tries=0;while(Qs.length<N&&tries++<200){var q=genQ(deck);if(!seen[q.id]&&q.a>=0){seen[q.id]=1;Qs.push(q)}}
+ var i=0,score=0,miss=[];function back(){deck.indexOf("at:")===0?scAtlas(deck.slice(3)):scDecks("quiz")}
+ function next(){if(i>=Qs.length){fin();return}var q=Qs[i],c=lpScr("Quiz "+(i+1)+"/"+Qs.length,back);c.appendChild(dce("div","lp-prog","<i style='width:"+Math.round(i/Qs.length*100)+"%'></i>"));
+  qOne(q,function(ok){if(ok)score++;else{miss.push(q);var s=srsGet()[q.cid];if(q.cid){var o=srsGet(),r=nextIv(o[q.cid],0);o[q.cid]={n:r.n,ef:r.ef,iv:r.iv,due:Date.now()+r.iv*864e5,seen:1};srsPut(o)}}
+   var c2=$("lp-c");c2.appendChild(dce("div","lp-why "+(ok?"ok":"no"),"<b>"+(ok?"Correct":"Not quite")+"</b><p>"+q.w+"</p>"));var n=dce("button","lp-btn",i+1<Qs.length?"Next ›":"See score");n.type="button";n.onclick=function(){i++;next()};c2.appendChild(n)})}
+ function fin(){var c=lpScr("Score",back),pct=Math.round(score/Qs.length*100);c.appendChild(dce("div","lp-end","<b class='lp-big'>"+score+" / "+Qs.length+"</b><p>"+(pct>=90?"Excellent.":pct>=70?"Good work.":pct>=50?"Getting there.":"Keep practising.")+"</p>"));
+  if(miss.length){c.appendChild(dce("h3","lp-h3","Missed ("+miss.length+") — added to flashcards"));miss.forEach(function(q){c.appendChild(dce("div","lp-why no",q.w))})}
+  var r=dce("button","lp-btn","Another round");r.type="button";r.onclick=function(){qzRun(deck)};c.appendChild(r)}
+ next()}
+/* --- games --- */
+function scGames(){var c=lpScr("Games",lpClose),G2=[["match","Match pairs","Flip tiles to pair each name with its description. Fewest moves wins.","match"],["speed","Speed round","60 seconds. Answer as many as you can. Streaks add bonus points.","speed"],["mystery","Mystery rock","Clues appear one at a time. Guess early for more points.","mystery"],["atlas","Atlas challenge","Name the zone or the deposit type from the cross-section.","atlas"]];
+ G2.forEach(function(g){var b=lpBest(g[3]),bt=b===undefined?"":g[3]==="match"?"Best: "+b+" moves":"Best: "+b;var x=dce("button","lp-deck","<span><b>"+g[1]+"</b><small>"+g[2]+"</small>"+(bt?"<small class='lp-bst'>"+bt+"</small>":"")+"</span><span class='ch'>›</span>");x.type="button";x.onclick=function(){g[0]==="match"?gMatch():g[0]==="speed"?gSpeed():g[0]==="mystery"?gMystery():gAtlas()};c.appendChild(x)})}
+function gEnd(title,big,sub,again){var c=lpScr(title,scGames);c.appendChild(dce("div","lp-end","<b class='lp-big'>"+big+"</b><p>"+sub+"</p>"));var a=dce("button","lp-btn","Play again");a.type="button";a.onclick=again;c.appendChild(a);var b=dce("button","lp-btn lp-ghost","All games");b.type="button";b.onclick=scGames;c.appendChild(b)}
+function gMatch(){var pool=shuf(fis().filter(function(f){return f.desc.length>20})).slice(0,6),tiles=[];pool.forEach(function(f,i){tiles.push({g:i,t:"<b>"+esc(f.name)+"</b>",k:"n"});tiles.push({g:i,t:esc(shortT(f.fld||f.desc,64)),k:"d"})});tiles=shuf(tiles);
+ var c=lpScr("Match pairs",scGames),sel=null,moves=0,found=0,lock=false,hd=dce("div","lp-sm","Moves: 0");c.appendChild(hd);var gr=dce("div","lp-mg");c.appendChild(gr);
+ tiles.forEach(function(t){var b=dce("button","lp-mt "+t.k,t.t);b.type="button";b.onclick=function(){if(lock||b.classList.contains("ok")||b===sel)return;b.classList.add("sel");if(!sel){sel=b;return}moves++;hd.textContent="Moves: "+moves;var a=sel,A=tiles[[].indexOf.call(gr.children,a)],B=t;sel=null;if(A.g===B.g&&A.k!==B.k){a.classList.add("ok");b.classList.add("ok");found++;if(found===pool.length){var nb=lpBest("match",moves,true);setTimeout(function(){gEnd("Matched!",moves+" moves",nb?"New best.":"Best: "+lpBest("match")+" moves",gMatch)},500)}}else{lock=true;a.classList.add("bad");b.classList.add("bad");setTimeout(function(){a.classList.remove("sel","bad");b.classList.remove("sel","bad");lock=false},700)}};gr.appendChild(b)})}
+function gSpeed(){var t=60,score=0,streak=0,right=0,tot=0,c=lpScr("Speed round",function(){clearInterval(window._lpT);scGames()}),hd=dce("div","lp-hud","<span id='sp-t'>60</span><span id='sp-s'>0 pts</span><span id='sp-k'></span>");
+ function q(){var c2=lpScr("Speed round",function(){clearInterval(window._lpT);scGames()});c2.appendChild(hd);var Q=genQ(shuf(["all","all","rt","al","mn","at"])[0]);if(Q.a<0)return q();qOne(Q,function(ok){tot++;if(ok){right++;streak++;score+=10+Math.min(streak,10)*2}else streak=0;$("sp-s").textContent=score+" pts";$("sp-k").textContent=streak>1?"x"+streak:"";setTimeout(function(){if(t>0)q()},ok?350:900)})}
+ c.appendChild(hd);window._lpT&&clearInterval(window._lpT);window._lpT=setInterval(function(){t--;var e=$("sp-t");if(e)e.textContent=t;if(t<=0){clearInterval(window._lpT);window._lpT=0;var nb=lpBest("speed",score);gEnd("Time",score+" pts",right+" of "+tot+" correct"+(nb?". New best!":". Best: "+lpBest("speed")),gSpeed)}},1000);q()}
+function gMystery(){var codes=shuf(Object.keys(FID)).slice(0,5),r=0,score=0;
+ function round(){if(r>=codes.length){var nb=lpBest("mystery",score);gEnd("Done",score+" pts","out of "+codes.length*5+(nb?". New best!":". Best: "+lpBest("mystery")),gMystery);return}
+  var cd=codes[r],q=FID[cd],cl=[["Under 10x lens",q.x],["Under 20x lens",q.y],["How it feels",q.f],["Scratch test",q.s],["Acid",q.a]],shown=1,c=lpScr("Mystery rock "+(r+1)+"/"+codes.length,scGames);
+  var opts=nmOpts(Object.keys(FID).filter(function(x){return x!==cd}).map(function(x){return nm("rt",x)}),nm("rt",cd),4),cb=dce("div","lp-clues"),pts=dce("div","lp-sm");c.appendChild(pts);c.appendChild(cb);var ol=dce("div","lp-opts");c.appendChild(ol);
+  function draw(){cb.innerHTML=cl.slice(0,shown).map(function(x){return"<p><b>"+x[0]+":</b> "+esc(x[1])+"</p>"}).join("");pts.textContent="Worth "+(6-shown)+" points · clue "+shown+" of 5";mb.hidden=shown>=5||!!ol.dataset.d}
+  var mb=dce("button","lp-btn lp-ghost","Another clue");mb.type="button";mb.onclick=function(){shown++;draw()};
+  opts.forEach(function(t){var b=dce("button","lp-op",esc(t));b.type="button";b.onclick=function(){if(ol.dataset.d)return;ol.dataset.d="1";var ok=t===nm("rt",cd);[].forEach.call(ol.children,function(x){x.disabled=true;x.classList.add(x.textContent===nm("rt",cd)?"ok":x===b?"no":"fade")});if(ok)score+=6-shown;mb.hidden=true;shown=5;cb.innerHTML=cl.map(function(x){return"<p><b>"+x[0]+":</b> "+esc(x[1])+"</p>"}).join("");c.appendChild(dce("div","lp-why "+(ok?"ok":"no"),"<b>"+(ok?"Correct":"It was "+esc(nm("rt",cd)))+"</b><p>Do not confuse with: "+esc(q.c)+"</p>"));var n=dce("button","lp-btn","Next ›");n.type="button";n.onclick=function(){r++;round()};c.appendChild(n)};ol.appendChild(b)});c.appendChild(mb);draw()}
+ round()}
+function gAtlas(){var n=0,score=0,N=10;function nx(){if(n>=N){var nb=lpBest("atlas",score);gEnd("Done",score+" / "+N,nb?"New best.":"Best: "+lpBest("atlas"),gAtlas);return}var Q=genQ("at");if(Q.a<0)return nx();var c=lpScr("Atlas challenge "+(n+1)+"/"+N,scGames);qOne(Q,function(ok){if(ok)score++;var c2=$("lp-c");c2.appendChild(dce("div","lp-why "+(ok?"ok":"no"),"<b>"+(ok?"Correct":"Not quite")+"</b><p>"+Q.w+"</p>"));var b=dce("button","lp-btn","Next ›");b.type="button";b.onclick=function(){n++;nx()};c2.appendChild(b)})}nx()}
+
+/*LPHOME2*/(function(){
+ function add(){var k=document.querySelector("#home .hm-kit[aria-label='Study']");if(!k||k.getAttribute("data-tk"))return;k.setAttribute("data-tk","1");k.setAttribute("aria-label","Toolkits");var h2=k.querySelector("h2");if(h2)h2.textContent="Toolkits";var t=k.querySelector(".hm-tiles");if(!t)return;
+  var ic=function(o){var b=t.querySelector("[data-open='"+o+"'] svg");return b?b.outerHTML:""},gt=t.querySelector("[data-open='s:gtg']");
+  var g=ic("s:alt"),s=ic("s:min:study");t.innerHTML="";
+  var mk=function(kind,svg,n,sm){var b=document.createElement("button");b.type="button";b.className="hm-tile";b.setAttribute("data-lp",kind);b.innerHTML=svg+"<b>"+n+"</b><small>"+sm+"</small>";return b};
+  t.appendChild(mk("geo",g,"Geological Guide","Rocks, alteration, veins"));if(gt)t.appendChild(gt);t.appendChild(mk("study",s,"Study","Cards, atlas, quiz, games"))}
+ add();
+ function dgGo(t){lpClose();if(t==="idg"||t.indexOf("s:")!==0){if(window.CUR!=="log"||document.body.getAttribute("data-mode")!=="field")window.go("log");var b=document.querySelector('#subnav button[data-t="'+t+'"]');if(b)b.click();return}
+  var p=t.slice(2).split(":");window.DGMODE=p[1]==="id"?"id":"study";window.go(p[0]);if(window.navUpdate)window.navUpdate()}
+ function hub(title,items){lpEnsure();LP.hidden=false;document.body.classList.add("lpon");var c=lpScr(title,lpClose);items.forEach(function(it){var b=dce("button","lp-deck","<span><b>"+it[0]+"</b><small>"+it[1]+"</small></span><span class='ch'>\u203a</span>");b.type="button";b.onclick=function(){it[2].indexOf("lp:")===0?dgLP(it[2].slice(3)):dgGo(it[2])};c.appendChild(b)})}
+ window.dgHub=function(k){if(k==="geo")hub("Geological Guide",[["Quick rock ID","Run tests in order, key tells","idg"],["Alteration guide","Compare assemblages and checklist","s:alt"],["Family tree","How the rocks relate","s:tree"],["Replacement","Replacement textures","s:rep"],["Veins","Vein types and textures","s:vein"],["Sulfides","Identify sulfide minerals","s:sul:id"],["Oxides","Identify oxide minerals","s:oxi:id"],["Clay","Clay minerals","s:clay:study"]]);
+  else hub("Study",[["Rock Study","Host-rock cards","s:host:study"],["Rock ID","Identify host rock","s:host:id"],["Mineral Study","Mineral cards","s:min:study"],["Mineral ID","Identify minerals","s:min:id"],["Alteration and deposit atlas","Zoning and ore deposit cross-sections","lp:atlas"],["Flashcards","Spaced repetition, Anki style","lp:cards"],["Quiz","10 multiple-choice questions","lp:quiz"],["Games","Match, speed round, mystery rock, atlas challenge","lp:games"]])};
+ document.addEventListener("click",function(e){var x=e.target&&e.target.closest?e.target.closest("[data-lp]"):null;if(!x)return;e.preventDefault();e.stopPropagation();if(window.dgHome&&window.dgHome.hide)try{window.dgHome.hide()}catch(z){}var k=x.getAttribute("data-lp");if(k==="geo"||k==="study")window.dgHub(k);else window.dgLP(k)},true)})();
 /* ---------- undo: snapshots of the logging state, kept for this session ---------- */
 var UNDO=[],REDO=[],ULAST=null,UMAX=40,UBUSY=false,UT=0;
-function uSnap(){return JSON.stringify({R:RUNS,S:ST.S,W:ST.W,L:ST.L,B:ST.B,IN:ST.IN,EDIT:ST.EDIT,REL:ST.REL,T:ST.T,HI:HI,TA:TALLY})}
-function uPaint(){var b=$("undo");if(b){b.disabled=!UNDO.length;b.title=UNDO.length?"Undo last change ("+UNDO.length+" saved)":"Nothing to undo yet"}var r=$("redo");if(r){r.disabled=!REDO.length;r.title=REDO.length?"Redo ("+REDO.length+" saved)":"Nothing to redo"}}
+/*UNDO2*/function gtRaw(){try{return localStorage.getItem("geolog")||""}catch(e){return""}}
+function uSnap(){return JSON.stringify({R:RUNS,S:ST.S,W:ST.W,L:ST.L,B:ST.B,IN:ST.IN,EDIT:ST.EDIT,REL:ST.REL,T:ST.T,HI:HI,TA:TALLY,RP:RP,VT:VT,VE:VEDITED,VT2:VT2,VE2:VE2,AS:ASSAY,AE:ASEL,G:gtRaw()})}
+function uPaint(){["undo","nundo"].forEach(function(i){var b=$(i);if(b){b.disabled=!UNDO.length;b.title=UNDO.length?"Undo last change ("+UNDO.length+" saved)":"Nothing to undo yet"}});["redo","nredo"].forEach(function(i){var r=$(i);if(r){r.disabled=!REDO.length;r.title=REDO.length?"Redo ("+REDO.length+" saved)":"Nothing to redo"}})}
 function uCheck(){if(UBUSY)return;var n;try{n=uSnap()}catch(e){return}if(ULAST!==null&&n!==ULAST){UNDO.push(ULAST);if(UNDO.length>UMAX)UNDO.shift();REDO=[]}ULAST=n;uPaint()}
 function uApply(p){UBUSY=true;
- try{RUNS=p.R;ST.S=p.S;ST.W=p.W;ST.L=p.L;ST.B=p.B;ST.IN=p.IN;ST.EDIT=p.EDIT;ST.REL=p.REL;ST.T=p.T;HI=p.HI;TALLY=p.TA;saveRuns();saveDraft();saveHI();saveTally();inputsOut();sync();drawTable();ttDraw();tdraw()}finally{UBUSY=false}
+ try{RUNS=p.R;ST.S=p.S;ST.W=p.W;ST.L=p.L;ST.B=p.B;ST.IN=p.IN;ST.EDIT=p.EDIT;ST.REL=p.REL;ST.T=p.T;HI=p.HI;TALLY=p.TA;if(p.RP){RP=p.RP;VT=p.VT||"";VEDITED=!!p.VE;VT2=p.VT2||"";VE2=!!p.VE2;saveRP()}if(p.AS){ASSAY=p.AS;ASEL=p.AE||[];asSave()}var gg=gtRaw();if(typeof p.G==="string"&&p.G!==gg){try{if(p.G)localStorage.setItem("geolog",p.G);else localStorage.removeItem("geolog")}catch(e){}try{if(window.geotReset)window.geotReset()}catch(e){}}saveRuns();saveDraft();saveHI();saveTally();inputsOut();sync();drawTable();ttDraw();tdraw();try{if(typeof vbRefresh==="function")vbRefresh()}catch(e){}try{if(window.dkAfterImport)window.dkAfterImport()}catch(e){}}finally{UBUSY=false}
  ULAST=uSnap();uPaint()}
 function uDo(){uCheck();if(!UNDO.length){msg("Nothing to undo",0);return}var cur=ULAST,p=JSON.parse(UNDO.pop());REDO.push(cur);if(REDO.length>UMAX)REDO.shift();uApply(p);
  msg("Undone. "+(UNDO.length?UNDO.length+" more step"+(UNDO.length>1?"s":"")+" available":"Nothing more to undo"),0)}
@@ -4523,12 +4895,12 @@ function uRedo(){uCheck();if(!REDO.length){msg("Nothing to redo",0);return}var c
  msg("Redone. "+(REDO.length?REDO.length+" more step"+(REDO.length>1?"s":"")+" to redo":"Nothing more to redo"),0)}
 function uLater(){setTimeout(uCheck,60);setTimeout(uCheck,900)}
 document.addEventListener("pointerdown",function(){uCheck()},true);
-document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("#undo")){e.preventDefault();uDo();return}if(e.target.closest&&e.target.closest("#redo")){e.preventDefault();uRedo();return}uLater()},true);
+document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("#undo,#nundo")){e.preventDefault();uDo();return}if(e.target.closest&&e.target.closest("#redo,#nredo")){e.preventDefault();uRedo();return}uLater()},true);
 document.addEventListener("focusin",function(){uCheck()},true);
 document.addEventListener("input",function(){clearTimeout(UT);UT=setTimeout(uCheck,700)},true);
 document.addEventListener("change",uLater,true);
 document.addEventListener("keydown",function(e){var isZ=(e.key==="z"||e.key==="Z"),isY=(e.key==="y"||e.key==="Y");if((e.ctrlKey||e.metaKey)&&((isZ&&!e.shiftKey)||(isY&&!e.shiftKey)||(isZ&&e.shiftKey))){var t=e.target;if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.isContentEditable))return;e.preventDefault();if(isY||e.shiftKey)uRedo();else uDo()}});
-window.logUndo=uDo;
+window.logUndo=uDo;window.logRedo=uRedo;var _gl=gtRaw();setInterval(function(){var g=gtRaw();if(g!==_gl){_gl=g;if(!UBUSY)uCheck()}},1200);document.addEventListener("visibilitychange",function(){uCheck()});
 /* ---------- wide table: the table scrolls inside itself so the heading row stays on top ---------- */
 function wtFit(){var w=document.querySelector("#tbl .wt"),ls=$("logscroll");if(!w||!ls||!w.offsetHeight)return;var h=Math.max(120,ls.clientHeight-12);w.style.maxHeight=h+"px"}
 function wtWatch(){var t=$("tbl");if(!t||!window.MutationObserver)return;new MutationObserver(function(){wtFit()}).observe(t,{childList:true});window.addEventListener("resize",wtFit);if(window.visualViewport)visualViewport.addEventListener("resize",wtFit);document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("#tv_w,#bnav,#subnav,.acc3"))setTimeout(wtFit,60)},true)}
@@ -4634,6 +5006,8 @@ window.swipe=function(d){
   bn.appendChild(b);
  });
  var host=$("study_in");
+ (function(){var w=document.createElement("div");w.className="gw";var h=document.createElement("h3");h.textContent="Learn and play";var c=document.createElement("div");c.className="grp";[["atlas","Alteration and deposit atlas","Cross-sections of porphyry, epithermal, skarn, VMS and more"],["cards","Flashcards","Spaced repetition, Anki style"],["quiz","Quiz","10 multiple-choice questions"],["games","Games","Match pairs, speed round, mystery rock, atlas challenge"]].forEach(function(r){var b=document.createElement("button");b.type="button";b.className="sri";b.innerHTML="<span><b>"+r[1]+"</b><small>"+r[2]+"</small></span><span class='ch'>\u203a</span>";b.onclick=function(){window.dgLP(r[0])};c.appendChild(b)});w.appendChild(h);w.appendChild(c);host.appendChild(w)})();
+
  SG.forEach(function(g){
   var w=document.createElement("div");w.className="gw";
   var h=document.createElement("h3");h.textContent=g[0];
