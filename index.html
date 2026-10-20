@@ -1200,6 +1200,10 @@ html[data-dev="desktop"] #nhome .hm-logo.ds{display:block}
 #lp .lp-hud{display:flex;justify-content:space-between;align-items:center;font:800 20px system-ui;margin-bottom:12px;color:var(--acc-ink)}
 #lp .lp-clues{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 14px;margin:8px 0 10px;font-size:14px;line-height:1.4}#lp .lp-clues p{margin:6px 0}
 
+/*VTXFIX*/#logwrap textarea[id^="vtx"]{width:100%!important;max-width:100%!important;height:55vh!important;min-height:55vh;resize:none!important;box-sizing:border-box}
+
+/*LEDITCSS*/#logwrap .le .ib.ed{margin-left:auto}#logwrap .le .ib.rm{margin-left:6px}#logwrap .le.editing{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc) inset}
+
 
 /* =====================================================================
    DiGe-FN home: one fixed screen; details open in sheets
@@ -1497,7 +1501,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.61.43</span>
+  <span class="hm-dver">v3.61.46</span>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
 </section>
@@ -1527,7 +1531,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.61.43</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.61.46</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -1617,7 +1621,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  <div class="ppc-r"><span>Built</span><p>DiGe-FN and DiGe-DS: core logging, mineral study cards and data correlation.</p></div>
  <div class="ppc-r"><span>Off duty</span><p>Loves fish, cats, dogs and every critter. Anime: Pok&eacute;mon, Naruto, Vinland Saga. Games: Euro Truck Simulator, NBA 2K, GTA, Mobile Legends.</p></div>
  <div class="ppc-r"><span>Motto</span><p>Too soon to reach the stars, too late to name the peaks, just in time to log the cores and learn what the rock speaks.</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.43</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.46</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div></div></dialog>
@@ -2088,6 +2092,15 @@ var BLD={
  mz:{label:"Mineralization (sulfides, oxides, quartz and carbonate veins)",groups:["mzm","mzo","mza","mzs"],inputs:[["mzc","Custom % (e.g. 0.12)"]],need:["mzm","mzo"],addTxt:"Add mineralization to this run"},
  df:{label:"Structures (one defect at a time)",groups:["dt","sh","ro","if","pe"],inputs:[["alpha","Alpha 0-90"],["beta","Beta 0-360"],["dp","Depth m"],["wd","Width (mm), e.g. 2 or 5-10"]],need:["dt"],addTxt:"Add defect to this run"}
 };
+/*LEDIT*/var ADDB={},EDL=null;
+function entryEdit(id,i){var e=ST.L[id][i];if(!e)return;var B=BLD[id],b={};
+ if(EDL&&EDL.id===id&&EDL.i===i){EDL=null;ST.B[id]={};if(ADDB[id])ADDB[id].textContent=B.addTxt;document.querySelectorAll("#logwrap input[data-b='"+id+"']").forEach(function(x){x.value=""});sync();msg("Edit cancelled",0);return}
+ B.groups.forEach(function(k){if(e[k]!==undefined&&e[k]!=="")b[k]=[e[k]]});
+ if(id==="mz"){b.mzo=(Array.isArray(e.mzo)?e.mzo:[e.mzo]).filter(Boolean);var m=String(e.mza||""),codes=G.mza.items.map(function(x){return x[0]});if(m&&codes.indexOf(m)<0){b.mzc=m;delete b.mza}}
+ if(id==="df"){b["if"]=(e["if"]||[]).slice();b.ifx={};(e.ifm||[]).forEach(function(s,j){b.ifx[b["if"][j+1]]=s});["alpha","beta","dp","wd"].forEach(function(k){if(e[k]!==""&&e[k]!=null)b[k]=String(e[k])})}
+ ST.B[id]=b;EDL={id:id,i:i};document.querySelectorAll("#logwrap input[data-b='"+id+"']").forEach(function(x){x.value=b[x.dataset.i]||""});
+ if(ADDB[id]){ADDB[id].textContent="Save changes";try{ADDB[id].closest(".box").scrollIntoView({block:"start",behavior:"smooth"})}catch(z){}}
+ sync();touch();msg("Editing. Change it, then tap Save changes. Tap the pencil again to cancel",0)}
 var ST={REL:{mz:"+",al:"+"},S:{},W:{al:[],mn:[]},L:{mz:[],df:[]},B:{mz:{},df:{}},IN:{},T:{rl:"3",tol:"0.2"},SUG:null,X:{}};var TALLY=[];
 var RUNS=[],canSave=true,armed="";
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);return true}catch(e){canSave=false;return null}}
@@ -2139,7 +2152,7 @@ function sync(){if(!FB&&typeof formOut==="function")formOut();var ALC=alSuggest(
    var rm=el("button","ib rm","&times;");rm.type="button";rm.onclick=function(){ST.W[k].splice(idx,1);sync();touch()};bs.append(rm);r.append(bs);
    r.append(el("em","",x.i?INTD[x.i]:"set 1-5"));box.append(r)})});
  Object.keys(BLD).forEach(function(id){var box=$("l_"+id);if(!box)return;box.innerHTML="";
-  ST.L[id].forEach(function(e,i){var r=el("div","le",esc(entryPlain(id,e)));var rm=el("button","ib rm","&times;");rm.type="button";rm.onclick=function(){ST.L[id].splice(i,1);sync();touch()};r.append(rm);box.append(r)})});
+  ST.L[id].forEach(function(e,i){var r=el("div","le"+(EDL&&EDL.id===id&&EDL.i===i?" editing":""),esc(entryPlain(id,e)));var ed=el("button","ib ed","&#9998;");ed.type="button";ed.setAttribute("aria-label","Edit this entry");ed.onclick=function(){entryEdit(id,i)};var rm=el("button","ib rm","&times;");rm.type="button";rm.onclick=function(){if(EDL&&EDL.id===id){EDL=null;if(ADDB[id])ADDB[id].textContent=BLD[id].addTxt}ST.L[id].splice(i,1);sync();touch()};r.append(ed,rm);box.append(r)})});
  var ix=$("ifx");if(ix){ix.innerHTML="";var arr=(ST.B.df&&ST.B.df["if"])||[];if(arr.length>1)ix.append(el("small","","Infill 2 and later: tap the sign. + means also present, \u00b1 means minor or variable"));
   arr.forEach(function(c,i){if(!i)return;var r=el("div","le",esc(c)+" "+esc(nm("if",c))),b=el("button","ib",(ST.B.df.ifx||{})[c]||"+");b.type="button";b.onclick=function(){var x=ST.B.df.ifx=ST.B.df.ifx||{};x[c]=(x[c]||"+")==="+"?"\u00b1":"+";sync();touch()};r.append(b);ix.append(r)})}
  drawBar();}
@@ -3159,11 +3172,11 @@ function set(name,f,v,src){var k=hk(name);
   if(hk(ST.IN.hole)===k){try{holeOut()}catch(e){}}
   return true}
  if(f==="only")RP.only=!!v;else if(f==="sig")RP.sig=!!v;else if(f==="occ"){RP.occ=!!v;setTimeout(function(){try{sync()}catch(e){}try{drawTable()}catch(e){}if(!VEDITED)VT="";if(!VE2)VT2="";try{vbShow()}catch(e){}},0)}else if(f==="iso")RP.iso=v||RP.iso;else if(f==="title")RP.title=v;else if(f==="shift")RP.shift=v;
- else if(f==="s1"||f==="s2"){RP[f]=v;if(fmtT(RP.s1)&&fmtT(RP.s2))RP.shift=fmtT(RP.s1)+" to "+fmtT(RP.s2)+" Shift"}
+ else if(f==="s1"||f==="s2"){/*SHPICK*/RP[f]=v;RP.pk=new Date().toDateString();if(fmtT(RP.s1)&&fmtT(RP.s2))RP.shift=fmtT(RP.s1)+" to "+fmtT(RP.s2)+" Shift"}
  CUR=src;saveRP();CUR=null;return true}
 function startSh(name){if(!hk(name)){msg("Type the Hole ID first",1);return}
  var d=get(name);if(!d.geo){msg("Pick the Geo Logger first",1);return}
- /*LDFIX*/var a=auto(),nw=new Date(),tn=nw.getHours()*60+nw.getMinutes(),tm=function(v){var m=/^(\d{1,2}):(\d{2})/.exec(v||"");return m?(+m[1])*60+(+m[2]):-1},p1=tm(RP.s1),p2=tm(RP.s2),ok=p1>=0&&p2>=0&&p1!==p2&&(p1<p2?(tn>=p1&&tn<p2):(tn>=p1||tn<p2));
+ /*LDFIX*/var a=auto(),nw=new Date(),tn=nw.getHours()*60+nw.getMinutes(),tm=function(v){var m=/^(\d{1,2}):(\d{2})/.exec(v||"");return m?(+m[1])*60+(+m[2]):-1},p1=tm(RP.s1),p2=tm(RP.s2),ok=p1>=0&&p2>=0&&p1!==p2&&((p1<p2?(tn>=p1&&tn<p2):(tn>=p1||tn<p2))||RP.pk===nw.toDateString());
  if(ok){var dd=new Date(nw);if(p1>p2&&tn<p2)dd.setDate(dd.getDate()-1);a.iso=dd.getFullYear()+"-"+pad(dd.getMonth()+1)+"-"+pad(dd.getDate())}else{RP.s1=a.s1;RP.s2=a.s2;RP.shift=fmtT(a.s1)+" to "+fmtT(a.s2)+" Shift"}
  RP.iso=a.iso;
  var vf=NaN;try{var mm=/^(\d{1,2}):(\d{2})/.exec(RP.s1||"");if(mm){var sd=new Date(RP.iso+"T00:00:00");sd.setHours(+mm[1],+mm[2],0,0);vf=sd.getTime()}}catch(e){}if(isNaN(vf)){var xx=new Date(),hr=xx.getHours(),sh0=hr>=7&&hr<15?7:hr>=15&&hr<23?15:23;if(hr<7)xx.setDate(xx.getDate()-1);xx.setHours(sh0,0,0,0);vf=xx.getTime()}
@@ -3248,7 +3261,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){msg(ALL?"Nothing logged for this hole yet":"Nothing logged for this hole, date and shift",1);return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.43",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.46",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 function pkName(p){var f=function(v){return(Math.round(v*100)/100).toFixed(2)};return String(p.hole).trim().replace(/[^A-Za-z0-9_-]/g,"")+"_"+f(p.from)+"-"+f(p.to)+"m_"+p.date.slice(5,7)+p.date.slice(8,10)+p.date.slice(0,4)+"_"+(p.scope==="allimp"?"ALLIMP":p.scope==="all"?"ALL":pkOrdTxt(p.shift))+"_"+String(p.logger).replace(/[^A-Za-z0-9]/g,"")+".json"}
 function pkExport(dlOnly){var p=pkCollect();if(!p)return;var nm=pkName(p),blob=new Blob([JSON.stringify(p)],{type:"application/json"});
  var done=function(){msg("Packet ready: "+nm,0)},dl=function(){var u=URL.createObjectURL(blob),q=document.createElement("a");q.href=u;q.download=nm;document.body.appendChild(q);q.click();q.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);done()};
@@ -4264,7 +4277,7 @@ function vbCore(f){var t3=$("vtx3"),t4=$("vtx4"),cf=$("cbf"),ct=$("cbt");if(!t3|
 function vbShow(){var t=$("vtxt");if(!t)return;try{var pvEl=$("vbpv");if(pvEl&&document.activeElement!==pvEl){var hh=HI[vbHK()]||{};pvEl.value=hh.pv==null?"":String(hh.pv)}}catch(e){}vbCore();if(!VEDITED||!VT){VT=vbBuild();VEDITED=false}t.value=VT;if(!VE2||!VT2){VT2=vbBuild2();VE2=false}var t2=$("vtx2");if(t2)t2.value=VT2;$("vbn").textContent=VEDITED?"You edited this text. Rebuild replaces your edits.":vbStatus()}
 function vbInit(){var t=$("vtxt");if(!t)return;
  $("vbt").value=RP.title;$("vbd").value=RP.iso;$("vbs").value=RP.shift;vbSum();if(RP.s1==null&&/^7am to 3pm/.test(RP.shift||"")){RP.s1="07:00";RP.s2="15:00"}$("vbs1").value=RP.s1||"";$("vbs2").value=RP.s2||"";$("vbo").checked=RP.only;$("vbst").checked=!!RP.sig;if($("vbocc"))$("vbocc").checked=RP.occ!==false;
- var chg=function(){RP.title=$("vbt").value;RP.iso=$("vbd").value||RP.iso;RP.shift=$("vbs").value;vbSum();RP.s1=$("vbs1").value;RP.s2=$("vbs2").value;RP.only=$("vbo").checked;RP.sig=$("vbst").checked;saveRP();if(!VEDITED){VT=vbBuild();$("vtxt").value=VT;saveRP()}if(!VE2){VT2=vbBuild2();$("vtx2").value=VT2;saveRP()}$("vbn").textContent=VEDITED?"You edited this text. Rebuild replaces your edits.":vbStatus();hAuto()};
+ var chg=function(){RP.title=$("vbt").value;RP.iso=$("vbd").value||RP.iso;RP.shift=$("vbs").value;vbSum();if(RP.s1!==$("vbs1").value||RP.s2!==$("vbs2").value)RP.pk=new Date().toDateString();RP.s1=$("vbs1").value;RP.s2=$("vbs2").value;RP.only=$("vbo").checked;RP.sig=$("vbst").checked;saveRP();if(!VEDITED){VT=vbBuild();$("vtxt").value=VT;saveRP()}if(!VE2){VT2=vbBuild2();$("vtx2").value=VT2;saveRP()}$("vbn").textContent=VEDITED?"You edited this text. Rebuild replaces your edits.":vbStatus();hAuto()};
  ["vbt","vbd","vbs"].forEach(function(i){$(i).addEventListener("input",chg)});
  function fmtT(v){var m=/^(\d{1,2}):(\d{2})/.exec(v||"");if(!m)return"";var h=+m[1],ap=h>=12?"pm":"am";h=h%12;if(h===0)h=12;return h+(m[2]==="00"?"":":"+m[2])+ap}
  function shiftSet(a,b){$("vbs1").value=a;$("vbs2").value=b;if(fmtT(a)&&fmtT(b))$("vbs").value=fmtT(a)+" to "+fmtT(b)+" Shift";chg()}
@@ -4387,11 +4400,11 @@ function setLM(f,go){FORMM=!!f;document.documentElement.classList.toggle("fm",FO
 function addBuilder(id){var B=BLD[id],box=el("div","box","<h2>"+esc(B.label)+"</h2>");
  B.groups.forEach(function(k){var g=G[k];box.append(el("h3","",esc(g.label)));var ch=chipsFor(g);g.items.forEach(function(it){ch.append(mkChip(g,id,it[0],it[1]))});box.append(ch);if(k==="if"){var ix=el("div","les");ix.id="ifx";box.append(ix)}});
  if(B.inputs.length){var r=el("div","row");B.inputs.forEach(function(i){var l=el("label","f",esc(i[1])),x=el("input");x.type="text";x.inputMode="decimal";x.dataset.b=id;x.dataset.i=i[0];x.autocomplete="off";x.oninput=function(){ST.B[id][i[0]]=x.value;touch()};l.append(x);r.append(l)});box.append(r)}
- var add=el("button","big",esc(B.addTxt));add.type="button";add.onclick=function(){
+ var add=el("button","big",esc(B.addTxt));add.type="button";ADDB[id]=add;add.onclick=function(){
   var b=ST.B[id],e={};for(var n=0;n<B.need.length;n++){if(!(b[B.need[n]]||[]).length){msg("Pick "+G[B.need[n]].label.replace(/^\d\. /,"").toLowerCase()+" first",1);return}}
   B.groups.forEach(function(k){e[k]=(b[k]||[])[0]||""});if(id==="mz")e.mzo=(b.mzo||[]).slice();if(id==="mz"){var cu=num(b.mzc);if(!isNaN(cu))e.mza=String(cu)}if(id==="df"){e["if"]=(b["if"]||[]).slice();e.ifm=(b["if"]||[]).slice(1).map(function(c){return(b.ifx||{})[c]||"+"})}
   if(id==="df"){var al=num(b.alpha),be=num(b.beta);if(!isNaN(al)&&(al<0||al>90)){msg("Alpha must be 0-90",1);return}if(!isNaN(be)&&(be<0||be>360)){msg("Beta must be 0-360",1);return}e.alpha=isNaN(al)?"":al;e.beta=isNaN(be)?"":be;e.dp=(b.dp||"").replace(",",".");e.wd=(b.wd||"").replace(",",".").trim()}
-  e.rel=id==="mz"?ST.REL.mz:"+";if(id==="mz"&&(b.mzm||[]).length>1){(b.mzm||[]).forEach(function(m){var c=JSON.parse(JSON.stringify(e));c.mzm=m;ST.L[id].push(c)})}else ST.L[id].push(e);ST.B[id]={};document.querySelectorAll("#logwrap input[data-b='"+id+"']").forEach(function(x){x.value=""});$("det").style.display="none";sync();touch();msg("Added")};
+  e.rel=id==="mz"?ST.REL.mz:"+";var arr=[e];if(id==="mz"&&(b.mzm||[]).length>1)arr=(b.mzm||[]).map(function(m){var c=JSON.parse(JSON.stringify(e));c.mzm=m;return c});var was=!!(EDL&&EDL.id===id&&ST.L[id][EDL.i]);if(was)[].splice.apply(ST.L[id],[EDL.i,1].concat(arr));else arr.forEach(function(c){ST.L[id].push(c)});EDL=null;add.textContent=B.addTxt;ST.B[id]={};document.querySelectorAll("#logwrap input[data-b='"+id+"']").forEach(function(x){x.value=""});$("det").style.display="none";sync();touch();msg(was?"Saved":"Added")};
  box.append(add);box.append(el("h3","","Added to this run"));var lz=el("div","les","");lz.id="l_"+id;box.append(lz);return box}
 
 /* ---------- rod tally / bottom of hole check ---------- */
