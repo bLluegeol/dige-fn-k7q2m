@@ -1551,7 +1551,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.61.57</span>
+  <span class="hm-dver">v3.61.58</span>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
 </section>
@@ -1581,7 +1581,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.61.57</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.61.58</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -1670,7 +1670,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  <div class="ppc-r"><span>Interests</span><p>Nature, anime, manga, critters, tech and science.</p></div>
   <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.57</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.58</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div></div></dialog>
@@ -2783,7 +2783,7 @@ function xlCol(i){var s="";i++;while(i>0){var m=(i-1)%26;s=String.fromCharCode(6
 function xlGtSheet(x){var rows=[];var hr="<row r=\"1\">"+x.keys.map(function(k,i){return xlCell(xlCol(i)+"1",k,1)}).join("")+"</row>";rows.push(hr);
  x.rows.forEach(function(r,ri){var n=ri+2;rows.push("<row r=\""+n+"\">"+x.keys.map(function(k,i){var v=r[k];if(v==null||v==="")return"";var nv=typeof v==="number"?v:(/^-?\d+(\.\d+)?$/.test(String(v))?+v:String(v));return xlCell(xlCol(i)+n,nv,0)}).join("")+"</row>")});
  return"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><worksheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><sheetData>"+rows.join("")+"</sheetData></worksheet>"}
-function xlBuild(){var gs=holeGroups().filter(function(g){return g.items.length}),all=[],names=[],sheets=[];
+function xlBuild(){var gs=holeGroups(1).filter(function(g){return g.items.length}),all=[],names=[],sheets=[];
  gs.forEach(function(g,i){var hi=HI[hk(g.name)]||{},nmx=String(g.name||"Log"+(i+1)).replace(/[\\\/\?\*\[\]:]/g,"-").slice(0,31)||"Log"+(i+1);if(names.indexOf(nmx)>=0)nmx=nmx.slice(0,28)+"-"+(i+1);names.push(nmx);sheets.push(xlLogSheet(g,hi));g.items.forEach(function(y){all.push(xlRec(y.r,hi))})});
  all.sort(function(a,b){return String(a.B).localeCompare(String(b.B))||(+a.C||0)-(+b.C||0)});
  if(!sheets.length){names.push("Log1");sheets.push(xlLogSheet({items:[]},{}))}
@@ -2831,8 +2831,8 @@ function wideTable(T){var h="<div class='wt"+(FRZ?' frzOn':'')+"'><table><thead>
  T.innerHTML=h+hideNote();bindVbs(T);
  T.querySelectorAll('th.frz,td.frz').forEach(function(c){c.onclick=toggleFRZ});var lh=T.querySelector('#lthd small');if(lh)lh.textContent=FRZ?'frozen: tap to unfreeze':'tap to freeze';
  T.querySelectorAll("td.ac").forEach(function(c){var i=+c.dataset.i;if(RUNS[i]&&RUNS[i].imp){var dd=el("button","ib wide","Delete");dd.type="button";dd.onclick=function(){if(dd.dataset.a){RUNS.splice(i,1);saveRuns();drawTable()}else{dd.dataset.a=1;dd.textContent="Tap again"}};c.append(dd);return}var e=el("button","ib wide","Edit");e.type="button";e.onclick=function(){editRun(i)};var ru=el("button","ib wide","Reuse");ru.type="button";ru.onclick=function(){reuseRun(i)};c.append(ru);var d=el("button","ib wide","Delete");d.type="button";d.onclick=function(){if(d.dataset.a){RUNS.splice(i,1);saveRuns();drawTable()}else{d.dataset.a=1;d.textContent="Tap again"}};c.append(e,d)})}
-function drawTable(){var T=$("tbl");if(!T)return;vfDraw();HID=0;HIMP=0;var tot=0;RUNS.forEach(function(r){tot+=(+r.IN.to)-(+r.IN.from||0)});
- $("tcount").textContent=RUNS.length+(RUNS.length===1?" run, ":" runs, ")+tot.toFixed(2)+" m logged. "+(canSave?"Saved on this device.":"This browser is not saving. Export before closing.");$("tabn").textContent="Visual ("+RUNS.length+")";if($("lrsum"))$("lrsum").textContent=" \u00b7 "+RUNS.length+(RUNS.length===1?" run, ":" runs, ")+tot.toFixed(2)+" m";
+function drawTable(){var T=$("tbl");if(!T)return;vfDraw();HID=0;HIMP=0;var tot=0;var RV=RUNS.filter(hvis);RV.forEach(function(r){tot+=(+r.IN.to)-(+r.IN.from||0)});
+ $("tcount").textContent=RV.length+(RV.length===1?" run, ":" runs, ")+tot.toFixed(2)+" m logged. "+(canSave?"Saved on this device.":"This browser is not saving. Export before closing.");$("tabn").textContent="Visual ("+RV.length+")";if($("lrsum"))$("lrsum").textContent=" \u00b7 "+RV.length+(RV.length===1?" run, ":" runs, ")+tot.toFixed(2)+" m";
  if($("tv_i")){$("tv_i").onclick=function(){HIDEIMP=!HIDEIMP;try{localStorage.setItem("gl_himp",HIDEIMP?"1":"0")}catch(e){}drawTable()};$("tv_i").setAttribute("aria-pressed",String(HIDEIMP));$("tv_i").textContent=HIDEIMP?"Imported: hidden":"Imported: shown"}
  if($("tv_h")){$("tv_h").onclick=function(){HIDEOLD=!HIDEOLD;try{localStorage.setItem("gl_hold",HIDEOLD?"1":"0")}catch(e){}drawTable()};$("tv_h").setAttribute("aria-pressed",String(HIDEOLD));$("tv_h").textContent=HIDEOLD?"Previous shift: hidden":"Previous shift: shown"}
  if($("tv_c")){$("tv_c").onclick=function(){setTV("cards")};$("tv_w").onclick=function(){setTV("wide")};$("tv_c").setAttribute("aria-pressed",String(TVIEW==="cards"));$("tv_w").setAttribute("aria-pressed",String(TVIEW==="wide"))}
@@ -2867,6 +2867,8 @@ function curDay(){return shiftDay(new Date())}
 function isoOf(d){return d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate())}
 function longDate(iso){var p=String(iso||"").split("-");if(p.length<3)return iso||"";return new Date(+p[0],+p[1]-1,+p[2]).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"})}
 function hk(h){return String(h||"").trim().toUpperCase()}
+/*HOLEFILTER*/function hvis(r){var a=hk(ST.IN&&ST.IN.hole);return !a||hk((r.IN||{}).hole)===a}
+function hiClean(){try{Object.keys(HI).forEach(function(k){var v=HI[k];if(!v||typeof v!=="object"||Array.isArray(v))delete HI[k]})}catch(e){}}
 function holeHdr(r){var I=r.IN||{};return[I.hole,I.box&&"Box "+I.box].filter(Boolean).join(" | ")}
 function m2(x){if(x==null||isNaN(x))return"";var t=(Math.round(x*100)/100).toFixed(2);return(+x<10&&+x>=0?"0":"")+t}
 function gapLine(prev,cur,mode){var a=num(prev.to),b=num(cur.from);if(isNaN(a)||isNaN(b)||b-a<0.005)return"";var txt="gap "+f2(a)+" to "+f2(b)+" m";
@@ -2876,7 +2878,7 @@ function runBy(r){return r.by?geoShow(r.by):(r.imp?"Imported":"Not recorded")}
 function runShift(r){if(r.imp)return"Imported";var h=new Date(r.id).getHours();return h>=7&&h<15?"Day shift (7am-3pm)":h>=15&&h<23?"Evening shift (3pm-11pm)":"Night shift (11pm-7am)"}
 function vtxt(r){var S=r.S||{},W=r.W||{},I=r.IN||{},o=[];try{o.push(cotams(r,false,false))}catch(e){}o.push(r.imp||"",I.note||"",I.hole||"",I.box||"");try{(S.rt||[]).forEach(function(c){o.push(c,nm("rt",c))});(S.cl||[]).forEach(function(c){o.push(c,nm("cl",c))});(W.al||[]).forEach(function(x){o.push(x.c,nm("al",x.c))});(W.mn||[]).forEach(function(x){o.push(x.c,nm("mn",x.c))})}catch(e){}Object.keys(I.nts||{}).forEach(function(k){o.push(I.nts[k])});return o.join(" ").toLowerCase()}
 function vfOn(){return !!(VF.q||VF.by||VF.day||VF.sh.length||VF.f!==""||VF.t!=="")}
-function vfHide(r){if(VF.q){var tx=vtxt(r);if(!VF.q.split(/\s+/).every(function(w){return tx.indexOf(w)>=0}))return true}if(VF.by&&runBy(r)!==VF.by)return true;if(VF.day&&runDay(r)!==VF.day)return true;if(VF.sh.length&&VF.sh.indexOf(runShift(r))<0)return true;var f=+r.IN.from||0,t=+r.IN.to;if(VF.f!==""&&!(t>+VF.f))return true;if(VF.t!==""&&!(f<+VF.t))return true;return false}
+function vfHide(r){if(!hvis(r))return true;if(VF.q){var tx=vtxt(r);if(!VF.q.split(/\s+/).every(function(w){return tx.indexOf(w)>=0}))return true}if(VF.by&&runBy(r)!==VF.by)return true;if(VF.day&&runDay(r)!==VF.day)return true;if(VF.sh.length&&VF.sh.indexOf(runShift(r))<0)return true;var f=+r.IN.from||0,t=+r.IN.to;if(VF.f!==""&&!(t>+VF.f))return true;if(VF.t!==""&&!(f<+VF.t))return true;return false}
 function vfDraw(){var c=$("vfc");if(!c)return;var u=function(f){var o={};RUNS.forEach(function(r){o[f(r)]=1});return Object.keys(o).sort()},B=u(runBy).sort(vlast),D=u(runDay),H=u(runShift).sort(vso),k=[B,D,H].join("|");
  if(!c.firstChild){c.innerHTML="<div class='f vfsh'><span>Show</span><div class='vfchips'><button type='button' class='chip' id='vf_h' aria-pressed='false'><b>Previous shift: shown</b></button><button type='button' class='chip' id='vf_i' aria-pressed='false'><b>Imported: shown</b></button></div></div><label class='f vfq'>Search<input id='vf_q' type='text' enterkeyhint='search' autocomplete='off' placeholder='e.g. andesite, hematite, fault'></label><label class='f'>Logged by<select id='vf_by'></select></label><label class='f'>Date logged<select id='vf_day'></select></label><div class='f vfsh'><span>Shift (tap one or more)</span><div id='vf_sh' class='vfchips'></div></div><div class='vfr'><label class='f'>From (m)<input id='vf_f' type='text' inputmode='decimal' autocomplete='off' placeholder='e.g. 10'></label><label class='f'>To (m)<input id='vf_t' type='text' inputmode='decimal' autocomplete='off' placeholder='e.g. 20'></label></div><button type='button' class='chip vfx' id='vf_x'><b>Clear filter</b></button>";
   var ch=function(){VF.q=$("vf_q").value.trim().toLowerCase();VF.by=$("vf_by").value;VF.day=$("vf_day").value;var f=$("vf_f").value.replace(",",".").trim(),t=$("vf_t").value.replace(",",".").trim();VF.f=isNaN(parseFloat(f))?"":f;VF.t=isNaN(parseFloat(t))?"":t;drawTable()};
@@ -2888,14 +2890,15 @@ function vfDraw(){var c=$("vfc");if(!c)return;var u=function(f){var o={};RUNS.fo
  [].forEach.call($("vf_sh").children,function(b){b.setAttribute("aria-pressed",String(VF.sh.indexOf(b.dataset.v)>=0))});
  if($("vf_h")){$("vf_h").setAttribute("aria-pressed",String(HIDEOLD));$("vf_h").firstChild.textContent=HIDEOLD?"Previous shift: hidden":"Previous shift: shown"}
  if($("vf_i")){$("vf_i").setAttribute("aria-pressed",String(HIDEIMP));$("vf_i").firstChild.textContent=HIDEIMP?"Imported: hidden":"Imported: shown"}
- var n=RUNS.filter(function(r){return !vfHide(r)}).length;$("vft").textContent=vfOn()?"Filter \u00b7 showing "+n+" of "+RUNS.length:"Filter runs";$("vfbox").classList.toggle("vfon",vfOn())}
+ var n=RUNS.filter(function(r){return !vfHide(r)}).length;$("vft").textContent=vfOn()?"Filter \u00b7 showing "+n+" of "+RUNS.filter(hvis).length:"Filter runs";$("vfbox").classList.toggle("vfon",vfOn())}
 function runDay(r){return r.day||shiftDay(new Date(r.id))}
-function vbOn(r){if(RP.vbFrom&&+r.id<RP.vbFrom&&r.vb!==true)return false;if(r.vb===true)return true;if(r.vb===false)return false;if(!r.imp&&!isOld(r))return true;return !RP.only||runDay(r)===RP.iso}
+function vbOn(r){if(!hvis(r))return false;if(RP.vbFrom&&+r.id<RP.vbFrom&&r.vb!==true)return false;if(r.vb===true)return true;if(r.vb===false)return false;if(!r.imp&&!isOld(r))return true;return !RP.only||runDay(r)===RP.iso}
 var HID=0,HIMP=0,HIDEIMP=false;try{HIDEIMP=localStorage.getItem("gl_himp")==="1"}catch(e){}
 var HIDEOLD=false;try{HIDEOLD=localStorage.getItem("gl_hold")==="1"}catch(e){}
 function curShift(){var h=new Date().getHours();return h>=7&&h<15?"Day shift (7am-3pm)":h>=15&&h<23?"Evening shift (3pm-11pm)":"Night shift (11pm-7am)"}
 function isOld(r){if(r.imp)return false;return shiftDay(new Date(r.id))!==curDay()||runShift(r)!==curShift()}
-function holeGroups(){var by={},ord=[];RUNS.forEach(function(r,i){var k=hk(r.IN.hole);if(!by[k]){by[k]={key:k,name:r.IN.hole||"",items:[]};ord.push(k)}by[k].items.push({r:r,i:i})});
+function holeGroups(all){var by={},ord=[];RUNS.forEach(function(r,i){var k=hk(r.IN.hole);if(!by[k]){by[k]={key:k,name:r.IN.hole||"",items:[]};ord.push(k)}by[k].items.push({r:r,i:i})});
+ if(!all){var ak=hk(ST.IN&&ST.IN.hole);if(ak)ord=ord.filter(function(k){return k===ak})}
  return ord.map(function(k){by[k].items.sort(function(a,b){return(+a.r.IN.from||0)-(+b.r.IN.from||0)});return by[k]})}
 function hinfo(){var k=hk(ST.IN.hole);return HI[k]||(HI[k]={})}
 /*GEODB*/var GEOS=[],geoK="";try{GEOS=JSON.parse(ls("gl_geos")||"[]")}catch(e){GEOS=[]}
@@ -2909,7 +2912,7 @@ function geoBox(){var bx=el("div","box","<h2>Geo logger list</h2><small>Add each
  ad.onclick=function(){var n=nx.value.trim().replace(/\s+/g," "),i=ix.value.trim().toUpperCase();if(!n||!i){msg("Type the name and the initials",1);return}if(GEOS.some(function(g){return g.i===i||g.n.toLowerCase()===n.toLowerCase()})){msg("That name or those initials are already in the list",1);return}GEOS.push({n:n,i:i});geoSave();nx.value="";ix.value="";draw();geoChips();msg("Added")};
  bx.append(r,ad,ls2);draw();return bx}
 setInterval(function(){var x=document.querySelector('input[data-h="geo"]'),k=(x?x.value:"")+"|"+GEOS.length;if(k!==geoK){geoK=k;geoChips()}},700);
-function saveHI(){ls("gl_hi2",JSON.stringify(HI))}
+function saveHI(){hiClean();ls("gl_hi2",JSON.stringify(HI))}
 function saveRP(){ls("gl_rp2",JSON.stringify({RP:RP,VT:VT,VEDITED:VEDITED,VT2:VT2,VE2:VE2}))}
 function autoAdv(h){var k=hk(h),sh=0,tot=0;RUNS.forEach(function(r){if(hk(r.IN.hole)!==k)return;var t=+r.IN.to,f=+r.IN.from||0;if(t>tot)tot=t;if(vbOn(r))sh+=t-f});return{sh:sh,tot:tot}}
 function holeOut(){try{window.dgHoleRefresh&&window.dgHoleRefresh()}catch(e){}if(typeof survDraw==="function")survDraw();if(typeof remDraw==="function")remDraw();var h=HI[hk(ST.IN.hole)]||{};document.querySelectorAll("#logwrap input[data-h]").forEach(function(x){x.value=h[x.dataset.h]||""});hAuto()}
@@ -3124,7 +3127,7 @@ window.pmClose=pmClose;window.pmOpen=pmOpen;
 })();/*ENDPMAP*/
 /*HSYNC*/(function(){
 function lst(){var seen={},out=[];function add(n){n=String(n||"").trim();var k=n.toUpperCase();if(!k||seen[k])return;seen[k]=1;out.push(n)}
- Object.keys(HI).forEach(function(k){var h=HI[k]||{};if(h.hole||Object.keys(h).length>1)add(h.hole||k)});RUNS.forEach(function(r){add((r.IN||{}).hole)});Object.keys(DV.all||{}).forEach(function(k){add(DV.all[k].hole)});
+ hiClean();Object.keys(HI).forEach(function(k){var h=HI[k]||{};if(h.hole||Object.keys(h).length>1)add(h.hole||k)});RUNS.forEach(function(r){add((r.IN||{}).hole)});Object.keys(DV.all||{}).forEach(function(k){add(DV.all[k].hole)});
  try{(JSON.parse(localStorage.getItem("geolog")||"{}").holes||[]).forEach(function(h){add(h.id)})}catch(e){}
  return out.sort(function(a,b){return a.localeCompare(b,undefined,{numeric:true})})}
 window.dgHoleList=lst;
@@ -3137,7 +3140,7 @@ window.dgHoleSet=function(name,src,add){name=String(name||"").trim();
  if(src!=="field"){var x=document.querySelector("input[data-i=hole]");if(x){x.value=name;if(x.oninput)x.oninput()}else{ST.IN.hole=name;try{holeOut()}catch(e){}}}
  dvSwitch(name);
  if(name&&src!=="geo"){PEND=curOf(name,add);if(add){ALL=ALL.filter(function(o){return hk(o.id)!==hk(name)});ALL.push(PEND)}var f=document.querySelector("#geot iframe");try{if(f&&f.contentWindow&&f.contentWindow.geoPick){f.contentWindow.geoPick(PEND);PEND=null;ALL=[]}}catch(e){}}
- dgHoleRefresh()};
+ dgHoleRefresh();try{drawTable()}catch(e){}try{if(typeof vbFollow==="function")vbFollow()}catch(e){}try{if(typeof vbShow==="function")vbShow()}catch(e){}};
 window.dgHoleRefresh=function(){document.querySelectorAll("select.hpick").forEach(function(sl){if(document.activeElement===sl)return;var cur=sl.dataset.s==="sv"?DV.d.hole:ST.IN.hole,k=hk(cur),L=lst(),h="",f=false;
  L.forEach(function(n){var on=hk(n)===k;if(on)f=true;h+="<option value='"+esc(n)+"'"+(on?" selected":"")+">"+esc(n)+"</option>"});
  if(k&&!f)h="<option value='"+esc(cur)+"' selected>"+esc(cur)+" (new)</option>"+h;if(!k)h="<option value='' selected>Choose a hole</option>"+h;
@@ -3312,7 +3315,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){msg(ALL?"Nothing logged for this hole yet":"Nothing logged for this hole, date and shift",1);return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.57",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.58",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 function pkName(p){var f=function(v){return(Math.round(v*100)/100).toFixed(2)};return String(p.hole).trim().replace(/[^A-Za-z0-9_-]/g,"")+"_"+f(p.from)+"-"+f(p.to)+"m_"+p.date.slice(5,7)+p.date.slice(8,10)+p.date.slice(0,4)+"_"+(p.scope==="allimp"?"ALLIMP":p.scope==="all"?"ALL":pkOrdTxt(p.shift))+"_"+String(p.logger).replace(/[^A-Za-z0-9]/g,"")+".json"}
 function pkExport(dlOnly){var p=pkCollect();if(!p)return;var nm=pkName(p),blob=new Blob([JSON.stringify(p)],{type:"application/json"});
  var done=function(){msg("Packet ready: "+nm,0)},dl=function(){var u=URL.createObjectURL(blob),q=document.createElement("a");q.href=u;q.download=nm;document.body.appendChild(q);q.click();q.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);done()};
@@ -4720,7 +4723,7 @@ function load(){
  try{var d=JSON.parse(ls("gl_draft2")||"null");if(d){ST.S=d.S||{};ST.W=d.W||{al:[],mn:[]};ST.L=d.L||{mz:[],df:[]};ST.B=d.B||{mz:{},df:{}};ST.IN=d.IN||{};ST.T=d.T||ST.T;ST.SUG=d.SUG||null;ST.REL=d.REL||ST.REL;ST.EDIT=d.EDIT||null}}catch(e){}
  try{RUNS=JSON.parse(ls("gl_runs2")||"[]")}catch(e){RUNS=[]}
  try{TALLY=JSON.parse(ls("gl_tally2")||"[]")}catch(e){TALLY=[]}
- try{HI=JSON.parse(ls("gl_hi2")||"{}")}catch(e){HI={}}
+ try{HI=JSON.parse(ls("gl_hi2")||"{}")}catch(e){HI={}}hiClean();
  Object.keys(HI).forEach(function(k){if(HI[k]&&HI[k].rem!==undefined)delete HI[k].rem});saveHI();
  try{var q=JSON.parse(ls("gl_rp2")||"null");if(q){RP=q.RP||RP;VT=q.VT||"";VEDITED=!!q.VEDITED;VT2=q.VT2||"";VE2=!!q.VE2}}catch(e){}
  if(!RP.iso)RP.iso=curDay();
