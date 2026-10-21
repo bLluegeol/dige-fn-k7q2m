@@ -1251,6 +1251,9 @@ html[data-dev="desktop"] #nhome .hm-logo.ds{display:block}
 
 /*LPSEC*/#lp .lp-sec{margin:14px 2px 6px;font:800 12px system-ui;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}#lp .lp-sec:first-child{margin-top:2px}
 
+/*NAVFIX*/#vfbox{bottom:var(--navh,59px)!important}
+@media (orientation:portrait){#logwrap #bar{padding-bottom:6px!important}}
+
 
 /* =====================================================================
    DiGe-FN home: one fixed screen; details open in sheets
@@ -1548,7 +1551,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.61.56</span>
+  <span class="hm-dver">v3.61.57</span>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
 </section>
@@ -1578,7 +1581,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.61.56</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.61.57</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -1667,7 +1670,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  <div class="ppc-r"><span>Interests</span><p>Nature, anime, manga, critters, tech and science.</p></div>
   <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.56</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.61.57</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div></div></dialog>
@@ -3309,7 +3312,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){msg(ALL?"Nothing logged for this hole yet":"Nothing logged for this hole, date and shift",1);return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.56",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.61.57",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 function pkName(p){var f=function(v){return(Math.round(v*100)/100).toFixed(2)};return String(p.hole).trim().replace(/[^A-Za-z0-9_-]/g,"")+"_"+f(p.from)+"-"+f(p.to)+"m_"+p.date.slice(5,7)+p.date.slice(8,10)+p.date.slice(0,4)+"_"+(p.scope==="allimp"?"ALLIMP":p.scope==="all"?"ALL":pkOrdTxt(p.shift))+"_"+String(p.logger).replace(/[^A-Za-z0-9]/g,"")+".json"}
 function pkExport(dlOnly){var p=pkCollect();if(!p)return;var nm=pkName(p),blob=new Blob([JSON.stringify(p)],{type:"application/json"});
  var done=function(){msg("Packet ready: "+nm,0)},dl=function(){var u=URL.createObjectURL(blob),q=document.createElement("a");q.href=u;q.download=nm;document.body.appendChild(q);q.click();q.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);done()};
@@ -5096,7 +5099,7 @@ document.addEventListener("input",function(){clearTimeout(UT);UT=setTimeout(uChe
 document.addEventListener("change",uLater,true);
 document.addEventListener("keydown",function(e){var isZ=(e.key==="z"||e.key==="Z"),isY=(e.key==="y"||e.key==="Y");if((e.ctrlKey||e.metaKey)&&((isZ&&!e.shiftKey)||(isY&&!e.shiftKey)||(isZ&&e.shiftKey))){var t=e.target;if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.isContentEditable))return;e.preventDefault();if(isY||e.shiftKey)uRedo();else uDo()}});
 window.logUndo=uDo;window.logRedo=uRedo;var _gl=gtRaw();setInterval(function(){var g=gtRaw();if(g!==_gl){_gl=g;if(!UBUSY)uCheck()}},1200);document.addEventListener("visibilitychange",function(){uCheck()});
-/*DVH*/(function(){function sv(){try{document.documentElement.style.setProperty("--dvh",(window.innerHeight/100)+"px")}catch(e){}}sv();window.addEventListener("resize",sv);window.addEventListener("orientationchange",function(){setTimeout(sv,200)});if(window.visualViewport)window.visualViewport.addEventListener("resize",sv)})();
+/*DVH*/(function(){function sv(){try{document.documentElement.style.setProperty("--dvh",(window.innerHeight/100)+"px")}catch(e){}}sv();window.addEventListener("resize",sv);window.addEventListener("orientationchange",function(){setTimeout(sv,200)});if(window.visualViewport)window.visualViewport.addEventListener("resize",sv);function nh(){try{var b=document.getElementById("bnav");if(b&&b.offsetHeight)document.documentElement.style.setProperty("--navh",b.offsetHeight+"px")}catch(e){}}nh();window.addEventListener("resize",nh);window.addEventListener("load",nh);setTimeout(nh,300);setTimeout(nh,1500);try{var b0=document.getElementById("bnav");if(b0&&window.ResizeObserver)new ResizeObserver(nh).observe(b0)}catch(e){}})();
 /*TRASH*/var TK="dg_trash",TRASH=[];try{TRASH=JSON.parse(localStorage.getItem(TK)||"[]")||[];var _t0=Date.now()-30*864e5;TRASH=TRASH.filter(function(e){return e&&e.t>_t0})}catch(e){TRASH=[]}
 function trPaint(){var b=document.getElementById("ntc");if(b){b.hidden=!TRASH.length;b.textContent=TRASH.length>99?"99+":TRASH.length}var t=document.getElementById("ntrash");if(t)t.title=TRASH.length?"Trash ("+TRASH.length+")":"Trash is empty"}
 function trSave(){while(TRASH.length>80)TRASH.pop();for(;;){try{localStorage.setItem(TK,JSON.stringify(TRASH));break}catch(e){if(TRASH.length<2)break;TRASH.pop()}}trPaint()}
