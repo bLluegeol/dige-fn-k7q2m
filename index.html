@@ -1751,7 +1751,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.64.49</span>
+  <span class="hm-dver">v3.64.50</span>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
 </section>
@@ -1781,7 +1781,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.64.49</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.64.50</span><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -1871,7 +1871,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.64.49</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.64.50</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -4020,10 +4020,7 @@ function shrMount(host){var days={},hs={};RUNS.forEach(function(r){days[runDay(r
  function frmText(){var f=$d("shrform"),o=[];[].forEach.call(f.querySelectorAll("table"),function(t){[].forEach.call(t.rows,function(r){o.push([].map.call(r.cells,function(c){return c.innerText.replace(/\s+/g," ").trim()}).join(" | "))});o.push("")});return "SHIFT DRILLING REPORT\n\n"+o.join("\n")}
  ["shrd","shrh","shrs"].forEach(function(i){$d(i).onchange=build});build();
  $d("shrc").onclick=function(){copyText(frmText(),"Shift report copied")};
- $d("shrp").onclick=function(){var w=window.open("","_blank");if(!w){msg("Allow pop-ups to print",1);return}w.document.write("<body style='margin:14mm'>"+$d("shrform").outerHTML.replace(/contenteditable=.true./g,"")+"<script>(function(){if(!("serviceWorker" in navigator)||location.protocol==="file:")return;var rl=0;function bar(w){if(document.getElementById("pwaupd"))return;var d=document.createElement("div");d.id="pwaupd";d.setAttribute("role","status");d.style.cssText="position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483647;background:#222b35;color:#fff;padding:12px 14px;border-radius:12px;font:14px system-ui;display:flex;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 4px 18px rgba(0,0,0,.35)";d.innerHTML="<span>Update ready</span>";var b=document.createElement("button");b.type="button";b.textContent="Tap to reload";b.style.cssText="background:#8fa6b8;color:#10202c;border:0;border-radius:8px;padding:8px 14px;font:600 14px system-ui";b.onclick=function(){b.disabled=true;b.textContent="Updating...";w.postMessage("skip")};d.append(b);document.body.append(d)}
-function watch(r){if(r.waiting&&navigator.serviceWorker.controller)bar(r.waiting);r.addEventListener("updatefound",function(){var n=r.installing;if(!n)return;n.addEventListener("statechange",function(){if(n.state==="installed"&&navigator.serviceWorker.controller)bar(n)})})}
-navigator.serviceWorker.addEventListener("controllerchange",function(){if(rl)return;rl=1;location.reload()});
-addEventListener("load",function(){navigator.serviceWorker.register("sw.js").then(function(r){watch(r);setInterval(function(){r.update().catch(function(){})},3600000)}).catch(function(){})})})()</script></body>");w.document.close();w.print()}}
+ $d("shrp").onclick=function(){var w=window.open("","_blank");if(!w){msg("Allow pop-ups to print",1);return}w.document.write("<body style='margin:14mm'>"+$d("shrform").outerHTML.replace(/contenteditable=.true./g,"")+"</body>");w.document.close();w.print()}}
 window.dgShiftRep=function(){window.VBTAB=5;try{var b=document.querySelector('#vbtabs button[data-n="5"]');if(b)b.click()}catch(e){}};
 function vbHK(){return hk(ST.IN.hole)||(RUNS.length?hk(RUNS[RUNS.length-1].IN.hole):"")}
 function vbBuild2(){/*SHIFTFIX*/var g=holeGroups().map(function(x){return{name:x.name,key:x.key,items:x.items.filter(function(y){return vbOn(y.r)})}}).filter(function(x){return x.items.length});
@@ -4158,7 +4155,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){pkStop(ALL?"Nothing logged yet":"Nothing in this shift",ALL?("No runs or geotechnical rows are saved for "+hole+" yet."):("No runs for "+hole+" match the date "+day+" and shift "+n+" set in Setup \u203a Log Details. Check the date and shift there, or use <b>Save shift packet (all interval)</b> instead."));return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.64.49",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.64.50",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 /*ESCHK*/
 function esCheck(go){var ss=RP.ss||{},h=ss.hole||ST.IN.hole||"",k=hk(h),day=RP.iso||curDay(),it=[],warn=0;
  function add(s,t,act){it.push({s:s,t:t,a:act});if(s==="w")warn++}
@@ -7279,4 +7276,7 @@ var md=document.getElementById("mode");if(md)md.addEventListener("click",functio
 var hm=document.getElementById("home");if(hm)hm.addEventListener("click",function(e){var x=e.target.closest&&e.target.closest("[data-open]");if(x)window.geotSet(x.getAttribute("data-open")==="geot")},true);
 })();
 </script>
-</body></html>
+<script>(function(){if(!("serviceWorker" in navigator)||location.protocol==="file:")return;var rl=0;function bar(w){if(document.getElementById("pwaupd"))return;var d=document.createElement("div");d.id="pwaupd";d.setAttribute("role","status");d.style.cssText="position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483647;background:#222b35;color:#fff;padding:12px 14px;border-radius:12px;font:14px system-ui;display:flex;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 4px 18px rgba(0,0,0,.35)";d.innerHTML="<span>Update ready</span>";var b=document.createElement("button");b.type="button";b.textContent="Tap to reload";b.style.cssText="background:#8fa6b8;color:#10202c;border:0;border-radius:8px;padding:8px 14px;font:600 14px system-ui";b.onclick=function(){b.disabled=true;b.textContent="Updating...";w.postMessage("skip")};d.append(b);document.body.append(d)}
+function watch(r){if(r.waiting&&navigator.serviceWorker.controller)bar(r.waiting);r.addEventListener("updatefound",function(){var n=r.installing;if(!n)return;n.addEventListener("statechange",function(){if(n.state==="installed"&&navigator.serviceWorker.controller)bar(n)})})}
+navigator.serviceWorker.addEventListener("controllerchange",function(){if(rl)return;rl=1;location.reload()});
+addEventListener("load",function(){navigator.serviceWorker.register("sw.js").then(function(r){watch(r);setInterval(function(){r.update().catch(function(){})},3600000)}).catch(function(){})})})()</script></body></html>
