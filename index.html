@@ -1739,6 +1739,8 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 /*UPDB*/.hm-updb{font:600 11px/1 system-ui;padding:6px 10px;border-radius:14px;border:1px solid var(--mut,#888);background:transparent;color:inherit;cursor:pointer}.hm-updb[disabled]{opacity:.6}
 
 /*HDEL2*/button.hdel{align-self:stretch;min-height:44px;padding:10px 12px;margin-top:8px;border:1px solid var(--err,#b42318);border-radius:10px;text-decoration:none;font-weight:600;text-align:center;touch-action:manipulation}
+
+/*HCP*/.hcrow{display:flex;gap:8px;margin-top:8px}button.hcp{flex:1;min-height:44px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;font-weight:600;font-size:13px;touch-action:manipulation}
 </style>
 </head><body>
 <div id="home" data-noswipe="1" hidden>
@@ -1758,7 +1760,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.64.69</span>
+  <span class="hm-dver">v3.64.70</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -1789,7 +1791,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.64.69</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.64.70</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -1879,7 +1881,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.64.69</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.64.70</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -3940,7 +3942,7 @@ window.dgHoleRefresh=function(){document.querySelectorAll("select.hpick").forEac
 window.hPick=function(src){var l=el("label","f full","Current hole"),sl=el("select","hpick");sl.dataset.s=src;sl.style.cssText="width:100%";
  sl.onchange=function(){var v=sl.value;if(v==="+new"){if(src==="sv"){dvSwitch("");window.dgHoleRefresh();if(DVON&&typeof dvRender==="function")dvRender();var q=document.querySelector("#dv input[data-f=hole]");if(q)q.focus()}else{var x=document.querySelector("input[data-i=hole]");if(x){x.value="";x.dataset.orig="";if(x.oninput)x.oninput();x.focus()}}msg("Type the new Hole ID");return}
   window.dgHoleSet(v,src==="sv"?"survey":"pick",true);msg("Switched to "+v)};
- sl.addEventListener("pointerdown",function(){sl.dataset.f=1;var k=sl.value;setTimeout(function(){},0)});var db=el("button","hdel","Delete this hole");db.type="button";db.onclick=function(){window.dgHoleDelete(src==="sv"?DV.d.hole:ST.IN.hole)};l.append(sl,db);setTimeout(window.dgHoleRefresh,0);return l};
+ sl.addEventListener("pointerdown",function(){sl.dataset.f=1;var k=sl.value;setTimeout(function(){},0)});var db=el("button","hdel","Delete this hole");db.type="button";db.onclick=function(){window.dgHoleDelete(src==="sv"?DV.d.hole:ST.IN.hole)};var cb=el("button","hcp","Copy hole data"),pb=el("button","hcp","Paste hole data here");cb.type=pb.type="button";var cur=function(){return src==="sv"?DV.d.hole:ST.IN.hole};cb.onclick=function(){window.dgHoleCopy(cur())};pb.onclick=function(){window.dgHolePaste(cur())};var rw=el("div","hcrow");rw.append(cb,pb);l.append(sl,rw,db);setTimeout(window.dgHoleRefresh,0);return l};
 /*HRENAME*/function holeKnown(n){var k=hk(n);if(!k)return false;if(HI[k]&&Object.keys(HI[k]).length)return true;return RUNS.some(function(r){return hk((r.IN||{}).hole)===k})}
 function holeRename(ov,nv){var a=hk(ov),b=hk(nv);
  if(HI[a]){HI[b]=HI[a];delete HI[a]}
@@ -4149,6 +4151,34 @@ function doDel(k,name){var i;for(i=RUNS.length-1;i>=0;i--)if(hk((RUNS[i].IN||{})
  else if(!hk(DV.d&&DV.d.hole)&&typeof dvSwitch==="function")dvSwitch(ST.IN.hole);
  try{window.dgHoleRefresh()}catch(e){}try{drawTable()}catch(e){}try{if(DVON&&typeof dvRender==="function")dvRender()}catch(e){}try{if(typeof dkReload==="function"&&window.DK&&DK.data)dkReload()}catch(e){}
  push("*");msg(name+" deleted",0)}
+
+/*HCOPY*/var HCK="dg_hcopy";
+function hcDlg(title,body,btns){var d=document.createElement("dialog");d.setAttribute("data-noswipe","1");d.style.cssText="width:min(92vw,460px);max-height:88vh;overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);padding:14px";d.innerHTML="<b style='font-size:17px'>"+title+"</b><div style='line-height:1.5;margin:8px 0'>"+body+"</div>";var r=document.createElement("div");r.style.cssText="display:flex;gap:8px";btns.forEach(function(b){var x=document.createElement("button");x.type="button";x.textContent=b[0];x.style.cssText="flex:1;min-height:46px;border-radius:8px;font:inherit;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--ink)";x.onclick=function(){d.close();d.remove();if(b[1])b[1]()};r.append(x)});d.append(r);d.addEventListener("close",function(){d.remove()});document.body.append(d);d.showModal()}
+window.dgHoleCopy=function(name){name=String(name||"").trim();var k=hk(name);if(!k){msg("Pick a hole first",1);return}
+ var P={app:"DiGe-FN",kind:"hole-copy",schema:1,hole:name,copied:new Date().toISOString(),hi:JSON.parse(JSON.stringify(HI[k]||{})),runs:JSON.parse(JSON.stringify(RUNS.filter(function(r){return hk((r.IN||{}).hole)===k}))),tally:JSON.parse(JSON.stringify(TALLY.filter(function(x){return hk(x.hole)===k}))),geotech:{hole:null,rows:{}}};
+ var G={};try{G=JSON.parse(localStorage.getItem("geolog")||"{}")||{}}catch(e){}
+ P.geotech.hole=JSON.parse(JSON.stringify((G.holes||[]).filter(function(h){return hk(h.id)===k})[0]||null));var ng=0;
+ Object.keys(G.rows||{}).forEach(function(t){var q=(G.rows[t]||[]).filter(function(x){return hk(x.hole)===k});if(q.length){P.geotech.rows[t]=JSON.parse(JSON.stringify(q));ng+=q.length}});
+ var j=JSON.stringify(P);try{localStorage.setItem(HCK,j)}catch(e){}try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(j).catch(function(){})}catch(e){}
+ msg("Copied "+name+": "+P.runs.length+" interval"+(P.runs.length===1?"":"s")+", "+ng+" geotechnical row"+(ng===1?"":"s")+". Open the other hole and tap Paste hole data.")};
+window.dgHolePaste=function(name){name=String(name||"").trim();var k=hk(name);if(!k){msg("Pick the hole to paste into first",1);return}
+ var P=null;try{P=JSON.parse(localStorage.getItem(HCK)||"null")}catch(e){}
+ if(!P||P.kind!=="hole-copy"){msg("Nothing copied yet. Open the other hole and tap Copy hole data first",1);return}
+ if(hk(P.hole)===k){msg("That is the same hole. Switch to the hole you want to paste into",1);return}
+ var ng=0;Object.keys((P.geotech||{}).rows||{}).forEach(function(t){ng+=P.geotech.rows[t].length});
+ hcDlg("Paste "+esc(P.hole)+" into "+esc(name)+"?","<p>This adds <b>"+(P.runs||[]).length+"</b> logged interval"+((P.runs||[]).length===1?"":"s")+", <b>"+ng+"</b> geotechnical row"+(ng===1?"":"s")+", the survey, rod tally and hole details from <b>"+esc(P.hole)+"</b> to <b>"+esc(name)+"</b>.</p><p>Every copied row is relabelled as <b>"+esc(name)+"</b>. Where an interval already exists in <b>"+esc(name)+"</b> with the same From and To, the copied (newest) one replaces it. Hole details already filled in <b>"+esc(name)+"</b> are kept; only blanks are filled.</p><p><b>Save a backup first</b> if you may need the current data.</p>",[["Cancel"],["Paste",function(){hcDo(P,name,k)}]])};
+function hcDo(P,name,k){var nr=0,rp=0,ngr=0,ids={};RUNS.forEach(function(r){ids[r.id]=1});
+ (P.runs||[]).forEach(function(r0){var r=JSON.parse(JSON.stringify(r0));r.IN=r.IN||{};r.IN.hole=name;var q=-1,ff=gtNn(r.IN.from),tt=gtNn(r.IN.to);RUNS.forEach(function(x,j){if(q<0&&hk((x.IN||{}).hole)===k&&gtNn(x.IN.from)===ff&&gtNn(x.IN.to)===tt)q=j});
+  if(q>=0){r.id=RUNS[q].id;RUNS[q]=r;rp++}else{while(ids[r.id])r.id=(+r.id||Date.now())+1;ids[r.id]=1;RUNS.push(r);nr++}});
+ var cur=HI[k]||(HI[k]={});Object.keys(P.hi||{}).forEach(function(f){if(f==="hole"||f==="pv"||f==="mine")return;var v=P.hi[f];if(f==="surv"&&Array.isArray(v)){cur.surv=Array.isArray(cur.surv)?cur.surv:[];v.forEach(function(s){if(s&&!cur.surv.some(function(q){return +q.d===+s.d}))cur.surv.push(s)});return}if(cur[f]===undefined||cur[f]===""||cur[f]===null)cur[f]=v});cur.hole=cur.hole||name;
+ (P.tally||[]).forEach(function(x){if(!TALLY.some(function(y){return hk(y.hole)===k&&+y.to===+x.to})){var c=JSON.parse(JSON.stringify(x));c.hole=name;TALLY.push(c)}});
+ var g=P.geotech||{},S0={holes:[],rows:{}};try{S0=JSON.parse(localStorage.getItem("geolog")||"")||S0}catch(e){}S0.holes=S0.holes||[];S0.rows=S0.rows||{};
+ var gh=S0.holes.filter(function(h){return hk(h.id)===k})[0];if(!gh){gh=JSON.parse(JSON.stringify(g.hole||{}));gh.id=name;S0.holes.push(gh)}else if(g.hole)Object.keys(g.hole).forEach(function(f){if(f!=="id"&&(gh[f]===undefined||gh[f]===""||gh[f]===null))gh[f]=g.hole[f]});
+ Object.keys(g.rows||{}).forEach(function(t){var ar=S0.rows[t]=S0.rows[t]||[],used={};ar.forEach(function(x){used[x.id]=1});g.rows[t].forEach(function(r0){var r=JSON.parse(JSON.stringify(r0));r.hole=name;var i=-1,kr=gtKey(t,r);ar.forEach(function(q,j){if(i<0&&hk(q.hole)===k&&gtKey(t,q)===kr)i=j});if(i>=0){r.id=ar[i].id;ar[i]=r}else{while(r.id!=null&&used[r.id])r.id=(+r.id||Date.now())+1;used[r.id]=1;ar.push(r)}ngr++})});
+ try{localStorage.setItem("geolog",JSON.stringify(S0))}catch(e){}
+ RUNS.sort(function(x,y){var u=runDay(x),v=runDay(y);return u<v?-1:u>v?1:(num((x.IN||{}).from)||0)-(num((y.IN||{}).from)||0)});
+ saveRuns();saveHI();saveTally();try{if(window.geotReset)window.geotReset()}catch(e){}try{window.dgHoleRefresh()}catch(e){}try{drawTable()}catch(e){}try{if($("vtxt"))vbShow()}catch(e){}try{if(typeof dkReload==="function"&&window.DK&&DK.data)dkReload()}catch(e){}
+ try{push("*")}catch(e){}msg("Pasted into "+name+": "+nr+" new, "+rp+" replaced, "+ngr+" geotechnical row"+(ngr===1?"":"s"),0)}
 window.dgHoleDrop=function(name){name=String(name||"").trim();var k=hk(name);if(!k)return;var L=window.dgHoleList?window.dgHoleList():[];if(!L.some(function(n){return hk(n)===k}))return;doDel(k,name)};
 window.dgHoleDelete=function(name){name=String(name||"").trim();var k=hk(name);if(!k){msg("Pick a hole first",1);return}
  var nr=0,ng=0,G={};RUNS.forEach(function(r){if(hk((r.IN||{}).hole)===k)nr++});
@@ -4170,7 +4200,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){pkStop(ALL?"Nothing logged yet":"Nothing in this shift",ALL?("No runs or geotechnical rows are saved for "+hole+" yet."):("No runs for "+hole+" match the date "+day+" and shift "+n+" set in Setup \u203a Log Details. Check the date and shift there, or use <b>Save shift packet (all interval)</b> instead."));return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.64.69",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.64.70",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 /*ESCHK*/
 function esCheck(go){var ss=RP.ss||{},h=ss.hole||ST.IN.hole||"",k=hk(h),day=RP.iso||curDay(),it=[],warn=0;
  function add(s,t,act){it.push({s:s,t:t,a:act});if(s==="w")warn++}
