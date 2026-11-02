@@ -1789,7 +1789,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.64.81</span>
+  <span class="hm-dver">v3.64.83</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -1820,7 +1820,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.64.81</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.64.83</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -1910,7 +1910,7 @@ body.geoton #mode{max-width:300px}#mode button{padding-left:4px;padding-right:4p
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.64.81</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.64.83</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -3584,7 +3584,7 @@ function vfDraw(){var c=$("vfc");if(!c)return;var u=function(f){var o={};RUNS.fo
  if($("vf_i")){$("vf_i").setAttribute("aria-pressed",String(HIDEIMP));$("vf_i").firstChild.textContent=HIDEIMP?"Imported: hidden":"Imported: shown"}
  var n=RUNS.filter(function(r){return !vfHide(r)}).length;$("vft").textContent=vfOn()?"Filter \u00b7 showing "+n+" of "+RUNS.filter(hvis).length:"Filter runs";$("vfbox").classList.toggle("vfon",vfOn())}
 function runDay(r){return r.day||shiftDay(new Date(r.id))}
-function vbOn(r){if(!hvis(r))return false;if(RP.vbFrom&&+r.id<RP.vbFrom&&r.vb!==true)return false;if(r.vb===true)return true;if(r.vb===false)return false;if(!r.imp&&!isOld(r))return true;return !RP.only||runDay(r)===RP.iso}
+function vbOn(r){if(!hvis(r))return false;if(RP.vbFrom&&+r.id<RP.vbFrom&&r.vb!==true)return false;if(r.vb===true)return true;if(r.vb===false)return false;if(!(RP.ss&&RP.ss.on&&hk(RP.ss.hole)===hk((r.IN||{}).hole)))return false;if(!r.imp&&!isOld(r))return true;return !RP.only||runDay(r)===RP.iso}
 var HID=0,HIMP=0,HIDEIMP=false;try{HIDEIMP=localStorage.getItem("gl_himp")==="1"}catch(e){}
 var HIDEOLD=false;try{HIDEOLD=localStorage.getItem("gl_hold")==="1"}catch(e){}
 function curShift(){var h=new Date().getHours();return h>=7&&h<15?"Day shift (7am-3pm)":h>=15&&h<23?"Evening shift (3pm-11pm)":"Night shift (11pm-7am)"}
@@ -4231,7 +4231,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){pkStop(ALL?"Nothing logged yet":"Nothing in this shift",ALL?("No runs or geotechnical rows are saved for "+hole+" yet."):("No runs for "+hole+" match the date "+day+" and shift "+n+" set in Setup \u203a Log Details. Check the date and shift there, or use <b>Save shift packet (all interval)</b> instead."));return null}
  var tl=TALLY.filter(function(x){return hk(x.hole)===k&&+x.to>=lo&&+x.to<=hi2});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.64.81",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.64.83",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt}}
 /*ESCHK*/
 function esCheck(go){var ss=RP.ss||{},h=ss.hole||ST.IN.hole||"",k=hk(h),day=RP.iso||curDay(),it=[],warn=0;
  function add(s,t,act){it.push({s:s,t:t,a:act});if(s==="w")warn++}
@@ -4276,7 +4276,7 @@ function pkExport(dlOnly){var p=pkCollect();if(!p)return;var nm=pkName(p),blob=n
  if(d2.showModal)d2.showModal();else d2.setAttribute("open","")}
 var PKREPL=[],PKHI=[],PKHF=["ce","cn","crl","az","inc","eoh"];
 function pkMerge(p,res,name){var k=hk(p.hole),nr=0,up=0,key=function(q){return hk(q.IN.hole)+"|"+q.id+"|"+(q.by||"")};
- (p.runs||[]).forEach(function(r){if(!r||!r.IN)return;var kk=key(r),i=-1;RUNS.forEach(function(q,j){if(i<0&&q.IN&&key(q)===kk)i=j});if(i>=0){if(JSON.stringify(RUNS[i])!==JSON.stringify(r))PKREPL.push({o:RUNS[i],n:r});RUNS[i]=r;up++}else{RUNS.push(r);nr++}PKNEW.push(r)});
+ (p.runs||[]).forEach(function(r){if(!r||!r.IN)return;var kk=key(r),i=-1;RUNS.forEach(function(q,j){if(i<0&&q.IN&&key(q)===kk)i=j});if(i>=0){if(JSON.stringify(RUNS[i])!==JSON.stringify(r))PKREPL.push({o:RUNS[i],n:r});r.vb=RUNS[i].vb===undefined?false:RUNS[i].vb;RUNS[i]=r;up++}else{r.vb=false;RUNS.push(r);nr++}PKNEW.push(r)});
  var cur=HI[k]||(HI[k]={});/*DTLDLOCK*/if(p.logger&&cur.geo&&hk(p.logger)!==hk(cur.geo))cur.impFrom=p.logger;
  Object.keys(p.hi||{}).forEach(function(f){if(f==="pv"||f==="mine"||f==="geo")return;if(f==="surv"&&Array.isArray(p.hi.surv)){cur.surv=Array.isArray(cur.surv)?cur.surv:[];p.hi.surv.forEach(function(s){if(s&&!cur.surv.some(function(q){return +q.d===+s.d}))cur.surv.push(s)});return}if(cur[f]===undefined||cur[f]==="")cur[f]=p.hi[f];else if(PKHF.indexOf(f)>=0&&p.hi[f]!==undefined&&p.hi[f]!==""&&String(cur[f]).trim()!==String(p.hi[f]).trim()&&!(num(cur[f])===num(p.hi[f])))PKHI.push({h:p.hole,k:k,f:f,cur:cur[f],inc:p.hi[f]})});
  (p.tally||[]).forEach(function(x){if(!TALLY.some(function(y){return hk(y.hole)===k&&+y.to===+x.to}))TALLY.push(x)});
