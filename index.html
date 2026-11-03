@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="theme-color" content="#222b35"><meta name="robots" content="noindex,nofollow,noarchive">
+<html lang="en"><head>
 <!-- DiGe-FN (Digital Geology Field Notebook) / DiGe-DS (Digital Geology Desktop Studio)
      © 2026 Patrick Paul Odiamar Celso (PPC). All rights reserved.
      Proprietary software. Copying, modification, resale or redistribution without the
@@ -1363,6 +1363,10 @@ html[data-dev="desktop"] #nhome .hm-logo.ds{display:block}
 .es-b{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.es-b button{flex:1 1 auto;min-height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--acc);background:transparent;color:var(--acc-ink,var(--ink));font:700 14px system-ui}.es-b .es-pri{background:var(--acc);color:var(--card)}
 
 /*SVSUMCSS*/.dv-sb{margin-top:10px}.dv-sum{margin:0 0 10px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
+#dv .dv-ref{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;background:var(--acc);color:#fff;border-radius:10px;padding:8px 14px;margin:8px 0 10px;font-size:13px;font-weight:500}#dv .dv-ref b{color:#fff}
+#dv .dv-st{border-collapse:collapse;width:100%;font-size:13px}#dv .dv-st th{text-align:left;padding:7px 10px;color:var(--mut);border-bottom:2px solid var(--line);white-space:nowrap}#dv .dv-st td{padding:6px 10px;border-bottom:1px solid var(--line)}#dv .dv-st tr.bad td{background:rgba(192,57,43,.07)}#dv .dv-st td.bad{color:#c0392b}#dv .dv-st td.ok{color:#17602b;font-weight:700}
+#dv .dv-ov{width:84px;padding:4px 7px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font-size:13px;font-family:inherit}#dv .dv-ov:focus{outline:2px solid var(--acc);border-color:transparent}
+#dv .dv-orst{font-size:11px;padding:3px 8px;height:auto}
 
 /*REVLOGCSS*/#bar .iv{position:relative}#rtfill{position:absolute;right:0;top:-3px;height:20px;padding:0 9px;border-radius:999px;border:1px solid var(--acc);background:var(--acc);color:var(--card);font:700 11px system-ui;cursor:pointer}#rtfill[hidden]{display:none}
 .rt-dlg{max-height:88vh;overflow:auto}.rt-src{margin:0 0 10px;padding:8px 10px;border-left:3px solid var(--acc);background:color-mix(in srgb,var(--acc) 7%,transparent);font-size:13px;line-height:1.4;border-radius:4px}
@@ -1985,6 +1989,8 @@ html.fson .dk-title{margin-right:150px}
 .da-del{color:var(--err)!important;font-size:10px!important;margin-top:4px}.da-del.arm{font-size:9px!important;padding:3px 1px!important}
 .da-mv{min-width:24px}
 /*DGSPLIT*/.dglead{stroke:#5b6b78;stroke-width:1.2;stroke-dasharray:3 3;fill:none}.dgtrue{fill:#5b6b78;stroke:#fff;stroke-width:1}
+
+/*PM3D*/#pm .pm-3d{position:absolute;inset:0;z-index:4;background:var(--bg)}#pm .pm-3d[hidden]{display:none}#pm.d3 .pm-s,#pm.d3 .pm-nth,#pm.d3 .pm-navw,#pm.d3 .pm-ctl,#pm.d3 .pm-bp,#pm.d3 .pm-bn,#pm.d3 .pm-at,#pm.d3 .pm-sc,#pm.d3 .pm-sb,#pm.d3 .pm-f{display:none!important}#pm .pm-3d .dk-d3w{position:absolute;inset:0}#pm .pm-3d .dk-mctl{left:auto;right:10px;top:10px}#pm .pm-3d .dk-d3ctl{width:200px;max-width:60%}#pm .pm-3d .dk-d3beta{bottom:12px}
 </style>
 </head><body>
 <div id="home" data-noswipe="1" hidden>
@@ -2004,7 +2010,7 @@ html.fson .dk-title{margin-right:150px}
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.65.33</span>
+  <span class="hm-dver">v3.65.41</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -2035,7 +2041,7 @@ html.fson .dk-title{margin-right:150px}
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.65.33</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.65.41</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -2125,7 +2131,7 @@ html.fson .dk-title{margin-right:150px}
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.33</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.41</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -3848,6 +3854,7 @@ function survLines(hi,lines){var sv=svSorted(hi).filter(svVb);if(!sv.length)retu
 /*SVQC*/function svAng(x,y){var d=Math.abs(x-y)%360;return d>180?360-d:d}
 function svDev(s,hi){var pl=svPlan(hi),pa=pl.az,pi=pl.inc;return{a:isNaN(pa)||isNaN(+s.a)?null:svAng(+s.a,pa),p:isNaN(pi)||isNaN(+s.p)?null:Math.abs(+s.p-pi)}}
 function svBest(st,hi){var bi=-1,bs=Infinity;st.sh.forEach(function(s,j){var v=svDev(s,hi),t=(v.a==null?0:v.a)+(v.p==null?0:v.p);if(t<bs){bs=t;bi=j}});return bi}
+function svPicked(st,hi){var bi=svBest(st,hi),b=st.sh[bi]||{};var a=st.oa!=null?st.oa:b.a,p=st.op!=null?st.op:b.p;return{a:a,p:p,man:st.oa!=null||st.op!=null,bi:bi}}
 function svOut(s,hi){var v=svDev(s,hi);return(v.a!=null&&v.a>3)||(v.p!=null&&v.p>3)}
 function svDue(hi){var sv=svSorted(hi);return sv.length?num(sv[sv.length-1].d)+30:10}
 /*SVSUM*/
@@ -3944,12 +3951,27 @@ function dvVisDraw(m){m.innerHTML="";var rows=dvStn(),hole=DV.d.hole||"";
   w.querySelectorAll("th.fzh").forEach(function(th){th.onclick=function(){var i=+th.dataset.i;if(i===SFI){try{localStorage.setItem("gl_svfz","-")}catch(e){}msg("Columns unfrozen",0);dvVisDraw(m);return}var fw=38+C.slice(0,i+1).reduce(function(s,c){return s+c[2]},0);if(fw>w.clientWidth*0.75){msg("Too wide to freeze on this screen. Pick a column further left, or turn the phone sideways",1);return}try{localStorage.setItem("gl_svfz",C[i][0])}catch(e){}msg("Frozen up to "+C[i][1]+". Tap it again to unfreeze",0);dvVisDraw(m)}});
   w.querySelectorAll("td.dv-vbc").forEach(function(td){td.onclick=function(){var st=rows[+td.dataset.i].st;st.vb=!svVb(st);flip();msg(st.vb===false?"Depth "+fmU(st.d," m")+" hidden from the Viber update":"Depth "+fmU(st.d," m")+" shown in the Viber update",0)}});
   all.onclick=function(){var hide=on===rows.length;rows.forEach(function(r){r.st.vb=!hide});flip()};return}
- if(DV.view==="sum"){var sl=svSumLines(HI[hk(hole)]||{}),tx=sl.join("\n"),bx=el("div","dv-sb");
-  bx.innerHTML="<pre class='dv-sum'>"+esc(tx)+"</pre><label class='chk nostrike dv-svv2'><input type='checkbox'"+(RP.svf!==false?" checked":"")+"><span>Also show full survey results (every try)</span></label>";
+ if(DV.view==="sum"){var hiS=HI[hk(hole)]||{},plS=svPlan(hiS),bx=el("div","dv-sb");
+  /*ref bar*/var rfHtml="<div class='dv-ref'><b>Reference &mdash; Hole "+esc(hole)+"</b><span>Planned Azi: <b>"+(isNaN(plS.az)?"—":fmU(plS.az,"°"))+"</b></span><span>Planned Dip: <b>"+(isNaN(plS.inc)?"—":fmU(plS.inc,"°"))+"</b></span></div>";
+  var onlyVb=rows.filter(function(r){return svVb(r.st)});
+  var tbl="<table class='dv-st'><thead><tr><th>Depth (m)</th><th>Azimuth °</th><th>Dip °</th><th>Δ Azi</th><th>Δ Dip</th><th>Status</th><th></th></tr></thead><tbody>";
+  onlyVb.forEach(function(r,i){var pk=svPicked(r.st,r.hi),v=svDev({a:pk.a,p:pk.p},r.hi),o=(v.a!=null&&v.a>3)||(v.p!=null&&v.p>3),stt=v.a==null&&v.p==null?"No plan":o?"Out of tolerance":"OK";
+   tbl+="<tr class='"+(o?"bad":"")+"'><td><b>"+fmU(r.st.d," m")+"</b></td>"+
+    "<td><input type='number' class='dv-ov' data-i='"+i+"' data-f='a' step='0.01' min='0' max='360' value='"+esc(String(pk.a==null?"":pk.a))+"' placeholder='—'></td>"+
+    "<td><input type='number' class='dv-ov' data-i='"+i+"' data-f='p' step='0.01' min='-90' max='0' value='"+esc(String(pk.p==null?"":pk.p))+"' placeholder='—'></td>"+
+    "<td class='"+(v.a!=null&&v.a>3?"bad":"")+"'>"+(v.a==null?"—":fmU(v.a,"°"))+"</td>"+
+    "<td class='"+(v.p!=null&&v.p>3?"bad":"")+"'>"+(v.p==null?"—":fmU(v.p,"°"))+"</td>"+
+    "<td class='"+(o?"bad":"ok")+"'>"+esc(stt)+"</td>"+
+    "<td>"+(pk.man?"<button type='button' class='dv-orst ib' data-i='"+i+"'>Reset</button>":"")+"</td></tr>"});
+  tbl+="</tbody></table>";
+  var sl=svSumLines(hiS),tx=sl.join("\n");
+  bx.innerHTML=rfHtml+tbl+"<label class='chk nostrike dv-svv2'><input type='checkbox'"+(RP.svf!==false?" checked":"")+"><span>Also show full survey results (every try)</span></label>";
   var cp=el("button","big","Copy summary");cp.type="button";cp.onclick=function(){copyText(tx,"Survey summary copied")};bx.append(cp);
-  
+  bx.querySelectorAll("input.dv-ov").forEach(function(inp){inp.onchange=function(){var ri=+inp.dataset.i,f=inp.dataset.f,v=inp.value.trim(),st=onlyVb[ri].st;if(v===""){delete st["o"+f]}else{var n=parseFloat(v);if(!isNaN(n))st["o"+f]=n}saveHI();dvVisDraw(m)}});
+  bx.querySelectorAll("button.dv-orst").forEach(function(btn){btn.onclick=function(){var ri=+btn.dataset.i,st=onlyVb[ri].st;delete st.oa;delete st.op;saveHI();dvVisDraw(m)}});
   bx.querySelector(".dv-svv2 input").onchange=function(){RP.svf=this.checked;svVbRefresh();msg(this.checked?"Full survey results added to the Viber update":"Full survey results hidden from the Viber update",0)};
   m.append(bx);return}
+ var plRef=svPlan(HI[hk(hole)]||{});m.append(el("div","dv-ref","<b>Reference — "+esc(hole)+"</b><span>Planned Azi: <b>"+(isNaN(plRef.az)?"—":fmU(plRef.az,"°"))+"</b></span><span>Planned Dip: <b>"+(isNaN(plRef.inc)?"—":fmU(plRef.inc,"°"))+"</b></span>"));
  if(DV.view==="cards"){var g=el("div","dv-cg");rows.forEach(function(r){var c=el("div","dv-card"+(r.out?" bad":""));
    var tr=r.st.sh.map(function(s,j){var o=svOut(s,r.hi);return"<div class='dv-try"+(j===r.bi?" best":"")+(o?" bad":"")+"'><span>Try "+(j+1)+"</span><span>Azi "+fmU(s.a,"&deg;")+" &middot; Dip "+fmU(s.p,"&deg;")+"</span>"+(j===r.bi?"<b>closest</b>":"")+"</div>"}).join("");
    c.innerHTML="<div class='dv-ch'><b>@ "+fmU(r.st.d," m")+"</b><span class='dv-bd "+(r.out?"bad":"ok")+"'>"+(r.v.a==null&&r.v.p==null?"No plan":r.out?"Out of tolerance":"OK")+"</span></div><div class='dv-cb'><div>"+tr+"</div>"+dvCompass(r)+"</div><div class='dv-cf'>Closest: &Delta; Azi "+(r.v.a==null?"?":fmU(r.v.a,"&deg;"))+" &middot; &Delta; Dip "+(r.v.p==null?"?":fmU(r.v.p,"&deg;"))+"</div>";g.append(c)});m.append(g)}
@@ -4013,7 +4035,7 @@ function dgNavMake(o){var d=document.createElement("div");d.className="dg-nav";d
  ["pointerdown","pointermove","pointerup","wheel","contextmenu"].forEach(function(n){d.addEventListener(n,function(e){e.stopPropagation()},{passive:n!=="wheel"})});
  return d}
 window.DGNL=DGNL;window.dgRotXY=dgRotXY;window.dgUnrotXY=dgUnrotXY;window.dgNorm=dgNorm;window.dgRotWrap=dgRotWrap;window.dgTxtFix=dgTxtFix;window.dgFit=dgFit;window.dgAnimRot=dgAnimRot;window.dgNavMake=dgNavMake; function pmEl(){var d=document.getElementById("pm");if(d)return d;d=document.createElement("div");d.id="pm";d.hidden=true;
- d.innerHTML="<div class='pm-h'><div class='pm-seg' role='tablist'><button type='button' data-v='plan' class='on' role='tab' aria-selected='true'>Plan</button><button type='button' data-v='sec' role='tab' aria-selected='false'>Section</button></div><span class='pm-n'></span></div><div class='pm-sb' hidden><span class='pm-sa'></span><button type='button' data-az='-15' aria-label='Rotate section left'>&minus;15&deg;</button><button type='button' data-az='15' aria-label='Rotate section right'>+15&deg;</button><button type='button' data-az='auto'>Hole az</button><span class='pm-sw'></span><button type='button' data-win='-20' aria-label='Narrower'>&minus;</button><button type='button' data-win='20' aria-label='Wider'>+</button></div><div class='pm-w'><svg class='pm-s'></svg><svg class='pm-nth' viewBox='0 0 24 36' aria-hidden='true'><path d='M12 2 19 22 12 18 5 22Z'/><text x='12' y='34' text-anchor='middle'>N</text></svg><div class='pm-navw'></div><div class='pm-ctl'><button type='button' data-z='in' aria-label='Zoom in'>+</button><button type='button' data-z='out' aria-label='Zoom out'>−</button><button type='button' data-z='fit' aria-label='Fit all collars'><svg viewBox='0 0 24 24'><path d='M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5'/></svg></button><button type='button' data-z='lab' aria-pressed='true' aria-label='Hole labels'>Aa</button><button type='button' data-z='eoh' aria-pressed='false' aria-label='Show planned path to EOH' title='Show planned path to EOH'>EOH</button><button type='button' data-z='bm' aria-label='Basemap'><svg viewBox='0 0 24 24'><path d='M12 3 3 8l9 5 9-5ZM3 12.5l9 5 9-5M3 17l9 5 9-5'/></svg></button></div><div class='pm-bp' hidden></div><div class='pm-bn' hidden></div><div class='pm-at'></div><div class='pm-sc'></div><div class='pm-em' hidden></div></div><div class='pm-f'><div class='pm-chips'></div><div class='pm-i'></div></div>";
+ d.innerHTML="<div class='pm-h'><div class='pm-seg' role='tablist'><button type='button' data-v='plan' class='on' role='tab' aria-selected='true'>Plan</button><button type='button' data-v='sec' role='tab' aria-selected='false'>Section</button><button type='button' data-v='d3' role='tab' aria-selected='false'>3D</button></div><span class='pm-n'></span></div><div class='pm-sb' hidden><span class='pm-sa'></span><button type='button' data-az='-15' aria-label='Rotate section left'>&minus;15&deg;</button><button type='button' data-az='15' aria-label='Rotate section right'>+15&deg;</button><button type='button' data-az='auto'>Hole az</button><span class='pm-sw'></span><button type='button' data-win='-20' aria-label='Narrower'>&minus;</button><button type='button' data-win='20' aria-label='Wider'>+</button></div><div class='pm-w'><div class='pm-3d' data-noswipe='1' hidden></div><svg class='pm-s'></svg><svg class='pm-nth' viewBox='0 0 24 36' aria-hidden='true'><path d='M12 2 19 22 12 18 5 22Z'/><text x='12' y='34' text-anchor='middle'>N</text></svg><div class='pm-navw'></div><div class='pm-ctl'><button type='button' data-z='in' aria-label='Zoom in'>+</button><button type='button' data-z='out' aria-label='Zoom out'>−</button><button type='button' data-z='fit' aria-label='Fit all collars'><svg viewBox='0 0 24 24'><path d='M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5'/></svg></button><button type='button' data-z='lab' aria-pressed='true' aria-label='Hole labels'>Aa</button><button type='button' data-z='eoh' aria-pressed='false' aria-label='Show planned path to EOH' title='Show planned path to EOH'>EOH</button><button type='button' data-z='bm' aria-label='Basemap'><svg viewBox='0 0 24 24'><path d='M12 3 3 8l9 5 9-5ZM3 12.5l9 5 9-5M3 17l9 5 9-5'/></svg></button></div><div class='pm-bp' hidden></div><div class='pm-bn' hidden></div><div class='pm-at'></div><div class='pm-sc'></div><div class='pm-em' hidden></div></div><div class='pm-f'><div class='pm-chips'></div><div class='pm-i'></div></div>";
  document.body.append(d);wire(d);return d}
 function pmTop(){var n=document.getElementById("navbar"),d=document.getElementById("pm");if(d)d.style.top=(n?Math.round(n.getBoundingClientRect().bottom):48)+"px"}
 function pmData(){var hs=DK.holes;DK.holes=null;try{DK.data=dkBuild();PM.F=dkMapGeo();PM.miss=DK.data.holes.filter(function(h){return h.e==null||h.n==null})}catch(err){PM.F=[];PM.miss=[]}DK.holes=hs;try{PM.sig=dkSig()}catch(e){}}
@@ -4110,8 +4132,10 @@ function pmSegD(f){var L=f.L,dr=Math.min(+f.h.drilled||0,L),ds=f.st.map(function
  return{dr:dr,L:L,a:[0].concat(ds.filter(function(d){return d<dr}),dr>0?[dr]:[]),b:dr>=L?[]:(dr>0?[dr].concat(ds.filter(function(d){return d>dr}),[L]):[0].concat(ds,[L]))}}
 function pmSecPick(mx,my){var M=pmSecModel();if(!M)return;var b=null,bd=30;M.vis.forEach(function(f){var n=Math.max(4,Math.min(40,Math.round(f.L/5)));for(var k=0;k<=n;k++){var p=pmSecPt(M,f,f.L*k/n),dd=Math.hypot(X(p[0])-mx,Y(p[1])-my);if(dd<bd){bd=dd;b=f}}});PM.sel=b?b.h._h:"";PM.touched=true;pmDraw()}
 function pmMode(v){var d=document.getElementById("pm");if(!d||v===PM.v)return;PM.sv=PM.sv||{};PM.sv[PM.v||"plan"]={s:PM.s,cx:PM.cx,cy:PM.cy,t:PM.touched,k:PM.key};var o=PM.sv[v];PM.v=v;if(o){PM.s=o.s;PM.cx=o.cx;PM.cy=o.cy;PM.touched=o.t;PM.key=o.k}else{PM.s=0;PM.touched=false;PM.key=""}
- d.classList.toggle("sec",v==="sec");d.querySelector(".pm-sb").hidden=v!=="sec";[].forEach.call(d.querySelectorAll(".pm-seg button"),function(b){var on=b.dataset.v===v;b.classList.toggle("on",on);b.setAttribute("aria-selected",String(on))});var bp=d.querySelector(".pm-bp");if(bp)bp.hidden=true;pmDraw()}
+ d.classList.toggle("sec",v==="sec");d.classList.toggle("d3",v==="d3");var p3=d.querySelector(".pm-3d");if(p3)p3.hidden=v!=="d3";if(window.d3SetPane)window.d3SetPane(v==="d3"?p3:null);d.querySelector(".pm-sb").hidden=v!=="sec";[].forEach.call(d.querySelectorAll(".pm-seg button"),function(b){var on=b.dataset.v===v;b.classList.toggle("on",on);b.setAttribute("aria-selected",String(on))});var bp=d.querySelector(".pm-bp");if(bp)bp.hidden=true;pmDraw()}
+function pm3d(d){var hs=DK.holes;DK.holes=null;try{DK.data=dkBuild()}catch(e){}if(window.d3SetPane)window.d3SetPane(d.querySelector(".pm-3d"));try{if(window.dk3D)window.dk3D()}finally{DK.holes=hs}if(!PM.d3i){var dt=d.querySelector(".dk-d3ctl");if(dt){dt.open=false;PM.d3i=1}}}
 function pmDraw(){var d=document.getElementById("pm");if(!d||d.hidden)return;pmFoot();if(!box()){requestAnimationFrame(pmDraw);return}
+ if(PM.v==="d3"){pm3d(d);return}
  if(PM.v==="sec"){pmSecDraw(d);return}
  var svg=d.querySelector(".pm-s"),W=PM.W,H=PM.H,F=PM.F,act="";try{act=hk(ST.IN.hole)}catch(e){}
  var key=PM.eoh+"|"+F.map(function(f){return f.h._h+":"+f.h.e+":"+f.h.n+":"+f.L+":"+f.h.drilled}).join("|");if(!isFinite(PM.s)||!PM.s||(key!==PM.key&&!PM.touched)){fit()}PM.key=key;
@@ -4192,7 +4216,7 @@ function pmOpen(){var d=pmEl();try{if(window.smClose)window.smClose();if(window.
  if(DKS.bm==="img")dkBmLoad(function(){pmDraw()});pmTop();pmData();PM.touched=false;PM.sel="";PM.key="";pmDraw();
  var mm=document.getElementById("mode");if(mm&&mm.scrollTo)mm.scrollTo({left:mm.scrollWidth,behavior:"smooth"});
  clearInterval(PM.tm);PM.tm=setInterval(function(){var dd=document.getElementById("pm");if(!dd||dd.hidden)return;var s="";try{s=dkSig()}catch(e){}if(s!==PM.sig){pmData();pmDraw()}},2000)}
-function pmClose(){var d=document.getElementById("pm");if(!d||d.hidden)return;d.hidden=true;clearInterval(PM.tm);document.body.classList.remove("dvon","pmon");var b=document.getElementById("m_pm");if(b)b.setAttribute("aria-selected","false")}
+function pmClose(){var d=document.getElementById("pm");if(!d||d.hidden)return;d.hidden=true;if(window.d3SetPane)window.d3SetPane(null);clearInterval(PM.tm);document.body.classList.remove("dvon","pmon");var b=document.getElementById("m_pm");if(b)b.setAttribute("aria-selected","false")}
 window.pmClose=pmClose;window.pmOpen=pmOpen;
 (function(){var s=document.getElementById("m_dsv");if(s&&!document.getElementById("m_pm")){var b=document.createElement("button");b.type="button";b.id="m_pm";b.setAttribute("role","tab");b.setAttribute("aria-selected","false");b.setAttribute("aria-label","Plan map");b.title="Plan map";b.innerHTML=GLOBE;s.after(b);try{window.dispatchEvent(new Event("resize"))}catch(e){}}})();
 /*PMFADE*/(function(){var m=document.getElementById("mode");if(!m)return;function f(){m.classList.toggle("mfade",m.scrollLeft+m.clientWidth<m.scrollWidth-3)}m.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",function(){setTimeout(f,80)});setTimeout(f,200);setTimeout(f,900);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){setTimeout(f,100)})})();window.addEventListener("resize",function(){pmTop();pmDraw()});window.addEventListener("orientationchange",function(){setTimeout(function(){pmTop();pmDraw()},250)});
@@ -4478,7 +4502,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){pkStop(ALL?"Nothing logged yet":"Nothing in this shift",ALL?("No runs or geotechnical rows are saved for "+hole+" yet."):("No runs for "+hole+" match the date "+day+" and shift "+n+" set in Setup \u203a Log Details. Check the date and shift there, or use <b>Save shift packet (all interval)</b> instead."));return null}
  /*PKALLDATA: a packet carries every Desktop Studio browser table for the hole (runs incl. Leapfrog codes, hole details and survey, geotech, rod tally, assay, rig activities, rig lookups).*/var tl=TALLY.filter(function(x){return hk(x.hole)===k});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.65.33",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt,rigact:raForHole(k),riglk:raLkCopy(),assay:pkAssay(k),asel:pkAsel(),lfrules:LFR}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.65.41",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt,rigact:raForHole(k),riglk:raLkCopy(),assay:pkAssay(k),asel:pkAsel(),lfrules:LFR}}
 function pkAssay(k){try{return ASSAY.filter(function(x){return hk(x.hole)===k}).map(function(x){return JSON.parse(JSON.stringify(x))})}catch(e){return[]}}
 function pkAsel(){try{return JSON.parse(JSON.stringify(ASEL||[]))}catch(e){return[]}}
 /*ESCHK*/
@@ -4694,9 +4718,10 @@ var DKNUM={from:1,to:1,rec:1,s10:1,depth:1,dist:1,alpha:1,beta:1,thk:1,val:1};
 function dkCol(k,l,n,w,ed){return{k:k,l:l,n:!!n,w:w||(n?84:130),ed:ed||""}}
 /* ---------- data model ---------- */
 function dkAvgAz(a,b){var d=((b-a+540)%360)-180;return(a+d/2+360)%360}
-function dkStations(h){var st=[{d:0,a:h.az==null?0:h.az,p:h.dip==null?-90:h.dip}],hi=HI[h._h]||{};
+/*DIPSIGN: holes are drawn going down, so every dip is used as a downward angle. A planned inclination typed as +65 next to survey dips of -65.55 used to average to about 0 and draw the hole flat (horizontal) down to the first survey depth.*/
+function dkStations(h){var st=[{d:0,a:h.az==null?0:h.az,p:h.dip==null?-90:-Math.abs(h.dip)}],hi=HI[h._h]||{};
  (hi.surv||[]).forEach(function(s){var d=dkN(s.d),sh=(s.sh||[]).map(function(x){return{a:dkN(x.a),p:dkN(x.p)}}).filter(function(x){return x.a!=null&&x.p!=null});if(d==null||!sh.length)return;
-  var sx=0,sy=0,sp=0;sh.forEach(function(x){sx+=Math.sin(x.a*Math.PI/180);sy+=Math.cos(x.a*Math.PI/180);sp+=x.p});st.push({d:d,a:(Math.atan2(sx,sy)*180/Math.PI+360)%360,p:sp/sh.length,n:sh.length})});
+  var sx=0,sy=0,sp=0;sh.forEach(function(x){sx+=Math.sin(x.a*Math.PI/180);sy+=Math.cos(x.a*Math.PI/180);sp+=Math.abs(x.p)});st.push({d:d,a:(Math.atan2(sx,sy)*180/Math.PI+360)%360,p:-sp/sh.length,n:sh.length})});
  st.sort(function(x,y){return x.d-y.d});return st}
 function dkAt(st,d){var x=0,y=0,z=0,i,pv=st[0];function seg(l,a,p){if(l<=0)return;var ip=Math.abs(p)*Math.PI/180,ar=a*Math.PI/180,hz=l*Math.cos(ip);x+=hz*Math.sin(ar);y+=hz*Math.cos(ar);z-=l*Math.sin(ip)}
  for(i=1;i<st.length;i++){var s=st[i];if(s.d>=d){seg(d-pv.d,dkAvgAz(pv.a,s.a),(pv.p+s.p)/2);return[x,y,z]}seg(s.d-pv.d,dkAvgAz(pv.a,s.a),(pv.p+s.p)/2);pv=s}
@@ -4770,7 +4795,7 @@ var rgaps=dkGapIns(runs,function(pv,nx,g1,g2){var o=dkGapBase(nx,"runs",g1,g2);o
   var rq=0,rqL=0,gc=0,gl=0;(gts.rqd||[]).forEach(function(r){if(r._h!==k)return;var L=r.to-r.from;if(r.rqdp!=null){rq+=r.rqdp*L;rqL+=L}/*RECGT*/if(r.rec!=null&&L>0){gc+=r.rec;gl+=L}});if(gl>0){rc=gc;rl=gl}dts.sort();
   var h={_id:"holes:"+k,_h:k,hole:name[k],loc:hi.loc||"",e:pick(hi.ce,g.e),n:pick(hi.cn,g.n),z:pick(hi.crl,g.z),az:pick(hi.az,g.az),dip:pick(hi.inc,g.dip),eoh:pick(hi.eoh,g.tgt),drilled:dr||null,logged:lg?dkR(lg):null,nruns:rs.length,recp:rl>0?dkR(rc/rl*100,2):null,rqdp:rqL>0?dkR(rq/rqL,2):null,pct:null,rig:hi.rig||"",dtp:hi.dtp||"",con:hi.con||"",loggers:Object.keys(lgs).join(", "),first:dts[0]||"",last:dts[dts.length-1]||""};
   var tgt=h.eoh;h.pct=tgt>0&&h.drilled!=null?dkR(Math.min(100,h.drilled/tgt*100),2):null;holes.push(h);
-  svqcRows(h,hi,svq);dkStations(h).forEach(function(s,i){survey.push({_id:"survey:"+k+":"+i,_h:k,hole:h.hole,depth:s.d,az:dkR(s.a,2),dip:dkR(s.p,2),src:i===0?"Collar":"Survey ("+s.n+" shot"+(s.n>1?"s":"")+")"})})});
+  svqcRows(h,hi,svq);var svSts=svSorted(hi),prevD=0;svSts.forEach(function(st,si){var pk=svPicked(st,hi),from=prevD,to=num(st.d);prevD=to>0?to:prevD;survey.push({_id:"survey:"+k+":"+si,_h:k,hole:h.hole,from:from,to:to,az:pk.a!=null?dkR(+pk.a,2):null,dip:pk.p!=null?dkR(+pk.p,2):null,src:si===0?"Collar":"Survey ("+st.sh.length+" shot"+(st.sh.length>1?"s":"")+")"+(pk.man?" [manual]":"")})})});
  D.holes={k:"holes",n:"Holes / collars",g:"Holes",cols:[dkCol("hole","Hole",0,96),dkCol("loc","Location",0,110,"loc"),dkCol("e","Easting",1,96,"ce"),dkCol("n","Northing",1,96,"cn"),dkCol("z","RL (m)",1,76,"crl"),dkCol("az","Azimuth °",1,76,"az"),dkCol("dip","Dip °",1,64,"inc"),dkCol("eoh","Target / EOH (m)",1,96,"eoh"),dkCol("drilled","Drilled (m)",1,84),dkCol("pct","% of target",1,80),dkCol("logged","Logged (m)",1,84),dkCol("nruns","Runs",1,60),dkCol("recp","Rec %",1,64),dkCol("rqdp","RQD % (geotech)",1,100),dkCol("rig","Rig",0,70,"rig"),dkCol("dtp","Rig type",0,90,"dtp"),dkCol("con","Contractor",0,110,"con"),dkCol("loggers","Loggers",0,100),dkCol("first","First log",0,96),dkCol("last","Last log",0,96)],rows:holes};
  if(gts.def){var hmap0=holes.reduce(function(m,h){m[h._h]=h;return m},{}),stc0={};
   gts.def.forEach(function(r){var c=rmr1Cond(r,gts.wea);r.pers=c.parts[0];r.apert=c.parts[1];r.roughR=c.parts[2];r.infillR=c.parts[3];r.weaR=c.parts[4];r.condScore=c.score;
@@ -4784,7 +4809,7 @@ var rgaps=dkGapIns(runs,function(pv,nx,g1,g2){var o=dkGapBase(nx,"runs",g1,g2);o
  D.gt_rmr={k:"gt_rmr",n:"RMR",g:"Geotechnical",cols:[dkCol("hole","Hole",0,96),dkCol("from","From (m)",1),dkCol("to","To (m)",1),dkCol("strCode","Strength class",0,90),dkCol("strRating","Strength /15",1,80),dkCol("rqd","RQD value (%)",1,96),dkCol("rqdR","RQD /20",1,70),dkCol("sp","Spacing (m)",1,80),dkCol("spR","Spacing /20",1,80),dkCol("pers","Persistence /6",1,92),dkCol("ap","Aperture /6",1,82),dkCol("rough","Roughness /6",1,86),dkCol("inf","Infilling /6",1,82),dkCol("weaR","Weathering /6",1,92),dkCol("cond","Condition /30",1,92),dkCol("gwV","Groundwater",0,92),dkCol("gwR","Groundwater /15",1,100),dkCol("gwSrc","Groundwater source",0,130),dkCol("total","Basic RMR /100",1,100),dkCol("cls","Class",0,56),dkCol("issues","Review / Missing data",0,260)],rows:rmrRows};
  dtRuns11(D); dkFSTabs(D,gts,runs,holes);
  /*DTPERF*/dkPerfTab(D,gts,holes);
- D.survey={k:"survey",n:"Downhole survey",g:"Holes",cols:[dkCol("hole","Hole",0,96),dkCol("depth","Depth (m)",1),dkCol("az","Azimuth °",1),dkCol("dip","Dip °",1),dkCol("src","Source",0,130)],rows:survey};D.svqc={k:"svqc",n:"Survey QC (3 tries)",g:"Holes",cols:[dkCol("hole","Hole",0,96),dkCol("depth","Depth (m)",1),dkCol("n","Tries",1,56),dkCol("t1","Try 1 Azi / Dip",0,120),dkCol("t2","Try 2 Azi / Dip",0,120),dkCol("t3","Try 3 Azi / Dip",0,120),dkCol("more","Extra tries",0,120),dkCol("best","Closest try #",1,84),dkCol("baz","Best Azi °",1,76),dkCol("bdip","Best Dip °",1,76),dkCol("paz","Planned Azi °",1,90),dkCol("pdip","Planned Dip °",1,90),dkCol("daz","\u0394 Azi °",1,70),dkCol("ddip","\u0394 Dip °",1,70),dkCol("st","Status",0,130)],rows:svq};
+ D.survey={k:"survey",n:"Downhole survey",g:"Holes",cols:[dkCol("hole","Hole ID",0,96),dkCol("from","From (m)",1,80),dkCol("to","To (m)",1,80),dkCol("az","Azimuth °",1,84),dkCol("dip","Dip °",1,72),dkCol("src","Source",0,130)],rows:survey};D.svqc={k:"svqc",n:"Survey QC (3 tries)",g:"Holes",cols:[dkCol("hole","Hole",0,96),dkCol("depth","Depth (m)",1),dkCol("n","Tries",1,56),dkCol("t1","Try 1 Azi / Dip",0,120),dkCol("t2","Try 2 Azi / Dip",0,120),dkCol("t3","Try 3 Azi / Dip",0,120),dkCol("more","Extra tries",0,120),dkCol("best","Closest try #",1,84),dkCol("baz","Best Azi °",1,76),dkCol("bdip","Best Dip °",1,76),dkCol("paz","Planned Azi °",1,90),dkCol("pdip","Planned Dip °",1,90),dkCol("daz","\u0394 Azi °",1,70),dkCol("ddip","\u0394 Dip °",1,70),dkCol("st","Status",0,130)],rows:svq};
  var tk={};TALLY.forEach(function(x){Object.keys(x||{}).forEach(function(q){if(q!=="id")tk[q]=1})});var tc=Object.keys(tk);
  D.tally={k:"tally",n:"Rod tally",g:"Drilling",cols:tc.map(function(q){return dkCol(q,q.charAt(0).toUpperCase()+q.slice(1),0,96)}),rows:TALLY.map(function(x,i){var o={_id:"tally:"+i,_h:hk(x.hole)};tc.forEach(function(q){var v=x[q];o[q]=typeof v==="number"?v:(v==null?"":(typeof v==="object"?JSON.stringify(v):String(v)))});return o})};
  tc.forEach(function(q,i){var nn=D.tally.rows.length&&D.tally.rows.every(function(r){return r[q]===""||typeof r[q]==="number"||dkN(r[q])!=null});if(nn){D.tally.cols[i].n=true;D.tally.rows.forEach(function(r){r[q]=dkN(r[q])})}});
@@ -4943,7 +4968,16 @@ function dkViewPaint(){var c=DK.el.classList;c.toggle("dk-hidectl",!!DKS.hidectl
 function dkView(v){var c=DK.el.classList;if(v==="ctl")DKS.hidectl=!DKS.hidectl;else if(v==="lg")DKS.hidelg=!DKS.hidelg;else if(v==="focus"){c.toggle("dk-focus");if(c.contains("dk-focus"))dkMsg("Focus view: press Esc or Focus again to bring the menus back")}
  else if(v==="fs"){try{if(document.fullscreenElement)document.exitFullscreen();else DK.el.requestFullscreen()}catch(e){dkMsg("Full screen is not available here",1)}}dkKeep();dkViewPaint();setTimeout(function(){dkLayout();dkRender()},60)}
 function dkLayout(){var m=DK.el.querySelector(".dk-main"),iw=innerWidth,lw=DKS.lwu?DKS.lw:(iw<1200?220:iw<1400?250:DKS.lw),rw=DKS.rwu?DKS.rw:(iw<1200?240:iw<1400?270:DKS.rw);lw=Math.max(150,Math.min(lw,Math.round(iw*.45)));rw=Math.max(150,Math.min(rw,Math.round(iw*.45)));var foc=DK.el.classList.contains("dk-focus");m.style.gridTemplateColumns=(DKS.lo&&!foc?lw+"px 5px ":"0 0 ")+"minmax(0,1fr)"+(DKS.ro&&!foc?" 5px "+rw+"px":" 0 0");DK.el.classList.toggle("dk-nol",!DKS.lo);DK.el.classList.toggle("dk-nor",!DKS.ro)}
-function dkOpen(){if(!DK.el)dkShell();setTimeout(function(){if(DK.el&&!DK.el.hidden&&DK.data&&!DK.data.holes.length)dkSetupGuide(false)},500);if(window.geotSet&&document.body.classList.contains("geoton"))window.geotSet(false);DK.data=dkBuild();DK.sig=dkSig();DK.el.hidden=false;try{dkNavPush()}catch(e){}document.body.classList.add("dkon");try{sessionStorage.setItem("dg_dk","1")}catch(e){}
+/*DKZOOM: pinch-zoom on a touchpad (and Ctrl + mouse wheel) inside Desktop Studio zooms the workspace so it rearranges to fit the window, instead of the browser magnifying the whole page and cutting off the edges. Ctrl+0 resets.*/
+function dkZ(){var v=+DKS.uiz;return v>=0.5&&v<=2.5?v:1}
+function dkZApply(){if(DK.el){var z=dkZ();DK.el.style.zoom=z===1?"":String(z)}}
+(function(){var t=0;
+ document.addEventListener("wheel",function(e){if(!(e.ctrlKey||e.metaKey)||!DK.el||DK.el.hidden||!DK.el.contains(e.target))return;if(e.target.closest&&e.target.closest(".dk-sw")&&DKS.tab==="strip")return;
+  e.preventDefault();var f=Math.exp(-(e.deltaY||0)*(e.deltaMode===1?0.03:0.0015));DKS.uiz=Math.max(0.5,Math.min(2.5,Math.round(dkZ()*f*100)/100));if(Math.abs(DKS.uiz-1)<0.03)DKS.uiz=1;dkZApply();
+  try{dkMsg("Zoom "+Math.round(dkZ()*100)+"% \u2014 Ctrl+0 goes back to 100%")}catch(x){}clearTimeout(t);t=setTimeout(function(){dkKeep();try{dkRender()}catch(x){}},220)},{passive:false});
+ document.addEventListener("keydown",function(e){if(!(e.ctrlKey||e.metaKey)||e.key!=="0"||!DK.el||DK.el.hidden||dkZ()===1)return;DKS.uiz=1;dkZApply();dkKeep();try{dkRender();dkMsg("Zoom 100%")}catch(x){}},true);
+ setInterval(function(){if(DK.el){var want=dkZ()===1?"":String(dkZ());if(DK.el.style.zoom!==want)DK.el.style.zoom=want}},800)})();
+function dkOpen(){if(!DK.el)dkShell();dkZApply();setTimeout(function(){if(DK.el&&!DK.el.hidden&&DK.data&&!DK.data.holes.length)dkSetupGuide(false)},500);if(window.geotSet&&document.body.classList.contains("geoton"))window.geotSet(false);DK.data=dkBuild();DK.sig=dkSig();DK.el.hidden=false;try{dkNavPush()}catch(e){}document.body.classList.add("dkon");try{sessionStorage.setItem("dg_dk","1")}catch(e){}
  var ep=document.getElementById("dk-epsg");ep.value=DKS.epsg||"";dkViewPaint();dkLayout();dkFillFilters();dkTree();dkHoles();dkTab(DKS.tab);dkQA(true);
  clearInterval(DK.timer);DK.timer=setInterval(function(){if(DK.el.hidden)return;var s=dkSig();if(s!==DK.sig){DK.sig=s;dkReload()}},2000)}
 function dkClose(){if(!DK.el||DK.el.hidden)return;DK.el.hidden=true;document.body.classList.remove("dkon");clearInterval(DK.timer);dkMenu(null);try{sessionStorage.removeItem("dg_dk")}catch(e){}}
@@ -5528,7 +5562,7 @@ function dkStats(){var s=document.getElementById("dk-stc"),out=document.getEleme
   h=tr("Filled",m+" of "+rows.length)+tr("Distinct",Object.keys(f).length)+top.map(function(k){return tr(dkE(k.length>22?k.slice(0,21)+"…":k),f[k]+" ("+Math.round(f[k]/m*100)+"%)")}).join("")}
  out.innerHTML='<p class="dk-sl">'+dkE(c.l)+' · '+lab+'</p><table class="dk-kv">'+h+'</table>'}
 /* ---------- plan map ---------- */
-function dkRetry(fn){dkRetry.n=(dkRetry.n||0)+1;if(dkRetry.n>40){dkRetry.n=0;return}requestAnimationFrame(function(){if(DK.el&&!DK.el.hidden)fn()})}
+function dkRetry(fn){dkRetry.n=(dkRetry.n||0)+1;if(dkRetry.n>40){dkRetry.n=0;return}requestAnimationFrame(function(){if((DK.el&&!DK.el.hidden)||(D3PANE&&fn===dk3D))fn()})}
 function dkNice(x){var p=Math.pow(10,Math.floor(Math.log10(x))),f=x/p;return(f<1.5?1:f<3.5?2:f<7.5?5:10)*p}
 function dkMapGeo(){var out=[];DK.data.holes.forEach(function(h){if(h.e==null||h.n==null)return;if(DK.holes&&!DK.holes[h._h])return;var st=dkStations(h),L=Math.max(h.eoh||0,h.drilled||0),pts=[[h.e,h.n,h.z||0]];
   if(L>0){var ds=st.map(function(s){return s.d}).filter(function(d){return d>0&&d<L});ds.push(L);ds.forEach(function(d){var o=dkAt(st,d);pts.push([h.e+o[0],h.n+o[1],(h.z||0)+o[2]])})}out.push({h:h,pts:pts,st:st,L:L})});return out}
@@ -5686,6 +5720,7 @@ function asRange(k){var lo=1e18,hi=-1e18;ASSAY.forEach(function(r){var v=r[k];if
 function asFor(h){var k=hk(h);return ASSAY.filter(function(r){return hk(r.hole)===k})}
 /*DK3D*/
 /* ---------- 3D drillhole view (beta): orthographic canvas renderer, no external libraries ---------- */
+var D3PANE=null;window.d3SetPane=function(p){D3PANE=p};window.dk3D=function(){return dk3D()};
 var D3={yaw:35,pit:28,s:0,cx:0,cy:0,cz:0,px:0,py:0,vx:1,w:7,lab:true,key:"",cb:"rock"};
 function dkCBList(){var o={};Object.keys(DKCB).forEach(function(k){o[k]=DKCB[k]});ASEL.forEach(function(c){if(asRange(c.k))o[c.k]=[c.n+" (assay)","as"]});return o}
 function d3Ivals(h,cb){var a=[],gt=DK.data.gts;
@@ -5706,7 +5741,7 @@ function d3Proj(p,C){var x=(p[0]-C.cx),y=(p[1]-C.cy),z=(p[2]-C.cz)*C.vx;
  var a=C.yaw*Math.PI/180,b=C.pit*Math.PI/180,ca=Math.cos(a),sa=Math.sin(a),cb=Math.cos(b),sb=Math.sin(b);
  var ex=x*ca+y*sa,ey=-x*sa+y*ca;
  return[ex,-(z*cb+ey*sb),ey*cb-z*sb]}
-function dk3D(){var p=DK.el.querySelector('.dk-pane[data-p="d3"]');
+function dk3D(){var p=D3PANE||DK.el.querySelector('.dk-pane[data-p="d3"]');
  if(!p.querySelector(".dk-d3w")){
   p.innerHTML='<div class="dk-d3w"><canvas class="dk-d3c"></canvas>'
    +'<div class="dk-mctl"><button type="button" data-z="in" title="Zoom in">'+dkIc("pl")+'</button><button type="button" data-z="out" title="Zoom out">'+dkIc("mi")+'</button><button type="button" data-z="fit" title="Fit all holes">'+dkIc("fit")+'</button><button type="button" data-a="img" title="Save as image (PNG)">'+dkIc("img")+'</button><label class="dk-ml"><input type="checkbox" data-z="lab"> Labels</label></div>'
@@ -5806,7 +5841,7 @@ function d3Pick(x,y){var best=null,bd=14;(D3.hit||[]).forEach(function(s){var d;
  if(best.r){DK.sel={};DK.sel[best.r._id]=1;dkIdentify(best.r)}
  else if(best.h){var hr=(DK.data.holes||[]).filter(function(q){return q._h===best.h._h})[0];if(hr){DK.sel={};DK.sel[hr._id]=1;dkIdentify(hr)}}
  dk3D()}
-/*BRANDHDR2*/function d3Png(){var p=DK.el.querySelector('.dk-pane[data-p="d3"]'),cv=p&&p.querySelector("canvas");if(!cv)return;
+/*BRANDHDR2*/function d3Png(){var p=D3PANE||DK.el.querySelector('.dk-pane[data-p="d3"]'),cv=p&&p.querySelector("canvas");if(!cv)return;
  var hs=DK.data.holes.filter(function(h){return!DK.holes||DK.holes[h._h]}),nm=(hs.length===1?hs[0].hole:hs.length+"_holes")||"holes";
  var dl=function(blob){if(!blob)return;var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="3D_"+String(nm).replace(/[^\w\-]+/g,"_")+".png";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},800)};
  try{
@@ -6594,7 +6629,8 @@ function dkHoleStatus(h){var k=h._h,today=new Date(),td=today.getFullYear()+"-"+
   var j=Li;while(j>0&&String(ra[j-1].r.st||"").toLowerCase()===k0)j--;since=ra[j].r.date+(ra[j].r.tf?" "+raDisp(ra[j].r.tf):"");
   st=/break/.test(k0)?"Breakdown":/stand/.test(k0)?"Standby":/activ|on ?going|drill/.test(k0)?"Ongoing":(s0||"Ongoing");why="Last rig activity: "+(s0||"no status")+" on "+L.r.date;
   if(lastRun&&lastRun>L.r.date&&st!=="Ongoing"){var rd=dkDayDiff(L.r.date,lastRun);if(rd>=1){st="Ongoing";src="Rig activities + Run recovery";since=runs.map(function(r){return r.date}).filter(function(x){return x>L.r.date}).sort()[0]||lastRun;why="Runs logged on "+lastRun+", after the last "+s0+" entry ("+L.r.date+")"}}}
- else if(lastRun){st="Ongoing";src="Run recovery";since=runs.map(function(r){return r.date}).sort()[0];why="No rig activity entries. Last run logged "+lastRun}
+ /*HSBD: a Breakdown with metres drilled that same day is still Ongoing.*/if(L&&st==="Breakdown"&&runs.some(function(r){return r.date===L.r.date&&r.to!=null&&r.from!=null&&r.to>r.from})){st="Ongoing";src="Rig activities + Run recovery";why="Breakdown logged on "+L.r.date+", but the Run Recovery Database shows metres drilled that day"}
+ else if(!L&&lastRun){st="Ongoing";src="Run recovery";since=runs.map(function(r){return r.date}).sort()[0];why="No rig activity entries. Last run logged "+lastRun}
  var lastDate=[L?L.r.date:"",lastRun].sort().pop()||"",idle=lastDate?dkDayDiff(lastDate,td):null;
  if(st==="Ongoing"&&idle!=null&&idle>DKST_STALE){st="No update";why+=". Nothing new for "+idle+" days"}
  if(tgt>0&&act!=null&&act>=tgt-0.05){st="Completed";why="Drilled "+dkFmt(act)+" m reached the planned "+dkFmt(tgt)+" m"+(src?"":"");if(!src)src="Depth"}
@@ -6607,7 +6643,7 @@ function dkStatHTML(S){var cls={Ongoing:"on",Breakdown:"bd",Standby:"sb",Complet
  var h='<div class="dk-hschips">'+chips+'</div><div class="dk-hsw"><table class="dk-st dk-hst"><thead><tr>'+S.h.map(function(x,i){return'<th'+(i>=5&&i<=8?' class="n"':'')+'>'+dkE(x)+'</th>'}).join("")+'</tr></thead><tbody>';
  S.R.forEach(function(o){var bar=o.pct!=null?'<div class="dk-hsbar"><span style="width:'+Math.min(100,o.pct)+'%"></span></div>':"";
   h+='<tr><td><b>'+dkE(o.hole)+'</b></td><td>'+dkE(o.rig||"—")+'</td><td>'+(o.con?dkE(o.con):'<span class="dk-mut">add in Holes / collars</span>')+'</td><td><span class="dk-hsp dk-hs-'+(cls[o.st]||"nd")+'" title="'+dkE(o.why)+'"><i></i>'+dkE(o.st)+'</span></td><td>'+dkE(o.since||"")+'</td><td class="n">'+(o.tgt!=null?dkFmt(o.tgt):"—")+'</td><td class="n">'+(o.act!=null?dkFmt(o.act):"—")+'</td><td class="n">'+(o.pct!=null?o.pct+"%":"—")+bar+'</td><td class="n">'+(o.rem!=null?dkFmt(o.rem):"—")+'</td><td>'+dkE(o.last||"")+'</td><td class="dk-hsla" title="'+dkE(o.lastAct)+'">'+dkE(o.lastAct||"")+'</td><td class="dk-mut">'+dkE(o.src||"")+'</td></tr>'});
- return h+'</tbody></table></div><p class="dk-hint"><b>How status is decided:</b> 1) <b>Completed</b> when actual depth reaches the planned depth (Target / EOH). 2) Otherwise the <b>latest Rig Activities entry</b> decides: Breakdown, Standby, or Active = Ongoing. 3) If runs were logged in the Run Recovery Database on a later day than a Breakdown or Standby entry, the hole is Ongoing again. 4) With no rig activity entries, any run in the Run Recovery Database means Ongoing. 5) Ongoing with nothing new for more than '+DKST_STALE+' days shows <b>No update</b>. Point at a status to see why. Last depth is the deepest To in the Geological logging intervals (geotechnical rows are used only for a hole with no logging intervals). Planned depth is Target / EOH from Hole details.</p>'}
+ return h+'</tbody></table></div><p class="dk-hint"><b>How status is decided:</b> 1) <b>Completed</b> when actual depth reaches the planned depth (Target / EOH). 2) Otherwise the <b>latest Rig Activities entry</b> decides: Breakdown, Standby, or Active = Ongoing. A Breakdown counts only if the hole did not advance that day; metres drilled that day in the Run Recovery Database make it Ongoing. 3) If runs were logged in the Run Recovery Database on a later day than a Breakdown or Standby entry, the hole is Ongoing again. 4) With no rig activity entries, any run in the Run Recovery Database means Ongoing. 5) Ongoing with nothing new for more than '+DKST_STALE+' days shows <b>No update</b>. Point at a status to see why. Last depth is the deepest To in the Geological logging intervals (geotechnical rows are used only for a hole with no logging intervals). Planned depth is Target / EOH from Hole details.</p>'}
 
 /*HSDAY*/function dkHoleDay(h,day){var k=h._h,gts=DK.data.gts||{},rows=(gts.rqd||[]).filter(function(r){return r._h===k&&r.date===day});
  var drilled=0,recC=0,recL=0;rows.forEach(function(r){var L=r.to!=null&&r.from!=null?r.to-r.from:0;if(L>0)drilled+=L;if(r.rec!=null&&L>0){recC+=r.rec;recL+=L}});
@@ -6615,7 +6651,7 @@ function dkStatHTML(S){var cls={Ongoing:"on",Breakdown:"bd",Standby:"sb",Complet
  var SD=raSD(),ra=RA.map(function(r,i){return{r:r,i:i}}).filter(function(o){return hk(o.r.hole)===k&&SD[o.i]===day}).sort(function(x,y){return x.i-y.i}).map(function(o){return o.r});
  var hrs={a:0,b:0,s:0},lastAct="";
  ra.forEach(function(r){var d=raDur(r)||0,s0=String(r.st||"").trim(),k0=s0.toLowerCase(),cat=/break/.test(k0)?"b":/stand/.test(k0)?"s":"a";hrs[cat]+=d;lastAct=[r.act,r.rem].filter(Boolean).join(" — ")||lastAct});
- /*HSDAY2*/var st=hrs.b>0?"Breakdown":(hrs.a>0||hrs.s>0||drilled>0)?"Ongoing":null;
+ /*HSDAY3: Breakdown only when a Breakdown is logged AND the hole did not advance that day; any metres drilled = Ongoing.*/var st=drilled>0?"Ongoing":hrs.b>0?"Breakdown":(hrs.a>0||hrs.s>0)?"Ongoing":null;
  var R=dkRigOf(k),dep=dgDepthTo(h,day);return{hole:h.hole,rig:dkRigLabel(R.no,R.tp),con:R.con,st:st,tgt:h.eoh>0?+h.eoh:null,depth:dep>0?dkR(dep,2):null,drilled:drilled>0?dkR(drilled,2):null,recp:recL>0?dkR(recC/recL*100,2):null,hrsA:dkR(hrs.a,2),hrsB:dkR(hrs.b,2),hrsS:dkR(hrs.s,2),lastAct:lastAct}}
 function dkStatDataDay(day){var hs=DK.data.holes.filter(function(h){return!DK.holes||DK.holes[h._h]}),R=hs.map(function(h){return dkHoleDay(h,day)});
  return{h:["Hole","Rig","Contractor","Status that day","Target / EOH (m)","Last depth (m)","Drilled (m)","Recovery %","Active hrs","Breakdown hrs","Standby hrs","Last activity"],R:R,r:R.map(function(o){return[o.hole,o.rig,o.con,o.st,o.tgt,o.depth,o.drilled,o.recp,o.hrsA,o.hrsB,o.hrsS,o.lastAct]})}}
@@ -6625,7 +6661,7 @@ function dkStatHTMLDay(S,day){var cls={Ongoing:"on",Breakdown:"bd"},n={};S.R.for
  var h='<div class="dk-hschips">'+chips+'</div><div class="dk-hsw"><table class="dk-st dk-hst"><thead><tr>'+S.h.map(function(x,i){return'<th'+(i>=4&&i<=10?' class="n"':'')+'>'+dkE(x)+'</th>'}).join("")+'</tr></thead><tbody>';
  S.R.forEach(function(o){h+='<tr><td><b>'+dkE(o.hole)+'</b></td><td>'+dkE(o.rig||"—")+'</td><td>'+(o.con?dkE(o.con):'<span class="dk-mut">add in Holes / collars</span>')+'</td><td>'+(o.st?'<span class="dk-hsp dk-hs-'+cls[o.st]+'"><i></i>'+dkE(o.st)+'</span>':'<span class="dk-mut">—</span>')+'</td><td class="n">'+(o.tgt?dkFmt(o.tgt):"—")+'</td><td class="n"><b>'+(o.depth!=null?dkFmt(o.depth):"—")+'</b></td><td class="n">'+(o.drilled!=null?dkFmt(o.drilled):"—")+'</td><td class="n">'+(o.recp!=null?o.recp+"%":"—")+'</td><td class="n">'+(o.hrsA?dkFmt(o.hrsA):"—")+'</td><td class="n">'+(o.hrsB?dkFmt(o.hrsB):"—")+'</td><td class="n">'+(o.hrsS?dkFmt(o.hrsS):"—")+'</td><td class="dk-hsla">'+dkE(o.lastAct||"")+'</td></tr>'});
  h+='<tr class="dk-hstot"><td colspan="6"><b>Total</b></td><td class="n"><b>'+dkFmt(dkR(tot.d,2))+'</b></td><td class="n"><b>'+(tot.rl?dkR(tot.r/tot.rl,2)+"%":"—")+'</b></td><td class="n"><b>'+dkFmt(dkR(tot.a,2))+'</b></td><td class="n"><b>'+dkFmt(dkR(tot.b,2))+'</b></td><td class="n"><b>'+dkFmt(dkR(tot.s,2))+'</b></td><td></td></tr>';
- return h+'</tbody></table></div><p class="dk-hint">Figures for '+dkE(day)+' only. Status that day: <b>Breakdown</b> if the Rig Activities Database has a Breakdown entry for that hole on this date, otherwise <b>Ongoing</b> if there is any Active/Standby rig activity entry or any metres drilled that day, otherwise left blank. Drilled (m) and Recovery % come from the Run Recovery Database rows logged on this date. Active/Breakdown/Standby hrs come from the Rig Activities Database’s TimeFrom/TimeTo for the drilling day 6:00 AM on this date to 6:00 AM the next morning (same day boundary as the Drilling tables’ day filter) — they read — when nothing was entered there for that hole and day, even if drilling was logged.</p>'}
+ return h+'</tbody></table></div><p class="dk-hint">Figures for '+dkE(day)+' only. Status that day: <b>Ongoing</b> if the hole advanced that day (metres in the Run Recovery Database), even if a Breakdown was logged. <b>Breakdown</b> only if a Breakdown entry was logged and the hole did not advance. Otherwise Ongoing if there is any Active/Standby entry, or blank. Drilled (m) and Recovery % come from the Run Recovery Database rows logged on this date. Active/Breakdown/Standby hrs come from the Rig Activities Database’s TimeFrom/TimeTo for the drilling day 6:00 AM on this date to 6:00 AM the next morning (same day boundary as the Drilling tables’ day filter) — they read — when nothing was entered there for that hole and day, even if drilling was logged.</p>'}
 function dkHSBar(){var d=DKS.hday||"";return'<div class="dk-tt dk-hsbar2"><b class="dk-sh">Hole status</b><button type="button" class="dk-btn'+(d?"":" dk-on")+'" data-hd="all">All time</button><button type="button" class="dk-btn" data-hd="prev">◀</button><input type="date" class="dk-hsd" value="'+dkE(d)+'" aria-label="Day"><button type="button" class="dk-btn" data-hd="next">▶</button><button type="button" class="dk-btn" data-hd="today">Today</button>'+(d?'<button type="button" class="dk-btn dk-on" data-hd="day">'+dkE(d)+'</button>':"")+'<span class="dk-tsp"></span><button type="button" class="dk-btn" data-cp="s">Copy table</button></div>'}
 function dkHSWire(p){var bar=p.querySelector(".dk-hsbar2");if(!bar)return;var go=function(v){DKS.hday=v;dkKeep();dkSum()};
  bar.addEventListener("click",function(e){var b=e.target.closest("[data-hd]");if(!b)return;var v=b.dataset.hd;
@@ -6907,20 +6943,41 @@ function daAuto(day){var C=daCfg(),D=DK.data,prev=daPrev(day),rigs={},order=[];
 function daNum(v){var x=parseFloat(String(v==null?"":v).replace(",","."));return isNaN(x)?null:x}
 function daCalc(day){var A=daAuto(day),C=A.C,rigs=A.rigs,prev=A.prev,man=(C.man||{})[day]||{},pman=(C.man||{})[prev]||{},PA=null;
  var ord=(C.ord||[]).filter(function(k){return rigs[k]}).concat(A.order.filter(function(k){return(C.ord||[]).indexOf(k)<0}));
- var all=ord.map(function(k){var o=rigs[k],c=C.rigs[k]||{},mm=man[k]||{},mf=daNum(mm.f),mt=daNum(mm.t),f=null,t=null,src="auto",m=o.m;
+ var all=ord.map(function(k){var o=rigs[k],c=C.rigs[k]||{},mm=man[k]||{},mf=daNum(mm.f),mt=daNum(mm.t),f=null,t=null,src="auto",m=o.m,pt=daNum((pman[k]||{}).t),af=o.af,pv=0;/*DAPREV: From = the To typed for the previous day*/
   if(mf!=null||mt!=null){var pf=null;if(mf==null){var pm=pman[k]||{};pf=daNum(pm.t);if(pf==null){if(!PA)PA=daAuto(prev);var po=PA.rigs[k];if(po&&po.at!=null)pf=po.at}}
-   f=mf!=null?mf:(o.af!=null?o.af:pf);t=mt!=null?mt:o.at;src="manual";m=(f!=null&&t!=null)?Math.max(0,t-f):0}
-  return{k:k,name:c.n||o.def,def:o.def,con:c.c!=null&&c.c!==""?c.c:o.con,on:c.off?false:true,del:!!c.del,custom:!!o.custom,m:m,src:src,mf:mm.f||"",mt:mm.t||"",f:f,t:t,af:o.af,at:o.at,holes:o.holes.map(function(h){return h.hole}),parts:o.parts}});
+   f=mf!=null?mf:(pt!=null?pt:(o.af!=null?o.af:pf));t=mt!=null?mt:o.at;src="manual";m=(f!=null&&t!=null)?Math.max(0,t-f):0}
+  else if(pt!=null){af=pt;pv=1;f=pt;t=o.at;m=t!=null?Math.max(0,t-f):0}
+  return{k:k,name:c.n||o.def,def:o.def,con:c.c!=null&&c.c!==""?c.c:o.con,on:c.off?false:true,del:!!c.del,custom:!!o.custom,m:m,src:src,mf:mm.f||"",mt:mm.t||"",f:f,t:t,af:af,pv:pv,at:o.at,holes:o.holes.map(function(h){return h.hole}),parts:o.parts}});
  var list=all.filter(function(o){return!o.del}),gone=all.filter(function(o){return o.del});
  var use=list.filter(function(o){return o.on}),per=+C.per>0?+C.per:20,plan=per*use.length,act=use.reduce(function(s,o){return s+o.m},0);
  return{C:C,day:day,prev:prev,list:list,gone:gone,use:use,per:per,plan:plan,act:act,pct:plan>0?act/plan*100:0}}
+/*DAPASTE: paste a whole Viber update into a rig's From or To and keep only the current depth (Total Advance)*/
+function daPasteVal(txt,row){var T=String(txt||"");if(!/[A-Za-z]/.test(T)||!/\d/.test(T))return null;
+ var nm=function(x){x=parseFloat(String(x).replace(/,/g,""));return isNaN(x)?null:x};
+ var sm=row.querySelector("small"),hl=String((sm&&sm.getAttribute("data-holes"))||"").toLowerCase().split("|").filter(Boolean);
+ var rig=((row.querySelector("[data-da=n]")||{}).value||(row.querySelector("[data-da=n]")||{}).placeholder||"").trim().toLowerCase();
+ var blocks=T.split(/(?=\ud83d\udccc)|(?=^\s*Hole ID\s*:)/m).filter(function(b){return b.trim()}),pick=null;
+ blocks.forEach(function(b){if(pick)return;var l=b.toLowerCase();if(hl.some(function(h){return l.indexOf(h)>=0}))pick=b});
+ var B=pick||(blocks.length===1?blocks[0]:null),N="([0-9][0-9,]*\\.?[0-9]*)",out=null,why="";
+ var tryRe=function(src,re,w){if(out!=null||!src)return;var m=re.exec(src);if(m&&nm(m[1])!=null){out=nm(m[1]);why=w}};
+ tryRe(B,new RegExp("Total\\s+Advance(?:\\s+to\\s+date)?\\s*:\\s*"+N,"i"),"current depth");
+ tryRe(B,new RegExp("(?:Current|Bottom|Final)\\s+Depth\\s*:\\s*"+N,"i"),"current depth");
+ if(out==null&&rig){var re=new RegExp("^[\\s\u2022*\\-]*(.+?)\\s+-\\s*"+N+"\\s*m\\s*$","gim"),m;while((m=re.exec(T))){var nmz=m[1].toLowerCase();if(nmz.indexOf(rig)>=0||rig.indexOf(nmz.replace(/\s*\(.*$/,"").trim())>=0){out=nm(m[2]);why="rig advance";break}}}
+ if(out==null){var one=null,cnt=0,re2=new RegExp("^[\\s\u2022*\\-]*.+?\\s+-\\s*"+N+"\\s*m\\s*$","gim"),m2;while((m2=re2.exec(T))){cnt++;one=nm(m2[1])}if(cnt===1&&one!=null){out=one;why="rig advance"}}
+ tryRe(B,new RegExp("Actual\\s+Drilled\\s+Meters\\s*:\\s*"+N,"i"),"drilled metres");
+ tryRe(B,new RegExp("Shift\\s+Advance\\s*:\\s*"+N,"i"),"shift advance");
+ return{v:out,why:why}}
+if(!window.__daPaste){window.__daPaste=1;document.addEventListener("paste",function(e){var t=e.target;if(!t||!t.getAttribute||t.tagName!=="INPUT")return;var a=t.getAttribute("data-da");if(a!=="mf"&&a!=="mt")return;var row=t.closest(".da-r");if(!row)return;
+  var txt=(e.clipboardData&&e.clipboardData.getData("text"))||"";var r=daPasteVal(txt,row);if(r===null)return;e.preventDefault();e.stopPropagation();
+  if(r.v==null){try{msg("No depth found in that text. Paste a Viber update with Total Advance, or type the number.",1)}catch(x){}return}
+  t.value=daM(r.v);t.dispatchEvent(new Event("change",{bubbles:true}));try{msg("Pasted update read as "+r.why+": "+daM(r.v)+" m",0)}catch(x){}},true)}
 function daText(R){var L=[R.C.title+" as of "+daFmtD(R.day)+", 11pm-11pm,","","Planned Drilling Meters: "+daM(R.plan)+"m","Actual Drilled Meters: "+daM(R.act)+"m","Overall Daily Rig Performance: "+daPct(R.pct),"Rig Status: "+R.use.length+" active drilling rig","Rig/Contractor Advance:",""];
  R.use.forEach(function(o){L.push("• "+o.name+(o.con?" ("+o.con+")":"")+" - "+daM(o.m)+"m")});return L.join("\n")}
 function daMount(box,build){if(!box)return;if(build){try{DK.data=dkBuild()}catch(e){}}if(!DK.data){box.innerHTML="<p class='da-n'>No data yet.</p>";return}
  var C=daCfg(),day=C.day&&/^\d{4}-\d\d-\d\d$/.test(C.day)?C.day:daDefDay(),R=daCalc(day);
  var h="<div class='da'><div class='da-day'><button type='button' data-da='step' data-v='-1' aria-label='Previous day'>◀</button><input type='date' class='da-d' value='"+dkE(day)+"' aria-label='Report day'><button type='button' data-da='step' data-v='1' aria-label='Next day'>▶</button><button type='button' data-da='latest'>Latest</button></div>"+
   "<p class='da-n'>"+dkE(daFmtD(R.prev))+" 11:00 PM → "+dkE(daFmtD(day))+" 11:00 PM · 3rd shift of "+dkE(schDL(R.prev))+" + 1st and 2nd shift of "+dkE(schDL(day))+"</p>"+
-  "<div class='da-rigs'>"+(R.list.length?R.list.map(function(o,i){var fx=function(v){return v==null?"":daM(v)},ph=o.src==="manual"?{f:fx(o.f),t:fx(o.t)}:{f:fx(o.af),t:fx(o.at)},auto=o.af!=null;return"<div class='da-r"+(o.on?"":" off")+"'><label class='da-on'><input type='checkbox' data-da='on' data-k='"+dkE(o.k)+"'"+(o.on?" checked":"")+" aria-label='Include in report'></label><div class='da-f'><input data-da='n' data-k='"+dkE(o.k)+"' value='"+dkE(o.name)+"' placeholder='"+dkE(o.def)+"' aria-label='Rig name in report'><input data-da='c' data-k='"+dkE(o.k)+"' value='"+dkE(o.con)+"' placeholder='Contractor' aria-label='Contractor'>"+"<div class='da-ft'><label>From<input data-da='mf' data-k='"+dkE(o.k)+"' inputmode='decimal' value='"+dkE(o.mf)+"' placeholder='"+dkE(ph.f||"m")+"'></label><label>To<input data-da='mt' data-k='"+dkE(o.k)+"' inputmode='decimal' value='"+dkE(o.mt)+"' placeholder='"+dkE(ph.t||"m")+"'></label>"+(o.src==="manual"?"<button type='button' class='da-clr' data-da='clr' data-k='"+dkE(o.k)+"' title='Clear the typed depths and use the logged data again'>Use logged</button>":"")+"</div><small>"+(o.src==="manual"?"<b class='da-tag'>Typed</b> ":(auto?"<b class='da-tag a'>From logs</b> ":"<b class='da-tag n'>No logged runs — type From and To</b> "))+dkE(o.holes.join(", "))+(o.src!=="manual"&&o.m>0&&Object.keys(o.parts).length<3?" · runs from "+Object.keys(o.parts).map(function(s){return["","1st","2nd","3rd"][s]}).join(", ")+" shift only":"")+"</small></div><b class='da-m'>"+daM(o.m)+" m</b><span class='da-mv'><button type='button' data-da='up' data-i='"+i+"' aria-label='Move up'"+(i?"":" disabled")+">▲</button><button type='button' data-da='dn' data-i='"+i+"' aria-label='Move down'"+(i<R.list.length-1?"":" disabled")+">▼</button><button type='button' class='da-del' data-da='del' data-k='"+dkE(o.k)+"' aria-label='Delete rig' title='Delete this rig from the report'>✕</button></span></div>"}).join(""):"<p class='da-n'>No rigs yet. Tap + Add rig, or add Rig no. / Drill type in Holes / collars.</p>")+"</div><div class='da-b'><button type='button' class='chip' data-da='add'><b>+ Add rig</b></button>"+(R.gone.length?"<button type='button' class='chip' data-da='undel'><b>Bring back deleted rigs ("+R.gone.length+")</b></button>":"")+"</div>"+
+  "<div class='da-rigs'>"+(R.list.length?R.list.map(function(o,i){var fx=function(v){return v==null?"":daM(v)},ph=o.src==="manual"?{f:fx(o.f),t:fx(o.t)}:{f:fx(o.af),t:fx(o.at)},auto=o.af!=null;var pvt=o.pv&&o.src!=="manual";return"<div class='da-r"+(o.on?"":" off")+"'><label class='da-on'><input type='checkbox' data-da='on' data-k='"+dkE(o.k)+"'"+(o.on?" checked":"")+" aria-label='Include in report'></label><div class='da-f'><input data-da='n' data-k='"+dkE(o.k)+"' value='"+dkE(o.name)+"' placeholder='"+dkE(o.def)+"' aria-label='Rig name in report'><input data-da='c' data-k='"+dkE(o.k)+"' value='"+dkE(o.con)+"' placeholder='Contractor' aria-label='Contractor'>"+"<div class='da-ft'><label>From<input data-da='mf' data-k='"+dkE(o.k)+"' inputmode='decimal' value='"+dkE(o.mf)+"' placeholder='"+dkE(ph.f||"m")+"'></label><label>To<input data-da='mt' data-k='"+dkE(o.k)+"' inputmode='decimal' value='"+dkE(o.mt)+"' placeholder='"+dkE(ph.t||"m")+"'></label>"+(o.src==="manual"?"<button type='button' class='da-clr' data-da='clr' data-k='"+dkE(o.k)+"' title='Clear the typed depths and use the logged data again'>Use logged</button>":"")+"</div><small data-holes='"+dkE(o.holes.join("|"))+"'>"+(o.src==="manual"?"<b class='da-tag'>Typed</b> ":(pvt?(o.at!=null?"<b class='da-tag a'>From logs · From = previous To</b> ":"<b class='da-tag n'>From = previous To — type To</b> "):(auto?"<b class='da-tag a'>From logs</b> ":"<b class='da-tag n'>No logged runs — type From and To</b> ")))+dkE(o.holes.join(", "))+(o.src!=="manual"&&o.m>0&&Object.keys(o.parts).length<3?" · runs from "+Object.keys(o.parts).map(function(s){return["","1st","2nd","3rd"][s]}).join(", ")+" shift only":"")+"</small></div><b class='da-m'>"+daM(o.m)+" m</b><span class='da-mv'><button type='button' data-da='up' data-i='"+i+"' aria-label='Move up'"+(i?"":" disabled")+">▲</button><button type='button' data-da='dn' data-i='"+i+"' aria-label='Move down'"+(i<R.list.length-1?"":" disabled")+">▼</button><button type='button' class='da-del' data-da='del' data-k='"+dkE(o.k)+"' aria-label='Delete rig' title='Delete this rig from the report'>✕</button></span></div>"}).join(""):"<p class='da-n'>No rigs yet. Tap + Add rig, or add Rig no. / Drill type in Holes / collars.</p>")+"</div><div class='da-b'><button type='button' class='chip' data-da='add'><b>+ Add rig</b></button>"+(R.gone.length?"<button type='button' class='chip' data-da='undel'><b>Bring back deleted rigs ("+R.gone.length+")</b></button>":"")+"</div>"+
   "<label class='da-per'>Planned metres per rig <input data-da='per' inputmode='decimal' value='"+dkE(String(R.per))+"'> m × "+R.use.length+" rig"+(R.use.length===1?"":"s")+" = "+daM(R.plan)+" m</label>"+
   "<textarea class='da-t' rows='14' spellcheck='false'>"+dkE(daText(R))+"</textarea>"+
   "<div class='da-b'><button type='button' class='chip' data-da='copy'><b>Copy for Viber</b></button><button type='button' class='chip' data-da='reset'><b>Rebuild text</b></button></div>"+
@@ -8244,7 +8301,4 @@ return r.update().then(function(){setTimeout(function(){if(found||r.waiting||r.i
 })();
 })();
 </script>
-<script>(function(){if(!("serviceWorker" in navigator)||location.protocol==="file:")return;var rl=0;function bar(w){if(document.getElementById("pwaupd"))return;var d=document.createElement("div");d.id="pwaupd";d.setAttribute("role","status");d.style.cssText="position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483647;background:#222b35;color:#fff;padding:12px 14px;border-radius:12px;font:14px system-ui;display:flex;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 4px 18px rgba(0,0,0,.35)";d.innerHTML="<span>Update ready</span>";var b=document.createElement("button");b.type="button";b.textContent="Tap to reload";b.style.cssText="background:#8fa6b8;color:#10202c;border:0;border-radius:8px;padding:8px 14px;font:600 14px system-ui";b.onclick=function(){b.disabled=true;b.textContent="Updating...";w.postMessage("skip")};d.append(b);document.body.append(d)}
-function watch(r){if(r.waiting&&navigator.serviceWorker.controller)bar(r.waiting);r.addEventListener("updatefound",function(){var n=r.installing;if(!n)return;n.addEventListener("statechange",function(){if(n.state==="installed"&&navigator.serviceWorker.controller)bar(n)})})}
-navigator.serviceWorker.addEventListener("controllerchange",function(){if(rl)return;rl=1;location.reload()});
-addEventListener("load",function(){navigator.serviceWorker.register("sw.js").then(function(r){watch(r);setInterval(function(){r.update().catch(function(){})},3600000)}).catch(function(){})})})()</script></body></html>
+</body></html>
