@@ -2010,7 +2010,7 @@ html.fson .dk-title{margin-right:150px}
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.65.48</span>
+  <span class="hm-dver">v3.65.49</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -2041,7 +2041,7 @@ html.fson .dk-title{margin-right:150px}
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.65.48</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.65.49</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -2131,7 +2131,7 @@ html.fson .dk-title{margin-right:150px}
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.48</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.49</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -4506,7 +4506,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){pkStop(ALL?"Nothing logged yet":"Nothing in this shift",ALL?("No runs or geotechnical rows are saved for "+hole+" yet."):("No runs for "+hole+" match the date "+day+" and shift "+n+" set in Setup \u203a Log Details. Check the date and shift there, or use <b>Save shift packet (all interval)</b> instead."));return null}
  /*PKALLDATA: a packet carries every Desktop Studio browser table for the hole (runs incl. Leapfrog codes, hole details and survey, geotech, rod tally, assay, rig activities, rig lookups).*/var tl=TALLY.filter(function(x){return hk(x.hole)===k});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.65.48",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt,rigact:raForHole(k),riglk:raLkCopy(),assay:pkAssay(k),asel:pkAsel(),lfrules:LFR}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.65.49",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt,rigact:raForHole(k),riglk:raLkCopy(),assay:pkAssay(k),asel:pkAsel(),lfrules:LFR}}
 function pkAssay(k){try{return ASSAY.filter(function(x){return hk(x.hole)===k}).map(function(x){return JSON.parse(JSON.stringify(x))})}catch(e){return[]}}
 function pkAsel(){try{return JSON.parse(JSON.stringify(ASEL||[]))}catch(e){return[]}}
 /*ESCHK*/
@@ -5019,7 +5019,7 @@ function dkTree(){var t=document.getElementById("dk-tree"),g={};DK.data.order.fo
  dkTreeWire()}
 function dkHoles(){var l=document.getElementById("dk-hl"),q=(document.getElementById("dk-hq").value||"").trim().toUpperCase();
  l.innerHTML=DK.data.holes.filter(function(h){return!q||h._h.indexOf(q)>=0}).map(function(h){var on=!DK.holes||DK.holes[h._h];return'<label class="dk-hr"><input type="checkbox" data-h="'+dkE(h._h)+'"'+(on?" checked":"")+'><span>'+dkE(h.hole)+'</span><i>'+(h.drilled!=null?dkR(h.drilled,2)+" m":"")+'</i><button type="button" class="dk-hdel" data-del="'+dkE(h._h)+'" title="Delete '+dkE(h.hole)+'" aria-label="Delete '+dkE(h.hole)+'">✕</button></label>'}).join("")||'<p class="dk-empty">No holes yet. Log in the field app or import shift packets.</p>'}
-function dkSetHoles(fn){var all=DK.data.holes.map(function(h){return h._h}),cur=DK.holes||all.reduce(function(m,k){m[k]=1;return m},{}),nx={};all.forEach(function(k){if(fn(k,!!cur[k]))nx[k]=1});DK.holes=Object.keys(nx).length===all.length?null:nx;dkHoles();dkAfterFilter()}
+function dkSetHoles(fn){DK.hpick=null;var all=DK.data.holes.map(function(h){return h._h}),cur=DK.holes||all.reduce(function(m,k){m[k]=1;return m},{}),nx={};all.forEach(function(k){if(fn(k,!!cur[k]))nx[k]=1});DK.holes=Object.keys(nx).length===all.length?null:nx;dkHoles();dkAfterFilter()}
 function dkAfterFilter(){DK.sel={};DK.anchor=-1;dkTree();dkRender()}
 /* ---------- menus & actions ---------- */
 function dkMenu(btn){var m=DK.el.querySelector(".dk-menu");[].forEach.call(DK.el.querySelectorAll(".dk-mt"),function(b){b.classList.toggle("on",b===btn)});if(!btn){m.hidden=true;DK.menu=null;return}
@@ -5044,7 +5044,7 @@ function dkWire(){var d=DK.el;
   var ha=t.closest("[data-ha]");if(ha){var m=ha.getAttribute("data-ha");dkSetHoles(function(k,on){return m==="all"?true:m==="none"?false:!on});return}
   if(t.id==="dk-fr"){DK.f={d1:"",d2:"",lg:"",sh:"",z1:"",z2:""};DK.holes=null;dkFillFilters();dkHoles();dkAfterFilter();return}});
  d.addEventListener("mouseover",function(e){if(!DK.menu)return;var mt=e.target.closest(".dk-mt");if(mt&&mt!==DK.menu)dkMenu(mt)});
- d.querySelector("#dk-hl").addEventListener("change",function(e){var k=e.target.getAttribute("data-h");if(!k)return;var on=e.target.checked;dkSetHoles(function(x,c){return x===k?on:c})});
+ d.querySelector("#dk-hl").addEventListener("change",function(e){var k=e.target.getAttribute("data-h");if(!k)return;var on=e.target.checked;dkSetHoles(function(x,c){return x===k?on:c});if(on)DK.hpick=k});
  d.querySelector("#dk-hq").addEventListener("input",dkHoles);
  ["d1","d2","lg","sh","z1","z2"].forEach(function(k){d.querySelector("#dk-"+k).addEventListener("change",function(e){DK.f[k]=e.target.value;dkAfterFilter()})});
  d.querySelector("#dk-epsg").addEventListener("change",function(e){DKS.epsg=e.target.value.replace(/\D/g,"");e.target.value=DKS.epsg;dkKeep();dkMsg(DKS.epsg?"GIS exports use EPSG:"+DKS.epsg:"No CRS set: QGIS will ask for one");if(DKS.tab==="map")dkMap()});
@@ -5306,7 +5306,7 @@ function dkWireGrid(p,gw,gb,ds,cols){
  document.addEventListener("mouseup",function(){if(!drag)return;if(drag.moved){JD=true;setTimeout(function(){JD=false},0);if(drag.t==="row"){try{dkStats();dkCount()}catch(x){}}}drag=null});
  var tb=p.querySelector('[data-a="addrow"]');if(tb)tb.onclick=function(){dkAddRow(ds)};var xc=p.querySelector('[data-a="xlcopy"]');if(xc)xc.onclick=function(){dkXlCopy(ds,false)};
  var db=p.querySelector('[data-a="delrows"]');if(db)db.onclick=function(){dkDelRows(ds,db)};var dh=p.querySelector('[data-a="dph"]');if(dh){dh.classList.toggle("dk-on",!!DKS.dph);dh.onclick=function(){DKS.dph=!DKS.dph;dh.classList.toggle("dk-on",!!DKS.dph);dkGridPaint()}}var rb=p.querySelector('[data-a="rchk"]');if(rb){rb.classList.toggle("dk-on",!!RMRCHK);rb.onclick=function(){RMRCHK=!RMRCHK;try{localStorage.setItem("gl_rmrchk",RMRCHK?"1":"0")}catch(e){}rb.classList.toggle("dk-on",!!RMRCHK);dkGridPaint()}}var ob=p.querySelector('[data-a="ovl"]');if(ob){ob.classList.toggle("dk-on",!!DKS.ovl);ob.onclick=function(){DKS.ovl=!DKS.ovl;ob.classList.toggle("dk-on",!!DKS.ovl);dkGridPaint()}}var dd=p.querySelector('[data-a="deldup"]');if(dd)dd.onclick=function(){dkDelDup(ds,dd)}}
-function dkHoleDefault(){var r=DK.last||DK.view[0],h=r&&r.hole;if(!h&&DK.data.holes[0])h=DK.data.holes[0].hole;return h||""}
+function dkHoleDefault(){var hp=DK.hpick&&DK.data.hmap[DK.hpick];if(hp&&(!DK.holes||DK.holes[DK.hpick]))return hp.hole;var r=DK.last||DK.view[0],h=r&&r.hole;if(!h&&DK.data.holes[0])h=DK.data.holes[0].hole;return h||""}
 /*XLIMP*/
 function xlUnzip(buf){var u=new Uint8Array(buf),dv=new DataView(buf),n=u.length,e=-1;for(var i=n-22;i>=Math.max(0,n-66000);i--){if(dv.getUint32(i,true)===0x06054b50){e=i;break}}
  if(e<0)throw new Error("This does not look like an Excel file (.xlsx or .xlsm).");
