@@ -1896,6 +1896,11 @@ html.fson .dk-title{margin-right:150px}
 #m_sch svg,.hm-schi svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block}
 #sch,#ccsch{position:fixed;left:0;right:0;bottom:0;top:48px;z-index:150;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,sans-serif}#sch[hidden],#ccsch[hidden]{display:none}
 #sch .sch-h,#ccsch .sch-h{flex:none;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--line)}#sch .sch-h b,#ccsch .sch-h b{font-size:17px}#sch .sch-hn,#ccsch .sch-hn{margin-left:auto;color:var(--mut);font-size:13px}
+/*SCHTAB: team switcher inside the Schedule viewer, matching the standalone Schedule app*/
+#sch .sch-tabs,#ccsch .sch-tabs{flex:none;display:flex;background:var(--card);border-bottom:1px solid var(--line)}
+#sch .sch-tabs button,#ccsch .sch-tabs button{flex:1;min-height:44px;padding:0 10px;cursor:pointer;border:none;background:none;
+ color:var(--mut);font:600 14px/1 system-ui,sans-serif;border-bottom:2px solid transparent}
+#sch .sch-tabs button.on,#ccsch .sch-tabs button.on{color:var(--acc-ink);border-bottom-color:var(--acc-ink)}
 #sch .sch-m,#ccsch .sch-m{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 16px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
 .sch{--sg-nh:#1D8A8A;--sg-mn:#2f6fb5;--sg-gt:#8a5a00;--sg-ex:#2f7d3b;--sg-ot:#6b7280;--ccsg-cc:#c27800;--ccsg-ch:#4a5a70;--ccsg-rd:#6b7280;--ccsg-ot:#6b7280;
  /*CCSP: day shift / night shift colours, echoing the amber + blue of the printed CC roster*/
@@ -1946,6 +1951,22 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 .sch-dupl{display:flex;flex-direction:column;gap:3px}
 .sch-dupi{font:400 12.5px/1.5 system-ui,sans-serif;color:var(--ink)}
 .sch-dupi>b{font-weight:700}
+/*AVAIL: who is free on the clicked day, in Desktop Studio edit mode*/
+.sch-av:empty{display:none}
+.sch-av{position:sticky;bottom:0;z-index:6;margin:12px 0 0;padding:12px;border-radius:12px 12px 0 0;border:1px solid var(--line);border-bottom:none;background:var(--card);box-shadow:0 -6px 18px rgba(0,0,0,.10)}
+.sch-avl{max-height:132px;overflow-y:auto}
+.sch-avh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.sch-avh>b{font:700 14px/1.3 system-ui,sans-serif}
+.sch-avh>span{font:600 11px/1.5 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.sch-avh>i{font-style:normal;font:400 12px/1.4 system-ui,sans-serif;color:var(--mut)}
+.sch-avh>button{margin-left:auto;min-width:28px;min-height:28px;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--mut)}
+.sch-avd{margin:0 0 8px;font:600 12.5px/1.5 system-ui,sans-serif;color:var(--err)}
+.sch-avl{display:flex;flex-wrap:wrap;gap:6px}
+.sch-avb{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;cursor:pointer;border-radius:999px;
+ border:1px solid var(--line);background:var(--bg);color:var(--ink);font:400 12.5px/1.3 system-ui,sans-serif}
+.sch-avb:hover{border-color:var(--acc);background:var(--hl)}
+.sch-avb>b{font:700 12.5px/1.3 system-ui,sans-serif;color:var(--acc-ink)}
+.sch-t thead th{cursor:pointer}
 
 .sch-t tr.ccsp-ds>td.rdc,.sch-t tr.ccsp-ns>td.rdc{background:var(--ccsp-rd-bg)!important}
 .sch-top{display:flex;flex-direction:column;gap:10px}
@@ -2183,7 +2204,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.65.75</span>
+  <span class="hm-dver">v3.65.77</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -2214,7 +2235,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.65.75</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.65.77</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -2304,7 +2325,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.75</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.77</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -4694,7 +4715,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){pkStop(ALL?"Nothing logged yet":"Nothing in this shift",ALL?("No runs or geotechnical rows are saved for "+hole+" yet."):("No runs for "+hole+" match the date "+day+" and shift "+n+" set in Setup \u203a Log Details. Check the date and shift there, or use <b>Save shift packet (all interval)</b> instead."));return null}
  /*PKALLDATA: a packet carries every Desktop Studio browser table for the hole (runs incl. Leapfrog codes, hole details and survey, geotech, rod tally, assay, rig activities, rig lookups).*/var tl=TALLY.filter(function(x){return hk(x.hole)===k});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.65.75",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt,rigact:raForHole(k),riglk:raLkCopy(),assay:pkAssay(k),asel:pkAsel(),lfrules:LFR}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.65.77",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt,rigact:raForHole(k),riglk:raLkCopy(),assay:pkAssay(k),asel:pkAsel(),lfrules:LFR}}
 function pkAssay(k){try{return ASSAY.filter(function(x){return hk(x.hole)===k}).map(function(x){return JSON.parse(JSON.stringify(x))})}catch(e){return[]}}
 function pkAsel(){try{return JSON.parse(JSON.stringify(ASEL||[]))}catch(e){return[]}}
 /*ESCHK*/
@@ -7206,7 +7227,7 @@ function schSugHTML(M){if(!SCHSUG||SCHSUG.month!==M.month)SCHSUG={month:M.month,
 function schBrushHTML(M){var b=SCHV.brush||"",R=schRoster(M);
  return'<div class="sch-brush"><b>Paint</b>'+R.filter(function(p){return schN(p.c)}).map(function(p){var c=schN(p.c);return'<button type="button" class="sch-bc'+(b===c?" on":"")+'" data-sv="brush" data-v="'+dkE(c)+'" title="'+dkE(p.n||c)+'">'+schChip(M,c,false)+(p.n?'<span class="sch-bn">'+dkE(p.n)+'</span>':'')+'</button>'}).join("")+'<button type="button" class="sch-bc sch-er'+(b==="__erase"?" on":"")+'" data-sv="brush" data-v="__erase" title="Click or drag over boxes to clear them">Erase</button><span class="sch-bh">'+(b?(b==="__erase"?"Erasing: ":"Painting "+dkE(b)+": ")+"click or drag over the boxes. Click it again or press Esc to type instead.":"Click a code or name, then click or drag over the boxes.")+'</span></div>'}
 function schEditHTML(M){var t=SCHV.et||"grid",ck=schChecks(M),h='<div class="sch-seg sch-et">'+[["grid","Schedule grid"],["sug","Auto-suggest"],["roster","Roster"],["setup","Rigs & shifts"],["checks","Checks"+(ck.length?" ("+ck.length+")":" ✓")]].map(function(x){return'<button type="button" data-sv="et" data-v="'+x[0]+'" class="'+(t===x[0]?"on":"")+'">'+x[1]+'</button>'}).join("")+'</div>';
- if(t==="grid"){h+=schBrushHTML(M)+'<p class="sch-mut sch-hint">Or type a code in a cell, or paste from Excel (copy the code cells, click the matching first cell here, Ctrl+V). Arrow keys and Enter move between cells.</p><datalist id="sch-codes">'+schRoster(M).map(function(p){return'<option value="'+dkE(schN(p.c))+'">'+dkE(p.n||"")+'</option>'}).join("")+'</datalist>'+schGridHTML(M,true,"",dkIso(new Date()))}
+ if(t==="grid"){h+=schBrushHTML(M)+'<p class="sch-mut sch-hint">Or type a code in a cell, or paste from Excel (copy the code cells, click the matching first cell here, Ctrl+V). Arrow keys and Enter move between cells.</p><datalist id="sch-codes">'+schRoster(M).map(function(p){return'<option value="'+dkE(schN(p.c))+'">'+dkE(p.n||"")+'</option>'}).join("")+'</datalist>'+schGridHTML(M,true,"",dkIso(new Date()))+'<div class="sch-av" data-av="sched"></div>'}
  else if(t==="sug"){h+=schSugHTML(M)}
  else if(t==="roster"){var cnt=schCount(M);h+='<p class="sch-mut">Codes used in the schedule grid. Group sets the colour.</p><table class="sch-ft"><thead><tr><th>Code</th><th>Name</th><th>Group</th><th>Shifts this month</th><th></th></tr></thead><tbody>'+(M.roster||[]).map(function(p,i){var n=cnt[schN(p.c)];return'<tr><td><input data-rf="'+i+'|c" value="'+dkE(p.c)+'" size="6"></td><td><input data-rf="'+i+'|n" value="'+dkE(p.n)+'" size="26"></td><td><select data-rf="'+i+'|g">'+SCHGO.map(function(g){return'<option value="'+g+'"'+((p.g||schGrp(M,p.c))===g?" selected":"")+'>'+dkE(SCHG[g])+'</option>'}).join("")+'</select></td><td class="n">'+(n?n.t:0)+'</td><td><button type="button" class="sch-del" data-sv="rdel" data-v="'+i+'" title="Remove">✕</button></td></tr>'}).join("")+'</tbody></table><button type="button" class="dk-btn" data-sv="radd">+ Person</button>'}
  else if(t==="setup"){h+='<div class="sch-frm"><label>Title<input data-mf="title" value="'+dkE(M.title||"")+'" size="40"></label><label>Prepared by<input data-mf="by" value="'+dkE(M.by||"")+'" size="12" placeholder="e.g. PPC"></label></div>'+
@@ -7278,10 +7299,18 @@ function schWire(root,desk){if(root._schw)return;root._schw=1;var fi=document.cr
   rows.forEach(function(cols,i){var rs=R[r0+i];if(!rs)return;cols.forEach(function(v,j){var D=days[d0+j];if(!D)return;var c=schN(v),k=rs[0].id+"|"+rs[1].id+"|"+D.d;if(c)m.cells[k]=c;else delete m.cells[k];n++})});dirty(m);SCHMSG=[{ok:1,msg:"Pasted "+n+" cell"+(n===1?"":"s")+" from the clipboard. Check the Checks tab."}];schRefresh()})}
 /* ---- mobile screen ---- */
 var SCHCAL="<svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3.5' y='5' width='17' height='15' rx='2'/><path d='M3.5 9.5h17M8 3v4M16 3v4'/><circle cx='8.5' cy='14' r='1.1'/><circle cx='12' cy='14' r='1.1'/><circle cx='15.5' cy='14' r='1.1'/></svg>";
-function schEl(){var d=document.getElementById("sch");if(d)return d;d=document.createElement("div");d.id="sch";d.hidden=true;d.setAttribute("role","region");d.setAttribute("aria-label","Rig geo schedule");d.innerHTML="<div class='sch-h'><b>Schedule</b><span class='sch-hn'></span></div><div class='sch-m sch'></div>";document.body.append(d);schWire(d.querySelector(".sch-m"),false);return d}
+function schEl(){var d=document.getElementById("sch");if(d)return d;d=document.createElement("div");d.id="sch";d.hidden=true;d.setAttribute("role","region");d.setAttribute("aria-label","Rig geo schedule");d.innerHTML="<div class='sch-h'><b>Schedule</b><span class='sch-hn'></span></div><div class='sch-tabs' role='tablist'><button type='button' role='tab' data-go='geo'>Geologist</button><button type='button' role='tab' data-go='cc'>Core Checkers</button></div><div class='sch-m sch'></div>";document.body.append(d);schTabs(d,"geo");schWire(d.querySelector(".sch-m"),false);return d}
+/*SCHTAB: one Schedule viewer with two teams, the same shape as the standalone Schedule app.
+  Each panel keeps its own renderer; the tabs just hand over between them.*/
+function schTabs(d,cur){var t=d.querySelector(".sch-tabs");if(!t)return;
+ t.querySelectorAll("button").forEach(function(b){var on=b.getAttribute("data-go")===cur;
+  b.classList.toggle("on",on);b.setAttribute("aria-selected",String(on))});
+ t.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button[data-go]");if(!b)return;
+  var g=b.getAttribute("data-go");if(g===cur)return;
+  if(g==="cc")ccSchOpen();else schOpen()})}
 function schHead(){var n=document.querySelector("#sch .sch-hn");if(!n)return;var mk=schCur();n.textContent=mk?schMonLbl(mk)+(SCHD.months[mk].rev?" · rev "+SCHD.months[mk].rev:""):""}
 function schTop(){var n=document.getElementById("navbar"),d=document.getElementById("sch");if(d)d.style.top=(n?Math.round(n.getBoundingClientRect().bottom):48)+"px"}
-function schOpen(view){var d=schEl();try{if(window.geotSet&&document.body.classList.contains("geoton"))window.geotSet(false)}catch(e){}try{if(typeof dkClose==="function")dkClose()}catch(e){}try{dvClose()}catch(e){}try{if(window.pmClose)window.pmClose()}catch(e){}try{if(window.smClose)window.smClose()}catch(e){}
+function schOpen(view){var d=schEl();try{ccSchClose()}catch(e){}try{if(window.geotSet&&document.body.classList.contains("geoton"))window.geotSet(false)}catch(e){}try{if(typeof dkClose==="function")dkClose()}catch(e){}try{dvClose()}catch(e){}try{if(window.pmClose)window.pmClose()}catch(e){}try{if(window.smClose)window.smClose()}catch(e){}
  if(view){SCHV.v=view;if(view==="person"){var M=SCHD.months[schCur()];SCHV.who=M?schMeCode(M):""}}
  d.hidden=false;document.body.classList.add("dvon","schon");var b=document.getElementById("m_sch");if(b)b.setAttribute("aria-selected","true");schTop();SCHD=schLoad();var m=d.querySelector(".sch-m");m.innerHTML=schMobHTML();m.scrollTop=0;schHead();
  var mm=document.getElementById("mode");if(mm&&mm.scrollTo)mm.scrollTo({left:mm.scrollWidth,behavior:"smooth"})}
@@ -7399,7 +7428,8 @@ function ccSchEditHTML(M){var t=CCSCHV.et||"grid",ck=ccSchChecks(M),h='<div clas
  if(t==="grid"){var td=dkIso(new Date()),R=ccSchRoster(M);h+=ccSchGridHTML(M,true,"",td);
   h+='<datalist id="ccsch-codes">'+R.map(function(p){return'<option value="'+dkE(schN(p.c))+'">'+dkE(p.n)+'</option>'}).join("")+'</datalist>';
   if(CCSCHV.brush){var bp=ccSchWho(M,CCSCHV.brush==="__erase"?"":CCSCHV.brush);h+='<div class="sch-brush"><b>Brush:</b> '+(CCSCHV.brush==="__erase"?'<span class="sch-mut">Eraser — click cells to clear</span>':ccSchChip(M,CCSCHV.brush)+' '+dkE(bp?bp.n:""))+'<button type="button" class="sch-lk" data-csv="brush" data-v="">Stop painting</button></div>'}
-  else h+='<div class="sch-brush off"><span>Brush tool:</span>'+R.slice(0,40).map(function(p){return'<button type="button" class="sch-c ccsg-'+ccSchGrp(M,p.c).toLowerCase()+'" data-csv="brush" data-v="'+dkE(schN(p.c))+'" title="'+dkE(p.n)+'">'+dkE(schN(p.c))+'</button>'}).join("")+'<button type="button" class="sch-c sg-x" data-csv="brush" data-v="__erase" title="Eraser">✕</button></div>'}
+  else h+='<div class="sch-brush off"><span>Brush tool:</span>'+R.slice(0,40).map(function(p){return'<button type="button" class="sch-c ccsg-'+ccSchGrp(M,p.c).toLowerCase()+'" data-csv="brush" data-v="'+dkE(schN(p.c))+'" title="'+dkE(p.n)+'">'+dkE(schN(p.c))+'</button>'}).join("")+'<button type="button" class="sch-c sg-x" data-csv="brush" data-v="__erase" title="Eraser">✕</button></div>'
+  h+='<div class="sch-av" data-av="ccsch"></div>'}
  else if(t==="roster"){h+='<table class="sch-rt"><thead><tr><th>Code</th><th>Full name</th><th>Group</th><th></th></tr></thead><tbody>';
   (M.roster||[]).forEach(function(p,i){h+='<tr><td><input data-rf="'+i+'|c" value="'+dkE(p.c)+'"></td><td><input data-rf="'+i+'|n" value="'+dkE(p.n)+'"></td><td><select data-rf="'+i+'|g">'+CCSCHGO.map(function(g){return'<option value="'+g+'"'+(p.g===g?" selected":"")+'>'+dkE(g+" — "+CCSCHG[g])+'</option>'}).join("")+'</select></td><td><button type="button" data-csv="rdel" data-v="'+i+'" title="Remove">✕</button></td></tr>'});
   h+='</tbody></table><button type="button" class="dk-btn" data-csv="radd">+ Add person</button>'}
@@ -7468,7 +7498,7 @@ function ccSchWire(root,desk){if(root._ccschw)return;root._ccschw=1;var fi=docum
   rows.forEach(function(cols,i){var rs=R[r0+i];if(!rs)return;cols.forEach(function(v,j){var D=days[d0+j];if(!D)return;var c=schN(v),k=rs[0].id+"|"+rs[1].id+"|"+D.d;if(c)m.cells[k]=c;else delete m.cells[k];n++})});dirty(m);CCSCHMSG=[{ok:1,msg:"Pasted "+n+" cell"+(n===1?"":"s")+" from the clipboard."}];ccSchRefresh()})}
 /* ---- CC mobile panel ---- */
 var CCSCHCAL="<svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3.5' y='5' width='17' height='15' rx='2'/><path d='M3.5 9.5h17M8 3v4M16 3v4'/><circle cx='8' cy='13' r='.9'/><circle cx='12' cy='13' r='.9'/><circle cx='16' cy='13' r='.9'/><circle cx='8' cy='17' r='.9'/><circle cx='12' cy='17' r='.9'/></svg>";
-function ccSchEl(){var d=document.getElementById("ccsch");if(d)return d;d=document.createElement("div");d.id="ccsch";d.hidden=true;d.setAttribute("role","region");d.setAttribute("aria-label","Core checkers schedule");d.innerHTML="<div class='sch-h'><b>CC Schedule</b><span class='sch-hn'></span></div><div class='sch-m sch ccsch'></div>";document.body.append(d);ccSchWire(d.querySelector(".sch-m"),false);return d}
+function ccSchEl(){var d=document.getElementById("ccsch");if(d)return d;d=document.createElement("div");d.id="ccsch";d.hidden=true;d.setAttribute("role","region");d.setAttribute("aria-label","Core checkers schedule");d.innerHTML="<div class='sch-h'><b>Schedule</b><span class='sch-hn'></span></div><div class='sch-tabs' role='tablist'><button type='button' role='tab' data-go='geo'>Geologist</button><button type='button' role='tab' data-go='cc'>Core Checkers</button></div><div class='sch-m sch ccsch'></div>";document.body.append(d);schTabs(d,"cc");ccSchWire(d.querySelector(".sch-m"),false);return d}
 function ccSchHead(){var n=document.querySelector("#ccsch .sch-hn");if(!n)return;var mk=ccSchCur();n.textContent=mk?schMonLbl(mk)+(CCSCHD.months[mk].rev?" · rev "+CCSCHD.months[mk].rev:""):""}
 function ccSchTop(){var n=document.getElementById("navbar"),d=document.getElementById("ccsch");if(d)d.style.top=(n?Math.round(n.getBoundingClientRect().bottom):48)+"px"}
 function ccSchOpen(view){var d=ccSchEl();try{if(window.geotSet&&document.body.classList.contains("geoton"))window.geotSet(false)}catch(e){}try{if(typeof dkClose==="function")dkClose()}catch(e){}try{dvClose()}catch(e){}try{if(window.pmClose)window.pmClose()}catch(e){}try{if(window.smClose)window.smClose()}catch(e){}try{schClose()}catch(e){}
@@ -7483,8 +7513,57 @@ function ccSchNext(now){now=now||Date.now();var best=null,on=null;ccSchMonths().
   rig-geologist card only. This also clears a CC card left behind by a cached older build.*/
 function ccSchHome(){var c=document.getElementById("hm-ccsch");if(c)c.remove()}
 window.ccSchHome=ccSchHome;
+/*AVAIL: in Desktop Studio edit mode, clicking a cell or a date header lists who is free that day -
+  the roster minus everyone already holding a slot. Picking a name drops the code into the cell you
+  came from, which is the quickest way to clear a double-booking.*/
+(function(){
+ var LAST=null;
+ function slotL(M,k){var q=k.split("|");
+  var r=(M.rigs||[]).filter(function(x){return x.id===q[0]})[0];
+  var sh=(M.shifts||[]).filter(function(x){return x.id===q[1]})[0];
+  return (r?r.n:q[0])+" · "+(sh?sh.n:q[1])}
+ function ctx(el){var pane=el.closest&&el.closest('.dk-pane[data-p="sched"],.dk-pane[data-p="ccsch"]');if(!pane)return null;
+  var cc=pane.getAttribute("data-p")==="ccsch";
+  var M=cc?CCSCHD.months[ccSchCur()]:SCHD.months[schCur()];if(!M)return null;
+  return{pane:pane,cc:cc,M:M,asg:cc?ccSchAsg(M):schAsg(M),roster:cc?ccSchRoster(M):schRoster(M),
+         who:cc?ccSchWho:schWho,box:pane.querySelector("[data-av]")}}
+ function render(c,d){if(!c||!c.box)return;
+  if(!d){c.box.innerHTML="";return}
+  var used={};c.asg.forEach(function(a){if(a.D.d===d)used[a.c]=(used[a.c]||0)+1});
+  var free=c.roster.filter(function(p){return !used[schN(p.c)]});
+  var dup=Object.keys(used).filter(function(k){return used[k]>1});
+  var iso=c.M.month+"-"+d;
+  var tgt=LAST&&c.pane.contains(LAST)?LAST.getAttribute("data-cell"):"";
+  var h='<div class="sch-avh"><b>'+dkE(schDL(iso))+'</b><span>'+free.length+' free · '+(c.roster.length-free.length)+' on shift</span>'
+   +(tgt?'<i>pick a name to fill '+dkE(slotL(c.M,tgt))+'</i>':'<i>click a cell first to fill it</i>')
+   +'<button type="button" data-avx="1" aria-label="Close">\u2715</button></div>';
+  if(dup.length)h+='<p class="sch-avd">Double-booked: '+dup.map(function(k){var q=c.who(c.M,k);
+   return dkE((q?q.n:"")+" ("+k+") \u00d7"+used[k])}).join(", ")+'</p>';
+  h+='<div class="sch-avl">'+(free.length?free.map(function(q){var cd=schN(q.c);
+   return'<button type="button" class="sch-avb" data-avpick="'+dkE(cd)+'"><b>'+dkE(cd)+'</b>'+dkE(q.n||"")+'</button>'}).join("")
+   :'<span class="sch-mut">Everyone on the roster already has a slot that day.</span>')+'</div>';
+  c.box.innerHTML=h}
+ document.addEventListener("focusin",function(e){var t=e.target;
+  if(!t.getAttribute||!t.getAttribute("data-cell"))return;
+  var c=ctx(t);if(!c)return;LAST=t;render(c,t.getAttribute("data-cell").split("|")[2])});
+ document.addEventListener("click",function(e){
+  var x=e.target.closest&&e.target.closest("[data-avx]");
+  if(x){var cx=ctx(x);if(cx&&cx.box)cx.box.innerHTML="";return}
+  var pick=e.target.closest&&e.target.closest("[data-avpick]");
+  if(pick){var cp=ctx(pick);if(!cp)return;
+   if(LAST&&cp.pane.contains(LAST)){LAST.value=pick.getAttribute("data-avpick");
+    LAST.dispatchEvent(new Event("input",{bubbles:true}));LAST.focus()}
+   return}
+  var th=e.target.closest&&e.target.closest(".sch-t thead th");
+  if(th){var ct=ctx(th);if(!ct||!ct.box)return;
+   var row=th.parentNode,idx=Array.prototype.indexOf.call(row.children,th);
+   if(idx<1)return;var days=schDays(ct.M.month),D=days[idx-1];
+   if(D)render(ct,D.d)}});
+})();
 window.ccSchOpen=ccSchOpen;window.ccSchClose=ccSchClose;window.ccSchImportObj=ccSchImportObj;
-(function(){var s=document.getElementById("m_sch");if(s&&!document.getElementById("m_ccsch")){var b=document.createElement("button");b.type="button";b.id="m_ccsch";b.setAttribute("role","tab");b.setAttribute("aria-selected","false");b.setAttribute("aria-label","Core checkers schedule");b.title="CC Schedule";b.innerHTML=CCSCHCAL;s.after(b);try{window.dispatchEvent(new Event("resize"))}catch(e){}}
+(function(){/*SCHTAB: Core Checkers now lives behind a tab inside the Schedule viewer,
+  so the mode bar keeps a single calendar. Clear the old second button if a cached build left one.*/
+ var old=document.getElementById("m_ccsch");if(old)old.remove();
  window.addEventListener("resize",ccSchTop);window.addEventListener("orientationchange",function(){setTimeout(ccSchTop,250)})})();
 /*DACC*/
 /* Daily Drill Accomplishment for Viber: one report day = 11 PM the day before to 11 PM (3rd shift of the day before + 1st and 2nd shift of the report day).
