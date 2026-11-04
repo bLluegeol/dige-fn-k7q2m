@@ -1907,8 +1907,8 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 .sch-sp{display:inline-flex;align-items:center;gap:4px;font:700 11px/1.6 system-ui,sans-serif;letter-spacing:.04em;padding:0 7px;border-radius:999px;white-space:nowrap}
 .sch-sp.ccsp-ds{background:var(--ccsp-ds-bg);color:var(--ccsp-ds)}
 .sch-sp.ccsp-ns{background:var(--ccsp-ns-bg);color:var(--ccsp-ns)}
-.sch-pr.ccsp-ds,.sch-dl.ccsp-ds{border-left:3px solid var(--ccsp-ds-ln)}
-.sch-pr.ccsp-ns,.sch-dl.ccsp-ns{border-left:3px solid var(--ccsp-ns-ln)}
+.sch-pr.ccsp-ds,.sch-dl.ccsp-ds{border-left:4px solid var(--ccsp-ds-ln)}
+.sch-pr.ccsp-ns,.sch-dl.ccsp-ns{border-left:4px solid var(--ccsp-ns-ln)}
 .sch-rc.ccsp-ds>i{color:var(--ccsp-ds);font-weight:700}
 .sch-rc.ccsp-ns>i{color:var(--ccsp-ns);font-weight:700}
 .sch-t tr.ccsp-ds>td:not(.off){background:var(--ccsp-ds-bg)}
@@ -1923,9 +1923,30 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 /*CCRD: rest days are shown, not blank*/
 .ccsp-rd{color:var(--ccsp-rd)}
 .sch-sp.ccsp-rd{background:var(--ccsp-rd-bg);color:var(--ccsp-rd)}
-.sch-pr.ccsp-rd,.sch-dl.ccsp-rd{border-left:3px solid var(--ccsp-rd-ln)}
+.sch-pr.ccsp-rd,.sch-dl.ccsp-rd{border-left:4px solid var(--ccsp-rd-ln)}
 .sch-rd{display:inline-flex;align-items:center;justify-content:center;min-width:30px;padding:1px 6px;border-radius:6px;font:700 12px/1.5 system-ui,sans-serif;color:var(--ccsp-rd);background:var(--ccsp-rd-bg)}
 .sch-t td.rdc{color:var(--ccsp-rd);font-weight:700;background:var(--ccsp-rd-bg)!important}
+/*CCNOW: the running shift is tinted in its own colour - amber for day, blue for night -
+  with a heavier left edge, so it reads at a glance without shouting.*/
+.sch-dl.ccsp-ds.now{background:var(--ccsp-ds-bg);border-left-color:var(--ccsp-ds)}
+.sch-dl.ccsp-ns.now{background:var(--ccsp-ns-bg);border-left-color:var(--ccsp-ns)}
+.sch-dl.now>.sch-dw>em{font-style:normal;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.sch-dl.ccsp-ds.now>.sch-dw>em{color:var(--ccsp-ds)}
+.sch-dl.ccsp-ns.now>.sch-dw>em{color:var(--ccsp-ns)}
+.sch-pr.ccsp-ds.now{background:var(--ccsp-ds-bg);border-left-color:var(--ccsp-ds)}
+.sch-pr.ccsp-ns.now{background:var(--ccsp-ns-bg);border-left-color:var(--ccsp-ns)}
+/*DUP: one person in two slots on the same day. Ringed rather than recoloured, so the
+  shift colour underneath still reads.*/
+.sch-t td.dup{position:relative;box-shadow:inset 0 0 0 2px var(--err);font-weight:800}
+.sch-t td.dup::after{content:"";position:absolute;top:1px;right:1px;width:5px;height:5px;border-radius:50%;background:var(--err)}
+.sch-dl.dup{box-shadow:inset 0 0 0 2px var(--err);border-radius:8px}
+.sch-dl.dup>.sch-dw::after{content:"DOUBLE-BOOKED";margin-left:8px;font:700 10px/1.6 system-ui,sans-serif;letter-spacing:.06em;color:var(--err)}
+.sch-dupw{margin:10px 0 2px;padding:10px 12px;border-radius:12px;border:1px solid var(--err);background:var(--errbg)}
+.sch-dupw>b{display:block;margin-bottom:6px;font:700 11px/1.5 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--err)}
+.sch-dupl{display:flex;flex-direction:column;gap:3px}
+.sch-dupi{font:400 12.5px/1.5 system-ui,sans-serif;color:var(--ink)}
+.sch-dupi>b{font-weight:700}
+
 .sch-t tr.ccsp-ds>td.rdc,.sch-t tr.ccsp-ns>td.rdc{background:var(--ccsp-rd-bg)!important}
 .sch-top{display:flex;flex-direction:column;gap:10px}
 .sch-me{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:14px}.sch-me span{color:var(--mut)}
@@ -1949,7 +1970,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 .sch-pr{grid-template-columns:44px minmax(0,1fr) minmax(0,1.2fr)}
 .sch-pd{display:flex;flex-direction:column;align-items:center;line-height:1.1}.sch-pd b{font-size:17px}.sch-pd i{font-style:normal;font-size:11px;color:var(--mut)}
 .sch-ps{display:flex;flex-direction:column}.sch-ps i{font-style:normal;font-size:12px;color:var(--mut)}.sch-pg{font-size:13px}
-.sch-pr.past,.sch-rr.past{opacity:.5}.sch-pr.today,.sch-rr.today{background:var(--hl)}.sch-pr.now{box-shadow:inset 3px 0 0 var(--ok-ink)}
+.sch-pr.past,.sch-rr.past{opacity:.5}.sch-pr.today,.sch-rr.today{background:var(--hl)}.sch-pr.now{box-shadow:inset 4px 0 0 var(--ok-ink)}
 .sch-rr.off{opacity:.55}.sch-rs{display:flex;flex-direction:column;gap:3px}.sch-rc{display:flex;align-items:center;gap:6px;font-size:13px}.sch-rc>i{font-style:normal;width:30px;color:var(--mut);font-size:12px}
 .sch-chips{display:flex;flex-wrap:wrap;gap:6px}.sch-chips button{min-height:36px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:600 13px system-ui,sans-serif;cursor:pointer}.sch-chips button.on{background:var(--acc-fill);border-color:var(--acc-fill);color:var(--bg)}
 .sch-note{margin:-4px 0 0}
@@ -1959,7 +1980,8 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 .sch-card{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);display:flex;flex-direction:column;gap:6px}.sch-ct{font-size:15px}
 .sch-dl{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:center;padding:6px 0;border-top:1px dashed var(--line)}
 .sch-ds{display:flex;flex-direction:column}.sch-ds i{font-style:normal;font-size:11px;color:var(--mut)}.sch-dw{display:flex;align-items:center;flex-wrap:wrap;gap:2px}.sch-dw em{margin-left:auto;font-style:normal;font-size:11px;font-weight:700;color:var(--ok-ink);background:var(--okbg);padding:1px 6px;border-radius:6px}
-.sch-dl.mine .sch-nm{font-weight:700}.sch-dl.now{background:var(--okbg);margin:0 -6px;padding:6px;border-radius:8px}
+.sch-dl.mine .sch-nm{font-weight:700}.sch-dl.now{background:var(--okbg);margin:0 -6px;padding:6px 6px 6px 10px;border-radius:8px;box-shadow:inset 4px 0 0 var(--ok-ink)}
+.sch-dl.now>.sch-dw>em{color:var(--ok-ink)}
 .sch-leg{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:var(--mut)}
 .sch-hlp{margin:0;display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px}
 .sch-tw{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--card);max-height:70vh}
@@ -2161,7 +2183,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.65.69</span>
+  <span class="hm-dver">v3.65.75</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -2192,7 +2214,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.65.69</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.65.75</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -2282,7 +2304,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.69</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.75</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -4672,7 +4694,7 @@ function pkOrdTxt(n){return["1st","2nd","3rd"][n-1]||"1st"}
  runs.forEach(function(r){sp(r.IN.from,r.IN.to)});Object.keys(gt.rows).forEach(function(t){gt.rows[t].forEach(function(r){if(r.from!==undefined)sp(r.from,r.to);else sp(r.depth,r.depth)})});
  if(hi2<0){pkStop(ALL?"Nothing logged yet":"Nothing in this shift",ALL?("No runs or geotechnical rows are saved for "+hole+" yet."):("No runs for "+hole+" match the date "+day+" and shift "+n+" set in Setup \u203a Log Details. Check the date and shift there, or use <b>Save shift packet (all interval)</b> instead."));return null}
  /*PKALLDATA: a packet carries every Desktop Studio browser table for the hole (runs incl. Leapfrog codes, hole details and survey, geotech, rod tally, assay, rig activities, rig lookups).*/var tl=TALLY.filter(function(x){return hk(x.hole)===k});delete hi.rem;
- return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.65.69",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt,rigact:raForHole(k),riglk:raLkCopy(),assay:pkAssay(k),asel:pkAsel(),lfrules:LFR}}
+ return{app:"DiGe-FN",kind:"shift-packet",schema:1,scope:IMP?"allimp":ALL?"all":"shift",ver:"3.65.75",exported:new Date().toISOString(),date:day,shift:n,logger:lg,hole:hole,from:lo,to:hi2,hi:hi,runs:runs,tally:tl,geotech:gt,rigact:raForHole(k),riglk:raLkCopy(),assay:pkAssay(k),asel:pkAsel(),lfrules:LFR}}
 function pkAssay(k){try{return ASSAY.filter(function(x){return hk(x.hole)===k}).map(function(x){return JSON.parse(JSON.stringify(x))})}catch(e){return[]}}
 function pkAsel(){try{return JSON.parse(JSON.stringify(ASEL||[]))}catch(e){return[]}}
 /*ESCHK*/
@@ -7039,6 +7061,19 @@ function schTemplate(mk,from){var b=from||{};return{month:mk,title:schMonLbl(mk)
  shifts:JSON.parse(JSON.stringify(b.shifts||[{id:"1",n:"1st Shift",tf:"07:00",tt:"15:00"},{id:"2",n:"2nd Shift",tf:"15:00",tt:"23:00"},{id:"3",n:"3rd Shift",tf:"23:00",tt:"07:00"}])),
  roster:JSON.parse(JSON.stringify(b.roster||[])),cells:{},off:{},_dirty:1}}
 /* ---- checks (desktop) ---- */
+/*DUP: one code sitting in more than one slot on the same day - two rigs inside one shift,
+  or a day shift and a night shift on the same date. Returns {day:{code:count}}.
+  The existing dbl check only sees the same-shift case, so this is what catches the rest.*/
+function schDupMap(A){var by={},out={};
+ A.forEach(function(a){var k=a.D.d+"|"+a.c;by[k]=(by[k]||0)+1});
+ Object.keys(by).forEach(function(k){if(by[k]>1){var q=k.split("|");(out[q[0]]=out[q[0]]||{})[q[1]]=by[k]}});
+ return out}
+function schDupBanner(M,DUP,who){var ds=Object.keys(DUP).sort(function(a,b){return +a-+b});if(!ds.length)return'';
+ var items=ds.map(function(d){var iso=M.month+"-"+d;
+  return'<span class="sch-dupi"><b>'+dkE(schDL(iso))+'</b>'+Object.keys(DUP[d]).map(function(c){var p=who(M,c);
+   return' '+dkE((p?p.n:"")+" ("+c+") ×"+DUP[d][c])}).join(",")+'</span>'}).join("");
+ var nd=ds.length;
+ return'<div class="sch-dupw"><b>Double-booked · '+nd+' day'+(nd===1?"":"s")+'</b><div class="sch-dupl">'+items+'</div></div>'}
 function schChecks(M){var out=[],R={},days=schDays(M.month),off=M.off||{},A=schAsg(M);
  A.forEach(function(a){if(!schWho(M,a.c))out.push({k:"code",t:"Unknown code "+a.c+" on "+schDL(a.D.iso)+", "+a.s.n+", "+schRigL(a.r)+" — add it in Roster or fix the cell."})});
  var slot={};A.forEach(function(a){var k=a.c+"|"+a.D.d+"|"+a.s.id;(slot[k]=slot[k]||[]).push(a)});Object.keys(slot).forEach(function(k){var L=slot[k];if(L.length>1){var p=schWho(M,L[0].c);out.push({k:"dbl",t:(p?p.n+" ("+L[0].c+")":L[0].c)+" is on two rigs at once: "+schDL(L[0].D.iso)+", "+L[0].s.n+" — "+L.map(function(a){return schRigL(a.r)}).join(" and ")+"."})}});
@@ -7071,7 +7106,7 @@ function schViewHTML(M,desk){var me=schMeCode(M),meP=schWho(M,me),v=SCHV.v,now=D
  var h='<div class="sch-top">';
  h+=meP?'<div class="sch-me"><span>You:</span><b>'+dkE(meP.c+" · "+meP.n)+'</b><button type="button" class="sch-lk" data-sv="mechg">Change</button></div>':'<label class="sch-me ask"><b>Who are you?</b><span>Pick your name and this device remembers it for your schedule and the Home screen.</span><select data-sv="mepick">'+schOpts(M,"","Choose your name…")+'</select></label>';
  var ms=schMonths();h+='<div class="sch-mrow">'+(ms.length>1?'<select data-sv="month" aria-label="Month">'+ms.map(function(k){return'<option value="'+k+'"'+(k===M.month?" selected":"")+'>'+dkE(schMonLbl(k))+'</option>'}).join("")+'</select>':'<b>'+dkE(schMonLbl(M.month))+'</b>')+'<span class="sch-rev">'+dkE((desk?"":(M.title||""))+(M.rev?(desk?"rev ":" · rev ")+M.rev:"")+(M.upd?" · "+M.upd:"")+(M.by?" · "+M.by:""))+(M._dirty?' · <b class="sch-dirty">unsaved edits</b>':'')+'</span></div>';
- var A=schAsg(M);
+ var A=schAsg(M),DUP=schDupMap(A);
  /*SCHHDR1R: legend + Highlighted on the same top row in Month view*/
  if(v==="month"){var hw0=schN(SCHV.who),cnt0=hw0?A.filter(function(a){return a.c===hw0}).length:0,hp0=schWho(M,hw0);
   h+='<div class="sch-leg">'+SCHGO.filter(function(g){return g!=="OT"}).map(function(g){return'<span class="sch-c sg-'+g.toLowerCase()+'">'+g+'</span><span>'+dkE(SCHG[g])+'</span>'}).join("")+'</div>';
@@ -7079,7 +7114,7 @@ function schViewHTML(M,desk){var me=schMeCode(M),meP=schWho(M,me),v=SCHV.v,now=D
  h+='<div class="sch-seg" role="tablist">'+[["person","Person"],["rig","Rig"],["day","Day"],["month","Month"]].map(function(x){return'<button type="button" role="tab" data-sv="view" data-v="'+x[0]+'" class="'+(v===x[0]?"on":"")+'" aria-selected="'+(v===x[0])+'">'+x[1]+'</button>'}).join("")+'</div></div>';
  if(v==="person"){var who=schN(SCHV.who)||me;var P=schWho(M,who);h+='<div class="sch-pick"><select data-sv="who" aria-label="Person">'+schOpts(M,who,"Choose a name or code…")+'</select>'+(who&&me&&who!==me?'<button type="button" class="sch-lk" data-sv="whome">Show mine</button>':'')+'</div>';
   if(!who)h+='<p class="sch-empty">Pick a name or code to see their shifts.</p>';else{var L=A.filter(function(a){return a.c===who}),nx=null,on=null;L.forEach(function(a){if(a.st<=now&&a.en>now)on=a;else if(a.st>now&&!nx)nx=a});var cnt={};L.forEach(function(a){cnt[a.s.id]=(cnt[a.s.id]||0)+1});
-   h+='<div class="sch-pc"><div class="sch-pch">'+schChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(SCHG[schGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On shift now</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
+   h+='<div class="sch-pc"><div class="sch-pch">'+schChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(SCHG[schGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On duty</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
     '<p class="sch-cnt">'+L.length+' shift'+(L.length===1?"":"s")+' in '+dkE(schMonLbl(M.month))+(L.length?' · '+(M.shifts||[]).filter(function(s){return cnt[s.id]}).map(function(s){return dkE(schShort(s))+" "+cnt[s.id]}).join(" · "):'')+'</p></div>';
    h+=L.length?'<div class="sch-pl">'+L.map(function(a){var cl=a.en<=now?" past":a.D.iso===td?" today":"";if(on===a)cl+=" now";return'<div class="sch-pr'+cl+'"><span class="sch-pd"><b>'+a.D.n+'</b><i>'+SCHWL[a.D.w]+'</i></span><span class="sch-ps"><b>'+dkE(a.s.n)+'</b><i>'+dkE(schSpan(a.s))+'</i></span><span class="sch-pg">'+dkE(schRigL(a.r))+'</span></div>'}).join("")+'</div>':'<p class="sch-empty">'+dkE(P?P.n:who)+' has no shifts in '+dkE(schMonLbl(M.month))+'.</p>'}}
  else if(v==="rig"){var rid=SCHV.rig&&(M.rigs||[]).some(function(r){return r.id===SCHV.rig})?SCHV.rig:((M.rigs||[])[0]||{}).id,R0=(M.rigs||[]).filter(function(r){return r.id===rid})[0];
@@ -7089,15 +7124,16 @@ function schViewHTML(M,desk){var me=schMeCode(M),meP=schWho(M,me),v=SCHV.v,now=D
  else if(v==="day"&&SCHV.day&&SCHV.day.slice(0,7)!==M.month&&!SCHD.months[SCHV.day.slice(0,7)]){h+='<div class="sch-day"><button type="button" data-sv="dstep" data-v="-1" aria-label="Previous day">\u25C0</button><input type="date" data-sv="dpick" value="'+dkE(SCHV.day)+'" aria-label="Day"><button type="button" data-sv="dstep" data-v="1" aria-label="Next day">\u25B6</button><button type="button" data-sv="dtoday">Today</button></div><p class="sch-empty">No schedule loaded for '+dkE(schMonLbl(SCHV.day.slice(0,7)))+' yet.</p>'}
  else if(v==="day"){var day=SCHV.day&&SCHV.day.slice(0,7)===M.month?SCHV.day:(td.slice(0,7)===M.month?td:M.month+"-01"),dd=day.slice(8);
   h+='<div class="sch-day"><button type="button" data-sv="dstep" data-v="-1" aria-label="Previous day">◀</button><input type="date" data-sv="dpick" value="'+dkE(day)+'" aria-label="Day"><button type="button" data-sv="dstep" data-v="1" aria-label="Next day">▶</button><button type="button" data-sv="dtoday">Today</button></div><h3 class="sch-dh">'+dkE(schDL(day))+(day===td?' · today':'')+'</h3>';
-  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl'+(isOn?" now":"")+(c&&c===me?" mine":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i></span><span class="sch-dw">'+(c?schChip(M,c,true):'<span class="sch-mut">—</span>')+(isOn?'<em>On now</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
+  if(desk)h+=schDupBanner(M,DUP,schWho);
+  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl'+(isOn?" now":"")+(c&&c===me?" mine":"")+(c&&DUP[dd]&&DUP[dd][c]?" dup":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i></span><span class="sch-dw">'+(c?schChip(M,c,true):'<span class="sch-mut">—</span>')+(isOn?'<em>On duty</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
  else{var hw=schN(SCHV.who);h+=schGridHTML(M,false,hw,td)}
  return h}
-function schGridHTML(M,edit,hw,td){var days=schDays(M.month),off=M.off||{};
+function schGridHTML(M,edit,hw,td){var DUP=schDupMap(schAsg(M));var days=schDays(M.month),off=M.off||{};
  var h='<div class="sch-tw"><table class="sch-t'+(edit?" ed":"")+(edit&&SCHV.brush?" paint":"")+(hw?" hlon":"")+'"><thead><tr><th class="sch-rh" rowspan="2">'+(edit?'Rig / shift <small>click a date to mark no schedule</small>':'Rig / shift')+'</th>'+days.map(function(D){return'<th class="'+(off[D.d]?"off ":"")+(D.iso===td?"today ":"")+(D.w===0?"sun":"")+'">'+(edit?'<button type="button" data-off="'+D.d+'" title="'+(off[D.d]?"Mark as a working day":"Mark as no schedule")+'">'+D.n+'</button>':D.n)+'</th>'}).join("")+'</tr><tr>'+days.map(function(D){return'<th class="sch-wd'+(off[D.d]?" off":"")+'">'+SCHWS[D.w]+'</th>'}).join("")+'</tr></thead><tbody>';
  var ri=0;(M.rigs||[]).forEach(function(r,rx){(M.shifts||[]).forEach(function(s,sx){h+='<tr class="'+(sx===0?"rg0 ":"")+'sh'+sx+'">'+'<th class="sch-rh">'+(sx===0?'<b>'+dkE(r.n)+'</b>'+(r.site?' <small>'+dkE(r.site)+'</small>':''):'')+'<span>'+dkE(s.n)+'</span></th>';
   days.forEach(function(D,di){var k=r.id+"|"+s.id+"|"+D.d,c=schN((M.cells||{})[k]);
    if(edit)h+='<td class="'+(off[D.d]?"off":"")+'">'+(off[D.d]?'':'<input data-cell="'+dkE(k)+'" data-ri="'+ri+'" data-di="'+di+'" value="'+dkE(c)+'" list="sch-codes" autocomplete="off" spellcheck="false" class="sg-'+(c?schGrp(M,c).toLowerCase():"x")+(c&&!schWho(M,c)?" bad":"")+'" aria-label="'+dkE(r.n+" "+s.n+" "+D.iso)+'">')+'</td>';
-   else h+='<td class="'+(off[D.d]?"off":"")+(c?" sg-"+schGrp(M,c).toLowerCase():"")+(hw&&c===hw?" hl":"")+'"'+(c?' data-sv="hl" data-v="'+dkE(c)+'"':'')+'>'+(off[D.d]?'':dkE(c))+'</td>'});
+   else h+='<td class="'+(off[D.d]?"off":"")+(c?" sg-"+schGrp(M,c).toLowerCase():"")+(hw&&c===hw?" hl":"")+(c&&DUP[D.d]&&DUP[D.d][c]?" dup":"")+'"'+(c?' data-sv="hl" data-v="'+dkE(c)+'"':'')+'>'+(off[D.d]?'':dkE(c))+'</td>'});
   h+='</tr>';ri++})});
  return h+'</tbody></table></div>'}
 /*SCHSUG: auto-suggested monthly schedules learnt from the previous month's pattern. Hard rule: nobody comes off a 3rd (night) shift onto the next day's 1st (day) shift — they get that day shift off, and the rule carries across the month boundary from the last day of the previous month.*/
@@ -7256,14 +7292,14 @@ function schHome(){var hero=document.querySelector("#home .hm-hero");if(!hero)re
  if(!c){c=document.createElement("button");c.type="button";c.id="hm-sch";c.className="hm-sch";var cta=hero.querySelector(".hm-cta");if(cta)cta.after(c);else hero.append(c);c.addEventListener("click",function(){try{if(window.dgHome)window.dgHome.hide()}catch(e){}schOpen("person")})}
  var me=schMe(),R=schNext(),h;
  if(!me)h='<span class="hm-schi">'+SCHCAL+'</span><span class="hm-scht"><small>Rig geo schedule</small><b>Who are you?</b><span>Tap to pick your name and see your next shift here.</span></span>';
- else if(R.on)h='<span class="hm-schi on">'+SCHCAL+'</span><span class="hm-scht"><small>'+dkE(me.n||me.c)+' · on shift now</small><b>'+dkE(R.on.s.n+" · "+schSpan(R.on.s))+'</b><span>'+dkE(schRigL(R.on.r))+(R.next?" · next: "+schDL(R.next.D.iso)+" "+schShort(R.next.s):"")+'</span></span>';
+ else if(R.on)h='<span class="hm-schi on">'+SCHCAL+'</span><span class="hm-scht"><small>'+dkE(me.n||me.c)+' · on duty</small><b>'+dkE(R.on.s.n+" · "+schSpan(R.on.s))+'</b><span>'+dkE(schRigL(R.on.r))+(R.next?" · next: "+schDL(R.next.D.iso)+" "+schShort(R.next.s):"")+'</span></span>';
  else if(R.next)h='<span class="hm-schi">'+SCHCAL+'</span><span class="hm-scht"><small>'+dkE(me.n||me.c)+' · my next shift</small><b>'+dkE(schDL(R.next.D.iso)+" · "+R.next.s.n)+'</b><span>'+dkE(schSpan(R.next.s)+" · "+schRigL(R.next.r))+'</span></span>';
  else h='<span class="hm-schi">'+SCHCAL+'</span><span class="hm-scht"><small>'+dkE(me.n||me.c)+' · my next shift</small><b>No upcoming shifts</b><span>Not on the loaded schedule. Tap to view it.</span></span>';
  c.innerHTML=h}
 (function(){var s=document.getElementById("m_sm")||document.getElementById("m_pm");if(s&&!document.getElementById("m_sch")){var b=document.createElement("button");b.type="button";b.id="m_sch";b.setAttribute("role","tab");b.setAttribute("aria-selected","false");b.setAttribute("aria-label","Rig geo schedule");b.title="Schedule";b.innerHTML=SCHCAL;s.after(b);try{window.dispatchEvent(new Event("resize"))}catch(e){}}
  window.addEventListener("resize",schTop);window.addEventListener("orientationchange",function(){setTimeout(schTop,250)});
- window.addEventListener("storage",function(e){if(e.key===SCHK||e.key===SCHME){SCHD=schLoad();schHome();schRefresh()}if(e.key===CCSCHK){CCSCHD=ccSchLoad();ccSchRefresh()}});
- try{schHome()}catch(e){}setInterval(function(){try{schHome()}catch(e){}},60000)})();
+ window.addEventListener("storage",function(e){if(e.key===SCHK||e.key===SCHME){SCHD=schLoad();schHome();schRefresh()}if(e.key===CCSCHK||e.key===CCSCHME){CCSCHD=ccSchLoad();try{ccSchHome()}catch(x){}ccSchRefresh()}});
+ try{schHome()}catch(e){}try{ccSchHome()}catch(e){}setInterval(function(){try{schHome()}catch(e){}try{ccSchHome()}catch(e){}},60000)})();
 /*CCSCHED*/
 /* ===== Core Checkers schedule: parallel to Rig geo schedule with its own storage (gl_ccsched) and packet type ("dige-cc-schedule").
    Identical design and functionality to the geologist schedule. ===== */
@@ -7274,7 +7310,7 @@ var CCSCHD=ccSchLoad(),CCSCHV=(function(){var o={};try{o=JSON.parse(localStorage
 function ccSchSave(){try{localStorage.setItem(CCSCHK,JSON.stringify(CCSCHD))}catch(e){}}
 function ccSchUiKeep(){try{localStorage.setItem(CCSCHUI,JSON.stringify(CCSCHV))}catch(e){}}
 function ccSchMe(){try{return JSON.parse(localStorage.getItem(CCSCHME)||"null")}catch(e){return null}}
-function ccSchSetMe(o){try{if(o)localStorage.setItem(CCSCHME,JSON.stringify(o));else localStorage.removeItem(CCSCHME)}catch(e){}ccSchRefresh()}
+function ccSchSetMe(o){try{if(o)localStorage.setItem(CCSCHME,JSON.stringify(o));else localStorage.removeItem(CCSCHME)}catch(e){}try{ccSchHome()}catch(e){}ccSchRefresh()}
 function ccSchMonths(){return Object.keys(CCSCHD.months).sort()}
 function ccSchCur(){var ks=ccSchMonths();if(!ks.length)return"";if(CCSCHV.m&&CCSCHD.months[CCSCHV.m])return CCSCHV.m;var now=dkIso(new Date()).slice(0,7);if(CCSCHD.months[now])return now;var fut=ks.filter(function(k){return k>now});return fut.length?fut[0]:ks[ks.length-1]}
 function ccSchWho(M,c){c=schN(c);if(!c)return null;var R=(M&&M.roster)||[];for(var i=0;i<R.length;i++)if(schN(R[i].c)===c)return R[i];return null}
@@ -7306,7 +7342,7 @@ function ccSchImportObj(p,name){name=name||"packet";
  if(old&&(+old.rev||0)>N.rev)return{ok:0,msg:"Kept the newer "+L+" CC schedule already here (rev "+old.rev+"). "+name+" is rev "+N.rev+"."};
  if(old&&(+old.rev||0)===N.rev&&JSON.stringify(old.cells)===JSON.stringify(N.cells)&&JSON.stringify(old.roster)===JSON.stringify(N.roster))return{ok:1,msg:L+" CC schedule is already up to date (rev "+N.rev+")."};
  var lines=[];if(old){var keys={};Object.keys(old.cells||{}).concat(Object.keys(N.cells)).forEach(function(k){keys[k]=1});Object.keys(keys).sort(function(a,b){return a.split("|")[2]-b.split("|")[2]}).forEach(function(k){var a=schN(old.cells[k]),b=schN(N.cells[k]);if(a===b)return;var q=k.split("|"),r=N.rigs.filter(function(x){return x.id===q[0]})[0],s=N.shifts.filter(function(x){return x.id===q[1]})[0];lines.push(schDL(p.month+"-"+q[2])+" · "+(s?schShort(s):q[1])+" · "+(r?r.n:q[0])+": "+(a||"—")+" → "+(b||"—"))})}
- CCSCHD.months[p.month]=N;ccSchSave();ccSchRefresh();
+ CCSCHD.months[p.month]=N;ccSchSave();try{ccSchHome()}catch(e){}ccSchRefresh();
  return{ok:1,msg:(old?"Updated":"Added")+" the "+L+" CC schedule (rev "+N.rev+(N.upd?", "+N.upd:"")+(N.by?" by "+N.by:"")+")."+(old?(lines.length?" "+lines.length+" change"+(lines.length===1?"":"s")+":":" No shift changes."):""),lines:lines}}
 function ccSchImportFiles(fl,done){fl=[].slice.call(fl||[]);if(!fl.length)return;Promise.all(fl.map(function(f){return f.text().then(function(t){var p=null;try{p=JSON.parse(t)}catch(e){}return ccSchImportObj(p,f.name)},function(){return{ok:0,msg:f.name+": could not be read."}})})).then(function(rs){CCSCHMSG=rs;ccSchRefresh();if(done)done(rs)})}
 function ccSchPacket(M){if(M._dirty||!M.rev){M.rev=(+M.rev||0)+1;M.upd=dkIso(new Date());delete M._dirty;ccSchSave()}var o=ccSchClean(M);o.kind="dige-cc-schedule";o.schema=1;o.app="DiGe-FN";return o}
@@ -7325,14 +7361,14 @@ function ccSchViewHTML(M,desk){var me=ccSchMeCode(M),meP=ccSchWho(M,me),v=CCSCHV
  var h='<div class="sch-top">';
  h+=meP?'<div class="sch-me"><span>You:</span><b>'+dkE(meP.c+" · "+meP.n)+'</b><button type="button" class="sch-lk" data-csv="mechg">Change</button></div>':'<label class="sch-me ask"><b>Who are you?</b><span>Pick your name and this device remembers it for your CC schedule.</span><select data-csv="mepick">'+ccSchOpts(M,"","Choose your name…")+'</select></label>';
  var ms=ccSchMonths();h+='<div class="sch-mrow">'+(ms.length>1?'<select data-csv="month" aria-label="Month">'+ms.map(function(k){return'<option value="'+k+'"'+(k===M.month?" selected":"")+'>'+dkE(schMonLbl(k))+'</option>'}).join("")+'</select>':'<b>'+dkE(schMonLbl(M.month))+'</b>')+'<span class="sch-rev">'+dkE((desk?"":(M.title||""))+(M.rev?(desk?"rev ":" · rev ")+M.rev:"")+(M.upd?" · "+M.upd:"")+(M.by?" · "+M.by:""))+(M._dirty?' · <b class="sch-dirty">unsaved edits</b>':'')+'</span></div>';
- var A=ccSchAsg(M);
+ var A=ccSchAsg(M),DUP=schDupMap(A);
  if(v==="month"){var hw0=schN(CCSCHV.who),cnt0=hw0?A.filter(function(a){return a.c===hw0}).length:0,hp0=ccSchWho(M,hw0);
   h+='<div class="sch-leg"><span class="sch-sp ccsp-ds">D/S</span><span>Day shift</span><span class="sch-sp ccsp-ns">N/S</span><span>Night shift</span><span class="sch-rd">RD</span><span>Rest day</span></div>';
   h+=hw0?'<p class="sch-hlp">Highlighted: '+ccSchChip(M,hw0)+' <b>'+dkE(hp0?hp0.n:"not in roster")+'</b> · '+cnt0+' shift'+(cnt0===1?"":"s")+' <button type="button" class="sch-lk" data-csv="hlx">Clear</button></p>':'<p class="sch-mut sch-hlp">Tap any code to highlight that person\'s shifts.</p>'}
  h+='<div class="sch-seg" role="tablist">'+[["person","Person"],["rig","Rig"],["day","Day"],["month","Month"]].map(function(x){return'<button type="button" role="tab" data-csv="view" data-v="'+x[0]+'" class="'+(v===x[0]?"on":"")+'" aria-selected="'+(v===x[0])+'">'+x[1]+'</button>'}).join("")+'</div></div>';
  if(v==="person"){var who=schN(CCSCHV.who)||me;var P=ccSchWho(M,who);h+='<div class="sch-pick"><select data-csv="who" aria-label="Person">'+ccSchOpts(M,who,"Choose a name or code…")+'</select>'+(who&&me&&who!==me?'<button type="button" class="sch-lk" data-csv="whome">Show mine</button>':'')+'</div>';
   if(!who)h+='<p class="sch-empty">Pick a name or code to see their shifts.</p>';else{var L=A.filter(function(a){return a.c===who}),nx=null,on=null;L.forEach(function(a){if(a.st<=now&&a.en>now)on=a;else if(a.st>now&&!nx)nx=a});var cnt={};L.forEach(function(a){cnt[a.s.id]=(cnt[a.s.id]||0)+1});
-   h+='<div class="sch-pc"><div class="sch-pch">'+ccSchChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(CCSCHG[ccSchGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On shift now</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
+   h+='<div class="sch-pc"><div class="sch-pch">'+ccSchChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(CCSCHG[ccSchGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On duty</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
     '<p class="sch-cnt">'+L.length+' shift'+(L.length===1?"":"s")+' in '+dkE(schMonLbl(M.month))+(L.length?' · '+(M.shifts||[]).filter(function(s){return cnt[s.id]}).map(function(s){return dkE(schShort(s))+" "+cnt[s.id]}).join(" · "):'')+'</p></div>';
    /*CCRDP: list every working day so rest days are shown in green, not left out.*/
    var byd={};L.forEach(function(a){(byd[a.D.d]=byd[a.D.d]||[]).push(a)});
@@ -7347,15 +7383,16 @@ function ccSchViewHTML(M,desk){var me=ccSchMeCode(M),meP=ccSchWho(M,me),v=CCSCHV
    return'<div class="sch-rr'+(D.iso===td?" today":D.iso<td?" past":"")+'"><span class="sch-pd"><b>'+D.n+'</b><i>'+SCHWL[D.w]+'</i></span><span class="sch-rs">'+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[R0.id+"|"+s.id+"|"+D.d]);return'<span class="sch-rc ccsp-'+ccSchSP(s)+'"><i>'+dkE(schShort(s))+'</i>'+(c?ccSchChip(M,c)+'<span class="sch-nm">'+dkE(schFirst(ccSchWho(M,c))||"")+'</span>':'<span class="sch-rd">RD</span><span class="sch-nm ccsp-rd">Rest day</span>')+'</span>'}).join("")+'</span></div>'}).join("")+'</div>'}
  else if(v==="day"){var day=CCSCHV.day&&CCSCHV.day.slice(0,7)===M.month?CCSCHV.day:(td.slice(0,7)===M.month?td:M.month+"-01"),dd=day.slice(8);
   h+='<div class="sch-day"><button type="button" data-csv="dstep" data-v="-1" aria-label="Previous day">◀</button><input type="date" data-csv="dpick" value="'+dkE(day)+'" aria-label="Day"><button type="button" data-csv="dstep" data-v="1" aria-label="Next day">▶</button><button type="button" data-csv="dtoday">Today</button></div><h3 class="sch-dh">'+dkE(schDL(day))+(day===td?' · today':'')+'</h3>';
-  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl ccsp-'+(c?ccSchSP(s):"rd")+(isOn?" now":"")+(c&&c===me?" mine":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i>'+ccSchSPB(s)+'</span><span class="sch-dw">'+(c?ccSchChip(M,c,true):'<span class="sch-rd">RD</span><span class="sch-nm ccsp-rd">Rest day</span>')+(isOn?'<em>On now</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
+  if(desk)h+=schDupBanner(M,DUP,ccSchWho);
+  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl ccsp-'+(c?ccSchSP(s):"rd")+(isOn?" now":"")+(c&&c===me?" mine":"")+(c&&DUP[dd]&&DUP[dd][c]?" dup":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i>'+ccSchSPB(s)+'</span><span class="sch-dw">'+(c?ccSchChip(M,c,true):'<span class="sch-rd">RD</span><span class="sch-nm ccsp-rd">Rest day</span>')+(isOn?'<em>On duty</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
  else{h+=ccSchGridHTML(M,false,schN(CCSCHV.who),td)}
  return h}
-function ccSchGridHTML(M,edit,hw,td){var days=schDays(M.month),off=M.off||{};
+function ccSchGridHTML(M,edit,hw,td){var DUP=schDupMap(ccSchAsg(M));var days=schDays(M.month),off=M.off||{};
  var h='<div class="sch-tw"><table class="sch-t'+(edit?" ed":"")+(edit&&CCSCHV.brush?" paint":"")+(hw?" hlon":"")+'"><thead><tr><th class="sch-rh" rowspan="2">'+(edit?'Rig / shift <small>click a date to mark no schedule</small>':'Rig / shift')+'</th>'+days.map(function(D){return'<th class="'+(off[D.d]?"off ":"")+(D.iso===td?"today ":"")+(D.w===0?"sun":"")+'">'+(edit?'<button type="button" data-off="'+D.d+'" title="'+(off[D.d]?"Mark as a working day":"Mark as no schedule")+'">'+D.n+'</button>':D.n)+'</th>'}).join("")+'</tr><tr>'+days.map(function(D){return'<th class="sch-wd'+(off[D.d]?" off":"")+'">'+SCHWS[D.w]+'</th>'}).join("")+'</tr></thead><tbody>';
  var ri=0;(M.rigs||[]).forEach(function(r,rx){(M.shifts||[]).forEach(function(s,sx){h+='<tr class="'+(sx===0?"rg0 ":"")+'sh'+sx+' ccsp-'+ccSchSP(s)+'">'+'<th class="sch-rh">'+(sx===0?'<b>'+dkE(r.n)+'</b>'+(r.site?' <small>'+dkE(r.site)+'</small>':''):'')+'<span>'+dkE(s.n)+'</span></th>';
   days.forEach(function(D,di){var k=r.id+"|"+s.id+"|"+D.d,c=schN((M.cells||{})[k]);
    if(edit)h+='<td class="'+(off[D.d]?"off":(c?"":"rdc"))+'">'+(off[D.d]?'':'<input data-cell="'+dkE(k)+'" data-ri="'+ri+'" data-di="'+di+'" value="'+dkE(c)+'" placeholder="RD" list="ccsch-codes" autocomplete="off" spellcheck="false" class="ccsg-'+(c?ccSchGrp(M,c).toLowerCase():"x")+(c&&!ccSchWho(M,c)?" bad":"")+'" aria-label="'+dkE(r.n+" "+s.n+" "+D.iso)+'">')+'</td>';
-   else h+='<td class="'+(off[D.d]?"off":(c?"ccsg-"+ccSchGrp(M,c).toLowerCase():"rdc"))+(hw&&c===hw?" hl":"")+'"'+(c?' data-csv="hl" data-v="'+dkE(c)+'"':'')+'>'+(off[D.d]?'':(c?dkE(c):"RD"))+'</td>'});
+   else h+='<td class="'+(off[D.d]?"off":(c?"ccsg-"+ccSchGrp(M,c).toLowerCase():"rdc"))+(hw&&c===hw?" hl":"")+(c&&DUP[D.d]&&DUP[D.d][c]?" dup":"")+'"'+(c?' data-csv="hl" data-v="'+dkE(c)+'"':'')+'>'+(off[D.d]?'':(c?dkE(c):"RD"))+'</td>'});
   h+='</tr>';ri++})});
  return h+'</tbody></table></div>'}
 function ccSchEditHTML(M){var t=CCSCHV.et||"grid",ck=ccSchChecks(M),h='<div class="sch-seg sch-et">'+[["grid","Schedule grid"],["roster","Roster"],["setup","Rigs & shifts"],["checks","Checks"+(ck.length?" ("+ck.length+")":" ✓")]].map(function(x){return'<button type="button" data-csv="et" data-v="'+x[0]+'" class="'+(t===x[0]?"on":"")+'">'+x[1]+'</button>'}).join("")+'</div>';
@@ -7402,7 +7439,7 @@ function ccSchWire(root,desk){if(root._ccschw)return;root._ccschw=1;var fi=docum
   else if(a==="ed"){CCSCHV.ed=v==="1"}else if(a==="et"){CCSCHV.et=v}
   else if(a==="brush"){CCSCHV.brush=CCSCHV.brush===v?"":v}
   else if(a==="newm"){var ks=ccSchMonths(),last=ks[ks.length-1],nm=last?dkIso(new Date(+last.slice(0,4),+last.slice(5,7),1)).slice(0,7):dkIso(new Date()).slice(0,7);while(CCSCHD.months[nm])nm=dkIso(new Date(+nm.slice(0,4),+nm.slice(5,7),1)).slice(0,7);CCSCHD.months[nm]=ccSchTemplate(nm,last?CCSCHD.months[last]:null);CCSCHV.m=nm;CCSCHV.ed=true;CCSCHV.et="grid";ccSchSave();CCSCHMSG=[{ok:1,msg:"Started "+schMonLbl(nm)+" CC schedule with the same rigs, shifts and roster as before. Fill the grid, then Save CC schedule packet."}]}
-  else if(a==="delm"){if(!m)return;if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Tap again: delete "+schMonLbl(m.month);setTimeout(function(){b.dataset.arm="";b.textContent="Delete month"},3500);return}delete CCSCHD.months[m.month];CCSCHV.m="";ccSchSave()}
+  else if(a==="delm"){if(!m)return;if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Tap again: delete "+schMonLbl(m.month);setTimeout(function(){b.dataset.arm="";b.textContent="Delete month"},3500);return}delete CCSCHD.months[m.month];CCSCHV.m="";ccSchSave();try{ccSchHome()}catch(e2){}}
   else if(a==="radd"){m.roster.push({c:"",n:"",g:"CC"});dirty(m)}else if(a==="rdel"){m.roster.splice(+v,1);dirty(m)}
   else if(a==="gadd"){var id="r"+Date.now().toString(36);m.rigs.push({id:id,n:"Rig "+(m.rigs.length+1),site:"",note:""});dirty(m)}
   else if(a==="gdel"){var rg=m.rigs[+v];if(rg){if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Sure?";setTimeout(function(){b.dataset.arm="";b.textContent="✕"},3000);return}Object.keys(m.cells).forEach(function(k){if(k.split("|")[0]===rg.id)delete m.cells[k]});m.rigs.splice(+v,1);dirty(m)}}
@@ -7439,6 +7476,13 @@ function ccSchOpen(view){var d=ccSchEl();try{if(window.geotSet&&document.body.cl
  d.hidden=false;document.body.classList.add("dvon","ccschon");var b=document.getElementById("m_ccsch");if(b)b.setAttribute("aria-selected","true");ccSchTop();CCSCHD=ccSchLoad();var m=d.querySelector(".sch-m");m.innerHTML=ccSchMobHTML();m.scrollTop=0;ccSchHead();
  var mm=document.getElementById("mode");if(mm&&mm.scrollTo)mm.scrollTo({left:mm.scrollWidth,behavior:"smooth"})}
 function ccSchClose(){var d=document.getElementById("ccsch");if(!d||d.hidden)return;d.hidden=true;document.body.classList.remove("dvon","ccschon");var b=document.getElementById("m_ccsch");if(b)b.setAttribute("aria-selected","false");CCSCHMSG=null}
+/*CCHOME: the Core Checkers twin of schNext/schHome, so the mobile home screen
+  carries a CC card beside the rig-geologist one.*/
+function ccSchNext(now){now=now||Date.now();var best=null,on=null;ccSchMonths().forEach(function(mk){var M=CCSCHD.months[mk],me=ccSchMeCode(M);if(!me)return;ccSchAsg(M).forEach(function(a){if(a.c!==me)return;if(a.st<=now&&a.en>now)on=a;else if(a.st>now&&(!best||a.st<best.st))best=a})});return{on:on,next:best}}
+/*CCHOME: the Core Checkers viewer stays on its own mobile tab; the home screen shows the
+  rig-geologist card only. This also clears a CC card left behind by a cached older build.*/
+function ccSchHome(){var c=document.getElementById("hm-ccsch");if(c)c.remove()}
+window.ccSchHome=ccSchHome;
 window.ccSchOpen=ccSchOpen;window.ccSchClose=ccSchClose;window.ccSchImportObj=ccSchImportObj;
 (function(){var s=document.getElementById("m_sch");if(s&&!document.getElementById("m_ccsch")){var b=document.createElement("button");b.type="button";b.id="m_ccsch";b.setAttribute("role","tab");b.setAttribute("aria-selected","false");b.setAttribute("aria-label","Core checkers schedule");b.title="CC Schedule";b.innerHTML=CCSCHCAL;s.after(b);try{window.dispatchEvent(new Event("resize"))}catch(e){}}
  window.addEventListener("resize",ccSchTop);window.addEventListener("orientationchange",function(){setTimeout(ccSchTop,250)})})();

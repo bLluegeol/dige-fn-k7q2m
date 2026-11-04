@@ -57,7 +57,7 @@ html,body{overscroll-behavior:none;height:100%;margin:0;background:var(--bg);col
 .sch-card{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);display:flex;flex-direction:column;gap:6px}.sch-ct{font-size:15px}
 .sch-dl{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:center;padding:6px 0;border-top:1px dashed var(--line)}
 .sch-ds{display:flex;flex-direction:column}.sch-ds i{font-style:normal;font-size:11px;color:var(--mut)}.sch-dw{display:flex;align-items:center;flex-wrap:wrap;gap:2px}.sch-dw em{margin-left:auto;font-style:normal;font-size:11px;font-weight:700;color:var(--ok-ink);background:var(--okbg);padding:1px 6px;border-radius:6px}
-.sch-dl.mine .sch-nm{font-weight:700}.sch-dl.now{background:var(--okbg);margin:0 -6px;padding:6px;border-radius:8px}
+.sch-dl.mine .sch-nm{font-weight:700}.sch-dl.now{background:var(--okbg);margin:0 -6px;padding:6px 6px 6px 10px;border-radius:8px}
 .sch-leg{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:var(--mut)}
 .sch-hlp{margin:0;display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px}
 .sch-tw{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--card);max-height:70vh}
@@ -88,9 +88,9 @@ html,body{overscroll-behavior:none;height:100%;margin:0;background:var(--bg);col
 .sch-sp.ccsp-ns{background:var(--ccsp-ns-bg);color:var(--ccsp-ns)}
 .sch-sp.ccsp-rd{background:var(--ccsp-rd-bg);color:var(--ccsp-rd)}
 .sch-rd{display:inline-flex;align-items:center;justify-content:center;min-width:30px;padding:1px 6px;border-radius:6px;font:700 12px/1.5 system-ui,sans-serif;color:var(--ccsp-rd);background:var(--ccsp-rd-bg)}
-.sch-pr.ccsp-ds,.sch-dl.ccsp-ds{border-left:3px solid var(--ccsp-ds-ln)}
-.sch-pr.ccsp-ns,.sch-dl.ccsp-ns{border-left:3px solid var(--ccsp-ns-ln)}
-.sch-pr.ccsp-rd,.sch-dl.ccsp-rd{border-left:3px solid var(--ccsp-rd-ln)}
+.sch-pr.ccsp-ds,.sch-dl.ccsp-ds{border-left:4px solid var(--ccsp-ds-ln)}
+.sch-pr.ccsp-ns,.sch-dl.ccsp-ns{border-left:4px solid var(--ccsp-ns-ln)}
+.sch-pr.ccsp-rd,.sch-dl.ccsp-rd{border-left:4px solid var(--ccsp-rd-ln)}
 .sch-rc.ccsp-ds>i{color:var(--ccsp-ds);font-weight:700}
 .sch-rc.ccsp-ns>i{color:var(--ccsp-ns);font-weight:700}
 .sch-t tr.ccsp-ds>td:not(.off){background:var(--ccsp-ds-bg)}
@@ -100,6 +100,54 @@ html,body{overscroll-behavior:none;height:100%;margin:0;background:var(--bg);col
 .sch-t tr.ccsp-ds>th.sch-rh span{color:var(--ccsp-ds);font-weight:700}
 .sch-t tr.ccsp-ns>th.sch-rh span{color:var(--ccsp-ns);font-weight:700}
 .sch-t td.rdc{color:var(--ccsp-rd);font-weight:700;background:var(--ccsp-rd-bg)!important}
+/*CCNOW: the running shift is tinted in its own colour, amber for day and blue for night,
+  with a heavier left edge, so it reads at a glance without a separate summary block.*/
+.sch-dl.ccsp-ds.now{background:var(--ccsp-ds-bg);border-left-color:var(--ccsp-ds)}
+.sch-dl.ccsp-ns.now{background:var(--ccsp-ns-bg);border-left-color:var(--ccsp-ns)}
+.sch-dl.now>.sch-dw>em{font-style:normal;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.sch-dl.ccsp-ds.now>.sch-dw>em{color:var(--ccsp-ds)}
+.sch-dl.ccsp-ns.now>.sch-dw>em{color:var(--ccsp-ns)}
+.sch-pr.ccsp-ds.now{background:var(--ccsp-ds-bg);border-left-color:var(--ccsp-ds)}
+.sch-pr.ccsp-ns.now{background:var(--ccsp-ns-bg);border-left-color:var(--ccsp-ns)}
+/*GEONOW: the geologist tab gets the same treatment, drawn as an inset edge so the grid never shifts*/
+.sch-dl.now{box-shadow:inset 4px 0 0 var(--ok-ink)}
+.sch-dl.now>.sch-dw>em{color:var(--ok-ink)}
+.sch-pr.now{box-shadow:inset 4px 0 0 var(--ok-ink)}
+/*CCDARK: shift colours for the dark palettes*/
+:root[data-theme="dark"] .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;--ccsp-ds-bg:rgba(240,182,74,.14);--ccsp-ns-bg:rgba(143,178,236,.14);--ccsp-ds-ln:#b4832f;--ccsp-ns-ln:#5c7cb3;--ccsp-rd:#73c98a;--ccsp-rd-bg:rgba(115,201,138,.14);--ccsp-rd-ln:#4e8c5e}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;--ccsp-ds-bg:rgba(240,182,74,.14);--ccsp-ns-bg:rgba(143,178,236,.14);--ccsp-ds-ln:#b4832f;--ccsp-ns-ln:#5c7cb3;--ccsp-rd:#73c98a;--ccsp-rd-bg:rgba(115,201,138,.14);--ccsp-rd-ln:#4e8c5e}}
+/*PAL: the five DiGe-FN palettes, same tokens the main app uses*/
+:root[data-pal="slate"]{--bg:#EDF0F2;--card:#F8F9FA;--ink:#303D48;--mut:#5C6974;--line:#D5DCE1;--acc:#718A9B;--acc2:#A9BAC5;--hl:#E1E8EC;--acc-ink:#56707F;--acc-fill:#56707F;--sel:#E1E8EC;--row-alt:#F2F4F6;--ok:#8EAA9C;--ok-ink:#4D7060;--okbg:#E3ECE7;--warnacc:#C5B49B;--warn:#6E5A3A;--warnbg:#F2EDE4;color-scheme:light}
+:root[data-pal="slate"][data-theme="dark"]{--bg:#222B33;--card:#2C3740;--ink:#E0E7EB;--mut:#AEBCC6;--line:#3D4A54;--acc:#8DA6B7;--acc2:#718A9B;--hl:#35434D;--acc-ink:#8DA6B7;--acc-fill:#8DA6B7;--sel:#35434D;--row-alt:#303C46;--ok:#8EAA9C;--ok-ink:#8EAA9C;--okbg:#2F3F3A;--warnacc:#C5B49B;--warn:#C5B49B;--warnbg:#3A3832;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}
+@media(prefers-color-scheme:dark){:root[data-pal="slate"]:not([data-theme="light"]){--bg:#222B33;--card:#2C3740;--ink:#E0E7EB;--mut:#AEBCC6;--line:#3D4A54;--acc:#8DA6B7;--acc2:#718A9B;--hl:#35434D;--acc-ink:#8DA6B7;--acc-fill:#8DA6B7;--sel:#35434D;--row-alt:#303C46;--ok:#8EAA9C;--ok-ink:#8EAA9C;--okbg:#2F3F3A;--warnacc:#C5B49B;--warn:#C5B49B;--warnbg:#3A3832;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-pal="claude"]{--bg:#F0EEE6;--card:#FAF9F5;--ink:#2B2924;--mut:#6A665B;--line:#DDD8CA;--acc:#D97757;--acc2:#E9B8A3;--hl:#F0E6DB;--acc-ink:#AE4F2D;--acc-fill:#B4532F;--sel:#F0E6DB;--row-alt:#F5F3EC;--ok:#8A9A6E;--ok-ink:#5C6F45;--okbg:#EBEFDF;--warnacc:#CBB58A;--warn:#6E5A3A;--warnbg:#F3EEE2;color-scheme:light}
+:root[data-pal="claude"][data-theme="dark"]{--bg:#262624;--card:#30302E;--ink:#ECE9DF;--mut:#B8B3A6;--line:#46433E;--acc:#D97757;--acc2:#A8573B;--hl:#3B3835;--acc-ink:#E58E6E;--acc-fill:#E08A6A;--sel:#3B3835;--row-alt:#2B2A28;--ok:#9BAE86;--ok-ink:#A9BC93;--okbg:#343B2E;--warnacc:#CBB58A;--warn:#CBB58A;--warnbg:#3A372F;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}
+@media(prefers-color-scheme:dark){:root[data-pal="claude"]:not([data-theme="light"]){--bg:#262624;--card:#30302E;--ink:#ECE9DF;--mut:#B8B3A6;--line:#46433E;--acc:#D97757;--acc2:#A8573B;--hl:#3B3835;--acc-ink:#E58E6E;--acc-fill:#E08A6A;--sel:#3B3835;--row-alt:#2B2A28;--ok:#9BAE86;--ok-ink:#A9BC93;--okbg:#343B2E;--warnacc:#CBB58A;--warn:#CBB58A;--warnbg:#3A372F;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-pal="sage"]{--bg:#EEF1EC;--card:#F8FAF6;--ink:#2C3A30;--mut:#586A5C;--line:#D3DDD2;--acc:#7D9A82;--acc2:#B2C7B5;--hl:#E3EBE2;--acc-ink:#46654D;--acc-fill:#46654D;--sel:#E3EBE2;--row-alt:#F2F5F0;--ok:#7FA38A;--ok-ink:#3F6B4B;--okbg:#E1EDE3;--warnacc:#C5B49B;--warn:#6E5A3A;--warnbg:#F2EDE4;color-scheme:light}
+:root[data-pal="sage"][data-theme="dark"]{--bg:#1F2823;--card:#29342D;--ink:#E1EAE3;--mut:#A9BAAE;--line:#3B4A40;--acc:#8FB398;--acc2:#6B8B73;--hl:#314037;--acc-ink:#8FB398;--acc-fill:#8FB398;--sel:#314037;--row-alt:#2D3831;--ok:#8FB398;--ok-ink:#9CC2A6;--okbg:#2B3F32;--warnacc:#C5B49B;--warn:#C5B49B;--warnbg:#3A3832;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}
+@media(prefers-color-scheme:dark){:root[data-pal="sage"]:not([data-theme="light"]){--bg:#1F2823;--card:#29342D;--ink:#E1EAE3;--mut:#A9BAAE;--line:#3B4A40;--acc:#8FB398;--acc2:#6B8B73;--hl:#314037;--acc-ink:#8FB398;--acc-fill:#8FB398;--sel:#314037;--row-alt:#2D3831;--ok:#8FB398;--ok-ink:#9CC2A6;--okbg:#2B3F32;--warnacc:#C5B49B;--warn:#C5B49B;--warnbg:#3A3832;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-pal="dusk"]{--bg:#EFEEF3;--card:#F9F8FB;--ink:#2E2B3A;--mut:#625E73;--line:#D9D6E2;--acc:#8A84A8;--acc2:#BDB8D2;--hl:#E6E3EE;--acc-ink:#5A547F;--acc-fill:#5A547F;--sel:#E6E3EE;--row-alt:#F3F2F7;--ok:#86A08F;--ok-ink:#4D6E5B;--okbg:#E4ECE7;--warnacc:#C5B49B;--warn:#6E5A3A;--warnbg:#F2EDE4;color-scheme:light}
+:root[data-pal="dusk"][data-theme="dark"]{--bg:#24222E;--card:#2F2C3A;--ink:#E6E3EE;--mut:#B3AEC5;--line:#433F52;--acc:#A9A3CC;--acc2:#7B7599;--hl:#383547;--acc-ink:#A9A3CC;--acc-fill:#A9A3CC;--sel:#383547;--row-alt:#2B2835;--ok:#8EAA9C;--ok-ink:#8EAA9C;--okbg:#2F3F3A;--warnacc:#C5B49B;--warn:#C5B49B;--warnbg:#3A3832;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}
+@media(prefers-color-scheme:dark){:root[data-pal="dusk"]:not([data-theme="light"]){--bg:#24222E;--card:#2F2C3A;--ink:#E6E3EE;--mut:#B3AEC5;--line:#433F52;--acc:#A9A3CC;--acc2:#7B7599;--hl:#383547;--acc-ink:#A9A3CC;--acc-fill:#A9A3CC;--sel:#383547;--row-alt:#2B2835;--ok:#8EAA9C;--ok-ink:#8EAA9C;--okbg:#2F3F3A;--warnacc:#C5B49B;--warn:#C5B49B;--warnbg:#3A3832;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-pal="mono"]{--bg:#F2F2F2;--card:#FFFFFF;--ink:#1A1A1A;--mut:#5E5E5E;--line:#D6D6D6;--acc:#6B6B6B;--acc2:#BDBDBD;--hl:#E8E8E8;--acc-ink:#3D3D3D;--acc-fill:#2B2B2B;--sel:#E8E8E8;--row-alt:#F7F7F7;--ok:#6F8F7A;--ok-ink:#3F5F4B;--okbg:#E6EEE9;--warnacc:#BDB09A;--warn:#6E5A3A;--warnbg:#F2EEE6;color-scheme:light}
+:root[data-pal="mono"][data-theme="dark"]{--bg:#121212;--card:#1C1C1C;--ink:#EDEDED;--mut:#AAAAAA;--line:#333333;--acc:#B5B5B5;--acc2:#7A7A7A;--hl:#2A2A2A;--acc-ink:#CFCFCF;--acc-fill:#D6D6D6;--sel:#2A2A2A;--row-alt:#181818;--ok:#8EAA9C;--ok-ink:#9CC2A6;--okbg:#25302B;--warnacc:#C5B49B;--warn:#C5B49B;--warnbg:#2E2C27;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}
+@media(prefers-color-scheme:dark){:root[data-pal="mono"]:not([data-theme="light"]){--bg:#121212;--card:#1C1C1C;--ink:#EDEDED;--mut:#AAAAAA;--line:#333333;--acc:#B5B5B5;--acc2:#7A7A7A;--hl:#2A2A2A;--acc-ink:#CFCFCF;--acc-fill:#D6D6D6;--sel:#2A2A2A;--row-alt:#181818;--ok:#8EAA9C;--ok-ink:#9CC2A6;--okbg:#25302B;--warnacc:#C5B49B;--warn:#C5B49B;--warnbg:#2E2C27;--err:#E8897C;--errbg:#3A2420;--overlay:rgba(0,0,0,.6);color-scheme:dark}}
+/*PALUI: colour mode picker*/
+.app-col{min-height:34px;padding:0 12px;border-radius:999px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 12.5px/1 system-ui,sans-serif}
+.col-wrap{margin-left:auto;display:flex;gap:8px;align-items:center}
+#colsheet{position:fixed;inset:0;z-index:60;display:grid;place-items:end center;background:var(--overlay);padding:0}
+#colsheet>div{width:100%;max-width:460px;border-radius:16px 16px 0 0;background:var(--card);border:1px solid var(--line);border-bottom:none;
+ padding:16px max(16px,env(safe-area-inset-left,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px))}
+#colsheet h2{margin:0 0 12px;font:700 15px/1.3 system-ui,sans-serif;color:var(--ink)}
+.col-lbl{margin:12px 0 7px;font:700 10.5px/1.4 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.col-row{display:flex;flex-wrap:wrap;gap:8px}
+.col-row button{flex:1 1 auto;min-height:40px;padding:0 14px;cursor:pointer;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:600 13px/1 system-ui,sans-serif}
+.col-row button[aria-pressed="true"]{border-color:var(--acc);background:var(--hl);color:var(--acc-ink)}
+.col-pal{display:flex;align-items:center;gap:9px;flex:1 1 128px}
+.col-sw{display:inline-flex;flex:none;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);overflow:hidden}
+.col-sw i{display:block;width:50%;height:100%}
+.col-done{margin-top:16px;width:100%;min-height:44px;cursor:pointer;border-radius:12px;border:none;background:var(--acc-fill);color:#fff;font:700 13px/1 system-ui,sans-serif;letter-spacing:.06em}
+
 
 [hidden]{display:none!important}
 /*HOME: hero home screen, styled after the logging app*/
@@ -136,6 +184,7 @@ html,body{overscroll-behavior:none;height:100%;margin:0;background:var(--bg);col
 </style>
 </head>
 <body>
+<div id="colsheet" hidden role="dialog" aria-modal="true" aria-label="Colour mode"><div><h2>Colour</h2><p class="col-lbl">Mode</p><div class="col-row" id="col-th"><button type="button" data-th="auto">Auto</button><button type="button" data-th="light">Light</button><button type="button" data-th="dark">Dark</button></div><p class="col-lbl">Palette</p><div class="col-row" id="col-pal"><button type="button" class="col-pal" data-pal="slate"><span class="col-sw"><i style="background:#718A9B"></i><i style="background:#222B33"></i></span>Slate</button><button type="button" class="col-pal" data-pal="claude"><span class="col-sw"><i style="background:#D97757"></i><i style="background:#262624"></i></span>Claude</button><button type="button" class="col-pal" data-pal="sage"><span class="col-sw"><i style="background:#7D9A82"></i><i style="background:#1F2823"></i></span>Sage</button><button type="button" class="col-pal" data-pal="dusk"><span class="col-sw"><i style="background:#8A84A8"></i><i style="background:#24222E"></i></span>Dusk</button><button type="button" class="col-pal" data-pal="mono"><span class="col-sw"><i style="background:#6B6B6B"></i><i style="background:#121212"></i></span>Mono</button></div><button type="button" class="col-done" id="col-done">DONE</button></div></div>
 <div id="home">
 <svg class="hm-hex" viewBox="0 0 50 48" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
 <path d="M32 6l8 10M29 9l7-5 3 4" stroke="#8fa6b8" stroke-width="2.1"/>
@@ -162,7 +211,7 @@ html,body{overscroll-behavior:none;height:100%;margin:0;background:var(--bg);col
  <div class="app-h">
   <b>Team Schedule</b>
   <span>DiGe-FN</span>
-  <button type="button" class="app-home" id="go-home">Home</button>
+  <span class="col-wrap"><button type="button" class="app-col" id="go-col" aria-haspopup="dialog">Colour</button><button type="button" class="app-home" id="go-home">Home</button></span>
  </div>
  <div class="app-tabs">
   <button class="on" data-tab="geo">Geologist</button>
@@ -249,7 +298,7 @@ function schViewHTML(M){var me=schMeCode(M),meP=schWho(M,me),v=SCHV.v,now=Date.n
 
  if(v==="person"){var who=schN(SCHV.who)||me;var P=schWho(M,who);h+='<div class="sch-pick"><select data-sv="who" aria-label="Person">'+schOpts(M,who,"Choose a name or code…")+'</select>'+(who&&me&&who!==me?'<button type="button" class="sch-lk" data-sv="whome">Show mine</button>':'')+'</div>';
   if(!who)h+='<p class="sch-empty">Pick a name or code to see their shifts.</p>';else{var L=A.filter(function(a){return a.c===who}),nx=null,on=null;L.forEach(function(a){if(a.st<=now&&a.en>now)on=a;else if(a.st>now&&!nx)nx=a});var cnt={};L.forEach(function(a){cnt[a.s.id]=(cnt[a.s.id]||0)+1});
-   h+='<div class="sch-pc"><div class="sch-pch">'+schChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(SCHG[schGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On shift now</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
+   h+='<div class="sch-pc"><div class="sch-pch">'+schChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(SCHG[schGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On duty</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
     '<p class="sch-cnt">'+L.length+' shift'+(L.length===1?"":"s")+' in '+dkE(schMonLbl(M.month))+(L.length?' · '+(M.shifts||[]).filter(function(s){return cnt[s.id]}).map(function(s){return dkE(schShort(s))+" "+cnt[s.id]}).join(" · "):'')+'</p></div>';
    h+=L.length?'<div class="sch-pl">'+L.map(function(a){var cl=a.en<=now?" past":a.D.iso===td?" today":"";if(on===a)cl+=" now";return'<div class="sch-pr'+cl+'"><span class="sch-pd"><b>'+a.D.n+'</b><i>'+SCHWL[a.D.w]+'</i></span><span class="sch-ps"><b>'+dkE(a.s.n)+'</b><i>'+dkE(schSpan(a.s))+'</i></span><span class="sch-pg">'+dkE(schRigL(a.r))+'</span></div>'}).join("")+'</div>':'<p class="sch-empty">'+dkE(P?P.n:who)+' has no shifts in '+dkE(schMonLbl(M.month))+'.</p>'}}
  else if(v==="rig"){var rid=SCHV.rig&&(M.rigs||[]).some(function(r){return r.id===SCHV.rig})?SCHV.rig:((M.rigs||[])[0]||{}).id,R0=(M.rigs||[]).filter(function(r){return r.id===rid})[0];
@@ -258,7 +307,7 @@ function schViewHTML(M){var me=schMeCode(M),meP=schWho(M,me),v=SCHV.v,now=Date.n
    return'<div class="sch-rr'+(D.iso===td?" today":D.iso<td?" past":"")+'"><span class="sch-pd"><b>'+D.n+'</b><i>'+SCHWL[D.w]+'</i></span><span class="sch-rs">'+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[R0.id+"|"+s.id+"|"+D.d]);return'<span class="sch-rc"><i>'+dkE(schShort(s))+'</i>'+(c?schChip(M,c)+'<span class="sch-nm">'+dkE(schFirst(schWho(M,c))||"")+'</span>':'<span class="sch-mut">—</span>')+'</span>'}).join("")+'</span></div>'}).join("")+'</div>'}
  else if(v==="day"){var day=SCHV.day&&SCHV.day.slice(0,7)===M.month?SCHV.day:(td.slice(0,7)===M.month?td:M.month+"-01"),dd=day.slice(8);
   h+='<div class="sch-day"><button type="button" data-sv="dstep" data-v="-1" aria-label="Previous day">◀</button><input type="date" data-sv="dpick" value="'+dkE(day)+'" aria-label="Day"><button type="button" data-sv="dstep" data-v="1" aria-label="Next day">▶</button><button type="button" data-sv="dtoday">Today</button></div><h3 class="sch-dh">'+dkE(schDL(day))+(day===td?' · today':'')+'</h3>';
-  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl'+(isOn?" now":"")+(c&&c===me?" mine":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i></span><span class="sch-dw">'+(c?schChip(M,c,true):'<span class="sch-mut">—</span>')+(isOn?'<em>On now</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
+  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl'+(isOn?" now":"")+(c&&c===me?" mine":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i></span><span class="sch-dw">'+(c?schChip(M,c,true):'<span class="sch-mut">—</span>')+(isOn?'<em>On duty</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
  else{var hw=schN(SCHV.who);h+=schGridHTML(M,hw,td)}
  return h}
 function schGridHTML(M,hw,td){var days=schDays(M.month),off=M.off||{};
@@ -310,7 +359,7 @@ function ccSchViewHTML(M){var me=ccSchMeCode(M),meP=ccSchWho(M,me),v=CCSCHV.v,no
 
  if(v==="person"){var who=schN(CCSCHV.who)||me;var P=ccSchWho(M,who);h+='<div class="sch-pick"><select data-csv="who" aria-label="Person">'+ccSchOpts(M,who,"Choose a name or code…")+'</select>'+(who&&me&&who!==me?'<button type="button" class="sch-lk" data-csv="whome">Show mine</button>':'')+'</div>';
   if(!who)h+='<p class="sch-empty">Pick a name or code to see their shifts.</p>';else{var L=A.filter(function(a){return a.c===who}),nx=null,on=null;L.forEach(function(a){if(a.st<=now&&a.en>now)on=a;else if(a.st>now&&!nx)nx=a});var cnt={};L.forEach(function(a){cnt[a.s.id]=(cnt[a.s.id]||0)+1});
-   h+='<div class="sch-pc"><div class="sch-pch">'+ccSchChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(CCSCHG[ccSchGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On shift now</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
+   h+='<div class="sch-pc"><div class="sch-pch">'+ccSchChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(CCSCHG[ccSchGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On duty</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
     '<p class="sch-cnt">'+L.length+' shift'+(L.length===1?"":"s")+' in '+dkE(schMonLbl(M.month))+(L.length?' · '+(M.shifts||[]).filter(function(s){return cnt[s.id]}).map(function(s){return dkE(schShort(s))+" "+cnt[s.id]}).join(" · "):'')+'</p></div>';
    var byd={};L.forEach(function(a){(byd[a.D.d]=byd[a.D.d]||[]).push(a)});
    h+=L.length?'<div class="sch-pl">'+schDays(M.month).map(function(D){if((M.off||{})[D.d])return'';
@@ -324,7 +373,7 @@ function ccSchViewHTML(M){var me=ccSchMeCode(M),meP=ccSchWho(M,me),v=CCSCHV.v,no
    return'<div class="sch-rr'+(D.iso===td?" today":D.iso<td?" past":"")+'"><span class="sch-pd"><b>'+D.n+'</b><i>'+SCHWL[D.w]+'</i></span><span class="sch-rs">'+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[R0.id+"|"+s.id+"|"+D.d]);return'<span class="sch-rc ccsp-'+ccSchSP(s)+'"><i>'+dkE(schShort(s))+'</i>'+(c?ccSchChip(M,c)+'<span class="sch-nm">'+dkE(schFirst(ccSchWho(M,c))||"")+'</span>':'<span class="sch-rd">RD</span><span class="sch-nm ccsp-rd">Rest day</span>')+'</span>'}).join("")+'</span></div>'}).join("")+'</div>'}
  else if(v==="day"){var day=CCSCHV.day&&CCSCHV.day.slice(0,7)===M.month?CCSCHV.day:(td.slice(0,7)===M.month?td:M.month+"-01"),dd=day.slice(8);
   h+='<div class="sch-day"><button type="button" data-csv="dstep" data-v="-1" aria-label="Previous day">◀</button><input type="date" data-csv="dpick" value="'+dkE(day)+'" aria-label="Day"><button type="button" data-csv="dstep" data-v="1" aria-label="Next day">▶</button><button type="button" data-csv="dtoday">Today</button></div><h3 class="sch-dh">'+dkE(schDL(day))+(day===td?' · today':'')+'</h3>';
-  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl ccsp-'+(c?ccSchSP(s):"rd")+(isOn?" now":"")+(c&&c===me?" mine":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i>'+ccSchSPB(s)+'</span><span class="sch-dw">'+(c?ccSchChip(M,c,true):'<span class="sch-rd">RD</span><span class="sch-nm ccsp-rd">Rest day</span>')+(isOn?'<em>On now</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
+  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl ccsp-'+(c?ccSchSP(s):"rd")+(isOn?" now":"")+(c&&c===me?" mine":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i>'+ccSchSPB(s)+'</span><span class="sch-dw">'+(c?ccSchChip(M,c,true):'<span class="sch-rd">RD</span><span class="sch-nm ccsp-rd">Rest day</span>')+(isOn?'<em>On duty</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
  else{h+=ccSchGridHTML(M,schN(CCSCHV.who),td)}
  return h}
 function ccSchGridHTML(M,hw,td){var days=schDays(M.month),off=M.off||{};
@@ -397,6 +446,32 @@ ccEl.addEventListener("change",function(e){var t=e.target,a=t.getAttribute("data
  ccSchUiKeep();ccRefresh()});
 
 
+/* ---- colour mode ---- */
+/*PALUI: same dg_theme / dg_pal contract as DiGe-FN, stored per-origin for this app.*/
+var TH="auto",PID="slate";
+try{TH=localStorage.getItem("dg_theme")||"auto"}catch(e){}
+try{PID=localStorage.getItem("dg_pal")||"slate"}catch(e){}
+var PALS=["slate","claude","sage","dusk","mono"];
+if(PALS.indexOf(PID)<0)PID="slate";
+if(["auto","light","dark"].indexOf(TH)<0)TH="auto";
+function colApply(){var r=document.documentElement;
+ r.setAttribute("data-pal",PID);
+ if(TH==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",TH);
+ var m=document.querySelector('meta[name="theme-color"]');
+ if(m){var dark=TH==="dark"||(TH==="auto"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches);
+  m.setAttribute("content",getComputedStyle(r).getPropertyValue(dark?"--bg":"--card").trim()||"#222b35")}
+ document.querySelectorAll("#col-th button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.th===TH))});
+ document.querySelectorAll("#col-pal button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.pal===PID))});
+ try{localStorage.setItem("dg_theme",TH);localStorage.setItem("dg_pal",PID)}catch(e){}}
+colApply();
+if(window.matchMedia)matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(){if(TH==="auto")colApply()});
+var colSheet=document.getElementById("colsheet");
+document.getElementById("go-col").addEventListener("click",function(){colSheet.hidden=false});
+document.getElementById("col-done").addEventListener("click",function(){colSheet.hidden=true});
+colSheet.addEventListener("click",function(e){if(e.target===colSheet){colSheet.hidden=true;return}
+ var b=e.target.closest&&e.target.closest("button[data-th],button[data-pal]");if(!b)return;
+ if(b.dataset.th)TH=b.dataset.th;else PID=b.dataset.pal;colApply()});
+
 /* ---- home screen ---- */
 var homeEl=document.getElementById("home"),appEl=document.getElementById("app");
 var CALIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>';
@@ -416,7 +491,7 @@ function homeCard(kind){
  if(!r)return b+'<span class="hm-ci">'+CALIC+'</span><span class="hm-ct"><small>'+label+'</small><b>No schedule yet</b><span>Tap to import a packet.</span></span></button>';
  if(!r.me)return b+'<span class="hm-ci">'+CALIC+'</span><span class="hm-ct"><small>'+label+'</small><b>'+dkE(schMonLbl(r.M.month))+'</b><span>Tap to pick your name.</span></span></button>';
  var nm=dkE(r.who?r.who.n:r.me),sub,ci='<span class="hm-ci">'+CALIC+'</span>';
- if(r.on){ci='<span class="hm-ci on">'+CALIC+'</span>';sub='<span>On shift now · '+dkE(schAsgL(r.on))+'</span>'}
+ if(r.on){ci='<span class="hm-ci on">'+CALIC+'</span>';sub='<span>On duty · '+dkE(schAsgL(r.on))+'</span>'}
  else if(r.inMonth&&!r.today.length)sub='<span class="rdy">Rest day today</span>'+(r.next?'<span>Next · '+dkE(schAsgL(r.next))+'</span>':'');
  else if(r.next)sub='<span>Next · '+dkE(schAsgL(r.next))+'</span>';
  else sub='<span>No more shifts in '+dkE(schMonLbl(r.M.month))+'.</span>';
