@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#222b35">
+<link rel="manifest" href="schedule-manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="sched-icon-192.png">
+<link rel="apple-touch-icon" href="sched-apple-touch-icon.png">
+<title>DiGe-FN Team Schedule</title>
+<style>
+:root{--bg:#EDF0F2;--card:#F8F9FA;--ink:#303D48;--line:#D5DCE1;--acc:#718A9B;box-sizing:border-box;color-scheme:light;--mut:#5C6974;--acc2:#A9BAC5;--hl:#E1E8EC;--ok:#8EAA9C;--acc-ink:#56707F;--acc-fill:#56707F;--ok-ink:#4D7060;--okbg:#E3ECE7;--warn:#6E5A3A;--warnbg:#F2EDE4;--err:#A8392F;--errbg:#F5E4E1;--overlay:rgba(34,43,51,.5)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#222B33;--card:#2C3740;--ink:#E0E7EB;--line:#3D4A54;--acc:#8DA6B7;color-scheme:dark;--mut:#AEBCC6;--acc2:#718A9B;--hl:#35434D;--ok:#8EAA9C;--acc-ink:#8DA6B7;--acc-fill:#8DA6B7;--ok-ink:#8EAA9C;--okbg:#2F3F3A;--warn:#C5B49B;--warnbg:#3A3832;--err:#E3928A;--errbg:#43302F;--overlay:rgba(16,21,26,.62)}}
+*{box-sizing:border-box}
+html,body{overscroll-behavior:none;height:100%;margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,"Segoe UI",sans-serif}
+.app{display:flex;flex-direction:column;height:100%;min-height:0}
+.app-h{flex:none;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+.app-h b{font-size:17px}.app-h span{font-size:12px;color:var(--mut)}
+.app-tabs{flex:none;display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:6px 16px 0;background:var(--card);border-bottom:1px solid var(--line)}
+.app-tabs button{min-height:38px;border:0;border-bottom:3px solid transparent;background:none;color:var(--mut);font:600 14px system-ui,sans-serif;cursor:pointer;border-radius:0}
+.app-tabs button.on{color:var(--acc-ink);border-bottom-color:var(--acc-fill)}
+.app-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 16px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
+.app-body>*{flex-shrink:0}
+/* ---- schedule shared styles ---- */
+.sch{--sg-nh:#1D8A8A;--sg-mn:#2f6fb5;--sg-gt:#8a5a00;--sg-ex:#2f7d3b;--sg-ot:#6b7280;--ccsg-cc:#c27800;--ccsg-ch:#4a5a70;--ccsg-rd:#6b7280;--ccsg-ot:#6b7280}
+.sch-top{display:flex;flex-direction:column;gap:10px}
+.sch-me{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:14px}.sch-me span{color:var(--mut)}
+.sch-me.ask{flex-direction:column;align-items:stretch;gap:6px;border-color:var(--acc-fill)}.sch-me.ask select{min-height:42px}
+.sch select,.sch input[type=date]{min-height:40px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:600 14px system-ui,sans-serif;padding:0 10px;max-width:100%;box-sizing:border-box}
+.sch-lk{border:0;background:none;color:var(--acc-ink);font:600 13px system-ui,sans-serif;text-decoration:underline;cursor:pointer;padding:4px 2px}
+.sch-mrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.sch-rev{font-size:12px;color:var(--mut)}.sch-dirty{color:var(--err)}
+.sch-seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.sch-seg button{min-height:38px;border:0;border-radius:9px;background:none;color:var(--mut);font:600 14px system-ui,sans-serif;cursor:pointer}.sch-seg button.on{background:var(--acc-fill);color:var(--bg)}
+.sch-pick{display:flex;gap:8px;align-items:center}.sch-pick select{flex:1;min-width:0}
+.sch-c{display:inline-flex;align-items:center;justify-content:center;min-width:30px;padding:1px 6px;border-radius:6px;font:700 12px/1.5 system-ui,sans-serif;color:#fff;background:var(--sg-ot)}
+.sch-c.sg-nh{background:var(--sg-nh)}.sch-c.sg-mn{background:var(--sg-mn)}.sch-c.sg-gt{background:var(--sg-gt)}.sch-c.sg-ex{background:var(--sg-ex)}
+.sch-c.ccsg-cc{background:var(--ccsg-cc)}.sch-c.ccsg-ch{background:var(--ccsg-ch)}.sch-c.ccsg-rd{background:var(--ccsg-rd)}.sch-c.ccsg-ot{background:var(--ccsg-ot)}
+.sch-nm{margin-left:6px;font-size:13px}.sch-mut{color:var(--mut);font-size:13px}
+.sch-pc{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);display:flex;flex-direction:column;gap:6px}
+.sch-pch{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.sch-pch b{font-size:16px}
+.sch-pc p{margin:0}.sch-nx{display:flex;flex-direction:column}.sch-nx span{font-size:12px;color:var(--mut)}.sch-nx b{font-size:15px}
+.sch-now{padding:6px 8px;border-radius:8px;background:var(--okbg);color:var(--ok-ink)}.sch-cnt{font-size:13px;color:var(--mut)}
+.sch-pl,.sch-rl{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
+.sch-pr,.sch-rr{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;padding:8px 12px;border-top:1px solid var(--line)}.sch-pr:first-child,.sch-rr:first-child{border-top:0}
+.sch-pr{grid-template-columns:44px minmax(0,1fr) minmax(0,1.2fr)}
+.sch-pd{display:flex;flex-direction:column;align-items:center;line-height:1.1}.sch-pd b{font-size:17px}.sch-pd i{font-style:normal;font-size:11px;color:var(--mut)}
+.sch-ps{display:flex;flex-direction:column}.sch-ps i{font-style:normal;font-size:12px;color:var(--mut)}.sch-pg{font-size:13px}
+.sch-pr.past,.sch-rr.past{opacity:.5}.sch-pr.today,.sch-rr.today{background:var(--hl)}.sch-pr.now{box-shadow:inset 3px 0 0 var(--ok-ink)}
+.sch-rr.off{opacity:.55}.sch-rs{display:flex;flex-direction:column;gap:3px}.sch-rc{display:flex;align-items:center;gap:6px;font-size:13px}.sch-rc>i{font-style:normal;width:30px;color:var(--mut);font-size:12px}
+.sch-chips{display:flex;flex-wrap:wrap;gap:6px}.sch-chips button{min-height:36px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:600 13px system-ui,sans-serif;cursor:pointer}.sch-chips button.on{background:var(--acc-fill);border-color:var(--acc-fill);color:var(--bg)}
+.sch-note{margin:-4px 0 0}
+.sch-day{display:grid;grid-template-columns:44px 1fr 44px auto;gap:6px}.sch-day button{min-height:42px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:600 14px system-ui,sans-serif;padding:0 12px;cursor:pointer}.sch-day input{width:100%}
+.sch-dh{margin:0;font-size:15px}
+.sch-dc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px}
+.sch-card{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);display:flex;flex-direction:column;gap:6px}.sch-ct{font-size:15px}
+.sch-dl{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:center;padding:6px 0;border-top:1px dashed var(--line)}
+.sch-ds{display:flex;flex-direction:column}.sch-ds i{font-style:normal;font-size:11px;color:var(--mut)}.sch-dw{display:flex;align-items:center;flex-wrap:wrap;gap:2px}.sch-dw em{margin-left:auto;font-style:normal;font-size:11px;font-weight:700;color:var(--ok-ink);background:var(--okbg);padding:1px 6px;border-radius:6px}
+.sch-dl.mine .sch-nm{font-weight:700}.sch-dl.now{background:var(--okbg);margin:0 -6px;padding:6px;border-radius:8px}
+.sch-leg{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:var(--mut)}
+.sch-hlp{margin:0;display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px}
+.sch-tw{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--card);max-height:70vh}
+.sch-t{border-collapse:separate;border-spacing:0;font:12px system-ui,sans-serif}
+.sch-t th,.sch-t td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:0;text-align:center;min-width:34px;height:28px}
+.sch-t thead th{position:sticky;top:0;background:var(--card);z-index:2;font-weight:700}.sch-t thead tr:nth-child(2) th{top:28px;font-weight:500;color:var(--mut)}
+.sch-t th.sch-rh{position:sticky;left:0;z-index:3;background:var(--card);text-align:left;padding:2px 8px;min-width:118px;white-space:nowrap}
+.sch-t tbody th.sch-rh{z-index:1;font-weight:500}.sch-t tbody th.sch-rh b{display:block;font-size:12px}.sch-t tbody th.sch-rh small{color:var(--mut);font-weight:400}.sch-t tbody th.sch-rh span{display:block;color:var(--mut);font-size:11px}
+.sch-t tr.rg0 td,.sch-t tr.rg0 th{border-top:2px solid var(--ink)}
+.sch-t th.off,.sch-t td.off{background:repeating-linear-gradient(135deg,rgba(214,40,40,.18) 0 4px,rgba(214,40,40,.06) 4px 8px)}
+.sch-t th.today{background:var(--hl);color:var(--ink)}.sch-t th.sun{color:#c0392b}
+.sch-t td{font-weight:700;cursor:default}.sch-t td[data-sv],.sch-t td[data-csv]{cursor:pointer}
+.sch-t td.sg-nh{color:var(--sg-nh)}.sch-t td.sg-mn{color:var(--sg-mn)}.sch-t td.sg-gt{color:var(--sg-gt)}.sch-t td.sg-ex{color:var(--sg-ex)}.sch-t td.sg-ot{color:var(--sg-ot)}
+.sch-t td.ccsg-cc{color:var(--ccsg-cc)}.sch-t td.ccsg-ch{color:var(--ccsg-ch)}.sch-t td.ccsg-rd{color:var(--ccsg-rd)}.sch-t td.ccsg-ot{color:var(--ccsg-ot)}
+.sch-t.hlon td:not(.hl){opacity:.28}.sch-t td.hl{background:var(--acc-fill);color:var(--bg)!important;opacity:1}
+.sch-msg{position:relative;padding:10px 34px 10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:13px}.sch-msg p{margin:0 0 4px}.sch-msg p.ok{color:var(--ok-ink)}.sch-msg p.bad{color:var(--err)}.sch-msg ul{margin:4px 0 0;padding-left:18px}
+.sch-x{position:absolute;top:6px;right:6px;border:0;background:none;color:var(--mut);font-size:14px;cursor:pointer}
+.sch-blank{padding:18px;border:1px dashed var(--line);border-radius:10px;background:var(--card)}.sch-blank p{color:var(--mut);font-size:14px}
+.sch-big{min-height:44px;padding:0 18px;border:0;border-radius:10px;background:var(--acc-fill);color:var(--bg);font:700 15px system-ui,sans-serif;cursor:pointer}
+.sch-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.sch-empty{color:var(--mut);font-size:14px;margin:4px 0}
+
+/*CCSP: day/night colour coding + green rest days, matching the printed CC roster*/
+.sch{--ccsp-ds:#b06d00;--ccsp-ns:#2f5fa8;--ccsp-ds-bg:#fff3d9;--ccsp-ns-bg:#e4ecfa;--ccsp-ds-ln:#e3a43a;--ccsp-ns-ln:#7c9fd4;--ccsp-rd:#2f7d3b;--ccsp-rd-bg:#e6f4ea;--ccsp-rd-ln:#6aae79}
+.ccsp-ds{color:var(--ccsp-ds)}.ccsp-ns{color:var(--ccsp-ns)}.ccsp-rd{color:var(--ccsp-rd)}
+.sch-sp{display:inline-flex;align-items:center;gap:4px;font:700 11px/1.7 system-ui,sans-serif;letter-spacing:.04em;padding:0 7px;border-radius:999px;white-space:nowrap}
+.sch-sp.ccsp-ds{background:var(--ccsp-ds-bg);color:var(--ccsp-ds)}
+.sch-sp.ccsp-ns{background:var(--ccsp-ns-bg);color:var(--ccsp-ns)}
+.sch-sp.ccsp-rd{background:var(--ccsp-rd-bg);color:var(--ccsp-rd)}
+.sch-rd{display:inline-flex;align-items:center;justify-content:center;min-width:30px;padding:1px 6px;border-radius:6px;font:700 12px/1.5 system-ui,sans-serif;color:var(--ccsp-rd);background:var(--ccsp-rd-bg)}
+.sch-pr.ccsp-ds,.sch-dl.ccsp-ds{border-left:3px solid var(--ccsp-ds-ln)}
+.sch-pr.ccsp-ns,.sch-dl.ccsp-ns{border-left:3px solid var(--ccsp-ns-ln)}
+.sch-pr.ccsp-rd,.sch-dl.ccsp-rd{border-left:3px solid var(--ccsp-rd-ln)}
+.sch-rc.ccsp-ds>i{color:var(--ccsp-ds);font-weight:700}
+.sch-rc.ccsp-ns>i{color:var(--ccsp-ns);font-weight:700}
+.sch-t tr.ccsp-ds>td:not(.off){background:var(--ccsp-ds-bg)}
+.sch-t tr.ccsp-ns>td:not(.off){background:var(--ccsp-ns-bg)}
+.sch-t tr.ccsp-ds>td.ccsg-cc,.sch-t tr.ccsp-ds>td.ccsg-ch,.sch-t tr.ccsp-ds>td.ccsg-ot{color:var(--ccsp-ds)}
+.sch-t tr.ccsp-ns>td.ccsg-cc,.sch-t tr.ccsp-ns>td.ccsg-ch,.sch-t tr.ccsp-ns>td.ccsg-ot{color:var(--ccsp-ns)}
+.sch-t tr.ccsp-ds>th.sch-rh span{color:var(--ccsp-ds);font-weight:700}
+.sch-t tr.ccsp-ns>th.sch-rh span{color:var(--ccsp-ns);font-weight:700}
+.sch-t td.rdc{color:var(--ccsp-rd);font-weight:700;background:var(--ccsp-rd-bg)!important}
+
+[hidden]{display:none!important}
+/*HOME: hero home screen, styled after the logging app*/
+#home{position:fixed;inset:0;z-index:50;overflow-y:auto;background:#222b35;color:#eef2f6;
+ padding:max(24px,env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) max(28px,env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));
+ display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+#home::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+ background-image:radial-gradient(1.5px 1.5px at 12% 18%,#8fa6b8 50%,transparent 51%),radial-gradient(1.5px 1.5px at 78% 12%,#8fa6b8 50%,transparent 51%),radial-gradient(1.5px 1.5px at 34% 42%,#8fa6b8 50%,transparent 51%),radial-gradient(1.5px 1.5px at 88% 54%,#8fa6b8 50%,transparent 51%),radial-gradient(1.5px 1.5px at 22% 72%,#8fa6b8 50%,transparent 51%),radial-gradient(1.5px 1.5px at 62% 86%,#8fa6b8 50%,transparent 51%),radial-gradient(1.5px 1.5px at 50% 28%,#8fa6b8 50%,transparent 51%);
+ background-repeat:no-repeat}
+#home>*{position:relative}
+.hm-hex{width:104px;height:104px;margin-top:10px;flex:none}
+.hm-eyebrow{margin:6px 0 0;font:700 11px/1.5 system-ui,sans-serif;letter-spacing:.18em;color:#8fa6b8}
+#home h1{margin:2px 0 0;font:300 clamp(28px,8.5vw,42px)/1.12 system-ui,sans-serif;letter-spacing:.06em;text-wrap:balance}
+.hm-tag{margin:0;max-width:34ch;font:400 13px/1.6 system-ui,sans-serif;color:#aebecd}
+.hm-cards{display:flex;flex-direction:column;gap:10px;width:100%;max-width:440px;margin-top:6px}
+.hm-card{display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;text-align:left;cursor:pointer;
+ border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(255,255,255,.06);color:inherit;font:inherit}
+.hm-card:hover{background:rgba(255,255,255,.1)}
+.hm-ci{flex:none;width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.1);color:#cfe0ee}
+.hm-ci svg{width:21px;height:21px}
+.hm-ci.on{background:#2f7d3b;color:#fff}
+.hm-ct{display:flex;flex-direction:column;gap:2px;min-width:0}
+.hm-ct small{font:700 10.5px/1.4 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#8fa6b8}
+.hm-ct b{font:600 15px/1.35 system-ui,sans-serif}
+.hm-ct>span{font:400 12.5px/1.45 system-ui,sans-serif;color:#aebecd}
+.hm-ct .rdy{color:#86d79b;font-weight:700}
+.hm-go{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;max-width:440px;margin-top:2px}
+.hm-go button{flex:1 1 170px;min-height:46px;padding:0 16px;cursor:pointer;border-radius:12px;border:1px solid rgba(255,255,255,.2);
+ background:#eef2f6;color:#222b35;font:700 12.5px/1 system-ui,sans-serif;letter-spacing:.08em}
+.hm-go button.alt{background:transparent;color:#eef2f6}
+.hm-foot{margin-top:auto;padding-top:16px;font:400 11.5px/1.6 system-ui,sans-serif;color:#7d8fa0}
+.app-home{margin-left:auto;min-height:34px;padding:0 12px;border-radius:999px;cursor:pointer;
+ border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 12.5px/1 system-ui,sans-serif}
+</style>
+</head>
+<body>
+<div id="home">
+<svg class="hm-hex" viewBox="0 0 50 48" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M32 6l8 10M29 9l7-5 3 4" stroke="#8fa6b8" stroke-width="2.1"/>
+<path d="M8 31c0-10 7-17 16-17s16 6 16 16-7 13-16 13S8 41 8 31Z" fill="rgba(255,255,255,.16)" stroke="#cfe0ee" stroke-width="2.4"/>
+<circle cx="19" cy="30" r="2.6" fill="#eef2f6"/><circle cx="29" cy="30" r="2.6" fill="#eef2f6"/>
+<circle cx="19.9" cy="29.1" r=".85" fill="#222b35"/><circle cx="29.9" cy="29.1" r=".85" fill="#222b35"/>
+<path d="M21.4 34.6q2.6 2.2 5.2 0" stroke="#eef2f6" stroke-width="1.7"/>
+<path d="M5.6 29.4v2.6M11.4 29.4v2.6" stroke="#cfe0ee" stroke-width="1.9"/>
+<rect x="2.4" y="31.4" width="12.2" height="12.2" rx="1.8" fill="rgba(255,255,255,.16)" stroke="#cfe0ee" stroke-width="2.1"/>
+<path d="M2.4 35.3h12.2" stroke="#cfe0ee" stroke-width="1.7"/>
+<g fill="#cfe0ee"><circle cx="5.5" cy="38.3" r=".95"/><circle cx="8.5" cy="38.3" r=".95"/><circle cx="11.5" cy="38.3" r=".95"/><circle cx="5.5" cy="41.2" r=".95"/><circle cx="8.5" cy="41.2" r=".95"/><circle cx="11.5" cy="41.2" r=".95"/></g>
+<path d="M45 18l1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1Z" fill="#8fa6b8"/></svg>
+ <p class="hm-eyebrow">DIGITAL GEOLOGY FIELD NOTEBOOK</p>
+ <h1>TEAM SCHEDULE</h1>
+ <p class="hm-tag">Your rig geologist and core checker shifts, on your phone, offline.</p>
+ <div class="hm-cards" id="hm-cards"></div>
+ <div class="hm-go">
+  <button type="button" data-go="geo">GEOLOGIST</button>
+  <button type="button" data-go="cc" class="alt">CORE CHECKERS</button>
+ </div>
+ <p class="hm-foot">DiGe-FN Team Schedule · by PPC</p>
+</div>
+<div class="app" id="app" hidden>
+ <div class="app-h">
+  <b>Team Schedule</b>
+  <span>DiGe-FN</span>
+  <button type="button" class="app-home" id="go-home">Home</button>
+ </div>
+ <div class="app-tabs">
+  <button class="on" data-tab="geo">Geologist</button>
+  <button data-tab="cc">Core Checkers</button>
+ </div>
+ <div id="body-geo" class="app-body sch"></div>
+ <div id="body-cc" class="app-body sch" style="display:none"></div>
+</div>
+
+<script>
+/*! © 2026 Patrick Paul Odiamar Celso (PPC). All rights reserved. FP DGFN-PPC-15B25FC1-BDDD0E24 */
+(function(){
+"use strict";
+/* ---- helpers ---- */
+function dkE(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function dkIso(d){var y=d.getFullYear(),m=d.getMonth()+1,dd=d.getDate();return y+"-"+(m<10?"0":"")+m+"-"+(dd<10?"0":"")+dd}
+
+/* ---- Geologist schedule data ---- */
+var SCHK="gl_sched",SCHME="gl_sched_me",SCHUI="gl_sched_ui";
+var SCHG={NH:"Newly hired rig geo",MN:"Mine geo",GT:"Geotech",EX:"Exploration",OT:"Other"},SCHGO=["NH","MN","GT","EX","OT"];
+var SCHWL=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],SCHWS=["S","M","T","W","Th","F","S"];
+
+function schLoad(){var o=null;try{o=JSON.parse(localStorage.getItem(SCHK)||"null")}catch(e){}if(!o||typeof o!=="object")o={};if(!o.months||typeof o.months!=="object")o.months={};return o}
+var SCHD=schLoad();
+var SCHV=(function(){var o={};try{o=JSON.parse(localStorage.getItem(SCHUI)||"{}")||{}}catch(e){}return Object.assign({m:"",v:"person",who:"",rig:"",day:""},o)})();
+var SCHMSG=null;
+
+function schMe(){try{return JSON.parse(localStorage.getItem(SCHME)||"null")}catch(e){return null}}
+function schSetMe(o){try{if(o)localStorage.setItem(SCHME,JSON.stringify(o));else localStorage.removeItem(SCHME)}catch(e){}geoRefresh()}
+function schUiKeep(){try{localStorage.setItem(SCHUI,JSON.stringify(SCHV))}catch(e){}}
+function schMonths(){return Object.keys(SCHD.months).sort()}
+function schCur(){var ks=schMonths();if(!ks.length)return"";if(SCHV.m&&SCHD.months[SCHV.m])return SCHV.m;var now=dkIso(new Date()).slice(0,7);if(SCHD.months[now])return now;var fut=ks.filter(function(k){return k>now});return fut.length?fut[0]:ks[ks.length-1]}
+function schDays(mk){var y=+mk.slice(0,4),m=+mk.slice(5,7),n=new Date(y,m,0).getDate(),out=[];for(var d=1;d<=n;d++){var dd=(d<10?"0":"")+d;out.push({d:dd,n:d,iso:mk+"-"+dd,w:new Date(y,m-1,d).getDay()})}return out}
+function schMonLbl(mk){try{return new Date(mk+"-15T12:00:00").toLocaleDateString(undefined,{month:"long",year:"numeric"})}catch(e){return mk}}
+function schDL(iso){try{return new Date(iso+"T12:00:00").toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short"})}catch(e){return iso}}
+function schN(c){return String(c==null?"":c).trim().toUpperCase().replace(/\s+/g,"")}
+function schNk(s){return String(s||"").toLowerCase().replace(/[^a-z0-9ñ]/g,"")}
+function schWho(M,c){c=schN(c);if(!c)return null;var R=(M&&M.roster)||[];for(var i=0;i<R.length;i++)if(schN(R[i].c)===c)return R[i];return null}
+function schGrp(M,c){c=schN(c);var p=schWho(M,c);if(p&&p.g&&SCHG[p.g])return p.g;return/^MN/.test(c)?"MN":/^EX/.test(c)?"EX":/^GT/.test(c)?"GT":/^\d+$/.test(c)?"NH":c?"OT":""}
+function schMeCode(M){var me=schMe();if(!me)return"";var R=(M&&M.roster)||[];if(me.n){for(var i=0;i<R.length;i++)if(schNk(R[i].n)&&schNk(R[i].n)===schNk(me.n))return schN(R[i].c)}if(me.c&&schWho(M,me.c))return schN(me.c);return""}
+function schMin(t){var m=/^(\d{1,2}):(\d{2})/.exec(String(t||""));return m?(+m[1])*60+(+m[2]):null}
+function sch12(t){var x=schMin(t);if(x==null)return"";var h=Math.floor(x/60)%24,mi=x%60;return(h%12||12)+(mi?":"+(mi<10?"0":"")+mi:"")+" "+(h<12?"AM":"PM")}
+function schSpan(s){var a=sch12(s.tf),b=sch12(s.tt);return a&&b?a+"–"+b:""}
+function schRigL(r){return r.n+(r.site?" ("+r.site+")":"")}
+function schShort(s){return String(s.n||"").replace(/\s*shift$/i,"")}
+function schFirst(p){return p&&p.n?String(p.n).split(/\s+/)[0]:""}
+function schAsg(M){var out=[],days=schDays(M.month),off=M.off||{};(M.rigs||[]).forEach(function(r){(M.shifts||[]).forEach(function(s){var a=schMin(s.tf),b=schMin(s.tt),len=(a!=null&&b!=null)?((b-a+1440)%1440||1440):480;
+ days.forEach(function(D){if(off[D.d])return;var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+D.d]);if(!c)return;var st=new Date(D.iso+"T00:00:00").getTime()+(a||0)*6e4;out.push({c:c,r:r,s:s,D:D,st:st,en:st+len*6e4})})})});
+ return out.sort(function(x,y){return x.st-y.st||(M.rigs.indexOf(x.r)-M.rigs.indexOf(y.r))})}
+function schAsgL(a){return schDL(a.D.iso)+" · "+a.s.n+" · "+schSpan(a.s)+" · "+schRigL(a.r)}
+function schRoster(M){var R=((M&&M.roster)||[]).slice();R.sort(function(x,y){var gx=SCHGO.indexOf(schGrp(M,x.c)),gy=SCHGO.indexOf(schGrp(M,y.c));return gx-gy||String(x.c).localeCompare(String(y.c),undefined,{numeric:true})});return R}
+function schOpts(M,sel,blank){var R=schRoster(M),g="",h=blank?'<option value="">'+dkE(blank)+'</option>':"";R.forEach(function(p){var gg=schGrp(M,p.c);if(gg!==g){h+=(g?'</optgroup>':'')+'<optgroup label="'+dkE(SCHG[gg]||gg)+'">';g=gg}h+='<option value="'+dkE(schN(p.c))+'"'+(schN(p.c)===schN(sel)?" selected":"")+'>'+dkE(p.c+" · "+(p.n||""))+'</option>'});return h+(g?'</optgroup>':'')}
+function schChip(M,c,nm){var g=schGrp(M,c),p=schWho(M,c);return'<span class="sch-c sg-'+(g||"OT").toLowerCase()+'" title="'+dkE(p?p.n:"Not in roster")+'">'+dkE(c)+'</span>'+(nm&&p?'<span class="sch-nm">'+dkE(p.n)+'</span>':nm&&!p?'<span class="sch-nm sch-mut">not in roster</span>':'')}
+function schClean(p){var o={month:p.month,title:String(p.title||""),rev:+p.rev||0,upd:String(p.upd||""),by:String(p.by||""),rigs:(p.rigs||[]).map(function(r){return{id:String(r.id),n:String(r.n||""),site:String(r.site||""),note:String(r.note||"")}}),shifts:(p.shifts||[]).map(function(s){return{id:String(s.id),n:String(s.n||""),tf:String(s.tf||""),tt:String(s.tt||"")}}),roster:(p.roster||[]).map(function(r){return{c:String(r.c||""),n:String(r.n||""),g:String(r.g||"")}}),cells:{},off:{}};
+ Object.keys(p.cells||{}).forEach(function(k){var v=schN(p.cells[k]);if(v)o.cells[k]=v});Object.keys(p.off||{}).forEach(function(k){if(p.off[k])o.off[k]=1});return o}
+function schImportObj(p,name){name=name||"packet";
+ if(!p||!/^\d{4}-\d{2}$/.test(String(p.month||""))||typeof p.cells!=="object")return{ok:0,msg:name+": not a valid schedule packet."};
+ if(p.kind==="dige-schedule"){
+  var L=schMonLbl(p.month),N=schClean(p);SCHD.months[p.month]=N;try{localStorage.setItem(SCHK,JSON.stringify(SCHD))}catch(e){}
+  return{ok:1,msg:"Loaded "+L+" geologist schedule (rev "+(N.rev||0)+")."}
+ }
+ if(p.kind==="dige-cc-schedule"){
+  var L2=schMonLbl(p.month),N2=ccSchClean(p);CCSCHD.months[p.month]=N2;try{localStorage.setItem(CCSCHK,JSON.stringify(CCSCHD))}catch(e){}
+  return{ok:1,msg:"Loaded "+L2+" core checkers schedule (rev "+(N2.rev||0)+")."}
+ }
+ return{ok:0,msg:name+": unrecognised packet kind."}
+}
+function schImportFiles(fl,done){fl=[].slice.call(fl||[]);if(!fl.length)return;Promise.all(fl.map(function(f){return f.text().then(function(t){var p=null;try{p=JSON.parse(t)}catch(e){}
+  /* try compiled packet with schedules arrays */
+  if(p&&Array.isArray(p.schedules)){var rs=[];p.schedules.forEach(function(s){rs.push(schImportObj(s,f.name))});if(Array.isArray(p.ccSchedules))p.ccSchedules.forEach(function(s){rs.push(schImportObj(s,f.name))});return rs.length?rs:[{ok:0,msg:f.name+": no schedules in packet."}]}
+  return[schImportObj(p,f.name)]},function(){return[{ok:0,msg:f.name+": could not be read."}]})})).then(function(rs){var flat=[].concat.apply([],rs);SCHMSG=flat;geoRefresh();ccRefresh();if(done)done(flat)})}
+
+/* ---- Geologist schedule views ---- */
+function schMsgHTML(){if(!SCHMSG||!SCHMSG.length)return"";return'<div class="sch-msg">'+SCHMSG.map(function(r){return'<p class="'+(r.ok?"ok":"bad")+'">'+dkE(r.msg)+'</p>'}).join("")+'<button type="button" class="sch-x" data-sv="msgx" aria-label="Dismiss">✕</button></div>'}
+function schViewHTML(M){var me=schMeCode(M),meP=schWho(M,me),v=SCHV.v,now=Date.now(),td=dkIso(new Date());
+ var h='<div class="sch-top">';
+ h+=meP?'<div class="sch-me"><span>You:</span><b>'+dkE(meP.c+" · "+meP.n)+'</b><button type="button" class="sch-lk" data-sv="mechg">Change</button></div>':'<label class="sch-me ask"><b>Who are you?</b><span>Pick your name so the schedule highlights your shifts.</span><select data-sv="mepick">'+schOpts(M,"","Choose your name…")+'</select></label>';
+ var ms=schMonths();h+='<div class="sch-mrow">'+(ms.length>1?'<select data-sv="month" aria-label="Month">'+ms.map(function(k){return'<option value="'+k+'"'+(k===M.month?" selected":"")+'>'+dkE(schMonLbl(k))+'</option>'}).join("")+'</select>':'<b>'+dkE(schMonLbl(M.month))+'</b>')+'<span class="sch-rev">'+dkE((M.title||"")+(M.rev?" · rev "+M.rev:"")+(M.upd?" · "+M.upd:"")+(M.by?" · "+M.by:""))+'</span></div>';
+ var A=schAsg(M);
+ if(v==="month"){var hw0=schN(SCHV.who),cnt0=hw0?A.filter(function(a){return a.c===hw0}).length:0,hp0=schWho(M,hw0);
+  h+='<div class="sch-leg">'+SCHGO.filter(function(g){return g!=="OT"}).map(function(g){return'<span class="sch-c sg-'+g.toLowerCase()+'">'+g+'</span><span>'+dkE(SCHG[g])+'</span>'}).join("")+'</div>';
+  h+=hw0?'<p class="sch-hlp">Highlighted: '+schChip(M,hw0)+' <b>'+dkE(hp0?hp0.n:"not in roster")+'</b> · '+cnt0+' shift'+(cnt0===1?"":"s")+' <button type="button" class="sch-lk" data-sv="hlx">Clear</button></p>':'<p class="sch-mut sch-hlp">Tap any code to highlight that person\'s shifts.</p>'}
+ h+='<div class="sch-seg" role="tablist">'+[["person","Person"],["rig","Rig"],["day","Day"],["month","Month"]].map(function(x){return'<button type="button" role="tab" data-sv="view" data-v="'+x[0]+'" class="'+(v===x[0]?"on":"")+'" aria-selected="'+(v===x[0])+'">'+x[1]+'</button>'}).join("")+'</div></div>';
+
+ if(v==="person"){var who=schN(SCHV.who)||me;var P=schWho(M,who);h+='<div class="sch-pick"><select data-sv="who" aria-label="Person">'+schOpts(M,who,"Choose a name or code…")+'</select>'+(who&&me&&who!==me?'<button type="button" class="sch-lk" data-sv="whome">Show mine</button>':'')+'</div>';
+  if(!who)h+='<p class="sch-empty">Pick a name or code to see their shifts.</p>';else{var L=A.filter(function(a){return a.c===who}),nx=null,on=null;L.forEach(function(a){if(a.st<=now&&a.en>now)on=a;else if(a.st>now&&!nx)nx=a});var cnt={};L.forEach(function(a){cnt[a.s.id]=(cnt[a.s.id]||0)+1});
+   h+='<div class="sch-pc"><div class="sch-pch">'+schChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(SCHG[schGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On shift now</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
+    '<p class="sch-cnt">'+L.length+' shift'+(L.length===1?"":"s")+' in '+dkE(schMonLbl(M.month))+(L.length?' · '+(M.shifts||[]).filter(function(s){return cnt[s.id]}).map(function(s){return dkE(schShort(s))+" "+cnt[s.id]}).join(" · "):'')+'</p></div>';
+   h+=L.length?'<div class="sch-pl">'+L.map(function(a){var cl=a.en<=now?" past":a.D.iso===td?" today":"";if(on===a)cl+=" now";return'<div class="sch-pr'+cl+'"><span class="sch-pd"><b>'+a.D.n+'</b><i>'+SCHWL[a.D.w]+'</i></span><span class="sch-ps"><b>'+dkE(a.s.n)+'</b><i>'+dkE(schSpan(a.s))+'</i></span><span class="sch-pg">'+dkE(schRigL(a.r))+'</span></div>'}).join("")+'</div>':'<p class="sch-empty">'+dkE(P?P.n:who)+' has no shifts in '+dkE(schMonLbl(M.month))+'.</p>'}}
+ else if(v==="rig"){var rid=SCHV.rig&&(M.rigs||[]).some(function(r){return r.id===SCHV.rig})?SCHV.rig:((M.rigs||[])[0]||{}).id,R0=(M.rigs||[]).filter(function(r){return r.id===rid})[0];
+  h+='<div class="sch-chips">'+(M.rigs||[]).map(function(r){return'<button type="button" data-sv="rig" data-v="'+dkE(r.id)+'" class="'+(r.id===rid?"on":"")+'">'+dkE(schRigL(r))+'</button>'}).join("")+'</div>'+(R0&&R0.note?'<p class="sch-mut sch-note">'+dkE(R0.note)+'</p>':'');
+  if(R0)h+='<div class="sch-rl">'+schDays(M.month).map(function(D){if((M.off||{})[D.d])return'<div class="sch-rr off"><span class="sch-pd"><b>'+D.n+'</b><i>'+SCHWL[D.w]+'</i></span><span class="sch-mut">No schedule</span></div>';
+   return'<div class="sch-rr'+(D.iso===td?" today":D.iso<td?" past":"")+'"><span class="sch-pd"><b>'+D.n+'</b><i>'+SCHWL[D.w]+'</i></span><span class="sch-rs">'+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[R0.id+"|"+s.id+"|"+D.d]);return'<span class="sch-rc"><i>'+dkE(schShort(s))+'</i>'+(c?schChip(M,c)+'<span class="sch-nm">'+dkE(schFirst(schWho(M,c))||"")+'</span>':'<span class="sch-mut">—</span>')+'</span>'}).join("")+'</span></div>'}).join("")+'</div>'}
+ else if(v==="day"){var day=SCHV.day&&SCHV.day.slice(0,7)===M.month?SCHV.day:(td.slice(0,7)===M.month?td:M.month+"-01"),dd=day.slice(8);
+  h+='<div class="sch-day"><button type="button" data-sv="dstep" data-v="-1" aria-label="Previous day">◀</button><input type="date" data-sv="dpick" value="'+dkE(day)+'" aria-label="Day"><button type="button" data-sv="dstep" data-v="1" aria-label="Next day">▶</button><button type="button" data-sv="dtoday">Today</button></div><h3 class="sch-dh">'+dkE(schDL(day))+(day===td?' · today':'')+'</h3>';
+  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl'+(isOn?" now":"")+(c&&c===me?" mine":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i></span><span class="sch-dw">'+(c?schChip(M,c,true):'<span class="sch-mut">—</span>')+(isOn?'<em>On now</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
+ else{var hw=schN(SCHV.who);h+=schGridHTML(M,hw,td)}
+ return h}
+function schGridHTML(M,hw,td){var days=schDays(M.month),off=M.off||{};
+ var h='<div class="sch-tw"><table class="sch-t'+(hw?" hlon":"")+'"><thead><tr><th class="sch-rh" rowspan="2">Rig / shift</th>'+days.map(function(D){return'<th class="'+(off[D.d]?"off ":"")+(D.iso===td?"today ":"")+(D.w===0?"sun":"")+'">'+D.n+'</th>'}).join("")+'</tr><tr>'+days.map(function(D){return'<th class="sch-wd'+(off[D.d]?" off":"")+'">'+SCHWS[D.w]+'</th>'}).join("")+'</tr></thead><tbody>';
+ (M.rigs||[]).forEach(function(r,rx){(M.shifts||[]).forEach(function(s,sx){h+='<tr class="'+(sx===0?"rg0 ":"")+'sh'+sx+'">'+'<th class="sch-rh">'+(sx===0?'<b>'+dkE(r.n)+'</b>'+(r.site?' <small>'+dkE(r.site)+'</small>':''):'')+'<span>'+dkE(s.n)+'</span></th>';
+  days.forEach(function(D){var k=r.id+"|"+s.id+"|"+D.d,c=schN((M.cells||{})[k]);
+   h+='<td class="'+(off[D.d]?"off":"")+(c?" sg-"+schGrp(M,c).toLowerCase():"")+(hw&&c===hw?" hl":"")+'"'+(c?' data-sv="hl" data-v="'+dkE(c)+'"':'')+'>'+(off[D.d]?'':dkE(c))+'</td>'});
+  h+='</tr>'})});
+ return h+'</tbody></table></div>'}
+
+/* ---- CC schedule data ---- */
+var CCSCHK="gl_ccsched",CCSCHME="gl_ccsched_me",CCSCHUI="gl_ccsched_ui";
+var CCSCHG={CC:"Core checker",CH:"Corehouse",RD:"Rest day crew",OT:"Other"},CCSCHGO=["CC","CH","RD","OT"];
+function ccSchLoad(){var o=null;try{o=JSON.parse(localStorage.getItem(CCSCHK)||"null")}catch(e){}if(!o||typeof o!=="object")o={};if(!o.months||typeof o.months!=="object")o.months={};return o}
+var CCSCHD=ccSchLoad();
+var CCSCHV=(function(){var o={};try{o=JSON.parse(localStorage.getItem(CCSCHUI)||"{}")||{}}catch(e){}return Object.assign({m:"",v:"person",who:"",rig:"",day:""},o)})();
+function ccSchMe(){try{return JSON.parse(localStorage.getItem(CCSCHME)||"null")}catch(e){return null}}
+function ccSchSetMe(o){try{if(o)localStorage.setItem(CCSCHME,JSON.stringify(o));else localStorage.removeItem(CCSCHME)}catch(e){}ccRefresh()}
+function ccSchUiKeep(){try{localStorage.setItem(CCSCHUI,JSON.stringify(CCSCHV))}catch(e){}}
+function ccSchMonths(){return Object.keys(CCSCHD.months).sort()}
+function ccSchCur(){var ks=ccSchMonths();if(!ks.length)return"";if(CCSCHV.m&&CCSCHD.months[CCSCHV.m])return CCSCHV.m;var now=dkIso(new Date()).slice(0,7);if(CCSCHD.months[now])return now;var fut=ks.filter(function(k){return k>now});return fut.length?fut[0]:ks[ks.length-1]}
+function ccSchWho(M,c){c=schN(c);if(!c)return null;var R=(M&&M.roster)||[];for(var i=0;i<R.length;i++)if(schN(R[i].c)===c)return R[i];return null}
+function ccSchGrp(M,c){c=schN(c);var p=ccSchWho(M,c);if(p&&p.g&&CCSCHG[p.g])return p.g;return/^CH/.test(c)?"CH":/^RD/.test(c)?"RD":/^\d+$/.test(c)?"CC":c?"OT":""}
+function ccSchMeCode(M){var me=ccSchMe();if(!me)return"";var R=(M&&M.roster)||[];if(me.n){for(var i=0;i<R.length;i++)if(schNk(R[i].n)&&schNk(R[i].n)===schNk(me.n))return schN(R[i].c)}if(me.c&&ccSchWho(M,me.c))return schN(me.c);return""}
+function ccSchRoster(M){var R=((M&&M.roster)||[]).slice();R.sort(function(x,y){var gx=CCSCHGO.indexOf(ccSchGrp(M,x.c)),gy=CCSCHGO.indexOf(ccSchGrp(M,y.c));return gx-gy||String(x.c).localeCompare(String(y.c),undefined,{numeric:true})});return R}
+function ccSchOpts(M,sel,blank){var R=ccSchRoster(M),g="",h=blank?'<option value="">'+dkE(blank)+'</option>':"";R.forEach(function(p){var gg=ccSchGrp(M,p.c);if(gg!==g){h+=(g?'</optgroup>':'')+'<optgroup label="'+dkE(CCSCHG[gg]||gg)+'">';g=gg}h+='<option value="'+dkE(schN(p.c))+'"'+(schN(p.c)===schN(sel)?" selected":"")+'>'+dkE(p.c+" · "+(p.n||""))+'</option>'});return h+(g?'</optgroup>':'')}
+function ccSchSP(s){if(!s)return"";var t=String((s.id||"")+" "+(s.n||"")).toLowerCase();
+ if(/\bn\/?s\b|night/.test(t))return"ns";if(/\bd\/?s\b|day/.test(t))return"ds";
+ var a=schMin(s.tf);return(a!=null&&a>=300&&a<1020)?"ds":"ns"}
+function ccSchSPL(s){var p=ccSchSP(s);return p==="ds"?"D/S":p==="ns"?"N/S":""}
+function ccSchSPB(s){var p=ccSchSP(s);return p?'<span class="sch-sp ccsp-'+p+'">'+ccSchSPL(s)+'</span>':''}
+function ccSchChip(M,c,nm){var g=ccSchGrp(M,c),p=ccSchWho(M,c);return'<span class="sch-c ccsg-'+(g||"OT").toLowerCase()+'" title="'+dkE(p?p.n:"Not in roster")+'">'+dkE(c)+'</span>'+(nm&&p?'<span class="sch-nm">'+dkE(p.n)+'</span>':nm&&!p?'<span class="sch-nm sch-mut">not in roster</span>':'')}
+function ccSchClean(p){var o={month:p.month,title:String(p.title||""),rev:+p.rev||0,upd:String(p.upd||""),by:String(p.by||""),rigs:(p.rigs||[]).map(function(r){return{id:String(r.id),n:String(r.n||""),site:String(r.site||""),note:String(r.note||"")}}),shifts:(p.shifts||[]).map(function(s){return{id:String(s.id),n:String(s.n||""),tf:String(s.tf||""),tt:String(s.tt||"")}}),roster:(p.roster||[]).map(function(r){return{c:String(r.c||""),n:String(r.n||""),g:String(r.g||"")}}),cells:{},off:{}};
+ Object.keys(p.cells||{}).forEach(function(k){var v=schN(p.cells[k]);if(v)o.cells[k]=v});Object.keys(p.off||{}).forEach(function(k){if(p.off[k])o.off[k]=1});return o}
+function ccSchAsg(M){var out=[],days=schDays(M.month),off=M.off||{};(M.rigs||[]).forEach(function(r){(M.shifts||[]).forEach(function(s){var a=schMin(s.tf),b=schMin(s.tt),len=(a!=null&&b!=null)?((b-a+1440)%1440||1440):720;
+ days.forEach(function(D){if(off[D.d])return;var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+D.d]);if(!c)return;var st=new Date(D.iso+"T00:00:00").getTime()+(a||0)*6e4;out.push({c:c,r:r,s:s,D:D,st:st,en:st+len*6e4})})})});
+ return out.sort(function(x,y){return x.st-y.st||(M.rigs.indexOf(x.r)-M.rigs.indexOf(y.r))})}
+
+/* ---- CC schedule views ---- */
+function ccSchViewHTML(M){var me=ccSchMeCode(M),meP=ccSchWho(M,me),v=CCSCHV.v,now=Date.now(),td=dkIso(new Date());
+ var h='<div class="sch-top">';
+ h+=meP?'<div class="sch-me"><span>You:</span><b>'+dkE(meP.c+" · "+meP.n)+'</b><button type="button" class="sch-lk" data-csv="mechg">Change</button></div>':'<label class="sch-me ask"><b>Who are you?</b><span>Pick your name so the schedule highlights your shifts.</span><select data-csv="mepick">'+ccSchOpts(M,"","Choose your name…")+'</select></label>';
+ var ms=ccSchMonths();h+='<div class="sch-mrow">'+(ms.length>1?'<select data-csv="month" aria-label="Month">'+ms.map(function(k){return'<option value="'+k+'"'+(k===M.month?" selected":"")+'>'+dkE(schMonLbl(k))+'</option>'}).join("")+'</select>':'<b>'+dkE(schMonLbl(M.month))+'</b>')+'<span class="sch-rev">'+dkE((M.title||"")+(M.rev?" · rev "+M.rev:"")+(M.upd?" · "+M.upd:"")+(M.by?" · "+M.by:""))+'</span></div>';
+ var A=ccSchAsg(M);
+ if(v==="month"){var hw0=schN(CCSCHV.who),cnt0=hw0?A.filter(function(a){return a.c===hw0}).length:0,hp0=ccSchWho(M,hw0);
+  h+='<div class="sch-leg"><span class="sch-sp ccsp-ds">D/S</span><span>Day shift</span><span class="sch-sp ccsp-ns">N/S</span><span>Night shift</span><span class="sch-rd">RD</span><span>Rest day</span></div>';
+  h+=hw0?'<p class="sch-hlp">Highlighted: '+ccSchChip(M,hw0)+' <b>'+dkE(hp0?hp0.n:"not in roster")+'</b> · '+cnt0+' shift'+(cnt0===1?"":"s")+' <button type="button" class="sch-lk" data-csv="hlx">Clear</button></p>':'<p class="sch-mut sch-hlp">Tap any code to highlight that person\'s shifts.</p>'}
+ h+='<div class="sch-seg" role="tablist">'+[["person","Person"],["rig","Rig"],["day","Day"],["month","Month"]].map(function(x){return'<button type="button" role="tab" data-csv="view" data-v="'+x[0]+'" class="'+(v===x[0]?"on":"")+'" aria-selected="'+(v===x[0])+'">'+x[1]+'</button>'}).join("")+'</div></div>';
+
+ if(v==="person"){var who=schN(CCSCHV.who)||me;var P=ccSchWho(M,who);h+='<div class="sch-pick"><select data-csv="who" aria-label="Person">'+ccSchOpts(M,who,"Choose a name or code…")+'</select>'+(who&&me&&who!==me?'<button type="button" class="sch-lk" data-csv="whome">Show mine</button>':'')+'</div>';
+  if(!who)h+='<p class="sch-empty">Pick a name or code to see their shifts.</p>';else{var L=A.filter(function(a){return a.c===who}),nx=null,on=null;L.forEach(function(a){if(a.st<=now&&a.en>now)on=a;else if(a.st>now&&!nx)nx=a});var cnt={};L.forEach(function(a){cnt[a.s.id]=(cnt[a.s.id]||0)+1});
+   h+='<div class="sch-pc"><div class="sch-pch">'+ccSchChip(M,who)+'<b>'+dkE(P?P.n:"Not in roster")+'</b><span class="sch-mut">'+dkE(CCSCHG[ccSchGrp(M,who)]||"")+'</span></div>'+(on?'<p class="sch-now"><b>On shift now</b> · '+dkE(schAsgL(on))+'</p>':'')+(nx?'<p class="sch-nx"><span>Next shift</span><b>'+dkE(schAsgL(nx))+'</b></p>':(!on?'<p class="sch-mut">No more shifts in '+dkE(schMonLbl(M.month))+'.</p>':''))+
+    '<p class="sch-cnt">'+L.length+' shift'+(L.length===1?"":"s")+' in '+dkE(schMonLbl(M.month))+(L.length?' · '+(M.shifts||[]).filter(function(s){return cnt[s.id]}).map(function(s){return dkE(schShort(s))+" "+cnt[s.id]}).join(" · "):'')+'</p></div>';
+   var byd={};L.forEach(function(a){(byd[a.D.d]=byd[a.D.d]||[]).push(a)});
+   h+=L.length?'<div class="sch-pl">'+schDays(M.month).map(function(D){if((M.off||{})[D.d])return'';
+     var la=byd[D.d],dc=(D.iso===td?" today":D.iso<td?" past":"");
+     if(!la)return'<div class="sch-pr ccsp-rd'+dc+'"><span class="sch-pd"><b>'+D.n+'</b><i>'+SCHWL[D.w]+'</i></span><span class="sch-ps"><b class="ccsp-rd">Rest day</b><i>off</i></span><span class="sch-pg"><span class="sch-rd">RD</span></span></div>';
+     return la.map(function(a){var cl=a.en<=now?" past":a.D.iso===td?" today":"";if(on===a)cl+=" now";
+      return'<div class="sch-pr ccsp-'+ccSchSP(a.s)+cl+'"><span class="sch-pd"><b>'+a.D.n+'</b><i>'+SCHWL[a.D.w]+'</i></span><span class="sch-ps"><b>'+dkE(a.s.n)+'</b><i>'+dkE(schSpan(a.s))+'</i></span><span class="sch-pg">'+ccSchSPB(a.s)+' '+dkE(schRigL(a.r))+'</span></div>'}).join("")}).join("")+'</div>':'<p class="sch-empty">'+dkE(P?P.n:who)+' has no shifts in '+dkE(schMonLbl(M.month))+'.</p>'}}
+ else if(v==="rig"){var rid=CCSCHV.rig&&(M.rigs||[]).some(function(r){return r.id===CCSCHV.rig})?CCSCHV.rig:((M.rigs||[])[0]||{}).id,R0=(M.rigs||[]).filter(function(r){return r.id===rid})[0];
+  h+='<div class="sch-chips">'+(M.rigs||[]).map(function(r){return'<button type="button" data-csv="rig" data-v="'+dkE(r.id)+'" class="'+(r.id===rid?"on":"")+'">'+dkE(schRigL(r))+'</button>'}).join("")+'</div>'+(R0&&R0.note?'<p class="sch-mut sch-note">'+dkE(R0.note)+'</p>':'');
+  if(R0)h+='<div class="sch-rl">'+schDays(M.month).map(function(D){if((M.off||{})[D.d])return'<div class="sch-rr off"><span class="sch-pd"><b>'+D.n+'</b><i>'+SCHWL[D.w]+'</i></span><span class="sch-mut">No schedule</span></div>';
+   return'<div class="sch-rr'+(D.iso===td?" today":D.iso<td?" past":"")+'"><span class="sch-pd"><b>'+D.n+'</b><i>'+SCHWL[D.w]+'</i></span><span class="sch-rs">'+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[R0.id+"|"+s.id+"|"+D.d]);return'<span class="sch-rc ccsp-'+ccSchSP(s)+'"><i>'+dkE(schShort(s))+'</i>'+(c?ccSchChip(M,c)+'<span class="sch-nm">'+dkE(schFirst(ccSchWho(M,c))||"")+'</span>':'<span class="sch-rd">RD</span><span class="sch-nm ccsp-rd">Rest day</span>')+'</span>'}).join("")+'</span></div>'}).join("")+'</div>'}
+ else if(v==="day"){var day=CCSCHV.day&&CCSCHV.day.slice(0,7)===M.month?CCSCHV.day:(td.slice(0,7)===M.month?td:M.month+"-01"),dd=day.slice(8);
+  h+='<div class="sch-day"><button type="button" data-csv="dstep" data-v="-1" aria-label="Previous day">◀</button><input type="date" data-csv="dpick" value="'+dkE(day)+'" aria-label="Day"><button type="button" data-csv="dstep" data-v="1" aria-label="Next day">▶</button><button type="button" data-csv="dtoday">Today</button></div><h3 class="sch-dh">'+dkE(schDL(day))+(day===td?' · today':'')+'</h3>';
+  if((M.off||{})[dd])h+='<p class="sch-empty">No schedule on this day.</p>';else h+='<div class="sch-dc">'+(M.rigs||[]).map(function(r){return'<div class="sch-card"><b class="sch-ct">'+dkE(schRigL(r))+'</b>'+(r.note?'<span class="sch-mut sch-note">'+dkE(r.note)+'</span>':'')+(M.shifts||[]).map(function(s){var c=schN((M.cells||{})[r.id+"|"+s.id+"|"+dd]),a=A.filter(function(x){return x.r===r&&x.s===s&&x.D.d===dd})[0],isOn=a&&a.st<=now&&a.en>now;return'<div class="sch-dl ccsp-'+(c?ccSchSP(s):"rd")+(isOn?" now":"")+(c&&c===me?" mine":"")+'"><span class="sch-ds"><b>'+dkE(schShort(s))+'</b><i>'+dkE(schSpan(s))+'</i>'+ccSchSPB(s)+'</span><span class="sch-dw">'+(c?ccSchChip(M,c,true):'<span class="sch-rd">RD</span><span class="sch-nm ccsp-rd">Rest day</span>')+(isOn?'<em>On now</em>':'')+'</span></div>'}).join("")+'</div>'}).join("")+'</div>'}
+ else{h+=ccSchGridHTML(M,schN(CCSCHV.who),td)}
+ return h}
+function ccSchGridHTML(M,hw,td){var days=schDays(M.month),off=M.off||{};
+ var h='<div class="sch-tw"><table class="sch-t'+(hw?" hlon":"")+'"><thead><tr><th class="sch-rh" rowspan="2">Rig / shift</th>'+days.map(function(D){return'<th class="'+(off[D.d]?"off ":"")+(D.iso===td?"today ":"")+(D.w===0?"sun":"")+'">'+D.n+'</th>'}).join("")+'</tr><tr>'+days.map(function(D){return'<th class="sch-wd'+(off[D.d]?" off":"")+'">'+SCHWS[D.w]+'</th>'}).join("")+'</tr></thead><tbody>';
+ (M.rigs||[]).forEach(function(r,rx){(M.shifts||[]).forEach(function(s,sx){h+='<tr class="'+(sx===0?"rg0 ":"")+'sh'+sx+' ccsp-'+ccSchSP(s)+'">'+'<th class="sch-rh">'+(sx===0?'<b>'+dkE(r.n)+'</b>'+(r.site?' <small>'+dkE(r.site)+'</small>':''):'')+'<span>'+dkE(s.n)+'</span></th>';
+  days.forEach(function(D){var k=r.id+"|"+s.id+"|"+D.d,c=schN((M.cells||{})[k]);
+   h+='<td class="'+(off[D.d]?"off":(c?"ccsg-"+ccSchGrp(M,c).toLowerCase():"rdc"))+(hw&&c===hw?" hl":"")+'"'+(c?' data-csv="hl" data-v="'+dkE(c)+'"':'')+'>'+(off[D.d]?'':(c?dkE(c):"RD"))+'</td>'});
+  h+='</tr>'})});
+ return h+'</tbody></table></div>'}
+
+/* ---- render and wire ---- */
+var curTab="geo";
+var geoEl=document.getElementById("body-geo"),ccEl=document.getElementById("body-cc");
+var fi=document.createElement("input");fi.type="file";fi.accept=".json,application/json";fi.multiple=true;fi.hidden=true;document.body.appendChild(fi);
+fi.addEventListener("change",function(){var f=fi.files;if(f&&f.length)schImportFiles(f);fi.value=""});
+
+function geoRefresh(){
+ var mk=schCur(),M=SCHD.months[mk];SCHV.m=mk;
+ if(!M){geoEl.innerHTML=schMsgHTML()+'<div class="sch-blank"><b>No geologist schedule on this device yet.</b><p>Import a schedule packet or a compiled DiGe-FN packet that contains schedules.</p><button type="button" class="sch-big" data-sv="imp">Import schedule</button></div>';return}
+ geoEl.innerHTML=schMsgHTML()+schViewHTML(M)+'<div class="sch-foot"><button type="button" class="sch-lk" data-sv="imp">Import schedule packet</button></div>'
+}
+function ccRefresh(){
+ var mk=ccSchCur(),M=CCSCHD.months[mk];CCSCHV.m=mk;
+ if(!M){ccEl.innerHTML='<div class="sch-blank"><b>No core checkers schedule on this device yet.</b><p>Import a CC schedule packet or a compiled DiGe-FN packet that contains schedules.</p><button type="button" class="sch-big" data-csv="imp">Import CC schedule</button></div>';return}
+ ccEl.innerHTML=ccSchViewHTML(M)+'<div class="sch-foot"><button type="button" class="sch-lk" data-csv="imp">Import CC schedule packet</button></div>'
+}
+
+/* ---- tab switching ---- */
+document.querySelector(".app-tabs").addEventListener("click",function(e){
+ var b=e.target.closest("button[data-tab]");if(!b)return;
+ curTab=b.getAttribute("data-tab");
+ document.querySelectorAll(".app-tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+ geoEl.style.display=curTab==="geo"?"":"none";
+ ccEl.style.display=curTab==="cc"?"":"none";
+ if(curTab==="geo")geoRefresh();else ccRefresh()
+});
+
+/* ---- Geologist events ---- */
+geoEl.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sv]");if(!b||!geoEl.contains(b))return;
+ var a=b.getAttribute("data-sv"),v=b.getAttribute("data-v"),mk=schCur(),m=mk?SCHD.months[mk]:null;
+ if(b.tagName==="SELECT"||b.tagName==="INPUT")return;
+ if(a==="msgx"){SCHMSG=null}else if(a==="view"){SCHV.v=v}else if(a==="rig"){SCHV.rig=v}else if(a==="hl"){SCHV.who=schN(SCHV.who)===v?"":v}else if(a==="hlx"){SCHV.who=""}
+ else if(a==="whome"){SCHV.who=m?schMeCode(m):""}else if(a==="mechg"){schSetMe(null);return}
+ else if(a==="dstep"||a==="dtoday"){var d0=SCHV.day&&m&&SCHV.day.slice(0,7)===m.month?SCHV.day:dkIso(new Date()),d1=new Date(d0+"T12:00:00");if(a==="dtoday")d1=new Date();else d1.setDate(d1.getDate()+(+v));var iso=dkIso(d1);SCHV.day=iso;if(SCHD.months[iso.slice(0,7)])SCHV.m=iso.slice(0,7)}
+ else if(a==="imp"){fi.click();return}
+ else return;
+ schUiKeep();geoRefresh()});
+geoEl.addEventListener("change",function(e){var t=e.target,a=t.getAttribute("data-sv"),mk=schCur(),m=mk?SCHD.months[mk]:null;
+ if(a==="mepick"&&t.value&&m){var p=schWho(m,t.value);schSetMe({c:schN(t.value),n:p?p.n:""});SCHV.who=schN(t.value)}
+ else if(a==="who"){SCHV.who=t.value}else if(a==="month"){SCHV.m=t.value}
+ else if(a==="dpick"&&t.value){SCHV.day=t.value;if(SCHD.months[t.value.slice(0,7)])SCHV.m=t.value.slice(0,7)}
+ else return;
+ schUiKeep();geoRefresh()});
+
+/* ---- CC events ---- */
+ccEl.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-csv]");if(!b||!ccEl.contains(b))return;
+ var a=b.getAttribute("data-csv"),v=b.getAttribute("data-v"),mk=ccSchCur(),m=mk?CCSCHD.months[mk]:null;
+ if(b.tagName==="SELECT"||b.tagName==="INPUT")return;
+ if(a==="msgx"){SCHMSG=null}else if(a==="view"){CCSCHV.v=v}else if(a==="rig"){CCSCHV.rig=v}else if(a==="hl"){CCSCHV.who=schN(CCSCHV.who)===v?"":v}else if(a==="hlx"){CCSCHV.who=""}
+ else if(a==="whome"){CCSCHV.who=m?ccSchMeCode(m):""}else if(a==="mechg"){ccSchSetMe(null);return}
+ else if(a==="dstep"||a==="dtoday"){var d0=CCSCHV.day&&m&&CCSCHV.day.slice(0,7)===m.month?CCSCHV.day:dkIso(new Date()),d1=new Date(d0+"T12:00:00");if(a==="dtoday")d1=new Date();else d1.setDate(d1.getDate()+(+v));var iso=dkIso(d1);CCSCHV.day=iso;if(CCSCHD.months[iso.slice(0,7)])CCSCHV.m=iso.slice(0,7)}
+ else if(a==="imp"){fi.click();return}
+ else return;
+ ccSchUiKeep();ccRefresh()});
+ccEl.addEventListener("change",function(e){var t=e.target,a=t.getAttribute("data-csv"),mk=ccSchCur(),m=mk?CCSCHD.months[mk]:null;
+ if(a==="mepick"&&t.value&&m){var p=ccSchWho(m,t.value);ccSchSetMe({c:schN(t.value),n:p?p.n:""});CCSCHV.who=schN(t.value)}
+ else if(a==="who"){CCSCHV.who=t.value}else if(a==="month"){CCSCHV.m=t.value}
+ else if(a==="dpick"&&t.value){CCSCHV.day=t.value;if(CCSCHD.months[t.value.slice(0,7)])CCSCHV.m=t.value.slice(0,7)}
+ else return;
+ ccSchUiKeep();ccRefresh()});
+
+
+/* ---- home screen ---- */
+var homeEl=document.getElementById("home"),appEl=document.getElementById("app");
+var CALIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>';
+/*HOMEC: the registered person's own status for one team, mirroring the logging app's schedule card*/
+function homeInfo(kind){
+ var M,me,A,who;
+ if(kind==="geo"){var k1=schCur();M=k1?SCHD.months[k1]:null;if(!M)return null;me=schMeCode(M);A=schAsg(M);who=me?schWho(M,me):null}
+ else{var k2=ccSchCur();M=k2?CCSCHD.months[k2]:null;if(!M)return null;me=ccSchMeCode(M);A=ccSchAsg(M);who=me?ccSchWho(M,me):null}
+ var now=Date.now(),td=dkIso(new Date()),on=null,next=null,today=[];
+ A.forEach(function(a){if(schN(a.c)!==schN(me))return;
+  if(a.D.iso===td)today.push(a);
+  if(a.st<=now&&a.en>now)on=a;else if(a.st>now&&!next)next=a});
+ return{M:M,me:me,who:who,on:on,next:next,today:today,td:td,inMonth:td.slice(0,7)===M.month}
+}
+function homeCard(kind){
+ var label=kind==="geo"?"Geologist":"Core Checkers",r=homeInfo(kind),b='<button type="button" class="hm-card" data-go="'+kind+'">';
+ if(!r)return b+'<span class="hm-ci">'+CALIC+'</span><span class="hm-ct"><small>'+label+'</small><b>No schedule yet</b><span>Tap to import a packet.</span></span></button>';
+ if(!r.me)return b+'<span class="hm-ci">'+CALIC+'</span><span class="hm-ct"><small>'+label+'</small><b>'+dkE(schMonLbl(r.M.month))+'</b><span>Tap to pick your name.</span></span></button>';
+ var nm=dkE(r.who?r.who.n:r.me),sub,ci='<span class="hm-ci">'+CALIC+'</span>';
+ if(r.on){ci='<span class="hm-ci on">'+CALIC+'</span>';sub='<span>On shift now · '+dkE(schAsgL(r.on))+'</span>'}
+ else if(r.inMonth&&!r.today.length)sub='<span class="rdy">Rest day today</span>'+(r.next?'<span>Next · '+dkE(schAsgL(r.next))+'</span>':'');
+ else if(r.next)sub='<span>Next · '+dkE(schAsgL(r.next))+'</span>';
+ else sub='<span>No more shifts in '+dkE(schMonLbl(r.M.month))+'.</span>';
+ return b+ci+'<span class="hm-ct"><small>'+label+'</small><b>'+nm+'</b>'+sub+'</span></button>'
+}
+function homeRefresh(){document.getElementById("hm-cards").innerHTML=homeCard("geo")+homeCard("cc")}
+function showHome(){homeRefresh();homeEl.hidden=false;appEl.hidden=true}
+function showApp(tab){
+ homeEl.hidden=true;appEl.hidden=false;
+ var b=document.querySelector('.app-tabs button[data-tab="'+tab+'"]');
+ if(b){curTab=tab;document.querySelectorAll(".app-tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+  geoEl.style.display=tab==="geo"?"":"none";ccEl.style.display=tab==="cc"?"":"none"}
+ if(curTab==="geo")geoRefresh();else ccRefresh()
+}
+homeEl.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-go]");if(!b)return;showApp(b.getAttribute("data-go"))});
+document.getElementById("go-home").addEventListener("click",showHome);
+
+/* ---- init ---- */
+geoRefresh();
+ccRefresh();
+showHome();
+})();
+</script>
+</body>
+</html>
