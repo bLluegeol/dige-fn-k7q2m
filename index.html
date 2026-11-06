@@ -1026,7 +1026,7 @@ button.hdel{align-self:flex-start;background:none;border:0;padding:8px 0 2px;fon
 .pm-dlg .pm-pt{display:grid;grid-template-columns:auto 1fr auto;gap:6px 8px;align-items:center;margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:10px}.pm-dlg .pm-pt b{width:24px;height:24px;border-radius:50%;background:var(--acc-fill);color:#fff;display:grid;place-items:center;font-size:12px}.pm-dlg .pm-pt b.k2{background:#c0392b}.pm-dlg .pm-pt span{color:var(--mut);font-size:12px}
 .pm-dlg .pm-pt label{grid-column:span 3;display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--mut)}.pm-dlg .pm-pt input{min-height:42px;font:16px system-ui;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
 .pm-dlg .pm-da{display:flex;gap:8px;align-items:center;margin-top:10px}.pm-dlg .pm-da span{flex:1}.pm-dlg .pm-da .ok{background:var(--acc-fill);border-color:var(--acc-fill);color:var(--card)}.pm-dlg .pm-da .del{color:#c0392b}
-#pm .pm-bi{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}#pm .pm-bi button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:7px 10px;font:600 12.5px system-ui}#pm .pm-bo{width:100%}
+#pm .pm-bi{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}#pm .pm-bi button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:7px 10px;font:600 12.5px system-ui}#pm .pm-bo{width:100%}#pm .pm-mgl{display:flex;align-items:center;gap:6px;flex-wrap:wrap}#pm .pm-mg{width:64px}
 /*ENDPMAP*/
 
 /*PKSCOPE*/.sg .chip.on{background:var(--acc-fill);border-color:var(--acc-fill);color:var(--card)}
@@ -2293,7 +2293,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.65.99</span>
+  <span class="hm-dver">v3.65.101</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -2324,7 +2324,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.65.99</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.65.101</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -2414,7 +2414,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.99</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.101</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -4392,12 +4392,13 @@ function dgSplit(F,X,Y,s,rot){var P=F.map(function(f){return{x:X(f.h.e),y:Y(f.h.
   g.forEach(function(i,k){var sx,sy;if(n<=4){sx=(k-(n-1)/2)*28;sy=0}else{var an=2*Math.PI*k/n-Math.PI/2,R=Math.max(20,14*n/Math.PI);sx=R*Math.cos(an);sy=R*Math.sin(an)}var u=dgUnrotXY(sx,sy,rot||0),tx=cx+u[0],ty=cy+u[1],dx=(tx-P[i].x)/s,dy=-(ty-P[i].y)/s,f=F[i];
    out[i]=Object.assign({},f,{h:Object.assign({},f.h,{e:f.h.e+dx,n:f.h.n+dy}),pts:f.pts.map(function(q){return[q[0]+dx,q[1]+dy].concat(q.slice(2))}),_off:{x0:P[i].x,y0:P[i].y}})})});return out}
 function dgLead(f,X,Y){if(!f._off)return"";var x=X(f.h.e).toFixed(1),y=Y(f.h.n).toFixed(1),x0=f._off.x0.toFixed(1),y0=f._off.y0.toFixed(1);return"<line class='dglead' x1='"+x0+"' y1='"+y0+"' x2='"+x+"' y2='"+y+"'/><circle class='dgtrue' cx='"+x0+"' cy='"+y0+"' r='2.6'/>"}
-function dgGroup(F,X,Y,s,rot){var az=function(f){var a=+f.h.az;return isFinite(a)?a:NaN},gs=[];
- F.forEach(function(f){var px=X(f.h.e),py=Y(f.h.n),hit=null;for(var i=0;i<gs.length&&!hit;i++){var r=gs[i][0],da=Math.abs(((az(f)-az(r))%360+540)%360-180);if(Math.hypot(px-X(r.h.e),py-Y(r.h.n))<24&&da<=2)hit=gs[i]}if(hit)hit.push(f);else gs.push([f])});
+/*DGMERGE: ground-distance merge, independent of zoom*/function dgMergeM(){var v=(typeof DKS!=="undefined"&&DKS&&DKS.mrg!=null&&DKS.mrg!=="")?+DKS.mrg:5;return isFinite(v)&&v>=0?v:5}
+function dgGroup(F,X,Y,s,rot){var T=dgMergeM(),az=function(f){var a=+f.h.az;return isFinite(a)?a:NaN},gs=[];
+ F.forEach(function(f){var px=X(f.h.e),py=Y(f.h.n),hit=null;for(var i=0;i<gs.length&&!hit;i++){var r=gs[i][0],da=Math.abs(((az(f)-az(r))%360+540)%360-180);if((Math.hypot(px-X(r.h.e),py-Y(r.h.n))<24&&da<=2)||(T>0&&Math.hypot(f.h.e-r.h.e,f.h.n-r.h.n)<=T))hit=gs[i]}if(hit)hit.push(f);else gs.push([f])});
  var sp=dgSplit(gs.map(function(g){return g[0]}),X,Y,s,rot),mp=new Map();gs.forEach(function(g,i){g.forEach(function(f){mp.set(f,{r:sp[i],g:g})})});
  return F.map(function(f){var o=mp.get(f),r=o.r,g=o.g,key="g:"+g[0].h._h;if(f===g[0])return Object.assign({},r,{_gk:key,_n:g.length});
   var dx=r.h.e-g[0].h.e,dy=r.h.n-g[0].h.n;return Object.assign({},f,{h:Object.assign({},f.h,{e:f.h.e+dx,n:f.h.n+dy}),pts:f.pts.map(function(q){return[q[0]+dx,q[1]+dy].concat(q.slice(2))}),_dup:1,_gk:key,_n:g.length})})}
-window.dgSplit=dgSplit;window.dgLead=dgLead;window.dgGroup=dgGroup;
+window.dgSplit=dgSplit;window.dgLead=dgLead;window.dgGroup=dgGroup;window.dgMergeM=dgMergeM;
 function pmLabels(F,act){if(!F.length)return"";var W=PM.W,H=PM.H,r=pmR(),S=function(e,n){var q=dgRotXY(X(e)-W/2,Y(n)-H/2,r);return[q[0]+W/2,q[1]+H/2]};
  var obs=[];try{var dm=document.getElementById("pm"),sv=dm.querySelector(".pm-s"),sr=sv.getBoundingClientRect(),kx=sr.width?W/sr.width:1,ky=sr.height?H/sr.height:1;[].forEach.call(dm.querySelectorAll(".pm-ctl>*,.dg-nav>*,.pm-nth,.pm-sc,.pm-bp:not([hidden])"),function(e){var q=e.getBoundingClientRect();if(q.width&&q.height&&!e.hidden)obs.push({x:(q.left-sr.left)*kx-4,y:(q.top-sr.top)*ky-4,w:q.width*kx+8,h:q.height*ky+8,k:40})})}catch(e){}var L=[],out="",F1="700 12px system-ui",F2="600 10px system-ui",F3="700 11px system-ui";
  function ov(a,b){var w=Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x),h=Math.min(a.y+a.h,b.y+b.h)-Math.max(a.y,b.y);return w>0&&h>0?w*h:0}
@@ -4539,11 +4540,12 @@ function wire(d){var svg=d.querySelector(".pm-s");
 /*PMIMG*/function withImg(cb){if(DK.bmImg)return cb(true);if(DK.bmImgLoading){setTimeout(function(){withImg(cb)},150);return}dkBmLoad(function(){cb(!!DK.bmImg)})}
 function bmPanel(){var d=document.getElementById("pm"),p=d.querySelector(".pm-bp"),b=DKS.bm||"none",I=DK.bmImg;
  var L=[["none","None"],["img","My image"]];
- p.innerHTML="<b>Basemap</b><div class='pm-bc'>"+L.map(function(x){return"<button type='button' data-b='"+x[0]+"'"+(b===x[0]?" class='on'":"")+">"+x[1]+"</button>"}).join("")+"</div><label>Opacity<input type='range' class='pm-bo' min='0.2' max='1' step='0.05' value='"+(DKS.bmo==null?(b==="img"?0.85:1):DKS.bmo)+"'></label><div class='pm-bi'><button type='button' data-i='set'>"+(I?"Change image…":"Set up my image…")+"</button>"+(I?"<button type='button' data-i='zoom'>Zoom to image</button>":"")+"</div><small>Basemaps are images you upload yourself. They work offline and are kept only on this phone. The app never loads maps from the internet.</small>";
+ p.innerHTML="<b>Basemap</b><div class='pm-bc'>"+L.map(function(x){return"<button type='button' data-b='"+x[0]+"'"+(b===x[0]?" class='on'":"")+">"+x[1]+"</button>"}).join("")+"</div><label>Opacity<input type='range' class='pm-bo' min='0.2' max='1' step='0.05' value='"+(DKS.bmo==null?(b==="img"?0.85:1):DKS.bmo)+"'></label><label class='pm-mgl'>Merge holes closer than <input type='number' class='pm-mg' min='0' max='500' step='1' value='"+dgMergeM()+"'> m</label><div class='pm-bi'><button type='button' data-i='set'>"+(I?"Change image…":"Set up my image…")+"</button>"+(I?"<button type='button' data-i='zoom'>Zoom to image</button>":"")+"</div><small>Basemaps are images you upload yourself. They work offline and are kept only on this phone. The app never loads maps from the internet.</small>";
  p.querySelector(".pm-bc").onclick=function(e){var t=e.target.closest("button[data-b]");if(!t)return;var k=t.dataset.b;
   if(k==="img"){withImg(function(ok){if(ok){DKS.bm="img";if(DKS.bmo==null)DKS.bmo=0.85;dkKeep();PM.bmErr=false;bmPanel();pmDraw()}else pmImg()});return}
   DKS.bm=k==="none"?"":k;dkKeep();PM.bmErr=false;bmPanel();pmDraw()};
  p.querySelector(".pm-bo").oninput=function(){DKS.bmo=+this.value;dkKeep();pmDraw()};
+ p.querySelector(".pm-mg").onchange=function(){var v=+this.value;DKS.mrg=isFinite(v)&&v>=0?Math.min(500,v):5;this.value=DKS.mrg;dkKeep();pmDraw()};
  p.querySelector(".pm-bi").onclick=function(e){var t=e.target.closest("button[data-i]");if(!t)return;if(t.dataset.i==="set"){pmImg();return}
   var I2=DK.bmImg;if(!I2||!box())return;var c=[[0,0],[I2.w,I2.h]].map(function(q){return[I2.ar*q[0]+I2.ai*q[1]+I2.br,I2.ai*q[0]-I2.ar*q[1]+I2.bi]});PM.cx=(c[0][0]+c[1][0])/2;PM.cy=(c[0][1]+c[1][1])/2;PM.s=Math.min(PM.W/Math.max(1,Math.abs(c[1][0]-c[0][0])),PM.H/Math.max(1,Math.abs(c[1][1]-c[0][1])))*0.9;PM.touched=true;p.hidden=true;pmDraw()}}
 function pmImg(){var cur=DK.bmImg,dl=document.createElement("dialog");dl.className="pm-dlg";
@@ -5502,7 +5504,7 @@ function dkTree(){var t=document.getElementById("dk-tree"),g={};DK.data.order.fo
  dkTreeWire()}
 function dkHoles(){var l=document.getElementById("dk-hl"),q=(document.getElementById("dk-hq").value||"").trim().toUpperCase();
  l.innerHTML=DK.data.holes.filter(function(h){return!q||h._h.indexOf(q)>=0}).map(function(h){var on=!DK.holes||DK.holes[h._h];return'<label class="dk-hr"><input type="checkbox" data-h="'+dkE(h._h)+'"'+(on?" checked":"")+'><span>'+dkE(h.hole)+'</span><i>'+(h.drilled!=null?dkR(h.drilled,2)+" m":"")+'</i><button type="button" class="dk-hdel" data-del="'+dkE(h._h)+'" title="Delete '+dkE(h.hole)+'" aria-label="Delete '+dkE(h.hole)+'">✕</button></label>'}).join("")||'<p class="dk-empty">No holes yet. Log in the field app or import shift packets.</p>'}
-function dkSetHoles(fn){DK.hpick=null;DK.hAuto=0;var all=DK.data.holes.map(function(h){return h._h}),cur=DK.holes||all.reduce(function(m,k){m[k]=1;return m},{}),nx={};all.forEach(function(k){if(fn(k,!!cur[k]))nx[k]=1});DK.holes=Object.keys(nx).length===all.length?null:nx;dkHoles();dkAfterFilter()}
+function dkSetHoles(fn){DK.hpick=null;DK.hAuto=0;DK.pin=null;var all=DK.data.holes.map(function(h){return h._h}),cur=DK.holes||all.reduce(function(m,k){m[k]=1;return m},{}),nx={};all.forEach(function(k){if(fn(k,!!cur[k]))nx[k]=1});DK.holes=Object.keys(nx).length===all.length?null:nx;dkHoles();dkAfterFilter()}
 function dkAfterFilter(){DK.sel={};DK.anchor=-1;dkTree();dkRender()}
 /* ---------- menus & actions ---------- */
 function dkMenu(btn){var m=DK.el.querySelector(".dk-menu");[].forEach.call(DK.el.querySelectorAll(".dk-mt"),function(b){b.classList.toggle("on",b===btn)});if(!btn){m.hidden=true;DK.menu=null;return}
@@ -5860,7 +5862,7 @@ function dkPasteText(ds,cols,i,j,t){if(!t)return;var lines=t.replace(/\r/g,"").s
  ds=DK.data.ds[ds.k]||ds;var byId={};ds.rows.forEach(function(r){byId[r._id]=r});
  dkBatchStart();var ok=0,skip=0,er="";lines.forEach(function(ln,di){var row=ids[di]?byId[ids[di]]:null;if(!row){skip+=ln.split("\t").length;return}ln.split("\t").forEach(function(v,dj){var col=cols[j+dj];if(!col||!dkIsEd(ds,col)){skip++;return}var q=dkSetCell(ds,row,col,v);if(q){er=q;skip++}else{ok++;dkPinAdd(ds,row._id)}})});
  dkBatchEnd(ok?"Pasted "+ok+" cell"+(ok===1?"":"s")+(skip?" ("+skip+" skipped)":""):"");if(!ok)dkMsg(er||"Nothing was pasted (those columns cannot be edited)",1)}
-function dkHoleDefault(){var hp=DK.hpick&&DK.data.hmap[DK.hpick];if(hp&&(!DK.holes||DK.holes[DK.hpick]))return hp.hole;var r=DK.last||DK.view[0],h=r&&r.hole;if(!h&&DK.data.holes[0])h=DK.data.holes[0].hole;return h||""}
+function dkHoleDefault(){var hp=DK.hpick&&DK.data.hmap[DK.hpick];if(hp&&(!DK.holes||DK.holes[DK.hpick]))return hp.hole;var r=(DK.last&&(!DK.holes||DK.holes[DK.last._h]))?DK.last:DK.view[0],h=r&&r.hole;if(!h&&DK.data.holes[0])h=DK.data.holes[0].hole;return h||""}
 /*XLIMP*/
 function xlUnzip(buf){var u=new Uint8Array(buf),dv=new DataView(buf),n=u.length,e=-1;for(var i=n-22;i>=Math.max(0,n-66000);i--){if(dv.getUint32(i,true)===0x06054b50){e=i;break}}
  if(e<0)throw new Error("This does not look like an Excel file (.xlsx or .xlsm).");
@@ -6076,7 +6078,7 @@ function xlApply(sc,rep,pk){var ex={};RUNS.forEach(function(r,i){var I=r.IN||{};
  if(pk){var keep=DK.holes;DK.holes={};Object.keys(hs).forEach(function(k){DK.holes[k]=1});var nm=dkSavePacket();DK.holes=keep;if(nm)dkMsg("Imported and saved "+nm)}}
 function dkAskHole(cb){var d=document.createElement("dialog");d.className="dk-dlg";d.innerHTML='<h2>Which hole?</h2><div class="dk-dlgb"><p>No hole is selected yet. Type the Hole ID for the new row.</p><input class="dk-ahq" placeholder="e.g. SPDH-26-024" style="width:100%"></div><div class="dk-dlga"><button type="button" class="dk-btn" data-x="no">Cancel</button><button type="button" class="dk-btn dk-pri" data-x="go">Add row</button></div>';DK.el.appendChild(d);var q=d.querySelector(".dk-ahq");function go(v){d.close();d.remove();cb(v)}d.querySelector('[data-x="no"]').onclick=function(){go("")};d.querySelector('[data-x="go"]').onclick=function(){go(q.value.trim())};q.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();go(q.value.trim())}});d.showModal();q.focus()}
 /*ADDAT*/function dkAddTarget(){var pick=function(r){return(r&&!r._gap&&(r.hole!=null||r._lr!=null))?r:null},t=null,V=DK.view||[];
- if(DKED.cell&&DKED.cell.id){t=pick(V.filter(function(r){return r._id===DKED.cell.id})[0])}
+ if(DKED.cell&&DKED.cell.id){t=pick(V.filter(function(r){return r._id===DKED.cell.id})[0]);if(t&&DK.holes&&!DK.holes[t._h])t=null}
  if(!t&&DK.sel&&Object.keys(DK.sel).length){if(DK.last&&DK.sel[DK.last._id])t=pick(DK.last);if(!t){var rows=V.filter(function(r){return DK.sel[r._id]});for(var i=rows.length-1;i>=0;i--){t=pick(rows[i]);if(t)break}}}
  return t}
 function dkInsMove(arr,a,where,rp){if(!(a>=0)||a>=arr.length-1)return arr.length-1;var o=arr.pop(),at=(where==="above"?a:a+1)+rp;if(at>arr.length)at=arr.length;arr.splice(at,0,o);return at}
@@ -6219,10 +6221,11 @@ function dkGeoref(p1,p2){var P1=[p1.u,-p1.v],P2=[p2.u,-p2.v],W1=[p1.E,p1.N],W2=[
 function dkBmLoad(cb){if(DK.bmImg||DK.bmImgLoading)return;DK.bmImgLoading=true;dkIDB("get").then(function(r){DK.bmImgLoading=false;if(r&&r.blob&&r.g){DK.bmImg={url:URL.createObjectURL(r.blob),w:r.w,h:r.h,name:r.name,ar:r.g.ar,ai:r.g.ai,br:r.g.br,bi:r.g.bi,pts:r.pts}}if(cb)cb()},function(){DK.bmImgLoading=false;if(cb)cb()})}
 function dkBmPanel(btn){var m=DK.el.querySelector(".dk-menu"),b=DKS.bm||"none",o=DKS.bmo==null?(b==="img"?0.85:1):DKS.bmo;
  m.innerHTML='<div class="dk-bmp"><b>Basemap</b>'+[["none","None (grid only)"],["img","My image (offline)"]].map(function(x){return'<label><input type="radio" name="dkbm" value="'+x[0]+'"'+(x[0]===b?" checked":"")+'> '+dkE(x[1])+'</label>'}).join("")+
-  '<label class="dk-bmo">Opacity <input type="range" min="0.2" max="1" step="0.05" value="'+o+'"></label><button type="button" class="dk-btn dk-bmset">Set up my image…</button>'+(DK.bmImg?'<button type="button" class="dk-btn dk-bmzi">Zoom to my image</button>':'')+'<p class="dk-hint">Basemaps are images you upload yourself. They work offline and are kept in this browser on this PC only. The app never loads maps from the internet.</p></div>';
+  '<label class="dk-bmo">Opacity <input type="range" min="0.2" max="1" step="0.05" value="'+o+'"></label><label class="dk-bmo dk-bmg">Merge holes closer than <input type="number" class="dk-mg" min="0" max="500" step="1" value="'+window.dgMergeM()+'" style="width:64px"> m</label><button type="button" class="dk-btn dk-bmset">Set up my image…</button>'+(DK.bmImg?'<button type="button" class="dk-btn dk-bmzi">Zoom to my image</button>':'')+'<p class="dk-hint">Basemaps are images you upload yourself. They work offline and are kept in this browser on this PC only. The app never loads maps from the internet.</p></div>';
  var r=btn.getBoundingClientRect();m.style.left=(r.right+6)+"px";m.style.top=r.top+"px";m.hidden=false;DK.menu=btn;
  m.onchange=function(e){if(e.target.name==="dkbm"){DKS.bm=e.target.value;if(DKS.bm==="img")dkBmLoad(function(){dkMap()});dkKeep();dkMap()}};
  m.querySelector(".dk-bmo input").oninput=function(){DKS.bmo=+this.value;dkKeep();if(DK.map&&DK.map.draw)DK.map.draw()};
+ m.querySelector(".dk-mg").onchange=function(){var v=+this.value;DKS.mrg=isFinite(v)&&v>=0?Math.min(500,v):5;this.value=DKS.mrg;dkKeep();dkMap()};
  m.querySelector(".dk-bmset").onclick=function(){dkMenu(null);dkBmSetup()};var zi=m.querySelector(".dk-bmzi");if(zi)zi.onclick=function(){var I=DK.bmImg,M=DK.map;dkMenu(null);if(!I||!M)return;var c=[[0,0],[I.w,I.h]].map(function(p){return[I.ar*p[0]+I.ai*p[1]+I.br,I.ai*p[0]-I.ar*p[1]+I.bi]});M.cx=(c[0][0]+c[1][0])/2;M.cy=(c[0][1]+c[1][1])/2;var w=DK.el.querySelector(".dk-mapw");M.s=Math.min(w.clientWidth/Math.max(1,Math.abs(c[1][0]-c[0][0])),w.clientHeight/Math.max(1,Math.abs(c[1][1]-c[0][1])))*0.9;M.draw()}}
 function dkBmSetup(){var cur=DK.bmImg,d=document.createElement("dialog");d.className="dk-dlg dk-bmd";var st={blob:null,w:0,h:0,name:"",url:cur?cur.url:"",pick:0,pts:cur&&cur.pts?JSON.parse(JSON.stringify(cur.pts)):null};if(cur){st.w=cur.w;st.h=cur.h;st.name=cur.name}
  d.innerHTML='<h2>My image basemap</h2><div class="dk-dlgb"><p>Load a pit map, drone orthophoto or a screenshot from QGIS. Then give two points their real coordinates (same grid as your collars). The image corners are used by default; click <b>Pick</b> and then the image to use a known point instead (a survey peg, a road junction or a collar).</p>'+
