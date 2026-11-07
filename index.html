@@ -2293,7 +2293,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  </div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.65.113</span>
+  <span class="hm-dver">v3.65.114</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -2324,7 +2324,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.65.113</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.65.114</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -2414,7 +2414,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.113</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.114</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -5137,7 +5137,7 @@ var RA=[];try{RA=JSON.parse(localStorage.getItem("gl_rigact")||"[]")||[]}catch(e
 var RALK0={rig:["CORTECH-50","LY38-30","EDCO150-16","EDCO150-32","EDCO150-33","CS1000-08","SANDVIK DE710","JINSHI YN-1000X","LF90-2","GK 200","GK 200-2","CORTECH-58","CORTECH-57","CSD500L-61","CSD500L-62","CS1400-87","CS1400-88"],shift:["Day","Night"],by:["CAOM","GSB","JAT","JET","JFAL","JPC","JTS","KMD","LIC","MAL","NAM","MJC","PPC"],status:["Active","Breakdown","Standby"],act:["Moving","Setting Up","Run/Pull Casing","Drilling","Condition Hole","Reaming","Standby-Client Req","Standby-Other","Breakdown","Servicing","Pull/Run Rods","Cementing","Hole Survey","Others"]};
 var RALK=null;try{RALK=JSON.parse(localStorage.getItem("gl_riglk")||"null")}catch(e){}if(!RALK||typeof RALK!=="object")RALK=JSON.parse(JSON.stringify(RALK0));Object.keys(RALK0).forEach(function(k){if(!Array.isArray(RALK[k]))RALK[k]=RALK0[k].slice()});
 var RAU=null;
-function raSave(){RAU=null;try{localStorage.setItem("gl_rigact",JSON.stringify(RA))}catch(e){}}
+function raSave(){RAU=null;RASDC=null;try{localStorage.setItem("gl_rigact",JSON.stringify(RA))}catch(e){}}
 function rlkSave(){Object.keys(RALK).forEach(function(k){RALK[k]=RALK[k].map(function(x){return String(x==null?"":x).trim()}).filter(function(x,i,a){return x&&a.indexOf(x)===i})});try{localStorage.setItem("gl_riglk",JSON.stringify(RALK))}catch(e){}}
 function raNorm(s){var F=RAMOD.fix,w=String(s||"").toLowerCase().replace(/[^a-z\s]/g," ").split(/\s+/).filter(Boolean).map(function(x){return F[x]||x});w=w.join(" ").split(" ").map(function(x){return F[x]||x});return w.join(" ").trim()}
 function raToks(s){var ST=RAMOD._st||(RAMOD._st=RAMOD.stop.reduce(function(o,x){o[x]=1;return o},{}));var w=raNorm(s).split(" ").filter(function(x){return x.length>1&&!ST[x]}),o=w.slice();for(var i=0;i<w.length-1;i++)o.push(w[i]+"_"+w[i+1]);return o.filter(function(x,i,a){return a.indexOf(x)===i})}
@@ -5161,7 +5161,8 @@ var RAAP="AM";try{RAAP=localStorage.getItem("gl_raap")||"AM"}catch(e){}
 function raTime24(v,ctx){var p=raParse(v);if(!p)return null;if(p.e)return"";var h=p.h,ap=p.ap;if(!ap&&h>=1&&h<=12)ap=ctx||RAAP;if(ap){h=h%12;if(ap==="PM")h+=12}if(h===24)h=0;return("0"+h).slice(-2)+":"+("0"+p.mi).slice(-2)}
 function raDisp(t){if(!t||!/^\d\d:\d\d$/.test(t))return t||"";var h=+t.slice(0,2),ap=h<12?"AM":"PM",h12=h%12||12;return h12+":"+t.slice(3)+" "+ap}
 function raMin(t){return +t.slice(0,2)*60+ +t.slice(3)}
-/*RASD*/function raSD(){/*Drilling day for each Rig Activities row: 6:00 AM to 6:00 AM the next morning (same boundary as the rig's Day 6–18 / Night 18–6 shifts).
+/*RASD*/var RASDC=null;function raSD(){if(RASDC&&RASDC.ra===RA&&RASDC.n===RA.length)return RASDC.out;var o=raSD0();RASDC={ra:RA,n:RA.length,out:o};return o}
+function raSD0(){/*Drilling day for each Rig Activities row: 6:00 AM to 6:00 AM the next morning (same boundary as the rig's Day 6–18 / Night 18–6 shifts).
  Rows keep the shift's logged date across midnight (the midnight split and + Row copy the date), so within one hole and one logged date, time going backwards (18:00 then 00:00) means the row is past midnight; a 06:00 row after that is the next morning.*/
  var out=[],st={};RA.forEach(function(r,i){var d=r.date||"",t=String(r.tf||"");if(!/^\d{4}-\d\d-\d\d$/.test(d)||!/^\d\d:\d\d/.test(t)){out[i]=d;return}var k=hk(r.hole)+"|"+d,s=st[k]||(st[k]={p:null,o:0}),m=raMin(t);if(s.p!=null&&m<s.p)s.o++;s.p=m;
   var x=new Date(d+"T00:00:00");x.setDate(x.getDate()+s.o);x.setMinutes(m-360);out[i]=dkIso(x)});return out}
@@ -5490,7 +5491,7 @@ function dkOpen(){if(!DK.el)dkShell();dkZApply();setTimeout(function(){if(DK.el&
  var ep=document.getElementById("dk-epsg");ep.value=DKS.epsg||"";dkViewPaint();dkLayout();dkFillFilters();dkTree();dkHoles();dkTab(DKS.tab);dkQA(true);
  clearInterval(DK.timer);DK.timer=setInterval(function(){if(DK.el.hidden)return;var s=dkSig();if(s!==DK.sig){DK.sig=s;dkReload()}},2000)}
 function dkClose(){if(!DK.el||DK.el.hidden)return;try{dkSecLeave()}catch(e){}DK.el.hidden=true;document.body.classList.remove("dkon");clearInterval(DK.timer);dkMenu(null);try{sessionStorage.removeItem("dg_dk")}catch(e){}}
-function dkReload(){DK.data=dkBuild();DK.sig=dkSig();if(DK.holes){Object.keys(DK.holes).forEach(function(k){if(!DK.data.hmap[k])delete DK.holes[k]})}dkAutoTick();dkFillFilters();dkTree();dkHoles();dkRender();dkQA(true)}
+function dkReload(){RASDC=null;DK.data=dkBuild();DK.sig=dkSig();if(DK.holes){Object.keys(DK.holes).forEach(function(k){if(!DK.data.hmap[k])delete DK.holes[k]})}dkAutoTick();dkFillFilters();dkTree();dkHoles();dkRender();dkQA(true)}
 function dkRender(){var pn=DK.el&&DK.el.querySelector('.dk-pane[data-p="'+DKS.tab+'"]'),R=[pn,DK.el&&DK.el.querySelector(".dk-main")],sn=ksSnap(R);try{dkRender0()}finally{ksPut(R,sn)}}
 function dkRender0(){var t=DKS.tab;if(t!=="sec")dkSecLeave();if(t==="table")dkTable();else if(t==="reg")dkReg();else if(t==="map")dkMap();else if(t==="strip")dkStrip();else if(t==="sec")dkSec();else if(t==="d3")dk3D();else if(t==="chart")dkChart();else if(t==="sum")dkSum();else if(t==="qa")dkQA();else if(t==="qaqc")dkQAQC();else if(t==="hstat")dkHStat();else if(t==="sched")schDesk();else if(t==="ccsch")ccSchDesk();dkStats();dkCount()}
 function dkTab(t){if(!DK.el.querySelector('.dk-pane[data-p="'+t+'"]'))t="table";if(DKS.tab!==t){DK.rgOpen=null;DK.csOpen=false}DKS.tab=t;dkKeep();[].forEach.call(DK.el.querySelectorAll(".dk-tabs button"),function(b){var on=b.getAttribute("data-t")===t;b.classList.toggle("on",on);b.setAttribute("aria-selected",String(on))});
