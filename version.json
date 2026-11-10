@@ -1,10 +1,10 @@
 {
- "build": "3.65.170",
- "date": "2026-11-10",
+ "build": "3.65.202",
+ "date": "2026-11-11",
  "fn": [
-  "Install fix: the app page had lost its link to the install file (manifest), so Brave and Chrome showed \"This app cannot be installed\". The link and the home-screen icon are back, so Install app works again after you update and reload."
+  "No change."
  ],
  "ds": [
-  "Same install fix, so the desktop app can be installed from the browser menu again."
+  "Section map plan view inset now shows the 3D map terrain behind the traces (shaded relief and contour lines), in gray by default. Layers has Inset map opacity, Gray map (off for colour) and Contour lines. Without a 3D map loaded you get the traces only."
  ]
 }
