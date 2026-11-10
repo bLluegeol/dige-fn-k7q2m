@@ -1,14 +1,10 @@
 {
- "build": "3.65.141",
- "date": "2026-11-09",
+ "build": "3.65.170",
+ "date": "2026-11-10",
  "fn": [
-  "No change for phones and tablets: field logging, packets and backups work as before."
+  "Install fix: the app page had lost its link to the install file (manifest), so Brave and Chrome showed \"This app cannot be installed\". The link and the home-screen icon are back, so Install app works again after you update and reload."
  ],
  "ds": [
-  "Project screen: when DS opens it shows your projects (Ongoing, Recent, Completed, Archived) with progress, backup status and View / Edit. Create a new project, open a backup file as a view-only project, or import field packets.",
-  "Each project keeps its own data on this computer (logs, maps, photos, schedules). Your existing data is the first project.",
-  "Viewer and Editor modes: projects open in Viewer mode and nothing can be changed or saved. Press Edit and enter the manager PIN to edit; it returns to Viewer after 10 idle minutes. The app lock PIN also unlocks any project.",
-  "Importing while in Viewer mode saves a safety backup file first.",
-  "Project menu: Projects, Switch Editor / Viewer mode, Change manager PIN. A VIEW ONLY / EDITOR tag shows at the top."
+  "Same install fix, so the desktop app can be installed from the browser menu again."
  ]
 }
