@@ -2772,7 +2772,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  </div></div><aside class="hm-mods" aria-label="Modules"><div class="hm-modh">Modules</div><button type="button" class="hm-md" data-open="dk:table"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg><span><b>Database</b><small>Every table, filter and export</small></span></button><button type="button" class="hm-md" data-open="dk:map"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span><b>Plan map</b><small>Collars and hole status</small></span></button><button type="button" class="hm-md" data-open="dk:sec"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 5-8 4 5"/><path d="M3 21h18"/></svg><span><b>Section map</b><small>Lithology, assay, callouts</small></span></button><button type="button" class="hm-md" data-open="dk:d3"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg><span><b>3D view</b><small>Topography, slice, clip</small></span></button><button type="button" class="hm-md" data-open="dk:strip"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M8 16l4-5 3 3 5-7"/></svg><span><b>Logs and charts</b><small>Strip logs, plots, histograms</small></span></button><button type="button" class="hm-md" data-open="dk:qa"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span><b>Data checks</b><small>Gaps, overlaps, coordinates</small></span></button></aside></div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.65.202</span>
+  <span class="hm-dver">v3.65.204</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
  </div>
@@ -2804,7 +2804,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.65.202</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.65.204</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -2919,7 +2919,7 @@ html[data-dev="desktop"] .hm-d9l .hm-dcta{margin-top:16px}
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.202</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.204</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -4354,8 +4354,8 @@ setInterval(function(){if(view)return;try{var e=JSON.parse(SS.getItem("dg_ed")||
 function lockBtns(){if(!view||window.__dgW)return;var bad={"+ Row":1,"Delete":1,"Delete duplicates":1,"Delete this hole":1,"Clear all runs":1};document.querySelectorAll("button").forEach(function(b){var t=(b.textContent||"").trim();if(bad[t]&&!b.disabled){b.disabled=true;b.title="View only";b.style.opacity=".45"}})}
 if(view){var mo=new MutationObserver(function(){clearTimeout(lockBtns.t);lockBtns.t=setTimeout(lockBtns,300)});mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(lockBtns,800);
  var IMPS={"dk-fpk":1,"dk-fbk":1,"dk-fxl":1,"dk-fas":1};
- document.addEventListener("click",function(ev){var t=ev.target;if(!t||t.type!=="file"||window.__dgW||t.__dgOk)return;var isImp=IMPS[t.id]===1||/packet|backup|xl|assay/i.test(t.id||"");if(!isImp)return;ev.preventDefault();ev.stopImmediatePropagation();safeImport(function(){t.__dgOk=1;t.click();setTimeout(function(){t.__dgOk=0},500)})},true)}
-function safeImport(go){window.dgm({title:"Import into this project?",sub:"Importing changes the project data.",html:"<p>A backup file is saved first so you can go back. Then importing is allowed until you leave this project or reload.</p>",btns:[{t:"Cancel"},{t:"Save backup and continue",p:1,fn:function(){try{backup("safety_before_import_"+new Date().toISOString().slice(0,16).replace(/[:T]/g,"-")+".json")}catch(e){}window.__dgW=true;var b=document.getElementById("dg-mode");if(b){b.textContent="IMPORT";b.classList.add("ed")}setTimeout(go,350)}}]})}
+ document.addEventListener("click",function(ev){var t=ev.target;if(!t||t.type!=="file"||window.__dgW||t.__dgOk)return;var isImp=IMPS[t.id]===1||/packet|backup|xl|assay/i.test(t.id||"");if(!isImp)return;ev.preventDefault();ev.stopImmediatePropagation();safeImport(/backup|bk/i.test(t.id||"")?"bk":"",function(){t.__dgOk=1;t.click();setTimeout(function(){t.__dgOk=0},500)})},true)}
+function safeImport(kind,go){if(typeof kind==="function"){go=kind;kind=""}var bk=kind==="bk";window.dgm({title:bk?"Restore a backup into this project?":"Import into this project?",sub:bk?"Restoring puts the backup's data into the project.":"Importing changes the project data.",html:bk?"<p>You are in View only mode, so a safety copy of the current project is saved first so you can go back. Then you choose the backup file to restore. Switch to Editor mode (Project menu) to skip this step.</p>":"<p>A backup file is saved first so you can go back. Then importing is allowed until you leave this project or reload.</p>",btns:[{t:"Cancel"},{t:"Save backup and continue",p:1,fn:function(){try{backup("safety_before_import_"+new Date().toISOString().slice(0,16).replace(/[:T]/g,"-")+".json")}catch(e){}window.__dgW=true;var b=document.getElementById("dg-mode");if(b){b.textContent="IMPORT";b.classList.add("ed")}setTimeout(go,350)}}]})}
 window.dgPrj.safeImport=safeImport;
 /* ---- launcher ---- */
 var LOGO='<svg class="dslogo" width="56" height="54" viewBox="0 0 50 48" aria-hidden="true"><style>.lgf{fill:#8da6b74d;stroke:#dbe4ea;stroke-width:2;stroke-linejoin:round}.lgs{fill:none;stroke:#dbe4ea;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.lge{fill:#dbe4ea}.lgh{fill:#27323b}.lgm{fill:none;stroke:#e6edf1;stroke-width:1.5;stroke-linecap:round}.lgn{fill:none;stroke:#8da6b7;stroke-width:1.4;stroke-linecap:round}</style><path d="M32 6l8 10M29 9l7-5 3 4" class="lgs"/><path d="M8 31c0-10 7-17 16-17s16 6 16 16-7 13-16 13S8 41 8 31Z" class="lgf"/><circle cx="19" cy="30" r="2.4" class="lge"/><circle cx="29" cy="30" r="2.4" class="lge"/><circle cx="19.8" cy="29.2" r=".8" class="lgh"/><circle cx="29.8" cy="29.2" r=".8" class="lgh"/><path d="M21.4 34.6q2.6 2.2 5.2 0" class="lgm"/><rect x="2" y="29" width="14" height="10" rx="1.5" class="lgf"/><path d="M9 39v3M5.5 42.5h7" class="lgs"/><path d="M4.5 35.5h2.5l1.5-2.5 2 4 1-1.5h1.5" class="lgn"/><path d="M45 18l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9Z" class="lge"/></svg>';
@@ -6748,7 +6748,7 @@ function dkShell(){var d=document.createElement("div");d.id="dk";d.setAttribute(
  document.addEventListener("fullscreenchange",upd);window.addEventListener("resize",function(){clearTimeout(upd.t);upd.t=setTimeout(upd,120)});setTimeout(upd,500)})();
 /*TABINFO: the Info button of Desktop Studio. One short, plain explanation per tab, in the same item / how it is worked out / where the data comes from layout as the Info of the Monitoring tabs. The three Monitoring tabs keep their own Info button.*/
 var TINFO={
- table:[["Vertical heads","Click Vertical heads in the table toolbar to turn the column headings sideways. The columns get thinner, so more of them fit on screen. Click again to go back. You can still drag a column edge to size it.","Attribute table"],["Attribute table","One row per record of the dataset picked in the Browser panel (Holes / collars, Downhole survey, Logging intervals, Assays, geotechnical tables, Run Recovery Database, Rig Activities Database, Rod tally, Lithology)","Browser panel · the data on this device"],
+ table:[["Vertical heads","Click Vertical heads in the table toolbar to turn the column headings sideways. Each column is only as wide as its longest value, and an empty column is as thin as its sideways heading, so more of them fit on screen. Click again to go back. You can still drag a column edge to size it.","Attribute table"],["Attribute table","One row per record of the dataset picked in the Browser panel (Holes / collars, Downhole survey, Logging intervals, Assays, geotechnical tables, Run Recovery Database, Rig Activities Database, Rod tally, Lithology)","Browser panel · the data on this device"],
   ["Filters on the left","The ticked holes and the From / To date, From / To depth, Logger and Shift filters apply to every tab, not only this table","Holes and Filters panels"],
   ["Editing","Cells that accept typing are edited in place and saved to the hole data. Leapfrog lithology columns fill from the Lithology automatically; a value you type is remembered for that cell","Logging intervals · Registry (simplified lithology rules)"],
   ["Statistics panel","Count, Sum, Mean, Median, Min, Max, Std dev and Range of the column chosen above it, for the rows in view","Rows currently shown"],
@@ -6908,7 +6908,13 @@ function dkWire(){var d=DK.el;
 /* ---------- attribute table (virtual scrolling) ---------- */
 var DKRH=26;
 function dkVisCols(ds){var h=DKS.hid[ds.k]||{};return ds.cols.filter(function(c){return!h[c.k]})}
-function dkW(ds,c){var u=(DKS.cw[ds.k]||{})[c.k];if(u)return u;return DKS.vh?Math.min(c.w,c.n?62:96):c.w}
+/*VHFIT: in Vertical heads the column is as wide as its longest value (empty columns are as thin as the vertical title), unless you resized it by hand.*/
+var DKVHW={k:"",m:{}},DKVHC=null;
+function dkVhW(ds,c){var rows=ds.rows||[],key=ds.k+"|"+rows.length+"|"+(DK.view?DK.view.length:0);if(DKVHW.k!==key){DKVHW={k:key,m:{}}}if(DKVHW.m[c.k]!=null)return DKVHW.m[c.k];
+ if(!DKVHC){try{DKVHC=document.createElement("canvas").getContext("2d");DKVHC.font="13px system-ui,Segoe UI,Arial"}catch(e){DKVHC=null}}
+ var mx=0,n=rows.length,st=n>4000?Math.ceil(n/4000):1,seen={};for(var i=0;i<n;i+=st){var v=rows[i][c.k];if(v==null||v==="")continue;var t=dkFmt(v);if(t.length>60)t=t.slice(0,60);if(seen[t])continue;seen[t]=1;var w=DKVHC?DKVHC.measureText(t).width:t.length*7;if(w>mx)mx=w}
+ var w=mx>0?Math.round(Math.max(34,Math.min(c.n?120:300,mx+22))):26;DKVHW.m[c.k]=w;return w}
+function dkW(ds,c){var u=(DKS.cw[ds.k]||{})[c.k];if(u)return u;return DKS.vh?dkVhW(ds,c):c.w}
 /*FZSEL: Freeze keeps only the columns you selected (a single column or a dragged range of columns); the columns behind them scroll away. Stored as column keys (an old saved number means the first N+1 columns).*/
 function dkFzKeys(ds,cols){var v=(DKS.frz||{})[ds.k];if(Array.isArray(v))return v;if(typeof v==="number"&&v>=0)return cols.slice(0,v+1).map(function(c){return c.k});return[]}
 function dkFz(ds,cols){var ks=dkFzKeys(ds,cols),S={},L=[],x=48,last=-1;cols.forEach(function(c,j){if(ks.indexOf(c.k)>=0){S[j]=1;last=j;L.push(x);x+=dkW(ds,c)}else L.push(0)});return{n:last,S:S,L:L}}
@@ -11980,7 +11986,7 @@ window.geotReset=function(){if(box){var f=box.querySelector("iframe");if(f)f.src
 var md=document.getElementById("mode");if(md)md.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button");if(!b)return;if(b.id==="m_geot")window.geotSet(true);else if(b.id==="m_field")window.geotSet(false)},true);
 var hm=document.getElementById("home");if(hm)hm.addEventListener("click",function(e){var x=e.target.closest&&e.target.closest("[data-open]");if(x)window.geotSet(x.getAttribute("data-open")==="geot")},true);
 
-/*DBSYNC0*/window.addEventListener("load",function(){setTimeout(function(){try{dgDbSync()}catch(e){}},1500)});/*UPDCHK*/(function(){var BUILD="3.65.202";window.DG_BUILD=BUILD;
+/*DBSYNC0*/window.addEventListener("load",function(){setTimeout(function(){try{dgDbSync()}catch(e){}},1500)});/*UPDCHK*/(function(){var BUILD="3.65.204";window.DG_BUILD=BUILD;
 var LSG=function(k){try{return localStorage.getItem(k)}catch(e){return null}},LSS=function(k,v){try{localStorage.setItem(k,v)}catch(e){}};
 function say(m){var b=document.querySelectorAll(".hm-updb");for(var i=0;i<b.length;i++){b[i].textContent=m}}
 function rst(){setTimeout(function(){var b=document.querySelectorAll(".hm-updb");for(var i=0;i<b.length;i++){b[i].textContent="Check for updates";b[i].disabled=false}},3000)}

@@ -1,10 +1,10 @@
 {
- "build": "3.65.202",
+ "build": "3.65.204",
  "date": "2026-11-11",
  "fn": [
   "No change."
  ],
  "ds": [
-  "Section map plan view inset now shows the 3D map terrain behind the traces (shaded relief and contour lines), in gray by default. Layers has Inset map opacity, Gray map (off for colour) and Contour lines. Without a 3D map loaded you get the traces only."
+  "Attribute table, Vertical heads: each column is now as wide as its longest value, and empty columns shrink to the width of the sideways heading. Columns you resized by hand keep their width."
  ]
 }
