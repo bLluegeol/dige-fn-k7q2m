@@ -1,10 +1,10 @@
 {
- "build": "3.65.204",
+ "build": "3.65.206",
  "date": "2026-11-11",
  "fn": [
-  "No change."
+  "Geotechnical Run Recovery: imported rows no longer get a new DateUpdated when the geotechnical page next saves."
  ],
  "ds": [
-  "Attribute table, Vertical heads: each column is now as wide as its longest value, and empty columns shrink to the width of the sideways heading. Columns you resized by hand keep their width."
+  "Run Recovery Database and Rig Activities Database: DateUpdated can now be typed or picked, and it shows the real entry/edit date (it was always showing the run date in Run Recovery). Imports do not change it; manual edits set it to today."
  ]
 }
