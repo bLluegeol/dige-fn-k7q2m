@@ -1,10 +1,10 @@
 {
- "build": "3.65.210",
- "date": "2026-11-11",
+ "build": "3.65.243",
+ "date": "2026-11-12",
  "fn": [
   "No change."
  ],
  "ds": [
-  "Rig Activities time entry: after a PM time, a time typed without AM/PM (e.g. 1, then 2) now continues as PM and no longer turns into AM or splits the row. The row is split at midnight only when you explicitly type an AM time after a PM time."
+  "Core checkers schedule: a new core checkers month now starts with day shift 6 AM to 6 PM and night shift 6 PM to 6 AM (it was 7 AM to 7 PM). Schedules already saved keep their times; click a shift name in Edit schedule to change them."
  ]
 }
