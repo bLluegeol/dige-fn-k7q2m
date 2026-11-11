@@ -1,10 +1,11 @@
 {
- "build": "3.65.243",
+ "build": "3.65.245",
  "date": "2026-11-12",
  "fn": [
   "No change."
  ],
  "ds": [
-  "Core checkers schedule: a new core checkers month now starts with day shift 6 AM to 6 PM and night shift 6 PM to 6 AM (it was 7 AM to 7 PM). Schedules already saved keep their times; click a shift name in Edit schedule to change them."
+  "Team Schedule: new A− / A+ size control (bottom-right, 100% to 200%) that enlarges the schedule grids, boards and On duty list; it remembers your choice.",
+  "Team Schedule: the green ON DUTY label on the board cells is now a small round i in the corner (hover for On duty now), so it no longer covers names."
  ]
 }
