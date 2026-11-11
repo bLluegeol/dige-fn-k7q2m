@@ -1,10 +1,10 @@
 {
- "build": "3.65.206",
+ "build": "3.65.210",
  "date": "2026-11-11",
  "fn": [
-  "Geotechnical Run Recovery: imported rows no longer get a new DateUpdated when the geotechnical page next saves."
+  "No change."
  ],
  "ds": [
-  "Run Recovery Database and Rig Activities Database: DateUpdated can now be typed or picked, and it shows the real entry/edit date (it was always showing the run date in Run Recovery). Imports do not change it; manual edits set it to today."
+  "Rig Activities time entry: after a PM time, a time typed without AM/PM (e.g. 1, then 2) now continues as PM and no longer turns into AM or splits the row. The row is split at midnight only when you explicitly type an AM time after a PM time."
  ]
 }
