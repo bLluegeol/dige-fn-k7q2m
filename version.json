@@ -1,9 +1,8 @@
 {
- "build": "3.65.259",
+ "build": "3.65.263",
  "date": "2026-11-13",
  "fn": [],
  "ds": [
-  "Project card (Projects list) now shows the same meters, target and hole count as the Daily Drilling Update and the Project page: the sum of Run Recovery run lengths, not hole depths.",
-  "The project name typed in Project setup is now the project name everywhere: the project button, the Projects list and the home screen. Renaming from the Projects list updates Project setup too."
+  "Home screen and Projects list: planned depth is the Target meterage typed in Project setup (the sum of the hole targets when none is typed). Drilled depth stays the Run Recovery run total, like the dashboard."
  ]
 }
