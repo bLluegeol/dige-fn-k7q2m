@@ -1,8 +1,8 @@
 {
- "build": "3.65.263",
+ "build": "3.65.265",
  "date": "2026-11-13",
  "fn": [],
  "ds": [
-  "Home screen and Projects list: planned depth is the Target meterage typed in Project setup (the sum of the hole targets when none is typed). Drilled depth stays the Run Recovery run total, like the dashboard."
+  "Import packets (toolbar and Project menu) now asks what to bring in. The default is Only new depths: per hole, only data after the last depth already saved in DS, so nothing overlaps or repeats. Other choices: only data from a depth you type, or everything in the file. The dialog lists the last saved depth of each hole."
  ]
 }
