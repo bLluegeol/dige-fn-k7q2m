@@ -1,10 +1,8 @@
 {
- "build": "3.65.252",
+ "build": "3.65.258",
  "date": "2026-11-12",
  "fn": [
-  "No change."
+  "New Install app button on the home screen footer. It opens the browser install prompt when the browser offers one, otherwise it shows where to find Install app or Add to Home screen in the menu (including Brave Customize menu)."
  ],
- "ds": [
-  "Run Recovery Database: fixed the Shift column for real. It now always shows the Day or Night stored in the row (from the Excel or the packet), checked against a full backup. Version 3.65.250 did not apply this to the table; the time of import is only used when a row has no shift at all."
- ]
+ "ds": []
 }
