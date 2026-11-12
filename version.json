@@ -1,11 +1,10 @@
 {
- "build": "3.65.251",
+ "build": "3.65.252",
  "date": "2026-11-12",
  "fn": [
   "No change."
  ],
  "ds": [
-  "Excel import (Run Recovery): the Shift and DateUpdated columns are copied exactly as they are in the file, including for rows already in the app, instead of anything being set from the time of the import.",
-  "Packet import: a Run Recovery row that is already here now takes the Shift (and DateUpdated) written in the packet."
+  "Run Recovery Database: fixed the Shift column for real. It now always shows the Day or Night stored in the row (from the Excel or the packet), checked against a full backup. Version 3.65.250 did not apply this to the table; the time of import is only used when a row has no shift at all."
  ]
 }
