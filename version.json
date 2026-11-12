@@ -1,10 +1,10 @@
 {
- "build": "3.65.247",
+ "build": "3.65.250",
  "date": "2026-11-12",
  "fn": [
   "No change."
  ],
  "ds": [
-  "Daily Drilling Update: Rig daily advance variance has a Sort menu (rig order, rig name, run, plan, variance worst first or best first). It does not print."
+  "Run Recovery Database: the Shift column now shows the Day or Night each run was logged with. Before, it was worked out from the time the row was typed or imported, so a batch imported in the evening all showed Night. Rows with no logged shift still use the entry time, and a Shift you edit by hand still wins."
  ]
 }
