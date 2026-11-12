@@ -1,8 +1,9 @@
 {
- "build": "3.65.258",
- "date": "2026-11-12",
- "fn": [
-  "New Install app button on the home screen footer. It opens the browser install prompt when the browser offers one, otherwise it shows where to find Install app or Add to Home screen in the menu (including Brave Customize menu)."
- ],
- "ds": []
+ "build": "3.65.259",
+ "date": "2026-11-13",
+ "fn": [],
+ "ds": [
+  "Project card (Projects list) now shows the same meters, target and hole count as the Daily Drilling Update and the Project page: the sum of Run Recovery run lengths, not hole depths.",
+  "The project name typed in Project setup is now the project name everywhere: the project button, the Projects list and the home screen. Renaming from the Projects list updates Project setup too."
+ ]
 }
