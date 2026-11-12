@@ -1,10 +1,11 @@
 {
- "build": "3.65.250",
+ "build": "3.65.251",
  "date": "2026-11-12",
  "fn": [
   "No change."
  ],
  "ds": [
-  "Run Recovery Database: the Shift column now shows the Day or Night each run was logged with. Before, it was worked out from the time the row was typed or imported, so a batch imported in the evening all showed Night. Rows with no logged shift still use the entry time, and a Shift you edit by hand still wins."
+  "Excel import (Run Recovery): the Shift and DateUpdated columns are copied exactly as they are in the file, including for rows already in the app, instead of anything being set from the time of the import.",
+  "Packet import: a Run Recovery row that is already here now takes the Shift (and DateUpdated) written in the packet."
  ]
 }
