@@ -1,10 +1,10 @@
 {
- "build": "3.65.285",
+ "build": "3.65.286",
  "date": "2026-11-13",
  "fn": [
-  "Restoring a backup (file or pasted text) now updates holes that are already in the notebook: status (ONGOING / TERMINATED) and Drill start and Drill complete dates come from the backup. Before, only holes the notebook did not have yet were taken from the backup, so a hole terminated in DS stayed ONGOING in FN. A packet that says a hole is TERMINATED also marks it terminated."
+  "Map (Plan, Section, 3D): new Collars only chip next to Hide other holes: shows just the collar of each hole, without the hole paths or depth labels. New Slice along hole chip: select a hole, then tap it. Plan turns the map so the hole runs up the screen, Section slices along the hole (width +/-1 m), 3D shows a thin slice along the hole. Tap again to look from the other side; Reset north goes back."
  ],
  "ds": [
-  "Restoring a backup or importing a packet now updates the status and dates of holes that already exist (see FN note)."
+  "Plan map: new Collars only option (same as FN)."
  ]
 }
