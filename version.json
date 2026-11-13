@@ -1,10 +1,10 @@
 {
- "build": "3.65.278",
+ "build": "3.65.279",
  "date": "2026-11-13",
  "fn": [
-  "Hole status: ACTIVE is now called ONGOING, and the two terminated choices are now one: TERMINATED. Holes that were Terminated (Other Reasons) show as TERMINATED, nothing is lost. The status list, the map legends and the status labels all use the new names."
+  "Team Schedule: supervisors can now add, rename, regroup and remove people while editing (People button)."
  ],
  "ds": [
-  "Hole status: ACTIVE is now ONGOING, and TERM (EOH) and TERM (OR) are now one: TERMINATED. Updated everywhere: Holes list headings, the Drillhole register badges and Status filter, HOLE STATUS, the map and 3D legends, Data Checks wording and the help text. Existing holes marked Terminated (Other Reasons) now show as TERMINATED; their note is kept."
+  "Team Schedule editor (Geologist and Core Checkers): new People button in the editing bar. Type a code and name, pick a group (or leave Automatic), and Add person. The new person appears at once in the Paint list and in the availability list. You can also rename or regroup anyone, or remove them (their existing assignments stay and show as not in roster). Everything supports Undo and Revert all, and the roster goes into the exported packet. Same change in the standalone Team Schedule app (v214)."
  ]
 }
