@@ -1,12 +1,8 @@
 {
- "build": "3.65.272",
+ "build": "3.65.275",
  "date": "2026-11-13",
- "fn": [
-  "Rock-type cards and their pictures now use the colours of the Litho, Alteration and Structure colour scheme file (01.1_Litho_Alteration_and_Structure_Color_Scheme_051226.xlsx). Update the app and Check for updates; saved lists are updated once, automatically."
- ],
+ "fn": [],
  "ds": [
-  "New colour scheme from the file 01.1_Litho_Alteration_and_Structure_Color_Scheme_051226.xlsx for rock types, alteration types and structures. It is used everywhere: the log strips and their legends, A4 log sheets, charts, plan/section/3D maps, the attribute tables and the rock cards. One-time update of your saved lookup lists to the file's colours; new codes in the file (BLT1, BLT2, LST1-3) are added. 'NULL' in the file means no colour (grey).",
-  "Attribute table, Logging intervals: Structures column shows the structure code in the scheme colour (fault, vein, bed); Rock 1, Rock 2 and Alt Type 1 and 2 show a colour square. Defects use the structure colours on the logs too.",
-  "REGISTRY, Cards view: new 'Colour scheme' card with every rock type, alteration and structure colour. Type a hex to change one, 'Download the file (.xlsx)' gives back the original file, 'Reset to the file' puts the file colours back."
+  "Attribute table: new 'Colours' button in the toolbar (Logging intervals, Defects, Lithology). It is on by default, so the rock, structure, alteration and graphic log cells are shaded. Click it to turn all the shading off, click again to turn it back on. The choice is remembered."
  ]
 }
