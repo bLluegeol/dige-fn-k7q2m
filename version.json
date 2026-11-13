@@ -1,10 +1,10 @@
 {
- "build": "3.65.279",
+ "build": "3.65.280",
  "date": "2026-11-13",
  "fn": [
-  "Team Schedule: supervisors can now add, rename, regroup and remove people while editing (People button)."
+  "Team Schedule: supervisors can swap two shifts while editing (Swap shifts button)."
  ],
  "ds": [
-  "Team Schedule editor (Geologist and Core Checkers): new People button in the editing bar. Type a code and name, pick a group (or leave Automatic), and Add person. The new person appears at once in the Paint list and in the availability list. You can also rename or regroup anyone, or remove them (their existing assignments stay and show as not in roster). Everything supports Undo and Revert all, and the roster goes into the exported packet. Same change in the standalone Team Schedule app (v214)."
+  "Team Schedule editor (Geologist and Core Checkers): new Swap shifts button. Click it, then click the two slots; the two people exchange places (same day or different days, same rig or different rigs). Choosing an empty slot moves the person there. Shows a heads-up if the swap leaves someone double-booked or with short rest. Supports Undo and Revert all. Same change in the standalone Team Schedule app (v215)."
  ]
 }
