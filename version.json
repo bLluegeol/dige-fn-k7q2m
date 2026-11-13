@@ -1,8 +1,8 @@
 {
- "build": "3.65.290",
- "date": "2026-11-13",
+ "build": "3.65.293",
+ "date": "2026-11-14",
  "fn": [],
  "ds": [
-  "New Import workbook button (toolbar and Project menu). Pick an Excel file and the app reads every sheet, recognises each one and lists what can be imported with a tick box: Run Recovery Database, Rig Activities, Drillhole register / monitoring, Hole Survey (HoleID, Depth, Azimuth, Dip), geological log sheets and geotechnical sheets. Untick what you do not want, choose Add and update or Replace for Run Recovery and Rig Activities, and the ticked imports run together with one combined result. Sheets that are not recognised are listed and left alone. Import Excel works as before."
+  "The backlog card (KPI page, under Schedule) now has a customisable period: type the number of days (default 7), or pick From and To dates. Average rate, penetration rate, shortfall, backlog days, finish date and the day-by-day table all follow it. Reset returns to the last 7 days. The card is now called Backlog at the selected pace."
  ]
 }
