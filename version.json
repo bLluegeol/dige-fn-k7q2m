@@ -1,10 +1,8 @@
 {
- "build": "3.65.280",
+ "build": "3.65.282",
  "date": "2026-11-13",
- "fn": [
-  "Team Schedule: supervisors can swap two shifts while editing (Swap shifts button)."
- ],
+ "fn": [],
  "ds": [
-  "Team Schedule editor (Geologist and Core Checkers): new Swap shifts button. Click it, then click the two slots; the two people exchange places (same day or different days, same rig or different rigs). Choosing an empty slot moves the person there. Shows a heads-up if the swap leaves someone double-booked or with short rest. Supports Undo and Revert all. Same change in the standalone Team Schedule app (v215)."
+  "Registry graph (Causes and Lithology): new Full screen button in the toolbar, and press F to turn full screen on or off. The graph fills the whole window; press Esc or Exit full screen to come back. Zoom, Fit, drag and wiring all work in full screen."
  ]
 }

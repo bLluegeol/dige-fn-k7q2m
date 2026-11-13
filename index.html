@@ -1001,6 +1001,7 @@ html[data-dev="desktop"] .hm-dbrand{display:flex;align-items:center;gap:clamp(18
 @media (max-height:640px),(max-width:1100px){html[data-dev="desktop"] .hm-dbrand{display:none}}
 /*LGCSS*/.lg-seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}.lg-seg button{border:0;background:transparent;padding:4px 12px;font:600 12px system-ui;color:var(--mut);cursor:pointer}.lg-seg button.on{background:var(--ink);color:var(--bg)}.pf-bar>.lg-seg{margin-left:auto;align-self:center}
 .lg-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}.lg-q{flex:0 1 190px;min-width:120px;font:12px system-ui;padding:4px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}.lgspc{flex:1}
+.lg-fs{position:fixed;inset:0;z-index:2147483000;background:var(--bg,#f3f5f7);padding:10px 14px;display:flex;flex-direction:column;overflow:hidden}.lg-fs .lg-cv{flex:1 1 auto;max-height:none;min-height:0}.lg-fs .dk-hint{flex:0 0 auto}.lg-fs .lg-bar{flex:0 0 auto}
 .lg-cv{position:relative;overflow:auto;border:1px solid var(--line);border-radius:10px;background-color:var(--card);background-image:radial-gradient(var(--line) 1px,transparent 1.2px);background-size:20px 20px;max-height:calc(100vh - 250px);min-height:320px}
 .lg-in{position:relative;display:grid;column-gap:56px;row-gap:12px;padding:22px 22px;width:max-content;min-width:100%;box-sizing:border-box;align-items:center}.lg-c{grid-template-columns:230px 300px 190px 170px;column-gap:48px}.lg-l{grid-template-columns:200px 190px 190px;align-items:start}.lg-col{display:flex;flex-direction:column;gap:6px}
 .lg-svg{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:2}.lg-w1{fill:none;stroke:var(--mut);stroke-width:1.4;opacity:.6}.lg-w1.soft{stroke-dasharray:3 4;opacity:.35}.lg-w1.sel,.lg-tmp{stroke:var(--acc-fill,#546e7e);stroke-width:2.2;opacity:1;stroke-dasharray:none}.lg-hit{fill:none;stroke:transparent;stroke-width:12;cursor:pointer}.lg-del circle{fill:var(--card);stroke:var(--acc-fill,#546e7e);stroke-width:1.4}.lg-del path{stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;fill:none}
@@ -2855,7 +2856,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
  </div></div><aside class="hm-mods" aria-label="Modules"><div class="hm-modh">Modules</div><button type="button" class="hm-md" data-open="dk:table"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg><span><b>Database</b><small>Every table, filter and export</small></span></button><button type="button" class="hm-md" data-open="dk:map"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span><b>Plan map</b><small>Collars and hole status</small></span></button><button type="button" class="hm-md" data-open="dk:sec"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 5-8 4 5"/><path d="M3 21h18"/></svg><span><b>Section map</b><small>Lithology, assay, callouts</small></span></button><button type="button" class="hm-md" data-open="dk:d3"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg><span><b>3D view</b><small>Topography, slice, clip</small></span></button><button type="button" class="hm-md" data-open="dk:strip"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M8 16l4-5 3 3 5-7"/></svg><span><b>Logs and charts</b><small>Strip logs, plots, histograms</small></span></button><button type="button" class="hm-md" data-open="dk:qa"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span><b>Data checks</b><small>Gaps, overlaps, coordinates</small></span></button></aside></div>
  <div class="hm-dbot">
   <div class="hm-dlinks"><button type="button" data-open="dk:table">Attribute table</button><button type="button" data-open="dk:map">Plan map</button><button type="button" data-open="dk:strip">Strip logs</button><button type="button" data-open="dk:cross">Cross plot</button><button type="button" data-open="dk:hist">Histogram</button></div>
-  <span class="hm-dver">v3.65.280</span>
+  <span class="hm-dver">v3.65.282</span>
   <button type="button" class="hm-updb" data-upd="1">Check for updates</button>
   <button type="button" class="hm-stob" data-sto="1">Storage</button>
   <button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">Pre-release build by PPC</button>
@@ -2888,7 +2889,7 @@ body[data-theme="dark"] .sch,body.dark .sch{--ccsp-ds:#f0b64a;--ccsp-ns:#8fb2ec;
 </main>
 
 <footer class="hm-foot"><b>Drill core logging and data capture tool</b><br><span>Data correlation: every log, survey and photo seen as one hole</span></footer>
-<div class="hm-ver" id="hm-ver"><span>v3.65.280</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-stob hm-inst" data-inst="1" hidden>Install app</button><button type="button" class="hm-stob" data-sto="1">Storage</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
+<div class="hm-ver" id="hm-ver"><span>v3.65.282</span><button type="button" class="hm-updb" data-upd="1">Check for updates</button><button type="button" class="hm-stob hm-inst" data-inst="1" hidden>Install app</button><button type="button" class="hm-stob" data-sto="1">Storage</button><button type="button" class="hm-ppcb" data-sheet="hm-s-ppc">beta</button></div>
 
 <style>
 #hm-s-ppc{background:transparent;border:0;padding:0;max-width:none;width:auto;overflow:visible;color:#241c14;box-shadow:none;inset:0;margin:auto;max-height:none;border-radius:0}
@@ -3002,7 +3003,7 @@ html[data-dev="desktop"] .hm-d9l .hm-dc h1::after{content:"";display:block;width
  <div class="ppc-r"><span>Off duty</span><p>Kailan?</p></div>
  <div class="ppc-r"><span>Motto</span><p>Be kind.</p></div>
   <div class="ppc-r"><span>Full name</span><p>Patrick Paul Odiamar Celso</p></div>
- <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.280</span><span>DiGe-FN</span></div>
+ <div class="ppc-ft"><span>#001</span><span>Pre-release build v3.65.282</span><span>DiGe-FN</span></div>
  <div class="ppc-hint">Tap to flip back</div>
 </div></div>
 </div></div>
@@ -10755,7 +10756,7 @@ function pjHoleStart(k){var C=pfCache(),P=C.per[k]||{},m="";Object.keys(P).forEa
 function pjHoleEnd(k,hs){var C=pfCache(),P=C.per[k]||{},m="";if(hs!=="eoh"&&hs!=="oth")return"";Object.keys(P).forEach(function(d){if((P[d].xM||0)>0&&(!m||d>m))m=d});return m}
 function pjSaveHole(k,f,raw){var h=(DK.data.hmap||{})[k],v=String(raw==null?"":raw).trim(),num=(f==="eoh"||f==="az"||f==="inc"||f==="ce"||f==="cn"||f==="crl");if(num&&v!==""){var n=dkN(v);if(n==null||(n<0&&f!=="crl"&&f!=="ce"&&f!=="cn")){dkMsg("Type a number for the target",1);return false}v=String(n)}
  if(f==="sd"||f==="ed"){if(v!==""&&!/^\d{4}-\d{2}-\d{2}$/.test(v)){dkMsg("Use the date format YYYY-MM-DD",1);return false}}
- var o={};o[f]=v;hregSave(k,o,"Saved "+(h?h.hole:k));return true}
+ var o={},tm=f==="ed"&&v!==""&&hstOf(k)!=="eoh";o[f]=v;if(tm)o.hst="eoh";hregSave(k,o,"Saved "+(h?h.hole:k)+(tm?" \u00b7 marked TERMINATED":""));return true}
 function pjAddHole(id,tgt){id=String(id||"").trim();var k=hk(id);if(!k){dkMsg("Type a hole ID",1);return}if(DK.data.hmap[k]){dkMsg(id+" is already in the list",1);return}dkBatchStart();var o=HI[k]={hole:id};var n=dkN(tgt);if(n!=null&&n>0)o.eoh=String(n);DKED.d.hi=1;dkBatchEnd("Planned hole "+id+" added")}
 function pjRe(){setTimeout(pfRe,0)}
 function pjClick(a,b,v){if(a==="logo"){var L=pjGet().logo;pjSet({logo:{t:"gen",v:L&&L.t==="gen"?(L.v||0)+1:0}});pjRe();return true}
@@ -10922,6 +10923,8 @@ function dkLk(){var p=DK.el&&DK.el.querySelector('.dk-pane[data-p="lk"]');if(!p)
 var LGS={tab:"c",q:"",sel:null,pL1:[],pS:[],note:""},LGW=[];
 function lgSaved(){try{var o=JSON.parse(localStorage.getItem("dg_lgsave")||"null");return o&&o.p?o:null}catch(e){return null}}
 function lgE(s){return dkE(String(s==null?"":s))}
+function lgFs(on){LGS.fs=on==null?!LGS.fs:!!on;try{document.documentElement.classList.toggle("lg-fsb",!!LGS.fs)}catch(e){}lgRe();setTimeout(function(){var w=document.querySelector(".lg-w");if(w&&LGS.fs){try{lgFit(w)}catch(e){}}},120)}
+if(!window.__lgFsK){window.__lgFsK=1;document.addEventListener("keydown",function(e){if(e.ctrlKey||e.metaKey||e.altKey)return;var t=e.target,tg=t&&t.tagName;if(tg==="INPUT"||tg==="TEXTAREA"||tg==="SELECT"||(t&&t.isContentEditable))return;var on=document.querySelector(".lg-w");if(!on||typeof DKS==="undefined"||DKS.tab!=="lk"||DKS.lkv==="c")return;if(e.key==="Escape"&&LGS.fs){e.preventDefault();lgFs(false)}else if((e.key==="f"||e.key==="F")&&!e.shiftKey){e.preventDefault();lgFs()}})}
 function lgRe(dk){setTimeout(function(){if(dk){DK.sig="";dkReload()}else dkLk()},0)}
 function lgSeg(){return'<div class="lg-seg" role="group" aria-label="Registry view"><button type="button" data-rg="lkv" data-v="c" aria-pressed="'+(DKS.lkv==="c")+'" class="'+(DKS.lkv==="c"?"on":"")+'">Cards</button><button type="button" data-rg="lkv" data-v="g" aria-pressed="'+(DKS.lkv!=="c")+'" class="'+(DKS.lkv!=="c"?"on":"")+'">Graph</button></div>'}
 function lgStats(){var C=pcGet(),by={},tot=0,ra=[],T={a:{n:0,h:0},b:{n:0,h:0},s:{n:0,h:0}},mk=function(){return{n:0,h:0,b:{n:0,h:0},s:{n:0,h:0}}};C.forEach(function(c){by[c.n]=mk()});by["Other / no remark"]=mk();try{ra=RA}catch(e){}
@@ -10972,11 +10975,11 @@ function lgHtml(){var tb='<div class="lg-bar"><div class="lg-seg" role="group" a
  if(LGS.tab==="c")tb+='<input class="lg-q" data-lg-in="cat" placeholder="New cause, for example Safety stand-down" autocomplete="off"><button type="button" class="pf-btn" data-lg="cadd">Add cause</button><button type="button" class="pf-btn" data-lg="crst">Reset to built-in</button>';
  else tb+='<input class="lg-q" data-lg-q placeholder="Find a code" value="'+lgE(LGS.q)+'" autocomplete="off"><input class="lg-q" data-lg-in="nl1" placeholder="New Lithology 1" autocomplete="off"><button type="button" class="pf-btn" data-lg="l1add">Add</button><input class="lg-q" data-lg-in="nsc" placeholder="New Simplified code" autocomplete="off"><button type="button" class="pf-btn" data-lg="sadd">Add</button><button type="button" class="pf-btn" data-lg="rtr">Train from CSV…</button><button type="button" class="pf-btn" data-lg="rrs">Reset to built-in</button>';
  if(LGS.tab==="l"&&LGS.sel!=null&&LFR.rules[LGS.sel]&&!lfN(LFR.rules[LGS.sel].l2))tb+='<span class="lgspc"></span><input class="lg-q" data-lg-in="l2" placeholder="Only when Lithology 2 is\u2026" autocomplete="off"><button type="button" class="pf-btn" data-lg="l2set">Set condition</button>';
- tb+='<span class="lg-zm" role="group" aria-label="Zoom"><button type="button" data-lg="zo" title="Zoom out">\u2212</button><button type="button" data-lg="z1" title="Back to 100%">'+Math.round((LGZ||1)*100)+'%</button><button type="button" data-lg="zi" title="Zoom in">+</button><button type="button" data-lg="zf" title="Fit the whole graph in the window">Fit</button></span><button type="button" class="pf-btn" data-lg="lsave" title="Remember where every box is now (and the zoom)">Save layout</button><button type="button" class="pf-btn" data-lg="lrst" title="'+(lgSaved()?"Put every box back where you saved them":"Put every box back in its place")+'">Reset layout</button>'+(lgSaved()?'<button type="button" class="pf-btn" data-lg="lclr" title="Forget the saved layout, so Reset goes back to the built-in one">Clear saved</button>':"");
+ tb+='<span class="lg-zm" role="group" aria-label="Zoom"><button type="button" data-lg="zo" title="Zoom out">\u2212</button><button type="button" data-lg="z1" title="Back to 100%">'+Math.round((LGZ||1)*100)+'%</button><button type="button" data-lg="zi" title="Zoom in">+</button><button type="button" data-lg="zf" title="Fit the whole graph in the window">Fit</button></span><button type="button" class="pf-btn" data-lg="fs" title="Full screen (F). Esc to leave">'+(LGS.fs?"Exit full screen":"Full screen")+'</button><button type="button" class="pf-btn" data-lg="lsave" title="Remember where every box is now (and the zoom)">Save layout</button><button type="button" class="pf-btn" data-lg="lrst" title="'+(lgSaved()?"Put every box back where you saved them":"Put every box back in its place")+'">Reset layout</button>'+(lgSaved()?'<button type="button" class="pf-btn" data-lg="lclr" title="Forget the saved layout, so Reset goes back to the built-in one">Clear saved</button>':"");
  tb+='</div>';
  var body=LGS.tab==="c"?lgCauses():lgLith();
  var hint=LGS.tab==="c"?'Read left to right: a Remark (with its Activity) goes to the first Words box, from top to bottom, that has one of its words. That box decides the Cause, and the Cause is shown by Status, Breakdown or Standby. A word matches the start of a word. Use \u25B2 \u25BC to change which box is checked first.':'Drag from a Lithology 1 dot to a Simplified code to make a rule. Click a wire to select it, then press Delete or × to remove it. With a wire selected, type a Lithology 2 in the bar to make the rule conditional. Rules apply to the Leapfrog table and exports.';
- return'<div class="lg-w">'+tb+'<div class="lg-cv" tabindex="0"><svg class="lg-svg" aria-hidden="true"></svg>'+body+'</div><p class="dk-hint">'+hint+'</p></div>'}
+ return'<div class="lg-w'+(LGS.fs?' lg-fs':'')+'">'+tb+'<div class="lg-cv" tabindex="0"><svg class="lg-svg" aria-hidden="true"></svg>'+body+'</div><p class="dk-hint">'+hint+'</p></div>'}
 var LGZ=(function(){try{var v=parseFloat(localStorage.getItem("dg_lgz"));return v>=.4&&v<=2.2?v:null}catch(e){return null}})();
 var LGP={};try{LGP=JSON.parse(localStorage.getItem("dg_lgpos")||"{}")||{}}catch(e){LGP={}}
 function lgK(el){var o=el.offsetWidth,r=el.getBoundingClientRect().width,k=o?r/o:1;return k>.2&&k<5?k:1}
@@ -11013,6 +11016,7 @@ function lgWire(p){var w=p.querySelector(".lg-w");if(!w)return;var cv=w.querySel
   if(a==="cdel"){if(t.dataset.arm!=="1"){t.dataset.arm="1";t.textContent="Sure?";setTimeout(function(){t.dataset.arm="";t.textContent="×"},2500);return}var C4=pcGet();C4.splice(+v,1);pcSave(C4);lgRe(1);return}
   if(a==="crst"){if(t.dataset.arm!=="1"){t.dataset.arm="1";t.textContent="Tap again: reset";setTimeout(function(){t.dataset.arm="";t.textContent="Reset to built-in"},3500);return}try{localStorage.removeItem("gl_cause")}catch(x){}PCC=null;lgRe(1);dkMsg("Cause words reset to the built-in list");return}
   if(a==="zi"){lgZset(w,(LGZ||1)*1.15);return}if(a==="zo"){lgZset(w,(LGZ||1)/1.15);return}if(a==="z1"){lgZset(w,1);return}if(a==="zf"){lgFit(w);try{localStorage.removeItem("dg_lgz")}catch(x){}return}
+  if(a==="fs"){lgFs();return}
   if(a==="lsave"){try{localStorage.setItem("dg_lgsave",JSON.stringify({p:LGP,z:LGZ}));dkMsg("Layout saved. Reset layout now returns to it.")}catch(x){dkMsg("Could not save the layout",1)}lgRe();return}
   if(a==="lclr"){try{localStorage.removeItem("dg_lgsave")}catch(x){}dkMsg("Saved layout cleared");lgRe();return}
   if(a==="lrst"){var sv0=lgSaved();LGP=sv0?JSON.parse(JSON.stringify(sv0.p)):{};try{if(sv0)localStorage.setItem("dg_lgpos",JSON.stringify(LGP));else localStorage.removeItem("dg_lgpos")}catch(x){}if(sv0&&sv0.z!=null){LGZ=sv0.z;try{localStorage.setItem("dg_lgz",String(sv0.z))}catch(x){}}dkMsg(sv0?"Back to your saved layout":"Back to the built-in layout");lgRe();return}
@@ -11394,7 +11398,7 @@ function hregDetail(p,h,C){var k=h._h,hi=HI[k]||{},c=C[k]||{a:0,b:0,s:0,eff:null
    var TXT=(f==="loc"||f==="rig"||f==="dtp"||f==="con"||f==="sd"||f==="ed"||f==="area"||f==="purp"||f==="core"||f==="geo"||f==="note"||f.indexOf("cf_")===0);if(!TXT&&raw!==""&&n==null){dkMsg("Type a number for "+f,1);t.value=(hi[f]==null?"":hi[f]);return}
    if(f==="az"&&n!=null&&(n<0||n>360)){dkMsg("Azimuth must be 0 to 360",1);t.value=(hi[f]==null?"":hi[f]);return}
    if(f==="inc"&&n!=null&&(n<-90||n>90)){dkMsg("Inclination must be -90 to 90",1);t.value=(hi[f]==null?"":hi[f]);return}
-   var val=TXT?raw:(raw===""?"":String(n));hregSave(k,(function(o){o[f]=val;return o})({}),"Saved "+h.hole)}};
+   var val=TXT?raw:(raw===""?"":String(n)),tm2=f==="ed"&&val!==""&&hstOf(k)!=="eoh";hregSave(k,(function(o){o[f]=val;if(tm2)o.hst="eoh";return o})({}),"Saved "+h.hole+(tm2?" \u00b7 marked TERMINATED":""))}};
 }
 /* ---------- data checks ---------- */
 /*DTSENSE*/
@@ -12777,7 +12781,7 @@ window.geotReset=function(){if(box){var f=box.querySelector("iframe");if(f)f.src
 var md=document.getElementById("mode");if(md)md.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button");if(!b)return;if(b.id==="m_geot")window.geotSet(true);else if(b.id==="m_field")window.geotSet(false)},true);
 var hm=document.getElementById("home");if(hm)hm.addEventListener("click",function(e){var x=e.target.closest&&e.target.closest("[data-open]");if(x)window.geotSet(x.getAttribute("data-open")==="geot")},true);
 
-/*DBSYNC0*/window.addEventListener("load",function(){setTimeout(function(){try{dgDbSync()}catch(e){}},1500)});/*UPDCHK*/(function(){var BUILD="3.65.280";window.DG_BUILD=BUILD;
+/*DBSYNC0*/window.addEventListener("load",function(){setTimeout(function(){try{dgDbSync()}catch(e){}},1500)});/*UPDCHK*/(function(){var BUILD="3.65.282";window.DG_BUILD=BUILD;
 var LSG=function(k){try{return localStorage.getItem(k)}catch(e){return null}},LSS=function(k,v){try{localStorage.setItem(k,v)}catch(e){}};
 function say(m){var b=document.querySelectorAll(".hm-updb");for(var i=0;i<b.length;i++){b[i].textContent=m}}
 function rst(){setTimeout(function(){var b=document.querySelectorAll(".hm-updb");for(var i=0;i<b.length;i++){b[i].textContent="Check for updates";b[i].disabled=false}},3000)}
