@@ -1,9 +1,12 @@
 {
- "build": "3.65.270",
+ "build": "3.65.272",
  "date": "2026-11-13",
- "fn": [],
+ "fn": [
+  "Rock-type cards and their pictures now use the colours of the Litho, Alteration and Structure colour scheme file (01.1_Litho_Alteration_and_Structure_Color_Scheme_051226.xlsx). Update the app and Check for updates; saved lists are updated once, automatically."
+ ],
  "ds": [
-  "DRILL HOLE STATUS: new 'Downtime reasons and how to prevent them' section. Pick a From and To date (or 7 days, 30 days, This month, Last month, All time) and it lists the Breakdown and the Standby reasons for those dates, sorted from the most hours to the least. Each reason shows the hours, the share, how many times it happened, which rigs and how many holes were affected, the remarks written for it, and a suggestion on how to prevent it. Reasons come from the Activity and Remarks in Rig Activities, sorted with the cause words in REGISTRY.",
-  "DRILL HOLE STATUS: new 'Weekly KPI report' table in the same layout as the project KPI sheet: this week (Target, Actual, %Var) and Acc. To Date, with Issues & Concerns and Action Plan. Automatic: program completion, timeline, meterage, rigs deployed, penetration rate, core recovery, active drill hours, geologic logging and data accuracy. Manual (blue): cost, assay samples, turnaround time and QA/QC, and any other cell can be typed over and cleared to go back to automatic. Week buttons, Copy and Save image."
+  "New colour scheme from the file 01.1_Litho_Alteration_and_Structure_Color_Scheme_051226.xlsx for rock types, alteration types and structures. It is used everywhere: the log strips and their legends, A4 log sheets, charts, plan/section/3D maps, the attribute tables and the rock cards. One-time update of your saved lookup lists to the file's colours; new codes in the file (BLT1, BLT2, LST1-3) are added. 'NULL' in the file means no colour (grey).",
+  "Attribute table, Logging intervals: Structures column shows the structure code in the scheme colour (fault, vein, bed); Rock 1, Rock 2 and Alt Type 1 and 2 show a colour square. Defects use the structure colours on the logs too.",
+  "REGISTRY, Cards view: new 'Colour scheme' card with every rock type, alteration and structure colour. Type a hex to change one, 'Download the file (.xlsx)' gives back the original file, 'Reset to the file' puts the file colours back."
  ]
 }
