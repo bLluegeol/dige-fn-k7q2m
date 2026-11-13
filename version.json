@@ -1,8 +1,8 @@
 {
- "build": "3.65.282",
+ "build": "3.65.284",
  "date": "2026-11-13",
  "fn": [],
  "ds": [
-  "Registry graph (Causes and Lithology): new Full screen button in the toolbar, and press F to turn full screen on or off. The graph fills the whole window; press Esc or Exit full screen to come back. Zoom, Fit, drag and wiring all work in full screen."
+  "Leapfrog lithology: new built-in rule. When Lithology 1 and Lithology 2 are two different sedimentary rocks (for example MST with LST, or SLT with SST), or one entry is an interbedded pair like SLT/MST, the Simplified code is SEDS. Sedimentary codes used: MST, SLT, SST, LST, SEDS, CMS, MRO, SH, SHL, CLST. A rule you type for that exact pair still wins, and a sedimentary rock with a non-sedimentary one (for example MST with BLT) keeps its normal rule. The rule shows above the Registry rules list."
  ]
 }
