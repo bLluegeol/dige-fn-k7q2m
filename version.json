@@ -1,8 +1,10 @@
 {
- "build": "3.65.275",
+ "build": "3.65.278",
  "date": "2026-11-13",
- "fn": [],
+ "fn": [
+  "Hole status: ACTIVE is now called ONGOING, and the two terminated choices are now one: TERMINATED. Holes that were Terminated (Other Reasons) show as TERMINATED, nothing is lost. The status list, the map legends and the status labels all use the new names."
+ ],
  "ds": [
-  "Attribute table: new 'Colours' button in the toolbar (Logging intervals, Defects, Lithology). It is on by default, so the rock, structure, alteration and graphic log cells are shaded. Click it to turn all the shading off, click again to turn it back on. The choice is remembered."
+  "Hole status: ACTIVE is now ONGOING, and TERM (EOH) and TERM (OR) are now one: TERMINATED. Updated everywhere: Holes list headings, the Drillhole register badges and Status filter, HOLE STATUS, the map and 3D legends, Data Checks wording and the help text. Existing holes marked Terminated (Other Reasons) now show as TERMINATED; their note is kept."
  ]
 }
