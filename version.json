@@ -1,10 +1,8 @@
 {
- "build": "3.65.286",
+ "build": "3.65.289",
  "date": "2026-11-13",
- "fn": [
-  "Map (Plan, Section, 3D): new Collars only chip next to Hide other holes: shows just the collar of each hole, without the hole paths or depth labels. New Slice along hole chip: select a hole, then tap it. Plan turns the map so the hole runs up the screen, Section slices along the hole (width +/-1 m), 3D shows a thin slice along the hole. Tap again to look from the other side; Reset north goes back."
- ],
+ "fn": [],
  "ds": [
-  "Plan map: new Collars only option (same as FN)."
+  "Import Excel now reads your Drillhole register sheet (PDHID, HoleID, LocationX/Y/Z planned and actual, Azimuth, Dip, PlanDepth, DrillStarted, DrillComplete, Status, RigTyp, RigNo, RigLocation, SupGeo, Remarks). Holes already in the app get their plan ID, target depth, azimuth, dip, collar coordinates, start and complete dates, status, rig, area, geologist and remarks updated; the plan holes list is updated and a plan hole whose ID differs (for example 415 for UGP-17) is renamed when azimuth, dip and depth match. A list of every change is shown, and Undo takes the hole changes back. The register looks the same as before."
  ]
 }
