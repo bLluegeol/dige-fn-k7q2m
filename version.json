@@ -1,8 +1,9 @@
 {
- "build": "3.65.267",
+ "build": "3.65.270",
  "date": "2026-11-13",
  "fn": [],
  "ds": [
-  "Import packets, Only new depths: the import summary now lists every table for each hole: how many rows the file had and how deep they go, the cut-off used (last depth already saved here), and how many were new. Run Recovery is always listed, with Nothing in the file when the packet has none."
+  "DRILL HOLE STATUS: new 'Downtime reasons and how to prevent them' section. Pick a From and To date (or 7 days, 30 days, This month, Last month, All time) and it lists the Breakdown and the Standby reasons for those dates, sorted from the most hours to the least. Each reason shows the hours, the share, how many times it happened, which rigs and how many holes were affected, the remarks written for it, and a suggestion on how to prevent it. Reasons come from the Activity and Remarks in Rig Activities, sorted with the cause words in REGISTRY.",
+  "DRILL HOLE STATUS: new 'Weekly KPI report' table in the same layout as the project KPI sheet: this week (Target, Actual, %Var) and Acc. To Date, with Issues & Concerns and Action Plan. Automatic: program completion, timeline, meterage, rigs deployed, penetration rate, core recovery, active drill hours, geologic logging and data accuracy. Manual (blue): cost, assay samples, turnaround time and QA/QC, and any other cell can be typed over and cleared to go back to automatic. Week buttons, Copy and Save image."
  ]
 }
