@@ -1,8 +1,8 @@
 {
- "build": "3.65.265",
+ "build": "3.65.267",
  "date": "2026-11-13",
  "fn": [],
  "ds": [
-  "Import packets (toolbar and Project menu) now asks what to bring in. The default is Only new depths: per hole, only data after the last depth already saved in DS, so nothing overlaps or repeats. Other choices: only data from a depth you type, or everything in the file. The dialog lists the last saved depth of each hole."
+  "Import packets, Only new depths: the import summary now lists every table for each hole: how many rows the file had and how deep they go, the cut-off used (last depth already saved here), and how many were new. Run Recovery is always listed, with Nothing in the file when the packet has none."
  ]
 }
