@@ -1,8 +1,10 @@
 {
- "build": "3.65.284",
+ "build": "3.65.285",
  "date": "2026-11-13",
- "fn": [],
+ "fn": [
+  "Restoring a backup (file or pasted text) now updates holes that are already in the notebook: status (ONGOING / TERMINATED) and Drill start and Drill complete dates come from the backup. Before, only holes the notebook did not have yet were taken from the backup, so a hole terminated in DS stayed ONGOING in FN. A packet that says a hole is TERMINATED also marks it terminated."
+ ],
  "ds": [
-  "Leapfrog lithology: new built-in rule. When Lithology 1 and Lithology 2 are two different sedimentary rocks (for example MST with LST, or SLT with SST), or one entry is an interbedded pair like SLT/MST, the Simplified code is SEDS. Sedimentary codes used: MST, SLT, SST, LST, SEDS, CMS, MRO, SH, SHL, CLST. A rule you type for that exact pair still wins, and a sedimentary rock with a non-sedimentary one (for example MST with BLT) keeps its normal rule. The rule shows above the Registry rules list."
+  "Restoring a backup or importing a packet now updates the status and dates of holes that already exist (see FN note)."
  ]
 }
