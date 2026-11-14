@@ -1,10 +1,10 @@
 {
- "build": "3.65.313",
+ "build": "3.65.320",
  "date": "2026-11-15",
- "fn": [],
+ "fn": [
+  "Team Schedule, Swap shifts: drag across days in a row (works with a finger too), then drag the same number of days on another row, or tap another row name, and the two rows trade those days in one step. Tap a row name first to take the whole month. Undo reverses the whole swap. Single-slot swaps still work."
+ ],
  "ds": [
-  "Database · Drillhole register: Project Summary redesigned. KPI strip on top, grouped cards (Meterage, Performance, Schedule, Backlog) and every figure shows its formula with the numbers plugged in.",
-  "Project Summary active drill hours now use the same per-day totals as the Drill hole status tiles, so Active hours and m per active hour match.",
-  "Clicking any table in the Browser tree from any tab (maps, summary, charts, 3D) switches to the Attribute table for that table."
+  "Team Schedule (Geologist and Core Checkers): same drag and row swap."
  ]
 }
