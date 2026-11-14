@@ -1,11 +1,8 @@
 {
- "build": "3.65.307",
+ "build": "3.65.308",
  "date": "2026-11-14",
  "fn": [
-  "Log Details: 'Shift active' is now shown only for the hole the shift was actually started on. Picking a different hole (for example after an import) shows 'Shift not started' and the Start shift button, instead of inheriting the other hole's running shift.",
-  "Viber text: downhole survey results imported from Excel no longer fill the Viber automatically. They show only while a shift is started for that hole (or if you switch the shot on yourself)."
+  "Map: tapping Geological, Geotechnical, Survey, Summary or the schedule while the map is open now leaves the map. In 3.65.306 and 3.65.307 the map stayed on screen even though the app had switched, so it looked stuck."
  ],
- "ds": [
-  "Hole header: 'Shift active' now applies only to the hole the shift was started on."
- ]
+ "ds": []
 }
