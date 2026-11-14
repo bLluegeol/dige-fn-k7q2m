@@ -1,10 +1,11 @@
 {
- "build": "3.65.298",
+ "build": "3.65.307",
  "date": "2026-11-14",
  "fn": [
-  "Plan map: new Combined label. One box per hole with the hole number, rig, drilled / planned depth and a thin progress bar, with a left edge in the status colour (green ongoing, blue terminated, amber standby). It sits beside the collar and a thin line connects it when it has to move away. Turn it on or off with the Combined label chip next to Collars only."
+  "Log Details: 'Shift active' is now shown only for the hole the shift was actually started on. Picking a different hole (for example after an import) shows 'Shift not started' and the Start shift button, instead of inheriting the other hole's running shift.",
+  "Viber text: downhole survey results imported from Excel no longer fill the Viber automatically. They show only while a shift is started for that hole (or if you switch the shot on yourself)."
  ],
  "ds": [
-  "Plan map: new Combined label (hole number, rig, drilled / planned depth and progress bar in one box beside the collar, status colour on the left edge). Switch in the Callouts panel: Combined hole label. On by default; switch it off to get the separate depth pill at the hole end back."
+  "Hole header: 'Shift active' now applies only to the hole the shift was started on."
  ]
 }
