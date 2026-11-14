@@ -1,8 +1,10 @@
 {
- "build": "3.65.293",
+ "build": "3.65.298",
  "date": "2026-11-14",
- "fn": [],
+ "fn": [
+  "Plan map: new Combined label. One box per hole with the hole number, rig, drilled / planned depth and a thin progress bar, with a left edge in the status colour (green ongoing, blue terminated, amber standby). It sits beside the collar and a thin line connects it when it has to move away. Turn it on or off with the Combined label chip next to Collars only."
+ ],
  "ds": [
-  "The backlog card (KPI page, under Schedule) now has a customisable period: type the number of days (default 7), or pick From and To dates. Average rate, penetration rate, shortfall, backlog days, finish date and the day-by-day table all follow it. Reset returns to the last 7 days. The card is now called Backlog at the selected pace."
+  "Plan map: new Combined label (hole number, rig, drilled / planned depth and progress bar in one box beside the collar, status colour on the left edge). Switch in the Callouts panel: Combined hole label. On by default; switch it off to get the separate depth pill at the hole end back."
  ]
 }
