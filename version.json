@@ -1,8 +1,10 @@
 {
- "build": "3.65.308",
- "date": "2026-11-14",
- "fn": [
-  "Map: tapping Geological, Geotechnical, Survey, Summary or the schedule while the map is open now leaves the map. In 3.65.306 and 3.65.307 the map stayed on screen even though the app had switched, so it looked stuck."
- ],
- "ds": []
+ "build": "3.65.313",
+ "date": "2026-11-15",
+ "fn": [],
+ "ds": [
+  "Database · Drillhole register: Project Summary redesigned. KPI strip on top, grouped cards (Meterage, Performance, Schedule, Backlog) and every figure shows its formula with the numbers plugged in.",
+  "Project Summary active drill hours now use the same per-day totals as the Drill hole status tiles, so Active hours and m per active hour match.",
+  "Clicking any table in the Browser tree from any tab (maps, summary, charts, 3D) switches to the Attribute table for that table."
+ ]
 }
