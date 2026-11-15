@@ -1,10 +1,12 @@
 {
- "build": "3.65.322",
+ "build": "3.65.323",
  "date": "2026-11-15",
  "fn": [
-  "Team Schedule, edit mode: new Auto-fill rules panel (Geologist and Core Checkers). Leave people out of auto-fill completely or for a date range, with an optional reason (vacation), and leave the end date empty for until further notice. Choose which shifts each group may work, a most-days-in-a-row limit with same-shift blocks (for example 5 mornings then a rest day), a full rest day when going from 3rd shift to 1st or 2nd, and filler loggers who cover a slot for one day while its usual person rests. Rules are remembered for the next months. The suggestion bar shows how many filler days were used."
+  "Team Schedule Overview: new date selector (previous day, next day, date picker and a Today button). Pick any day to see who is assigned to each rig and shift that day for both teams; the live clock and 'on duty now' return when you press Today.",
+  "Removed the KPI tab under Monitoring (Desktop Studio)."
  ],
  "ds": [
-  "Team Schedule: same Auto-fill rules."
+  "Team Schedule Overview: new date selector (previous day, next day, date picker and a Today button).",
+  "Removed the KPI tab under Monitoring."
  ]
 }
