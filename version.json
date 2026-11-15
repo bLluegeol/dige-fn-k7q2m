@@ -1,10 +1,10 @@
 {
- "build": "3.65.320",
+ "build": "3.65.322",
  "date": "2026-11-15",
  "fn": [
-  "Team Schedule, Swap shifts: drag across days in a row (works with a finger too), then drag the same number of days on another row, or tap another row name, and the two rows trade those days in one step. Tap a row name first to take the whole month. Undo reverses the whole swap. Single-slot swaps still work."
+  "Team Schedule, edit mode: new Auto-fill rules panel (Geologist and Core Checkers). Leave people out of auto-fill completely or for a date range, with an optional reason (vacation), and leave the end date empty for until further notice. Choose which shifts each group may work, a most-days-in-a-row limit with same-shift blocks (for example 5 mornings then a rest day), a full rest day when going from 3rd shift to 1st or 2nd, and filler loggers who cover a slot for one day while its usual person rests. Rules are remembered for the next months. The suggestion bar shows how many filler days were used."
  ],
  "ds": [
-  "Team Schedule (Geologist and Core Checkers): same drag and row swap."
+  "Team Schedule: same Auto-fill rules."
  ]
 }
