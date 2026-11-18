@@ -1,8 +1,8 @@
 {
- "build": "3.65.328",
- "date": "2026-11-15",
- "fn": [
-  "Plan map (Plan, Section and 3D) now has a Full screen mode. Tap the new full screen button next to the hole count (top right of the map header, or in the map tools) to hide the app bar, the view tabs and the bottom panel so the map fills the whole screen. The Plan / Section / 3D tabs stay as a small pill, the menu button at the bottom right brings the Show / Labels / Map panel back as a sheet, and the X button (or Esc) exits."
- ],
- "ds": []
+ "build": "3.65.330",
+ "date": "2026-11-18",
+ "fn": [],
+ "ds": [
+  "Team Schedule (Geologist and Core Checkers): new New month button next to the month picker, on desktop width and in the standalone Team Schedule app. It asks which month to create, can keep the rigs, shifts and roster of the month in view (cells start empty), refuses a month that already exists and opens Edit straight away. When no schedule is loaded yet, Start a new month is offered too."
+ ]
 }
